@@ -29,7 +29,7 @@ Portions of the document need to be edited via .csv files, which will be discuss
 ##R markdown and Git
 The template was created for version control (Git) use in RStudio. R markdown integrates plain text, \LaTeX, HTML, and R code to create a reproducible document. The template is an R project (.Rproj), that keeps all of the files associated with the template organized.  More on RStudio projects [here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).  [R markdown's website](http://rmarkdown.rstudio.com/) is also full of resources.
 
-Git is a distributed version control system, that houses files and repositories on a remote server. When you want to access these files/repositories, such as the assessment document project, you checkout a copy from the server, work on it locally (your computer), commit those changes, and then push your changes to the server. By commiting a snapshot of a file or the repository, Git stores the that version of the file in its memory.  Each time you commit changes made to a file, they are stored in memory.  This is a huge advantage if you then run into an error and need to revert to a previous version of your work. To revert back, click *Diff* on the Git tab (top right window of RStudio), and then *Revert*.
+Git is a distributed version control system, that houses files and repositories on a remote server. When you want to access these files/repositories, such as the assessment document project, you checkout a copy from the server, work on it locally (your computer), commit those changes, and then push your changes to the server. By commiting a snapshot of a file or the repository, Git stores that version of the file in its memory.  Each time you commit changes made to a file, they are stored in memory.  This is a huge advantage if you then run into an error and need to revert to a previous version of your work. To revert back, click *Diff* on the Git tab (top right window of RStudio), and then *Revert*.
 
 Git allows you to easily switch between computers and collaborate with the other assessment authors.  This template is housed on [GitHub](https://github.com/), but there are dozens of options available to host your file.  The [Pro Git Book](http://git-scm.com/book/en/v2) (online and free) is a great place to learn about Git.
 
@@ -37,11 +37,11 @@ Git allows you to easily switch between computers and collaborate with the other
 
 **Collaborating with Git**
 
-There are two options for STAT teams to collaborate on the assessment document, described below.  Remember, the repositories for the two options below still are still public, and anyone can fork the repository to their own account.  If you do not want the public to view your work, you will have to work through a private repository.  If you have a university affiliation, you can request free private from Github.  As a warning, on GitHub, all collaborators on a private repository have owner-level permissions.  Other Git hosts, such as BitBucket, offer free private repositories if this is a concern.
+There are two options for STAT teams to collaborate on the assessment document, described below.  Remember, the repositories for the two options below are still public, and anyone can fork the repository to their own account.  If you do not want the public to view your work, you will have to work through a private repository.  If you have a university affiliation, you can request free private from Github.  As a warning, on GitHub, all collaborators on a private repository have owner-level permissions.  Other Git hosts, such as BitBucket, offer free private repositories if this is a concern.
 
 *Personal repository*
 
-Under this model, one person will ultimately have complete access to the repository. The best recommendation is to make the STAT team lead, or whomever will be foremost responsible for document writing, the owner of the repository. This person will follow the above directions to fork the Assessment_template to their own account.  Anyone who wishes to contribute to the repository will submit a pull request to the owner to incoporate changes.  A more detailed description on contriubting to open source projects can be found [here](https://guides.github.com/activities/contributing-to-open-source/).
+Under this model, one person will ultimately have complete access to the repository. The best recommendation is to make the STAT team lead, or whomever will be foremost responsible for document writing, the owner of the repository. This person will follow the above directions to fork the StockAssessment_template to their own account.  Anyone who wishes to contribute to the repository will submit a pull request to the owner to incoporate changes.  A more detailed description on contriubting to open source projects can be found [here](https://guides.github.com/activities/contributing-to-open-source/).
 
 *Organization with teams repository*
 
@@ -77,79 +77,96 @@ You will also need to install the following R packages, in addition to any other
 
 2. In Git Bash, set your username and email (if you haven't done this previously). The username does not have to be your GitHub username, but the email address HAS to be the email you registered with GitHub, it can also be your first and last name. In the below commands, replace 'Melissa Monk' and my email with your name and email:
 
-\colorbox{light-gray}{\makebox{git config --global user.name 'Melissa Monk'}}  
-\colorbox{light-gray}{\makebox{git config --global user.email 'melissa.monk@noaa.gov'}} 
+>\colorbox{light-gray}{\makebox{git config --global user.name 'Melissa Monk'}}  
+>\colorbox{light-gray}{\makebox{git config --global user.email 'melissa.monk@noaa.gov'}} 
 
-Because these commands return nothing, check to see that git registered your information by typing:
+3. Because these commands return nothing, check to see that git registered your information by typing:
 
-\colorbox{light-gray}{\makebox{git config --global --list}}
-
-
-If you want to avoid the prompt for your username and password every time you push and pull the repository, read the remainder of this section.  Otherwise, skip it!  Getting the SSH-authentication to work took me a few tries, so be patient if it doesn't work the first time.  If the steps below don't work for you, check out [Jenny Bryan's tutorial](http://happygitwithr.com/) or this [R-blogger post](http://www.r-bloggers.com/rstudio-pushing-to-github-with-ssh-authentication/).
+>\colorbox{light-gray}{\makebox{git config --global --list}}
 
 
-3. You can create SSH keys from either RStudio or the shell.  First, check to see if you have existing keys.
-
-Open Git Bash and type:
-
-\colorbox{light-gray}{\makebox{ls -al ~/.ssh}}
-
-If this command tells you .ssh does not exist, you don't have SSH keys.  If the command returns a list of files including id_rsa.pub and id_rsa, bout have a key pair.  You can skip to Step 6.  Otherwise, set up the keys via Git Bash or RStudio.
-
-In RStudio, in the menu navigate to Tools -> Global Options -> Git SVN. Click *Create SRA Key*.  This should generate the key. Click *View public key* and copy the contents.
-
-In Git Bash, type the following, replacing my email with the email associated with your GitHub account:
-
-\colorbox{light-gray}{\makebox{ssh-keygen -t rsa -b 4096 -C "melissa.monk@noaa.gov"}}
-
-Accept the proposed key storage location by pressing Enter.
-
-You will be prompted to enter an option passphrase to protect the key.  Either enter a passphrase, or leave this empty and press Enter (my preference). You're now done with this step.
+4. If you want to avoid the prompt for your username and password every time you push and pull the repository, read the remainder of this section.  Otherwise, skip it!  Getting the SSH-authentication to work took me a few tries, so be patient if it doesn't work the first time.  If the steps below don't work for you, check out [Jenny Bryan's tutorial](http://happygitwithr.com/) or this [R-blogger post](http://www.r-bloggers.com/rstudio-pushing-to-github-with-ssh-authentication/).
 
 
-4. Add the key to the ssh-agent
+5. You can create SSH keys from either RStudio or the shell.  First, check to see if you have existing keys.  
 
-Make sure the ssh-agent is enabled on your machine, by typing *eval "$(ssh-agent -s)"* into Git Bash.  It should return and Agent pid.
+>Open Git Bash and type:  
 
-Add your key to the agent:
+>\colorbox{light-gray}{\makebox{ls -al ~/.ssh}}
 
-\colorbox{light-gray}{\makebox{ssh-add ~/.ssh/id\_rsa}}
+>If this command tells you .ssh does not exist, you don't have SSH keys.  If the command returns a list of files including id_rsa.pub >and id_rsa, bout have a key pair.  You can skip to Step 9.  Otherwise, set up the keys via Git Bash or RStudio.
 
-If you chose to add a passphrase, you'll be promted for it here. If you're successful, the shell will return something like:
+###Via RStudio (much easier)
 
-\colorbox{light-gray}{\makebox{Identity added: /Users/meliss.monk/.ssh/id\_rsa (/Users/melissa.monk/.ssh/id\_rsa)}}
+6. a. In RStudio, in the menu navigate to Tools -> Global Options -> Git/SVN. Click *Create RSA Key*.  This should generate the key. Click *View public key* and copy the contents.  Go to step 9.
+
+
+###Via Git Bash
+6. b. In Git Bash, type the following, replacing my email with the email associated with your GitHub account:  
+
+>\colorbox{light-gray}{\makebox{ssh-keygen -t rsa -b 4096 -C "melissa.monk@noaa.gov"}}   
+
+7. b. Accept the proposed key storage location by pressing Enter. You will be prompted to enter an option passphrase to protect the key. Either enter a passphrase, or leave this empty and press Enter (my preference).  
+
+8. b. Make sure the ssh-agent is enabled on your machine, by typing *eval "$(ssh-agent -s)"* into Git Bash.  It should return and Agent pid.
+
+>Add your key to the agent:
+
+>\colorbox{light-gray}{\makebox{ssh-add ~/.ssh/id\_rsa}}
+
+>If you chose to add a passphrase, you'll be promted for it here. If you're successful, the shell will return something like:
+
+>\colorbox{light-gray}{\makebox{Identity added: /Users/meliss.monk/.ssh/id\_rsa (/Users/melissa.monk/.ssh/id\_rsa)}}
+
+>Go to step 9.
                                 
-5. To check that the ssh-authentication works, type the following in Git Bash: 
+-------------------
 
-\colorbox{light-gray}{\makebox{ssh -T git@github.com}}   
+9. Navigate to your profile on [GitHub](www.github.com). From the View Profile screen select the *Edit Profile* button in the top right.  Find *SSH keys* in the left-hand menu, and select *New SSH key*.  Name the key something like 'Laptop key' (you'll need a separate key for each computer). Paste the View Public Key contents from RStudio into the *Key* box.
 
-If it works, you should get something like  
-*Hi your\_username! You’ve successfully authenticated, but GitHub does not provide shell access.*
 
-6. Navigate to your profile on [GitHub](www.github.com). From the View Profile screen select the *Edit Profile* button in the top right.  Navigate to *SSH keys* in the left-hand menu, and select Add SSH key.  Name the key something like 'Laptop key' (you'll need a separate key for each computer). Paste the View Public Key contents from RStudio into the *Key* box.
+10. To check that the ssh-authentication works, type the following in Git Bash: 
 
-Remember to copy the SSH Url from the respository page to clone the repository.
+>\colorbox{light-gray}{\makebox{ssh -T git@github.com}}   
 
-7. Change remote.origin.url from HTTPS to HTTP (step may not be necessary)
-If RStudio is still asking you for a username and password after you set up the ssh-authentication, type the following in Git Bash
+>If it works, you should get something like  
+>*Hi your\_username! You’ve successfully authenticated, but GitHub does not provide shell access.*
 
-\colorbox{light-gray}{\makebox{git config remote.origin.url}} 
 
-\colorbox{light-gray}{\makebox{git@github.com:your\_username/your\_project.git}} 
+11. Remember to copy the SSH Url from the respository page to clone the repository.
+
+>Change remote.origin.url from HTTPS to HTTP (step may not be necessary)
+
+12. If RStudio is still asking you for a username and password after you set up the ssh-authentication, type the following in Git Bash
+
+>\colorbox{light-gray}{\makebox{git config remote.origin.url}} 
+
+>\colorbox{light-gray}{\makebox{git@github.com:your\_username/your\_project.git}} 
+
+
+##Protecting confidential information
+Keep in mind that if you're using a public repository, everything you push is visible to the world!  Even if you realize that you've pushed confidential information and remove it with your next commit and push to GitHub, the confidential is not actually deleted!!  The only way to remove the confidential information is to wipe the repository from GitHub, or go through a laborious process of removing your commit history.    
+
+If you have datafiles that you want to keep with the repository locally, you can add it to the .gitignore file.  An example of this would be if you had a text file containing confidential information that you were then going to use within an R code chunk to create a non-confidential table or figure for your assessment.  
+
+If you're writing R code chunks that use ODBC connections, you can use the following script for the channel to prompt you for your password:   
+`channel<-odbcConnect("database", `  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`uid="username",`   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`pwd=.rs.askForPassword("Enter password:"))`   
 
 
 # Using the template step-by-step
 
 ##Forking the template
-Once you have the necessary software installed and your machine talking to GitHub, you're ready to fork (make a copy) the Assessment_template repository and begin your own assessment document.  
+Once you have the necessary software installed and your machine talking to GitHub, you're ready to fork (make a copy) the StockAssessment_template repository and begin your own assessment document.  
 
-1. Navigate to the [Assessment_template](https://github.com/melmonk/Assessment_template) on my GitHub page, melmonk.
-2. In the top-right corner of the the Assessment_template repository page, click *Fork*.
-     + You now have a copy of the Assessment_template repository in your own account.
+1. Navigate to the [StockAssessment_template](https://github.com/melmonk/StockAssessment_template) on my GitHub page, melmonk.
+2. In the top-right corner of the the StockAssessment_template repository page, click *Fork*.
+     + You now have a copy of the StockAssessment_template repository in your own account.
 3. Navigate back to your personal GitHub page.
-     + Assessment_template should now appear in your list of repositories.
+     + StockAssessment_template should now appear in your list of repositories.
      + If you want to rename the repository, go to Settings (in the menus below the repository name in blue).
-4. Click the link to the Assessment_template from your personal page. 
+4. Click the link to the StockAssessment_template from your personal page. 
      + On the right-hand side you'll see *HTTPS* clone URL, click the copy button, unless you're connecting to the GitHub via *SSH* (see the *Github and ssh-authentication section* and give it a quick read at this step).
      + This will allow you to pull the repository to your desktop.
 6. Now open RStudio, navigate to *File -> New Project*.
@@ -215,7 +232,7 @@ Once you have forked the assessment template and created a new project in Rstudi
     + To start working on the project again, open RStudio, navigate to File -> Open Project, find your file, open it, and pull (blue down arrow from the Git tab) any updates from the repository to your local machine.
 
 ##SS and r4ss
-The Assessment_template repository contains both your SS and r4ss output for the model(s) to include in the document.
+The StockAssessment_template repository contains both your SS and r4ss output for the model(s) to include in the document.
 
 The SS folder contains four subfolders, one for each of up to three model ouputs, and a linebreak\_files folder that will contain the formatted SS input files, i.e., control, forecast, etc.  When you're ready to replace the China rockfish model with your own, open the appropriate Base\_model# folder and copy your SS model files here.  Do this for the other Base\_model# folders if you have multiple models.  If you have only one model, you can empty the contents of the subsequent folders.
 
@@ -282,10 +299,14 @@ Below is the .gitignore file for Assessment\_template.  It ignores the Rproject 
 ===   
 .Rhistory  
 ===   
-/Assessment_template.pdf  
-/Assessment_template.html  
-*.tex  
-*.docx  
+/Assessment_template.pdf
+/Assessment_template.html
+Assessment_template.tex
+Test_figures_tables.tex
+*.docx
+
+**/list_of_dataframes.csv
+**/mod_structure.csv
 ===  Latex temp files  
 *unnamed-chunk*
 \end{Verbatim}

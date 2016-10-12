@@ -79,7 +79,7 @@
 \usepackage{upquote}                                              % produce grave accent in latex
 \usepackage{verbatim}                                             % produces verbatim results
 \usepackage{fancyvrb}                                             % verbatim in a box
-\usepackage[inline]{showlabels}                                   % show table and figure labels; comment out for final
+%\usepackage[inline]{showlabels}                                   % show table and figure labels; comment out for final
 %\usepackage{draftwatermark}                                      % places Draft watermark in background; comment out for final
 \usepackage{textcomp}                                             % fixes error with packages interfering
 \usepackage{lscape}                                               % rotate pages - to allow for landscape longtables
@@ -163,7 +163,7 @@ repositories on a remote server. When you want to access these
 files/repositories, such as the assessment document project, you
 checkout a copy from the server, work on it locally (your computer),
 commit those changes, and then push your changes to the server. By
-commiting a snapshot of a file or the repository, Git stores the that
+commiting a snapshot of a file or the repository, Git stores that
 version of the file in its memory. Each time you commit changes made to
 a file, they are stored in memory. This is a huge advantage if you then
 run into an error and need to revert to a previous version of your work.
@@ -183,13 +183,13 @@ a great place to learn about Git.
 
 There are two options for STAT teams to collaborate on the assessment
 document, described below. Remember, the repositories for the two
-options below still are still public, and anyone can fork the repository
-to their own account. If you do not want the public to view your work,
-you will have to work through a private repository. If you have a
-university affiliation, you can request free private from Github. As a
-warning, on GitHub, all collaborators on a private repository have
-owner-level permissions. Other Git hosts, such as BitBucket, offer free
-private repositories if this is a concern.
+options below are still public, and anyone can fork the repository to
+their own account. If you do not want the public to view your work, you
+will have to work through a private repository. If you have a university
+affiliation, you can request free private from Github. As a warning, on
+GitHub, all collaborators on a private repository have owner-level
+permissions. Other Git hosts, such as BitBucket, offer free private
+repositories if this is a concern.
 
 \emph{Personal repository}
 
@@ -197,7 +197,7 @@ Under this model, one person will ultimately have complete access to the
 repository. The best recommendation is to make the STAT team lead, or
 whomever will be foremost responsible for document writing, the owner of
 the repository. This person will follow the above directions to fork the
-Assessment\_template to their own account. Anyone who wishes to
+StockAssessment\_template to their own account. Anyone who wishes to
 contribute to the repository will submit a pull request to the owner to
 incoporate changes. A more detailed description on contriubting to open
 source projects can be found
@@ -238,9 +238,9 @@ is usually a good idea)\\
 *
 \href{https://www.rstudio.com/products/rstudio/download/preview/}{RStudio
 Preview} (Allows you to preview plots from R code chunks inline)\\
-* \href{http://miktex.org/}{MiKTeX} (needed to render a .pdf to
-\LaTeX)\\
-* \href{https://www.mendeley.com/}{Mendeley} (optional, but useful for
+* \href{http://miktex.org/}{MiKTeX} (needed to render a .pdf to \LaTeX)
+or \href{https://www.tug.org/texlive/}{TeX Live} *
+\href{https://www.mendeley.com/}{Mendeley} (optional, but useful for
 citation management)
 
 You will also need to install the following R packages, in addition to
@@ -269,121 +269,219 @@ authentication}\label{git-github-and-ssh-authentication}
   replace `Melissa Monk' and my email with your name and email:
 \end{enumerate}
 
+\begin{quote}
 \colorbox{light-gray}{\makebox{git config --global user.name 'Melissa Monk'}}\\
 \colorbox{light-gray}{\makebox{git config --global user.email 'melissa.monk@noaa.gov'}}
-
-Because these commands return nothing, check to see that git registered
-your information by typing:
-
-\colorbox{light-gray}{\makebox{git config --global --list}}
-
-If you want to avoid the prompt for your username and password every
-time you push and pull the repository, read the remainder of this
-section. Otherwise, skip it! Getting the SSH-authentication to work took
-me a few tries, so be patient if it doesn't work the first time. If the
-steps below don't work for you, check out
-\href{http://happygitwithr.com/}{Jenny Bryan's tutorial} or this
-\href{http://www.r-bloggers.com/rstudio-pushing-to-github-with-ssh-authentication/}{R-blogger
-post}.
+\end{quote}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{2}
 \tightlist
 \item
-  You can create SSH keys from either RStudio or the shell. First, check
-  to see if you have existing keys.
+  Because these commands return nothing, check to see that git
+  registered your information by typing:
 \end{enumerate}
 
-Open Git Bash and type:
-
-\colorbox{light-gray}{\makebox{ls -al ~/.ssh}}
-
-If this command tells you .ssh does not exist, you don't have SSH keys.
-If the command returns a list of files including id\_rsa.pub and
-id\_rsa, bout have a key pair. You can skip to Step 6. Otherwise, set up
-the keys via Git Bash or RStudio.
-
-In RStudio, in the menu navigate to Tools -\textgreater{} Global Options
--\textgreater{} Git SVN. Click \emph{Create SRA Key}. This should
-generate the key. Click \emph{View public key} and copy the contents.
-
-In Git Bash, type the following, replacing my email with the email
-associated with your GitHub account:
-
-\colorbox{light-gray}{\makebox{ssh-keygen -t rsa -b 4096 -C "melissa.monk@noaa.gov"}}
-
-Accept the proposed key storage location by pressing Enter.
-
-You will be prompted to enter an option passphrase to protect the key.
-Either enter a passphrase, or leave this empty and press Enter (my
-preference). You're now done with this step.
+\begin{quote}
+\colorbox{light-gray}{\makebox{git config --global --list}}
+\end{quote}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{3}
-\tightlist
 \item
-  Add the key to the ssh-agent
+  If you want to avoid the prompt for your username and password every
+  time you push and pull the repository, read the remainder of this
+  section. Otherwise, skip it! Getting the SSH-authentication to work
+  took me a few tries, so be patient if it doesn't work the first time.
+  If the steps below don't work for you, check out
+  \href{http://happygitwithr.com/}{Jenny Bryan's tutorial} or this
+  \href{http://www.r-bloggers.com/rstudio-pushing-to-github-with-ssh-authentication/}{R-blogger
+  post}.
+\item
+  You can create SSH keys from either RStudio or the shell. First, check
+  to see if you have existing keys.
 \end{enumerate}
 
-Make sure the ssh-agent is enabled on your machine, by typing \emph{eval
-``\$(ssh-agent -s)''} into Git Bash. It should return and Agent pid.
+\begin{quote}
+Open Git Bash and type:
+\end{quote}
 
-Add your key to the agent:
+\begin{quote}
+\colorbox{light-gray}{\makebox{ls -al ~/.ssh}}
+\end{quote}
 
-\colorbox{light-gray}{\makebox{ssh-add ~/.ssh/id\_rsa}}
+\begin{quote}
+If this command tells you .ssh does not exist, you don't have SSH keys.
+If the command returns a list of files including id\_rsa.pub
+\textgreater{}and id\_rsa, bout have a key pair. You can skip to Step 9.
+Otherwise, set up the keys via Git Bash or RStudio.
+\end{quote}
 
-If you chose to add a passphrase, you'll be promted for it here. If
-you're successful, the shell will return something like:
-
-\colorbox{light-gray}{\makebox{Identity added: /Users/meliss.monk/.ssh/id\_rsa (/Users/melissa.monk/.ssh/id\_rsa)}}
+\subsubsection{Via RStudio (much easier)}\label{via-rstudio-much-easier}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{4}
-\tightlist
+\setcounter{enumi}{5}
+\item
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    In RStudio, in the menu navigate to Tools -\textgreater{} Global
+    Options -\textgreater{} Git/SVN. Click \emph{Create RSA Key}. This
+    should generate the key. Click \emph{View public key} and copy the
+    contents. Go to step 9.
+  \end{enumerate}
+\end{enumerate}
+
+\subsubsection{Via Git Bash}\label{via-git-bash}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\item
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{1}
+  \tightlist
+  \item
+    In Git Bash, type the following, replacing my email with the email
+    associated with your GitHub account:
+  \end{enumerate}
+\end{enumerate}
+
+\begin{quote}
+\colorbox{light-gray}{\makebox{ssh-keygen -t rsa -b 4096 -C "melissa.monk@noaa.gov"}}
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\item
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{1}
+  \tightlist
+  \item
+    Accept the proposed key storage location by pressing Enter. You will
+    be prompted to enter an option passphrase to protect the key. Either
+    enter a passphrase, or leave this empty and press Enter (my
+    preference).
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \setcounter{enumii}{1}
+  \tightlist
+  \item
+    Make sure the ssh-agent is enabled on your machine, by typing
+    \emph{eval ``\$(ssh-agent -s)''} into Git Bash. It should return and
+    Agent pid.
+  \end{enumerate}
+\end{enumerate}
+
+\begin{quote}
+Add your key to the agent:
+\end{quote}
+
+\begin{quote}
+\colorbox{light-gray}{\makebox{ssh-add ~/.ssh/id\_rsa}}
+\end{quote}
+
+\begin{quote}
+If you chose to add a passphrase, you'll be promted for it here. If
+you're successful, the shell will return something like:
+\end{quote}
+
+\begin{quote}
+\colorbox{light-gray}{\makebox{Identity added: /Users/meliss.monk/.ssh/id\_rsa (/Users/melissa.monk/.ssh/id\_rsa)}}
+\end{quote}
+
+\begin{quote}
+Go to step 9.
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{8}
+\item
+  Navigate to your profile on \href{www.github.com}{GitHub}. From the
+  View Profile screen select the \emph{Edit Profile} button in the top
+  right. Find \emph{SSH keys} in the left-hand menu, and select
+  \emph{New SSH key}. Name the key something like `Laptop key' (you'll
+  need a separate key for each computer). Paste the View Public Key
+  contents from RStudio into the \emph{Key} box.
 \item
   To check that the ssh-authentication works, type the following in Git
   Bash:
 \end{enumerate}
 
+\begin{quote}
 \colorbox{light-gray}{\makebox{ssh -T git@github.com}}
+\end{quote}
 
+\begin{quote}
 If it works, you should get something like\\
 \emph{Hi your\_username! You've successfully authenticated, but GitHub
 does not provide shell access.}
+\end{quote}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{5}
+\setcounter{enumi}{10}
 \tightlist
 \item
-  Navigate to your profile on \href{www.github.com}{GitHub}. From the
-  View Profile screen select the \emph{Edit Profile} button in the top
-  right. Navigate to \emph{SSH keys} in the left-hand menu, and select
-  Add SSH key. Name the key something like `Laptop key' (you'll need a
-  separate key for each computer). Paste the View Public Key contents
-  from RStudio into the \emph{Key} box.
+  Remember to copy the SSH Url from the respository page to clone the
+  repository.
 \end{enumerate}
 
-Remember to copy the SSH Url from the respository page to clone the
-repository.
+\begin{quote}
+Change remote.origin.url from HTTPS to HTTP (step may not be necessary)
+\end{quote}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{6}
+\setcounter{enumi}{11}
 \tightlist
 \item
-  Change remote.origin.url from HTTPS to HTTP (step may not be
-  necessary) If RStudio is still asking you for a username and password
-  after you set up the ssh-authentication, type the following in Git
-  Bash
+  If RStudio is still asking you for a username and password after you
+  set up the ssh-authentication, type the following in Git Bash
 \end{enumerate}
 
+\begin{quote}
 \colorbox{light-gray}{\makebox{git config remote.origin.url}}
+\end{quote}
 
+\begin{quote}
 \colorbox{light-gray}{\makebox{git@github.com:your\_username/your\_project.git}}
+\end{quote}
+
+\subsection{Protecting confidential
+information}\label{protecting-confidential-information}
+
+Keep in mind that if you're using a public repository, everything you
+push is visible to the world! Even if you realize that you've pushed
+confidential information and remove it with your next commit and push to
+GitHub, the confidential is not actually deleted!! The only way to
+remove the confidential information is to wipe the repository from
+GitHub, or go through a laborious process of removing your commit
+history.
+
+If you have datafiles that you want to keep with the repository locally,
+you can add it to the .gitignore file. An example of this would be if
+you had a text file containing confidential information that you were
+then going to use within an R code chunk to create a non-confidential
+table or figure for your assessment.
+
+If you're writing R code chunks that use ODBC connections, you can use
+the following script for the channel to prompt you for your password:\\
+\texttt{channel\textless{}-odbcConnect("database",}\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\texttt{uid="username",}\\
+\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\texttt{pwd=.rs.askForPassword("Enter\ password:"))}
 
 \section{Using the template
 step-by-step}\label{using-the-template-step-by-step}
@@ -391,25 +489,26 @@ step-by-step}\label{using-the-template-step-by-step}
 \subsection{Forking the template}\label{forking-the-template}
 
 Once you have the necessary software installed and your machine talking
-to GitHub, you're ready to fork (make a copy) the Assessment\_template
-repository and begin your own assessment document.
+to GitHub, you're ready to fork (make a copy) the
+StockAssessment\_template repository and begin your own assessment
+document.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
   Navigate to the
-  \href{https://github.com/melmonk/Assessment_template}{Assessment\_template}
+  \href{https://github.com/melmonk/StockAssessment_template}{StockAssessment\_template}
   on my GitHub page, melmonk.
 \item
-  In the top-right corner of the the Assessment\_template repository
-  page, click \emph{Fork}.
+  In the top-right corner of the the StockAssessment\_template
+  repository page, click \emph{Fork}.
 
   \begin{itemize}
   \tightlist
   \item
-    You now have a copy of the Assessment\_template repository in your
-    own account.
+    You now have a copy of the StockAssessment\_template repository in
+    your own account.
   \end{itemize}
 \item
   Navigate back to your personal GitHub page.
@@ -417,13 +516,15 @@ repository and begin your own assessment document.
   \begin{itemize}
   \tightlist
   \item
-    Assessment\_template should now appear in your list of repositories.
+    StockAssessment\_template should now appear in your list of
+    repositories.
   \item
     If you want to rename the repository, go to Settings (in the menus
     below the repository name in blue).
   \end{itemize}
 \item
-  Click the link to the Assessment\_template from your personal page.
+  Click the link to the StockAssessment\_template from your personal
+  page.
 
   \begin{itemize}
   \tightlist
@@ -468,6 +569,14 @@ repository and begin your own assessment document.
 
   \begin{itemize}
   \tightlist
+  \item
+    Navigate to ./RCode/0-Run\_r4ss\_plots.R and run through Section 1.
+    You need to do this to produce the r4SS plots which I removed from
+    the template repository to speed up download times and prevent
+    compiling errors, e.g., the working directory is part of the r4SS
+    code and is specific to your machine and inserting plots. Once you
+    fork the template and have it on your machine, you can remove the
+    `/r4SS/' from the .gitignore file.
   \item
     At the top of the Rstudio scripts pane you should see a ball of yarn
     icon that says ``knit.'' Click \textbf{knit to PDF} from the drop
@@ -631,7 +740,7 @@ changes}\label{saving-committing-and-pushing-your-changes}
 
 \subsection{SS and r4ss}\label{ss-and-r4ss}
 
-The Assessment\_template repository contains both your SS and r4ss
+The StockAssessment\_template repository contains both your SS and r4ss
 output for the model(s) to include in the document.
 
 The SS folder contains four subfolders, one for each of up to three
@@ -761,10 +870,14 @@ files \href{http://git-scm.com/docs/gitignore}{here}.
 ===   
 .Rhistory  
 ===   
-/Assessment_template.pdf  
-/Assessment_template.html  
-*.tex  
-*.docx  
+/Assessment_template.pdf
+/Assessment_template.html
+Assessment_template.tex
+Test_figures_tables.tex
+*.docx
+
+**/list_of_dataframes.csv
+**/mod_structure.csv
 ===  Latex temp files  
 *unnamed-chunk*
 \end{Verbatim}
