@@ -29,7 +29,7 @@ for(jmod in 1:n_models){
   
   
   # working directory to the r4ss folder
-  dir <- 'C:/Assessment_template/r4ss/'
+  dir <- file.path(getwd(),'r4ss')
   
   
 # Following code taken from SS_html in the r4ss package.
