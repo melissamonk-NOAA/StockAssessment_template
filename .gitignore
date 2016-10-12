@@ -9,9 +9,10 @@
 Assessment_template.tex
 Test_figures_tables.tex
 *.docx
-*/r4ss/plots_mod1/*/*
-*/r4ss/plots_mod2/*/*
-*/r4ss/plots_mod3/*/*
+
+**/list_of_dataframes.csv
+**/mod_structure.csv
+
 
 ===  Latex temp files
 
