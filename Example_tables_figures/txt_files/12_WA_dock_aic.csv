@@ -1,0 +1,6 @@
+Model,Binomial,Lognormal
+~Year,14279.1,9990.2
+~Year+Month,13920.0,9850.0
+~Year+Month+BoatType,\textbf{13905.3},\textbf{9830.2}
+~Year+Month+BoatType+BagLimits,13905.3,9838.2
+~Year+Month+BoatType+BagLimits+DepthRestrict,13905.3,9840.2

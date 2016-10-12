@@ -1,0 +1,16 @@
+Model,AIC,BIC
+\textbf{Lognormal submodel},,
+~Year + Wave + Depth + Region + Year:Region + Region:Wave + Wave:Depth ,461.2,568.03
+~Year + Wave + Depth + Region + Wave:Region + Wave:Depth,458.93,522.95
+~Wave + Depth + Region + Wave:Region + Wave:Depth,445.96,467.3
+~Wave + Depth + Region + Wave:Depth,444.18,461.97
+~Wave + Depth + Region,,458.48
+~Wave + Region,,\textbf{452.99}
+~Wave,,449.85
+~1,,447.43
+\textbf{Binomial submodel},,
+~Year + Depth + Region + Wave + Year:Region,2121.11,2308.88
+~Year + Depth + Region + Wave,2116.09,2223.39
+~Year + Region + Wave,2114.25,
+~Depth + Region + Wave,,2148.49
+~Region + Wave,,\textbf{2140.20}

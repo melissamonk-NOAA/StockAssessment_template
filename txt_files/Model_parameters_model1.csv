@@ -1,0 +1,17 @@
+Parameter,Number estimated,Bounds (lowhigh),Prior (MeanSD) Type,Estimate
+Natural mortality ($M$),-,-,-,-
+L($R_0$),-,"(,)",-,-
+Steepness ($h$),-,-,-,-
+\textbf{Growth},,,,
+Length at age 0,-,-,-,-
+Length at age 30,-,"(,)","(,) ",-
+von Bertalanffy k,-,"(,)","(,)",-
+CV of length at age 0,-,-,-,-
+CV of length at age 30,-,"(,)",-,-
+\textbf{Indices},,,,
+Extra SD for indices of abundance,-,"(,)",-,-
+\textbf{Selectivity},,,,
+Length at peak selectivity,-,,-,-
+Ascending width,-,"(,)",-,-
+Length at peak selectivity,-,,-,-
+Ascending width,-,"(,)",-,-

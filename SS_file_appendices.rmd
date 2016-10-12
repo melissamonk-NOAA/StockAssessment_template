@@ -1,0 +1,70 @@
+---
+title: ""
+author: ""
+date: ""
+output: 
+  pdf_document:
+     keep_tex: yes
+     includes:
+      in_header: header.tex
+---
+<!-- ************************************************************************************************--> 
+<!-- **********************************BEGIN APPENDICES**********************************************--> 
+<!-- ************************************************************************************************--> 
+\FloatBarrier
+\newpage
+
+<!-- ************************************DATA FILE(S)************************************************--> 
+#Appendix A. SS data file {-}
+\renewcommand{\thepage}{A-\arabic{page}}
+\setcounter{page}{1}
+
+```{r, echo=FALSE, eval=TRUE,results='markup', comment=NA}
+mod1_data = writeLines(readLines('./SS/linebreak_files/mod1_data.ss'))
+```
+
+\newpage
+
+<!-- **********************************CONTROL FILE(S)***********************************************-->
+#Appendix B. SS control file{-}
+\renewcommand{\thepage}{B-\arabic{page}}
+\setcounter{page}{1}
+
+```{r, echo=FALSE, eval=TRUE,results='markup', comment=NA}
+mod1_control = writeLines(readLines('./SS/linebreak_files/mod1_control.ss'))
+```
+
+\newpage
+
+<!-- *********************************STARTER FILE(S)*************************************************-->
+#Appendix C. SS starter file{-}
+\renewcommand{\thepage}{C-\arabic{page}}
+\setcounter{page}{1}
+
+```{r, echo=FALSE, eval=TRUE,results='markup', comment=NA}
+mod1_starter = writeLines(readLines('./SS/linebreak_files/mod1_starter.ss'))
+```
+\newpage
+
+<!-- ********************************FORECAST FILE(S)**************************************************-->
+#Appendix D. SS forecast file{-}
+\renewcommand{\thepage}{D-\arabic{page}}
+\setcounter{page}{1}
+
+```{r, echo=FALSE, eval=TRUE,results='markup', comment=NA}
+mod1_forecast = writeLines(readLines('./SS/linebreak_files/mod1_forecast.ss'))
+```
+\newpage
+
+<!--********************ADD ADDITIONAL APPENDICES AS NEEDED********************************************-->
+<!--********************cHANGE APPENDIX TITLE AND THE APPENDIX LETTER**********************************-->
+#Appendix E. Appendix Title{-}
+\label{sec:AppendixE}
+\renewcommand{\thepage}{E-\arabic{page}}
+\renewcommand{\thefigure}{E\arabic{figure}}
+\renewcommand{\thetable}{E\arabic{table}}
+\setcounter{page}{1}
+\setcounter{figure}{0}
+\setcounter{table}{0}
+
+Add Appendix text, tables and figuers here.

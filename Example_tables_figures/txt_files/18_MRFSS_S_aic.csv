@@ -1,0 +1,8 @@
+Model,Binomial,Lognormal
+~Year,518.9,813.9
+~Year + Area X,520.9,814.7
+~Year + Area X + Wave,528.7,822.4
+~Year + Area X + Wave + Region,518.8,808.2
+~Year + Area X + Region,510.9,800.9
+~Year + Region,509.1,804.9
+~Year + Region + Year:Region,537.4,817.2

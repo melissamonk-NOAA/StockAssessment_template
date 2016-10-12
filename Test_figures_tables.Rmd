@@ -1,0 +1,71 @@
+---
+title: ''
+author: ''
+date: ''
+output:
+  pdf_document:
+    fig_caption: yes
+    highlight: haddock
+    includes:
+      in_header: header.tex
+    keep_tex: yes
+    latex_engine: xelatex
+    template: Default_template_modified.tex
+    number_sections: yes
+    toc: yes
+    toc_depth: 4
+  html_document:
+    toc: yes
+  word_document: default
+documentclass: article
+fontsize: 12pt
+geometry: margin=1in
+csl: CJFAS.csl
+bibliography: BibFile.bib
+---
+```{r global_options, include=FALSE}
+    # set global options for R code chunks: echo=FALSE (don't include source code); 
+    # warning=FALSE (suppress R warnings); message=FALSE (suppress R messages)
+    # eval = TRUE is default
+    knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r}
+    # Read in preamble R code - including required libraries and the SS file(s)
+    source('./Rcode/Preamble.R')
+ 
+    # Read in data/manipulations for executive summary tables and figures
+    # It may take time to edit this file and get it ready for your assessment
+    # Make small changes in this file and then try to compile the document
+    # Commit when you have a success!
+    source('./Rcode/Exec_summary_figs_tables.R')
+```
+
+USE THIS .Rmd TO TEST R CODE CHUNKS, FIGURES AND PLOTS BEFORE INSERTING INTO THE MAIN TEXT OR TO DEBUG
+
+
+
+```{r]
+OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$LABEL),]
+      OFL_mod1 = OFL_mod1[c(-1,-2),2]
+      
+      #Turn into a dataframe and get the total
+      OFL = as.data.frame(OFL_mod1)
+      OFL$Year=seq(Project_firstyr+2,Project_lastyr,1)
+      OFL$Year = as.factor(OFL$Year)
+      OFL = OFL[,c(2,1)]
+      colnames(OFL) = c('Year','OFL') 
+
+# Create the table
+      OFL.table = xtable(OFL, caption=c('Projections of potential OFL (mt) for each model, using the base model forecast.'),
+                  label = 'tab:OFL_projection')}
+```
+
+```{r, results='asis'}   
+    # Print OFL table 
+      print(OFL.table, include.rownames = FALSE, caption.placement = 'top')
+
+   
+```
+
+

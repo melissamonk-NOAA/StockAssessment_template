@@ -1,0 +1,18 @@
+
+=== 
+.Rproj.user
+=== 
+.Rhistory
+=== 
+/Assessment_template.pdf
+/Assessment_template.html
+Assessment_template.tex
+Test_figures_tables.tex
+*.docx
+*/r4ss/plots_mod1/*/*
+*/r4ss/plots_mod2/*/*
+*/r4ss/plots_mod3/*/*
+
+===  Latex temp files
+
+*unnamed-chunk*

@@ -1,0 +1,8 @@
+Model,Binomial,Lognormal
+~Year,8184.0,8791.0
+~Year + Wave,8119.3,8797.6
+~Year + Region,8184.6,8688.9
+~Year + Wave + Region,\textbf{8118.8},8695.1
+~Year + Wave + Region + Year:Region,8120.8,8659.3
+~Year + Wave + Region + Year:Wave,*,8736.8
+~Year + Region + Year:Region,8189.5,\textbf{8650.9}

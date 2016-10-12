@@ -1,0 +1,4 @@
+Filter,Criteria,Sample size (number of trips)
+Full data set,CPFV trips including counties from San Luis Obispo to Sonoma,2297
+Stephens-MacCall,"Retain all positive China trips, plus “False Positives” (trips predicted to be in China habitat, but with no China retained)",446
+Poor spatial coverage in year,"Drop 1993, 1994 (trips in SLO county only)",\textbf{431}

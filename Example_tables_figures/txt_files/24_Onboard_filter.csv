@@ -1,0 +1,14 @@
+Dataset,Filter,Description,Positive drifts,Total drifts
+Oregon,Entire dataset,,325,14415
+"(2001,",General data filters,"Filters 1-9, section \ref{sec:onboard_datafilter} ",269,11009
+2003-2014),Depth ,< 180 ft (<30 fm),269,10671
+,Midwater drifts,<95\% midwater species,266,6579
+,Reef,Reefs with China rockfish,259,6038
+California ,Entire dataset,,881,7712
+(1989-1999),General data filters,"Filters 1-3, section \ref{sec:onboard_datafilter} ",880,7050
+,Depth ,< 360 ft (<60 fm),880,6495
+,Reef,Reefs with China rockfish,852,5557
+California,Entire dataset,,1468,62207
+ (2000-2014),General data filters,"Filters 1-9, section \ref{sec:onboard_datafilter} ",1431,15912
+,Depth ,< 240 ft (< 40 fm),1427,15381
+,Reef,Reefs with China rockfish,1403,13993

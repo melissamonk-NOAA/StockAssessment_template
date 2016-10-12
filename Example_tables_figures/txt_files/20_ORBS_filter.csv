@@ -1,0 +1,10 @@
+Filter,Criteria,Sample size (number of trips)
+Full data set,Charter boat trips from Oregon (statewide),36752
+Highliners,Retain vessels with 20+ trips;(13\% of vessels made 89\% of trips),32394
+Missing Effort,Delete records with TripHours=NULL,32387
+Remove Multi-day,Delete trips with TripHours>12,31247
+No tuna or dive trips,Drop TripType=(T or D); no China caught on tuna trips; CPUE not comparable for dive trips,30665
+Extreme counter-indicators,"Drop trips with common species that never co-occur with China (Blue shark, white sturgeon, steelhead and albacore)",30004
+Delete catch = NA,Delete 3 trips with catch=NA,30001
+Pelagic Rockfish Target,"Delete trips in which >99\% of catch is pelagic rockfish (silvergray, widow, yellowtail, black, blue)",28215
+Stephens-MacCall,"Retain all positive China trips, plus False Positives (trips predicted to be in China habitat, but with no China retained)",\textbf{6232}

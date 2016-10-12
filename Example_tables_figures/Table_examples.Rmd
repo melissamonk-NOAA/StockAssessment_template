@@ -1,0 +1,885 @@
+---
+title: "Assessment Table Examples"
+author: "Melissa Monk"
+date: "July 26, 2016"
+output: 
+  pdf_document:
+    fig_caption: yes
+    highlight: haddock
+    includes:
+      in_header: header.tex
+    latex_engine: xelatex
+---
+
+```{r global_options, include=FALSE}
+    # set global options for R code chunks: echo=FALSE (don't include source code); 
+    # warning=FALSE (suppress R warnings); message=FALSE (suppress R messages)
+    # eval = TRUE is default
+    knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+    options(xtable.comment=FALSE)
+    
+    library(xtable)    # create tables
+    library(ggplot2)   # plotting
+    library(reshape2)  # melt dataframes, etc
+    library(scales)    # print percents
+    
+
+     setwd('C:/Assessment_template/Example_tables_figures')    
+```
+<!-- 
+CHANGE THE WORKING DIRECTORY ABOVE IF NEEDED!
+
+R script for tables from the 2015 China Rockfish assessment,
+but that may be useful for you.  If there's a table from the 
+China rockfish assessent you want to duplicate, and the code is here,
+just copy and paste the R code chunk to the main document.
+You can also test out the R code chunk with your data by copying it
+to the Test_figures_tables.Rmd file.
+ 
+Below is the list of tables in this document by their table number from 
+the 2015 China rockfish assessment for reference. Text files for these t
+ables in the folder "Example_tables_figures/txt_files"  Each text file is 
+preceded with the table number from the assessment for convenience.
+
+Table 1. Oregon commercial removals
+Table 3. WCGOP estimated discards (Table )
+Table 5.  Washington recreational removals (Table )
+Table 6. Oregon recreational removals (Table )
+Table 7. California recreational removals (Table )
+Tables 11-15. washington dockside index of abundance tables - multiple possible models (Tables )
+Tables 16-19. Southern California  MRFSS dockside index of abundance ()
+Tables 20-23. Oregon ORBS dockside index of abundance
+Tables 24-30. Recreational onboard observer indices - contains all tables for the three
+   different indices; Oregon, California "prehistoric" 1988-1998, California 
+   current 1999-current (Tables )
+Table 34. Age/length sample sizes
+Table 35. Growth parameters
+Table 31. Washington recreational - available biological data
+Table 32. Oregon and California PacFIN biological sample sizes
+Table 33. California CalCOM biological sample sizes
+
+
+
+<!--===========================================================================
+Table 1. Oregon commercial removals- LONGTABLE EXAMPLE-->
+
+```{r, results='asis'}
+OR_comm_removal = read.csv('./txt_files/1_OR_comm_removals.csv')
+colnames(OR_comm_removal) = c('Year','Southern Dead','Northern Dead',
+                              'Southern Live','Northern Live',
+                              'Total Removals','Source')
+
+# Oregon commercial removals
+OR_comm_removal.table = xtable(OR_comm_removal, 
+                               caption = c('Commercial removals (mt) from the 
+                                            Oregon live and dead commercial 
+                                            fisheries, north and south of 
+                                            Florence, OR.'),
+                               label='tab:OR_comm_removal')
+# Add alignment
+align(OR_comm_removal.table) = c('l',
+                                 'c',
+                                 '>{\\centering}p{.6in}',
+                                 '>{\\centering}p{.6in}',
+                                 '>{\\centering}p{.6in}',
+                                 '>{\\centering}p{.6in}',
+                                 '>{\\centering}p{1in}',
+                                'l')  
+
+# Print the table  
+print(OR_comm_removal.table, 
+      include.rownames=FALSE, 
+      caption.placement='top',
+      tabular.environment='longtable', 
+      sanitize.text.function = function(x){x}, 
+      floating=FALSE,
+      add.to.row = list(pos = list(0),
+      command = '\\hline \\endhead '))
+```
+<!--========================================================================-->
+
+\newpage
+
+<!--===========================================================================
+Table 3. WCGOP estimated discard --> 
+
+```{r, results = 'asis'}
+WCGOP_trip_discard = read.csv('./txt_files/3_WCGOP_trips.csv')
+colnames(WCGOP_trip_discard) = c('Year','Area','Estimated total discard (mt)',
+                                 'CV of total discard','Estimated dead discard (mt)',
+                                 'Estimated mortality fraction',
+                                 'Estimated landings (mt)',
+                                 'Estimated dead discard + landings',
+                                 'Ratio of dead discard:total dead')
+# WCGOP discard table
+WCGOP_trip_discard.table = xtable(WCGOP_trip_discard, 
+                                  caption = c('Estimated discarded and retained 
+                                              China rockfish in the Nearshore Fixed-gear 
+                                              Fishery provided by the West Coast Groundfish 
+                                              Observer Program (WCGOP). For the area South of 
+                                              $40^\\circ 10^\\prime$, where discards are higher, 
+                                              bootstraping was used to estimated a coefficient of 
+                                              variation (CV) of the total discard amount. The 
+                                              mortality of discarded China rockfish is estimated 
+                                              by WCGOP as a function of the fishing depth which 
+                                              varies by year. The average mortality fraction south 
+                                              of$40^\\circ 10^\\prime$ across all years was 59\\%.'),
+                                  label='tab:WCGOP_trip_discard')
+# Add alignment  
+align(WCGOP_trip_discard.table) = c('l',
+                                    'c',
+                                    'c',
+                                    '>{\\centering}p{.7in}',
+                                    '>{\\centering}p{.7in}',
+                                    '>{\\centering}p{.7in}',
+                                    '>{\\centering}p{.7in}',
+                                    '>{\\centering}p{.7in}',
+                                    '>{\\centering}p{.7in}',
+                                    '>{\\centering}p{.7in}') 
+# Print the table                                
+print(WCGOP_trip_discard.table, 
+      include.rownames = FALSE, 
+      caption.placement = 'top', 
+      sanitize.text.function = function(x){x}, 
+      scalebox = .9)
+```
+<!--========================================================================-->
+
+\FloatBarrier
+\newpage
+
+<!--===========================================================================
+Table 5. Washington recreational removals --> 
+```{r, results='asis'}
+    # Read in the data and edit column names 
+    WA_rec_removal = read.csv('./txt_files/5_WA_rec_removals.csv')
+    colnames(WA_rec_removal) = c('Year','Southern PC','Southern PR','Northern PC',
+                                 'Northern PR','Total Removals')
+
+   # Create the table
+   WA_rec_removal.table = xtable(WA_rec_removal, 
+                                 caption = c('Recreational removals (mt) from 
+                                            the Washington party/charter (PC) and 
+                                            private (PR) vessels.  Northern WA 
+                                            represents MCAs 3 and 4 and soutern WA
+                                            represents MCAs 1 and 2.  WDFW provided 
+                                            all data. Note: A discard mortality rate 
+                                            was applied to removals  presented in 
+                                            this table.'),
+                                 label='tab:WA_rec_removal')
+   # Add alignment - you can just list the alignments if you don't need to 
+   # adjust the column width 
+   align(WA_rec_removal.table) = 'lcccccc'
+  
+   # Print the table
+   print(WA_rec_removal.table, include.rownames = FALSE, caption.placement = 'top',
+         tabular.environment = 'longtable', align = TRUE, floating=FALSE, 
+         add.to.row = list(pos = list(0), command = '\\hline \\endhead '))
+```
+<!--========================================================================-->
+
+\FloatBarrier
+\newpage
+
+<!--===========================================================================
+Table 6. Oregon recreational removals -->
+```{r, results='asis'}
+    # Read in OR sport remove data
+    Or_rec_removal = read.csv('./txt_files/6_OR_rec_removals.csv')
+
+    colnames(Or_rec_removal) = c('Year', 'Charter North',	'Charter South',	
+                                 'Private North',	'Private South',	'Total North',
+                                  'Total South',	'OR Total',	'Source')
+
+    OR_rec_removal.table = xtable(Or_rec_removal, 
+                                  caption = c('Recreational removals (mt) from 
+                                              the Oregon party/charter and private 
+                                              vessels.  North and South refer to 
+                                              north and south of Florence, OR.'),
+                                  label='tab:OR_rec_removal')
+     
+    align(OR_rec_removal.table) = c('l',
+                                    'c',
+                                    '>{\\centering}p{.5in}',
+                                    '>{\\centering}p{.5in}',
+                                    '>{\\centering}p{.5in}',
+                                    '>{\\centering}p{.5in}',
+                                    '>{\\centering}p{.5in}',
+                                    '>{\\centering}p{.5in}',
+                                    '>{\\centering}p{.5in}',
+                                    'l')  
+    print(OR_rec_removal.table, include.rownames = FALSE, caption.placement = 'top', 
+          align = TRUE, scalebox = .93, tabular.environment = 'tabularx', 
+          width = '\\textwidth')
+```
+<!--========================================================================-->
+
+\FloatBarrier
+\newpage
+
+<!--===========================================================================
+Table 7. California recreational removals --> 
+```{r, results='asis'}
+    CA_rec_removal = read.csv('./txt_files/7_CA_rec_removals.csv')
+    
+    colnames(CA_rec_removal) = c('Year','South of $40^\\circ 10^\\prime$ PC',
+                                 'South of $40^\\circ 10^\\prime$ PR',
+                                 'North of $40^\\circ 10^\\prime$ PC',
+                                 'North of $40^\\circ 10^\\prime$ PR',
+                                 'Total Removals','Source')
+
+    CA_rec_removal.table = xtable(CA_rec_removal, 
+                                  caption = c('Recreational removals (mt) from 
+                                            the California party/charter (PC) and 
+                                            private (PR) vessels.'),
+                                  label='tab:CA_rec_removal')
+
+    align(CA_rec_removal.table) = c('l',
+                                    'c',
+                                    '>{\\centering}p{.6in}',
+                                    '>{\\centering}p{.6in}',
+                                    '>{\\centering}p{.6in}',
+                                    '>{\\centering}p{.6in}',
+                                    '>{\\centering}p{.8in}',
+                                    'l')  
+    print(CA_rec_removal.table, include.rownames = FALSE, caption.placement = 'top',
+          align = TRUE, tabular.environment = 'longtable',
+          sanitize.text.function = function(x){x}, floating=FALSE,
+          add.to.row = list(pos = list(0), command = '\\hline \\endhead '))
+```
+<!--========================================================================-->
+
+\FloatBarrier
+\newpage
+
+<!--===========================================================================
+Tables 11-15. Washington dockside index of abundance
+     an example where three models explored--> 
+```{r, results='asis'}
+    # Table with sample size filtered values
+    WA_dock_sample = read.csv('./txt_files/11_WA_dock_samplesize.csv')
+    colnames(WA_dock_sample) =c('Filter', 'Criteria', 'Sample size',
+                                'Sample size with', 'Sample size')
+    
+    # AIC table with SM filtering
+    WA_dock_aic = read.csv('./txt_files/12_WA_dock_aic.csv')
+    
+    # AIC table with SM filtering and retain pos
+    WA_dock_aic1 = read.csv('./txt_files/13_WA_dock_aic1.csv')
+    
+    # AIC table without SM filtering
+    WA_dock_aic2 = read.csv('./txt_files/14_WA_dock_aic2.csv')
+    
+    # Index values
+    WA_dock_all = read.csv('./txt_files/15_WA_dock_all.csv')
+    colnames(WA_dock_all) = c('Year', 
+                              'Index', 'SE', 'CV', 
+                              'Index', 'SE', 'CV',
+                              'Index' ,'SE', 'CV')
+
+    # WA dockside table of summary sample sizes
+    WA_dock.samplet = xtable(WA_dock_sample,
+                             caption = c('WDFW recreational dockside data sample 
+                                       sizes at each data filtering step. The 
+                                       bold value indicates the final sample 
+                                       size used for delta-GLM analysis.'),
+                             label='tab:WAdock_filter',digits=0)
+    # Add alignment 
+    align(WA_dock.samplet)=c('l',
+                             '>{\\raggedright}p{1.3in}',
+                             '>{\\raggedright}p{1.7in}',
+                             '>{\\centering}p{1.2in}',
+                             '>{\\centering}p{1.4in}',
+                             '>{\\centering}p{1.3in}')  
+     
+    # Print table
+    print(WA_dock.samplet, include.rownames = FALSE, caption.placement = 'top',
+          hline.after = c(-1, 3, nrow(WA_dock.samplet)),
+          sanitize.text.function = function(x){x}, scalebox = .85)
+
+   # WA dockside table aic1
+   WA_dock.aict = xtable(WA_dock_aic,
+                         caption = c('AIC values for each model using the data 
+                                   with Stephens-MacCall filtering for the 
+                                   Washington dockside index.'),
+                         label='tab:WAdock_aic',digits=0)
+   # Add alignment
+   align(WA_dock.aict)='llcc'             
+            
+   # Print table
+   print(WA_dock.aict, include.rownames = FALSE, caption.placement = 'top',
+         tabular.environment = 'tabularx', width = '\\textwidth',
+         sanitize.text.function = function(x){x})
+
+   # WA dockside table index
+   WA_dock.table = xtable(WA_dock_all,
+                          caption=c('Washington (Area 4 only) recreational 
+                                    dockside CPUE indices for China rockfish.'),
+                          label = 'tab:WAdock', digits = 4)
+   # Add alignment       
+   align(WA_dock.table)='llccccccccc'
+           
+   # Code to create multi-column row above the column names
+   addtorow <- list()
+   addtorow$pos <- list()
+   addtorow$pos[[1]] <- -1
+   addtorow$pos[[2]] <- -1
+   addtorow$pos[[3]] <- -1
+   addtorow$command <- c('&  \\multicolumn{3}{c}{} 
+                          &  \\multicolumn{3}{c}{Area 4 with} 
+                          &  \\multicolumn{3}{c}{} \\\\\n', 
+                        ' &  \\multicolumn{3}{c}{Area 4 with}
+                          &  \\multicolumn{3}{c}{Stephens-MacCall,}
+                          &  \\multicolumn{3}{c}{Area 4 without}  \\\\\n',
+                        ' &  \\multicolumn{3}{c}{Stephens MacCall}
+                          &  \\multicolumn{3}{c}{retain all positive records}
+                          &  \\multicolumn{3}{c}{Stephens-MacCall}  \\\\\n')
+
+   # Print the table
+   print(WA_dock.table, add.to.row = addtorow, include.rownames = FALSE, 
+         caption.placement = 'top', tabular.environment = 'tabularx', 
+         width = '\\textwidth', hline.after = c(-1, 0, nrow(WA_dock.table)),
+         align=TRUE)
+```
+<!--========================================================================-->
+
+\FloatBarrier
+\newpage
+
+<!--===========================================================================
+Table 16-19.Southern California  MRFSS dockside index of abundance -->
+```{r, results='asis'}
+   # Read in data for 4 tables
+   MRFSS_S_filter = read.csv('./txt_files/16_MRFSS_S_filter.csv')
+
+   MRFSS_S_sample_size = read.csv('./txt_files/17_MRFSS_S_sample_size.csv')
+   
+   MRFSS_S_aic = read.csv('./txt_files/18_MRFSS_S_aic.csv')
+   
+   MRFSS_S_index = read.csv('./txt_files/19_MRFSS_S_index.csv')
+   
+   
+   # Column names
+   colnames(MRFSS_S_filter) = c('Filter',
+                                'Criteria',
+                                'Sample size (no. of trips)')
+   
+   colnames(MRFSS_S_sample_size) = c('Year', 
+                                     'San Luis Obispo',
+                                     'Monterey-Santa Cruz',
+                                     'S.F. Bay Area',
+                                     'Mendocino-Sonoma')
+   
+   colnames(MRFSS_S_aic) = c('Model',
+                             'Binomial',
+                             'Lognormal')
+   
+   colnames(MRFSS_S_index)[1:3] = c('Year',
+                                    'Index',
+                                    'Log-scale SE')
+   
+   # Trim the southern index table
+   MRFSS_S_index1 = MRFSS_S_index[,c(1:3)]
+
+
+   # MRFSS S filter table------------------------------------------------------
+   MRFSS_S_filter.table = xtable(MRFSS_S_filter,
+                                 caption = c('CA South recreational MRFSS dockside 
+                                           data sample sizes at each data filtering 
+                                           step.The bold value indicates the final 
+                                           sample size used for delta-GLM analysis.'),
+                                 label='tab:MRFSS_S_filter')
+  # Add alignment
+  align(MRFSS_S_filter.table) = c('l',
+                                  '>{\\raggedright}p{1.8in}',
+                                  '>{\\raggedright}p{2.8in}',
+                                  '>{\\raggedright}p{1.5in}')          
+  #Print the table
+  print(MRFSS_S_filter.table, include.rownames = FALSE, caption.placement = 'top', 
+        sanitize.text.function = function(x){x})
+
+  
+  # MRFSS S filter-------------------------------------------------------------
+  MRFSS_S_sample_size.table = xtable(MRFSS_S_sample_size,
+                                      caption = c('Number of trips by year and region 
+                                                in the CA South recreational MRFSS index.'),
+                                      label='tab:MRFSS_S_sample_size')
+  # Add alignment
+  align(MRFSS_S_sample_size.table) = c('l',
+                                       'l',
+                                       '>{\\centering}p{1in}',
+                                       '>{\\centering}p{1.2in}',
+                                       '>{\\centering}p{1.2in}',
+                                       '>{\\centering}p{1.2in}')          
+    
+  #Print MRFSS South table
+  print(MRFSS_S_sample_size.table, 
+        include.rownames = FALSE, 
+        caption.placement = 'top',
+        sanitize.text.function = function(x){x})
+
+  # MRFSS S AIC table-----------------------------------------------------------
+  MRFSS_S_aic.table = xtable(MRFSS_S_aic,
+                             caption = c('AIC values for each model in the CA 
+                                          South MRFSS dockside index.'),
+                               label='tab:MRFSS_S_aic')
+  # Add alignment     
+  align(MRFSS_S_aic.table) = c('l',
+                              '>{\\raggedright}p{2.5in}',
+                              '>{\\centering}p{1in}',
+                              '>{\\centering}p{1in}')          
+        
+  # Print MRFSS S AIC table
+  print(MRFSS_S_aic.table, 
+        include.rownames = FALSE, 
+        caption.placement = 'top',
+        sanitize.text.function = function(x){x})
+
+  # MRFSS S index table--------------------------------------------------------
+  MRFSS_S_index1.table = xtable(MRFSS_S_index1,
+                               caption = c('Year effects for the CA South 
+                                           MRFSS dockside index.'),
+                               label='tab:MRFSS_S_index')
+  # Add alignment
+  align(MRFSS_S_index1.table) = c('l',
+                                 'l',
+                                 '>{\\centering}p{1in}',
+                                 '>{\\centering}p{1in}')          
+        
+  # Print table
+  print(MRFSS_S_index1.table, 
+       include.rownames = FALSE, 
+       caption.placement = 'top',
+       sanitize.text.function = function(x){x})
+```
+<!--========================================================================-->
+
+\FloatBarrier
+\newpage
+
+<!--==========================================================================
+Tables 20-23. Oregon ORBS dockside index of abundance --> 
+```{r, results='asis'}
+    # Table with sample size filtered values
+    ORBS_filter = read.csv('./txt_files/20_ORBS_filter.csv')
+    
+    # Table with sample size filtered values
+    ORBS_sample = read.csv('./txt_files/21_ORBS_sample_size.csv')
+    
+    # AIC table with SM filtering
+    ORBS_aic = read.csv('./txt_files/22_ORBS_aic.csv')
+    
+    # Index values
+    ORBS_index = read.csv('./txt_files/23_ORBS_index.csv')
+    ORBS_index1 = ORBS_index[,c(1:3)]
+    colnames(ORBS_index1) = c('Year','Index','Log-scale SE')
+
+    colnames(ORBS_filter) = c('Filter','Criteria','Sample size (no. of trips)')
+    colnames(ORBS_sample) = c('Year', 'Southern Oregon','Northern Oregon')
+    colnames(ORBS_aic) = c('Model','Binomial','Lognormal')
+
+
+    # ORBS filter--------------------------------------------------------------
+    ORBS_filter.table = xtable(ORBS_filter,
+                               caption=c('Sample sizes at each data filtering 
+                                         step for the Oregon Recreational Boat 
+                                         Survey data. The bold value indicates 
+                                         the final sample size used for delta-GLM
+                                         analysis.'),
+                               label='tab:ORBS_filter')
+    #Add alignment
+    align(ORBS_filter.table) = c('l',
+                                 '>{\\raggedright}p{1.8in}',
+                                 '>{\\raggedright}p{3.2in}',
+                                 '>{\\raggedright}p{1in}')          
+
+    print(ORBS_filter.table, include.rownames = FALSE, caption.placement = 'top',
+          sanitize.text.function = function(x){x})
+
+    # ORBS sample size---------------------------------------------------------
+    ORBS_sample_size.table = xtable(ORBS_sample,
+                                    caption = c('Number of trips by year and subregion 
+                                              in the Oregon Recreational Boat Survey 
+                                              (ORBS) charter boat index. Southern 
+                                              Oregon is defined as ports south of 
+                                              Florence. Northern Oregon includes 
+                                              the port of Florence and all ports 
+                                              to the OR-WA border.'),
+                                    label='tab:ORBS_sample_size')
+    #Add alignment
+    align(ORBS_sample_size.table) = c('l',
+                                      'l',
+                                      '>{\\centering}p{1in}',
+                                      '>{\\centering}p{1in}')          
+    
+    #Print ORBS sample size table
+    print(ORBS_sample_size.table, include.rownames = FALSE, caption.placement = 'top', 
+          sanitize.text.function = function(x){x})
+
+
+
+    # ORBS AIC selection table-------------------------------------------------
+    ORBS_aic.table = xtable(ORBS_aic,
+                            caption = c('AIC values for each model in the Oregon 
+                                        Recreational Boat Survey (ORBS) charter 
+                                        boat index. (*) The binomial model with 
+                                        interaction between year and wave did 
+                                        not converge.'),
+                            label='tab:ORBS_aic')
+    # Add alignment    
+    align(ORBS_aic.table) = c('l',
+                              '>{\\raggedright}p{3in}',
+                              '>{\\centering}p{1in}',
+                              '>{\\centering}p{1in}')          
+        
+    #Print ORBS AIC table
+    print(ORBS_aic.table, include.rownames = FALSE, caption.placement = 'top',
+          sanitize.text.function = function(x){x})
+
+
+    # ORBS index table---------------------------------------------------------
+    ORBS_index1.table = xtable(ORBS_index1,
+                               caption = c('. The Oregon Recreational Boat 
+                                           Survey (ORBS) charter boat index 
+                                           (area-weighted).'),
+                               label='tab:ORBS_index')
+    # Add alignment        
+    align(ORBS_index1.table) = c('l',
+                                 'l',
+                                 '>{\\centering}p{1in}',
+                                 '>{\\centering}p{1in}')          
+    
+    # Print ORBS index value table
+    print(ORBS_index1.table, include.rownames = FALSE, caption.placement = 'top', 
+          sanitize.text.function = function(x){x})
+```
+<!--========================================================================-->
+
+\FloatBarrier
+\newpage
+
+<!--===========================================================================
+Tables 24-30. Recreational onboard observer indices - contains all tables for the three
+   different indices; Oregon, California "prehistoric" 1988-1998, California 
+   current 1999-current --> 
+```{r, results='asis'}
+    # Read in data filter table - includes all three datasets
+    # Oregon, California "prehistoric" 88-98, California current 99-current
+      Onboard_filter = read.csv('./txt_files/24_Onboard_filter.csv')
+      colnames(Onboard_filter) = c('Dataset',  
+                                   'Filter',  
+                                   'Criteria',	
+                                   'Positive drifts',	
+                                   'Total drifts')
+
+
+    # Recreational onboard observer AIC/BIC tables----------------------------- 
+
+    # Read in data AIC table
+    OR_onboard_aic = read.csv('./txt_files/25_Onboard_OR_bic.csv')
+    CA_onboard_aic = read.csv('./txt_files/27_Onboard_CA_bic.csv')
+    prehist_onboard_aic = read.csv('./txt_files/29_Onboard_prehist_bic.csv')
+
+
+
+# Recreational onboard observer TABLES - read in data-------------------------- 
+
+    # Read in the 3 sets of files for OR, prehistoric, and CA
+    OR_onboard = read.csv('./txt_files/26_Onboard_OR.csv')
+    prehist_onboard = read.csv('./txt_files/28_Onboard_prehist.csv')
+    CA_onboard = read.csv('./txt_files/30_Onboard_CA.csv')
+    
+    #Data used for multiple tables, edit here for index tabls     
+    OR_onboard1 = OR_onboard[-2,c(1,2,3)]
+    colnames(OR_onboard1) = c('Year','Index','Log-scale SE')
+        
+    prehist_onboard1 = prehist_onboard[c(1,2,3)]
+    colnames(prehist_onboard1) = c('Year','Index','Log-scale SE')
+        
+    CA_onboard1 = CA_onboard[c(1,2,3)]
+    colnames(CA_onboard1) = c('Year','Index','Log-scale SE')
+
+    
+    # Onboard filter table-----------------------------------------------------
+    Onboard_filter.table = xtable(Onboard_filter,
+                                  caption = c('Onboard observer dataset filtering 
+                                            criteria and resutling sample sizes 
+                                            used for China rockfish.'),
+                                  label = 'tab:Onboard_filter',digits=0)
+             
+    # Add alignment 
+    align(Onboard_filter.table) = c('l',
+                                    '>{\\raggedright}p{.8in}',
+                                    '>{\\raggedright}p{1.4in}',
+                                    '>{\\raggedright}p{1.8in}',
+                                    '>{\\centering}p{1in}',
+                                    '>{\\centering}p{.8in}')  
+    #Print onboard data filter table  
+    print(Onboard_filter.table, 
+          include.rownames = FALSE, 
+          caption.placement = 'top',
+          sanitize.text.function = function(x){x},
+          hline.after = c(-1, 0, 5, 9, nrow(Onboard_filter.table)))
+
+    
+    # OR AIC and year effects tables-------------------------------------------
+    OR_onboard_aic.table = xtable(OR_onboard_aic,
+                                  caption = c('AIC and BIC values for each model 
+                                              considered for the Oregon onboard 
+                                              observer index.'),
+                                  label = 'tab:OR_onboard_aic',digits=2)
+    # Add alignment        
+    align(OR_onboard_aic.table)='llcc'  
+            
+    # Print OR onboard AIC table
+    print(OR_onboard_aic.table, 
+          include.rownames=FALSE, 
+          sanitize.text.function = function(x){x},
+          caption.placement='top',
+          scalebox=.9)
+
+    
+    # OR year effects table----------------------------------------------------
+    OR.table = xtable(OR_onboard1,
+                      caption=c('Year effects for the Oregon onboard 
+                                observer index'),
+                      label='tab:OR_onboard',
+                      digits=4)
+    
+    # Print OR onboard index table---------------------------------------------
+    print(OR.table, 
+          include.rownames = FALSE, 
+          caption.placement = 'top')
+
+    # Prehistoric AIC and year effects tables
+    prehist_onboard_aic.table = xtable(prehist_onboard_aic,
+                                       caption = c('AIC and BIC values for each 
+                                                 model considered for the California 
+                                                 1988-1999 onboard observer index.'), 
+                                       label = 'tab:prehist_onboard_aic',digits=2)
+    # Add alignment    
+    align(prehist_onboard_aic.table)='llcc'  
+
+    # Print prehistoric CA onboard index AIC table            
+    print(prehist_onboard_aic.table, 
+          include.rownames = FALSE, 
+          caption.placement = 'top',
+          sanitize.text.function = function(x){x}, 
+          scalebox = .9)
+        
+    
+    
+    # Prehistoric index values table-------------------------------------------
+    prehist.table = xtable(prehist_onboard1,
+                           caption = c('Year effects for the California 1988-1999 
+                                       onboard observer index'),
+                           label = 'tab:prehist_onboard', digits = 4)
+          
+    #Print prehistoric CA onboard index values
+    print(prehist.table, include.rownames = FALSE, caption.placement = 'top')
+
+    # CA AIC and year effects tables
+    CA_onboard_aic.table = xtable(CA_onboard_aic,
+                                  caption = c('AIC and BIC values for each model 
+                                            considered for the California 2000-2014
+                                            onboard observer index.'), 
+                                  label = 'tab:CA_onboard_aic', digits = 2)
+           
+    # Add alignment 
+    align(CA_onboard_aic.table)='llcc'  
+
+    # Print CA current years onboard observer index AIC values            
+    print(CA_onboard_aic.table, 
+          include.rownames = FALSE, 
+          caption.placement = 'top',
+          sanitize.text.function = function(x){x}, 
+          scalebox = .9)
+
+        
+    # CA current years onboard observer index values table---------------------
+    CA.table = xtable(CA_onboard1,
+                      caption = c('Year effects for the California 2000-2014 
+                                  onboard observer index'),
+                      label = 'tab:CA_onboard', 
+                      digits = 4)
+    
+    # Print CA current years onboard observer index values table
+    print(CA.table, 
+          include.rownames=FALSE, 
+          caption.placement='top')
+```
+<!--========================================================================-->
+
+\newpage
+
+<!--===========================================================================
+Table 34. Age/length sample sizes -->
+```{r, results='asis'}
+   # Age/length sample size table, read in/organize data
+       age_length_sample = read.csv('./txt_files/34_age_length_sample_size.csv')
+
+       colnames(age_length_sample) = c('Region', 'Comm. dead','Comm. live',
+                                       'Rec. mode unknown',	'Rec. party/ charter',	
+                                       'Rec. private',	'Research',	'Rec./ Research')
+
+    # Print the age/length sample size table
+    age_length_sample.table = xtable(age_length_sample, 
+                                     caption = c('Sample sizes of available length 
+                                                 at age data by region and fleet. 
+                                                 California North/South is defined as 
+                                                 north/south of $40^\\circ 10^\\prime$, 
+                                                 Oregon North/South is defined as north/south 
+                                                 of Florence, OR, and Washington North/South 
+                                                 is defined as south=MCAs 1-2 and north=MCAs 3-4.'),
+                                     label='tab:growth_sample_size')
+         
+    #Add alignment
+    align(age_length_sample.table) = c('l',
+                                       'l',
+                                       '>{\\centering}p{.4in}',
+                                       '>{\\centering}p{.4in}',
+                                       '>{\\centering}p{.7in}',
+                                       '>{\\centering}p{.6in}',
+                                       '>{\\centering}p{.6in}',
+                                       '>{\\centering}p{.6in}',
+                                       '>{\\centering}p{.7in}') 
+    
+    # Print available age/length sample size data
+    print(age_length_sample.table, include.rownames = FALSE, caption.placement = 'top',
+          sanitize.text.function = function(x){x})
+```
+<!--========================================================================-->
+
+\newpage
+
+<!--===========================================================================
+Table 35. Growth parameters -->
+```{r, results='asis'}
+    
+   # Growth parameter table, read in data table
+     growth_param = read.csv('./txt_files/35_growth_by_region.csv')
+     colnames(growth_param) = c('Region',  '$L_{\\infty}$',	'Standard Error',	
+                               '$k$',	'Standard Error',	'$t_0$',	'Sample size')
+   # Growth param table
+     growth_param.table = xtable(growth_param, 
+                                caption = c('von Bertalanffy growth parameters 
+                                            for each region, with age-0 fixed at 2 cm.'),
+                                label='tab:growth_params')
+              
+    # Add alignment
+    align(growth_param.table) = c('l',
+                                  'l',
+                                  '>{\\centering}p{.8in}',
+                                  '>{\\centering}p{.7in}',
+                                  '>{\\centering}p{.7in}',
+                                  '>{\\centering}p{.7in}',
+                                  '>{\\centering}p{.7in}',
+                                  '>{\\centering}p{.7in}') 
+    #Print growth paramater table     
+    print(growth_param.table, 
+          include.rownames = FALSE, 
+          caption.placement = 'top',
+          sanitize.text.function = function(x){x})
+```
+<!--========================================================================-->
+
+\newpage
+
+<!--===========================================================================
+Table 31. Washington recreational - available biological data -->
+```{r, results='asis'}
+       WA_FishD_bio = read.csv('./txt_files/31_WA_FishD_Bio.csv')
+       colnames(WA_FishD_bio) = c('Year',  'N fish lengths',	'N fish ages')
+
+
+    # Washington recreational bio data table
+    WA_FishD_bio.table = xtable(WA_FishD_bio, 
+                                caption = c('The annual number of China rockfish 
+                                            sampled by WDFW for ages and lengths.'),
+                                label = 'tab:WA_FishD_bio')
+    # Add alignment     
+    align(WA_FishD_bio.table) = c('l',
+                                  '>{\\centering}p{.4in}',
+                                  '>{\\centering}p{.6in}',
+                                  '>{\\centering}p{.6in}')          
+    
+    # Print WA biological data table    
+    print(WA_FishD_bio.table,
+          include.rownames=FALSE, 
+          caption.placement='top')
+
+```
+<!--========================================================================-->
+
+\newpage
+
+<!--===========================================================================
+Table 32. Oregon and California PacFIN biological sample sizes -->
+```{r, results='asis'}
+    OR_CAbiopacfin = read.csv('./txt_files/32_Pacfin_sample_OR.csv')
+       
+    colnames(OR_CAbiopacfin) = c('Year', 'State','Fish condition',	
+                                 'N port samples with lengths','N fish length samples',	
+                                 'N port samples with ages',	'N fish age samples')
+    # Subset just the OR data here  
+    OR_pacfin_bio = subset(OR_CAbiopacfin,State=='OR')
+
+    # OR PacFIN bio data table
+    OR_pacfin_bio.table = xtable(OR_pacfin_bio, 
+                                 caption = c('Number of length and age port 
+                                             samples and fish sampled in 
+                                             Oregon. Source:PacFIN.'),
+                                 label='tab:OR_pacfin_bio')
+
+    # Add alignment         
+    align(OR_pacfin_bio.table) = c('l',
+                                   'c',
+                                   'c',
+                                   '>{\\centering}p{.9in}',
+                                   '>{\\centering}p{.9in}',
+                                   '>{\\centering}p{.9in}',
+                                   '>{\\centering}p{.9in}',
+                                   '>{\\centering}p{.9in}') 
+    
+    #Print the OR PacFIN available biological data table     
+    print(OR_pacfin_bio.table, 
+          include.rownames=FALSE, 
+          caption.placement='top')
+```
+<!--========================================================================-->
+
+
+<!--===========================================================================
+Table 33. California CalCOM biological sample sizes -->
+
+```{r, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+    # Read in/organize data for CA  CALCOM bio sample size table
+    CAcalcom = read.csv('./txt_files/33_Calcom_sample_CA.csv')
+    
+    colnames(CAcalcom) = c('','Year',
+                           'Number of clusters',
+                           'Number of fish')
+
+    # Print CA CALCOM bio sample size table
+    CAcalcom.table = xtable(CAcalcom, 
+                            caption = c('Number of length samples and fish 
+                                        sampled in California, south of 
+                                        $40^\\circ 10^\\prime$. Source:CALCOM.'),
+                            label='tab:CA_calcom_bio')
+         
+    # Add alignment
+    align(CAcalcom.table) = c('l',
+                              'l',
+                              'l',
+                              '>{\\centering}p{.9in}',
+                              '>{\\centering}p{1in}') 
+    
+    #Print the calcom available data table
+    print(CAcalcom.table, 
+          include.rownames = FALSE, 
+          caption.placement = 'top',
+          hline.after = c(-1, 0, 8, nrow(CAcalcom.table)))
+```
+<!--========================================================================-->
+
+
