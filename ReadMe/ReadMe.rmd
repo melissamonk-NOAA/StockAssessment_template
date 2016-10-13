@@ -155,6 +155,21 @@ If you're writing R code chunks that use ODBC connections, you can use the follo
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`pwd=.rs.askForPassword("Enter password:"))`   
 
 
+##Update your fork from GitHub
+If the StockAssessment_template repository on Melissa's GitHub is updated, you can update your fork.  The directions below work, but they will leave you "1 commit head of the master."
+
+
+1. Open your fork repository on GitHub.
+2. Click on `Pull Requests`.
+3. Click on `New Pull Request`. By default, GitHub will compare the original with your fork, and there shouldn’t be nothing to compare if you didn’t make any changes.
+4. Change the `Base` drop down's so both point to your fork and then you'll get a prompt to `Compare across repos` (if no changes were made in the fork) or click Edit and switch the base manually. Now GitHub will compare your fork with the original, and you should see all the latest changes.
+5. Click on `Create` to create a pull request for this comparison and assign a predictable name to your pull request (e.g., Update from original).
+6. Click on Send pull request.
+7. Scroll down and click `Merge pull request` and finally Confirm merge (If your fork didn’t have any changes, you will be able to merge it automatically).
+
+Directions I think will work better are [here](https://2buntu.com/articles/1459/keeping-your-forked-repo-synced-with-the-upstream-source/), but I haven't tried them yet!.
+
+
 # Using the template step-by-step
 
 ##Forking the template

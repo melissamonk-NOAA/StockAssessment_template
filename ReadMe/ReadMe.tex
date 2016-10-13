@@ -483,6 +483,46 @@ the following script for the channel to prompt you for your password:\\
 \hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\texttt{uid="username",}\\
 \hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\texttt{pwd=.rs.askForPassword("Enter\ password:"))}
 
+\subsection{Update your fork from
+GitHub}\label{update-your-fork-from-github}
+
+If the StockAssessment\_template repository on Melissa's GitHub is
+updated, you can update your fork. The directions below work, but they
+will leave you ``1 commit head of the master.''
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Open your fork repository on GitHub.
+\item
+  Click on \texttt{Pull\ Requests}.
+\item
+  Click on \texttt{New\ Pull\ Request}. By default, GitHub will compare
+  the original with your fork, and there shouldn't be nothing to compare
+  if you didn't make any changes.
+\item
+  Change the \texttt{Base} drop down's so both point to your fork and
+  then you'll get a prompt to \texttt{Compare\ across\ repos} (if no
+  changes were made in the fork) or click Edit and switch the base
+  manually. Now GitHub will compare your fork with the original, and you
+  should see all the latest changes.
+\item
+  Click on \texttt{Create} to create a pull request for this comparison
+  and assign a predictable name to your pull request (e.g., Update from
+  original).
+\item
+  Click on Send pull request.
+\item
+  Scroll down and click \texttt{Merge\ pull\ request} and finally
+  Confirm merge (If your fork didn't have any changes, you will be able
+  to merge it automatically).
+\end{enumerate}
+
+Directions I think will work better are
+\href{https://2buntu.com/articles/1459/keeping-your-forked-repo-synced-with-the-upstream-source/}{here},
+but I haven't tried them yet!.
+
 \section{Using the template
 step-by-step}\label{using-the-template-step-by-step}
 
