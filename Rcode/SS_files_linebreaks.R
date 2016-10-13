@@ -53,15 +53,17 @@ linebreaks <- function(dir,out.dir, oldfile, newfile, length=75){
 # =============================================================================
 # Change file path to the assessment document folder, subfolder linebreak_files
 
-# remove any old files
-do.call(file.remove,list(list.files("C:/Assessment_template/SS/linebreak_files",full.names=TRUE)))
-
 # output directory
-  linebreak.dir = 'C:/Assessment_template/SS/linebreak_files'
+linebreak.dir = file.path(getwd(),"SS/linebreak_files")
+
+# remove any old files
+do.call(file.remove,list(list.files(linebreak.dir,full.names=TRUE)))
+
+
   
 for(imod in 1:n_models){  
 # change the model directoy
- mod.dir  = paste('C:/Assessment_template/SS/Base_model',imod,sep='')
+ mod.dir  = paste(file.path(getwd(),'SS/Base_model'),imod,sep='')
 
  if(imod==1){
    data_file = mod1_dat

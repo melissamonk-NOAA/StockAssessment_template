@@ -10,7 +10,6 @@ output:
       before_body: Titlepage.tex
       in_header: header.tex
     keep_tex: yes
-    latex_engine: xelatex
     template: Default_template_modified.tex
     number_sections: yes
     toc: yes

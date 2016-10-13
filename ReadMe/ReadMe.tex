@@ -13,6 +13,7 @@
     \usepackage{fontspec}
   \fi
   \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -23,6 +24,7 @@
 }{}
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
+\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
 \hypersetup{unicode=true,
             pdftitle={Stock Assessment Template in R markdown and Git},
             pdfauthor={Melissa Monk, NMFS SWFSC},
@@ -38,25 +40,38 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{Stock Assessment Template in R markdown and Git}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Melissa Monk, NMFS SWFSC}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \date{}
+  \predate{}\postdate{}
+
+
 % This file contains all of the LaTeX packages you may need to compile the document
 % Documentation for each package can be found onlines
 \usepackage{tabularx}                                             % table environment providing flexibility
@@ -91,29 +106,15 @@
 
 \definecolor{light-gray}{gray}{.85}
 
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
-
-%%% Change title format to be more compact
-\usepackage{titling}
-
-% Create subtitle command for use in maketitle
-\newcommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
-
-\setlength{\droptitle}{-2em}
-  \title{Stock Assessment Template in R markdown and Git}
-  \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
-  \author{Melissa Monk, NMFS SWFSC}
-  \preauthor{\centering\large\emph}
-  \postauthor{\par}
-  \date{}
-  \predate{}\postdate{}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
 
 \begin{document}
 \maketitle
@@ -230,28 +231,28 @@ more on Mendeley later on.
 
 Make sure you have the latest versions of the following programs
 installed on your machine:\\
-*
+ *
 \href{https://git-scm.com/book/en/v2/Getting-Started-Installing-Git}{Git}
 (Contains instructions to install on Linux, Mac, and PC)\\
-* \href{https://cran.r-project.org/bin/windows/base/}{R} (latest version
-is usually a good idea)\\
-*
+ * \href{https://cran.r-project.org/bin/windows/base/}{R} (latest
+version is usually a good idea)\\
+ *
 \href{https://www.rstudio.com/products/rstudio/download/preview/}{RStudio
 Preview} (Allows you to preview plots from R code chunks inline)\\
-* \href{http://miktex.org/}{MiKTeX} (needed to render a .pdf to \LaTeX)
+ * \href{http://miktex.org/}{MiKTeX} (needed to render a .pdf to \LaTeX)
 or \href{https://www.tug.org/texlive/}{TeX Live} *
 \href{https://www.mendeley.com/}{Mendeley} (optional, but useful for
 citation management)
 
 You will also need to install the following R packages, in addition to
 any others you add to the template:\\
-* rmarkdown\\
-* r4ss\\
-* knitr\\
-* xtable\\
-* ggplot2\\
-* reshape2\\
-* scales
+ * rmarkdown\\
+ * r4ss\\
+ * knitr\\
+ * xtable\\
+ * ggplot2\\
+ * reshape2\\
+ * scales
 
 \subsection{Git, GitHub and SSH
 authentication}\label{git-github-and-ssh-authentication}
@@ -1807,6 +1808,5 @@ tagged in Adobe Pro in a matter of seconds.
   You don't have enough float barrier between tables or figures,
   Error:``LaTeX Error: too many unprocessed floats.''
 \end{itemize}
-
 
 \end{document}
