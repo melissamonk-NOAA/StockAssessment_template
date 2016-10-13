@@ -61,14 +61,7 @@ Make sure you have the latest versions of the following programs installed on yo
     * [Mendeley](https://www.mendeley.com/) (optional, but useful for citation management)    
     
    
-You will also need to install the following R packages, in addition to any others you add to the template:     
-    * rmarkdown     
-    * r4ss  
-    * knitr    
-    * xtable  
-    * ggplot2   
-    * reshape2   
-    * scales   
+R packages are automatically checked for in the `Preamble.R` script.  You can add any other packages you want to load there. You may have to make sure you have `rmarkdown` and `knitr` installed, but usually RStudio will ask you to do this if you haven't already.  The r4ss package is only called in the `0-Run_r4ss_plots.R` script and is loaded there.
     
 ##Git, GitHub and SSH authentication
 

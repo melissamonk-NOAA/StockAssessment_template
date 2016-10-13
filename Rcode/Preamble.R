@@ -4,19 +4,19 @@
 #start fresh here
 rm(list=ls(all=TRUE))
 
-# Read in necessary R libraries
-library(xtable)    # create tables
-library(ggplot2)   # plotting
-library(reshape2)  # melt dataframes, etc
-library(scales)    # print percents
+# Check for installtion and read in necessary R libraries
+# xtable for creating tables, ggplot2 for plotting, reshape2 for melting
+# dataframes, scales for printing percents
+
+requiredPackages = c('xtable', 'ggplot2', 'reshape2', 'scales', 'rmarkdown', 'knitr')
+for(p in requiredPackages){
+  if(!require(p,character.only = TRUE)) install.packages(p)
+  library(p,character.only = TRUE)
+}
 
 # Change options  
 options(xtable.comment = FALSE)  # turns off xtable comments
 options(scipen=999)              # turns off scientific notation
-
-
-# Set working directory
-#setwd("C:/Assessment_template")
 
 
 # Load workspace image of the BASE MODEL(S) from SS_output in r4ss    
