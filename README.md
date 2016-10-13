@@ -5,3 +5,5 @@ This repository holds the necessary files for compiling a stock assessment docum
 The template is based on the Pacific Fishery Management Council's Terms of Reference
 
 SEE the ReadMe folder for the actual ReadMe files.
+
+If you need to fork your own repository see this link: http://www.tilcode.com/fork-your-own-repo-on-github/
