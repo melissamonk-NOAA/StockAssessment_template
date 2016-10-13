@@ -9,7 +9,6 @@ output:
     includes:
       in_header: header.tex
     keep_tex: yes
-    latex_engine: xelatex
     number_sections: yes
     toc: yes
     toc_depth: 3
