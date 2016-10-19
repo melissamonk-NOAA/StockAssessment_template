@@ -4,13 +4,10 @@
 #start fresh here
 rm(list=ls(all=TRUE))
 
-# Check for installtion and read in necessary R libraries
-# xtable for creating tables, ggplot2 for plotting, reshape2 for melting
-# dataframes, scales for printing percents
+# Load necessary packages
 
 requiredPackages = c('xtable', 'ggplot2', 'reshape2', 'scales', 'rmarkdown', 'knitr')
 for(p in requiredPackages){
-  if(!require(p,character.only = TRUE)) install.packages(p)
   library(p,character.only = TRUE)
 }
 

@@ -22,7 +22,16 @@ rm(list=ls(all=TRUE))
 
 stop("\n  This file should not be sourced!") # note to stop from accidental sourcing
 
-library(r4ss)
+# Here we're going to make sure you have all the required packages for the template
+# Check for installtion and read in necessary R libraries
+# xtable for creating tables, ggplot2 for plotting, reshape2 for melting
+# dataframes, scales for printing percents
+
+requiredPackages = c('xtable', 'ggplot2', 'reshape2', 'scales', 'rmarkdown', 'knitr')
+for(p in requiredPackages){
+  if(!require(p,character.only = TRUE)) install.packages(p)
+  library(p,character.only = TRUE)
+}
 
 # CHANGE values in this section ===============================================
 

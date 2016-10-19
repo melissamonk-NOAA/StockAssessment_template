@@ -127,7 +127,7 @@
 
 \section{Introduction}\label{introduction}
 
-This template is based on the
+The stock assessment template described is based on the
 \href{http://www.pcouncil.org/wp-content/uploads/2015/08/H3_Att3_China_FULLAssmt_E-Only_SEPT2015BB.pdf}{2015
 China rockfish assessment document}. It is designed to aid in writing a
 stock assessment document, for models using Stock Synthesis and the R
@@ -151,7 +151,7 @@ towards PC users.
 \subsection{R markdown and Git}\label{r-markdown-and-git}
 
 The template was created for version control (Git) use in RStudio. R
-markdown integrates plain text, \LaTeX, HTML, and R code to create a
+markdown integrates plain text, LaTeX, HTML, and R code to create a
 reproducible document. The template is an R project (.Rproj), that keeps
 all of the files associated with the template organized. More on RStudio
 projects
@@ -197,7 +197,7 @@ repositories if this is a concern.
 Under this model, one person will ultimately have complete access to the
 repository. The best recommendation is to make the STAT team lead, or
 whomever will be foremost responsible for document writing, the owner of
-the repository. This person will follow the above directions to fork the
+the repository. This person will follow the below directions to fork the
 StockAssessment\_template to their own account. Anyone who wishes to
 contribute to the repository will submit a pull request to the owner to
 incoporate changes. A more detailed description on contriubting to open
@@ -236,23 +236,20 @@ installed on your machine:\\
 (Contains instructions to install on Linux, Mac, and PC)\\
  * \href{https://cran.r-project.org/bin/windows/base/}{R} (latest
 version is usually a good idea)\\
- *
-\href{https://www.rstudio.com/products/rstudio/download/preview/}{RStudio
-Preview} (Allows you to preview plots from R code chunks inline)\\
- * \href{http://miktex.org/}{MiKTeX} (needed to render a .pdf to \LaTeX)
+ * \href{https://www.rstudio.com/products/rstudio/download3/}{RStudio}
+(Note: RStudio Preview will NOT work with the template until a bug is
+fixed)\\
+ * \href{http://miktex.org/}{MiKTeX} (needed to render a .pdf to LaTeX)
 or \href{https://www.tug.org/texlive/}{TeX Live} *
 \href{https://www.mendeley.com/}{Mendeley} (optional, but useful for
 citation management)
 
-You will also need to install the following R packages, in addition to
-any others you add to the template:\\
- * rmarkdown\\
- * r4ss\\
- * knitr\\
- * xtable\\
- * ggplot2\\
- * reshape2\\
- * scales
+R packages are automatically checked for in the \texttt{Preamble.R}
+script. You can add any other packages you want to load there. You may
+have to make sure you have \texttt{rmarkdown} and \texttt{knitr}
+installed, but usually RStudio will ask you to do this if you haven't
+already. The r4ss package is only called in the
+\texttt{0-Run\_r4ss\_plots.R} script and is loaded there.
 
 \subsection{Git, GitHub and SSH
 authentication}\label{git-github-and-ssh-authentication}
@@ -316,7 +313,7 @@ Open Git Bash and type:
 \begin{quote}
 If this command tells you .ssh does not exist, you don't have SSH keys.
 If the command returns a list of files including id\_rsa.pub
-\textgreater{}and id\_rsa, bout have a key pair. You can skip to Step 9.
+\textgreater{}and id\_rsa, you have a key pair. You can skip to Step 9.
 Otherwise, set up the keys via Git Bash or RStudio.
 \end{quote}
 
@@ -467,8 +464,8 @@ information}\label{protecting-confidential-information}
 Keep in mind that if you're using a public repository, everything you
 push is visible to the world! Even if you realize that you've pushed
 confidential information and remove it with your next commit and push to
-GitHub, the confidential is not actually deleted!! The only way to
-remove the confidential information is to wipe the repository from
+GitHub, the confidential is \textbf{not actually deleted}!! The only way
+to remove the confidential information is to wipe the repository from
 GitHub, or go through a laborious process of removing your commit
 history.
 
@@ -530,7 +527,7 @@ step-by-step}\label{using-the-template-step-by-step}
 \subsection{Forking the template}\label{forking-the-template}
 
 Once you have the necessary software installed and your machine talking
-to GitHub, you're ready to fork (make a copy) the
+to GitHub, you're ready to fork (make a copy of) the
 StockAssessment\_template repository and begin your own assessment
 document.
 
@@ -631,8 +628,7 @@ document.
     before you move on.
   \end{itemize}
 \item
-  You're ready to write your assessment! The section, Using the template
-  step-by-step, will guide you through getting started.
+  You're ready to write your assessment!
 
   \begin{itemize}
   \tightlist
@@ -694,16 +690,7 @@ in Rstudio, you're ready to begin.
   debugging :) See a list of common errors in Common Errors, section
   \ref{common-errors}.
 \item
-  Commit and push to GitHub often! You can always go back to an older
-  version of the document you committed. Sometimes you'll get an error
-  where it's easier to wipe the project from your desktop and pull a new
-  version from GitHub than debug. If you're working in a repository that
-  has multiple owners, the most common error is that the other person
-  has pushed changes to GitHub while you're still working. When you try
-  and push your changes, you're going to get a Merge error. This can be
-  a headache so try and avoid working simultaneously. I recommend using
-  Google Docs to work on text, and having one person take responsibility
-  of the document.
+  Commit and push to GitHub often!
 \end{enumerate}
 
 \subsection{Saving, committing, and pushing your
@@ -779,8 +766,15 @@ changes}\label{saving-committing-and-pushing-your-changes}
   \end{itemize}
 \end{enumerate}
 
-\subsection{SS and r4ss}\label{ss-and-r4ss}
-
+Remember, you can always go back to an older version of the document you
+committed. Sometimes you'll get an error where it's easier to wipe the
+project from your desktop and pull a new version from GitHub than debug.
+If you're working in a repository that has multiple owners, the most
+common error is that the other person has pushed changes to GitHub while
+you're still working. When you try and push your changes, you're going
+to get a Merge error. This can be a headache so try and avoid working
+simultaneously. I recommend using Google Docs to work on text, and
+having one person take responsibility of the document. \#\#SS and r4ss
 The StockAssessment\_template repository contains both your SS and r4ss
 output for the model(s) to include in the document.
 
@@ -862,7 +856,7 @@ Files window (bottom right pane).
   \textcolor{magenta}{This is where all of the user-created plots are stored (NOT r4ss generated plots).}
 \item
   \textbf{header.tex}
-  \textcolor{magenta}{This file contains a list of the \LaTeX packages to use in the document.}
+  \textcolor{magenta}{This file contains a list of the LaTeX packages to use in the document.}
 \item
   \textbf{r4ss folder}
   \textcolor{magenta}{This is where all of the r4ss generated plots are stored.}
@@ -883,7 +877,7 @@ Files window (bottom right pane).
   \textcolor{magenta}{This .Rmd file is where you can test R code chunks figures and tables before adding them to the main Assessment\_template .Rmd file, that you render to Test\_figures\_tables.pdf.  It has to be in the main folder to work.  This will save you a lot of time debugging!}
 \item
   \textbf{Titlepage.tex}
-  \textcolor{magenta}{This \LaTeX file generates the title page and should be edited to include the correct authors.}
+  \textcolor{magenta}{This LaTeX file generates the title page and should be edited to include the correct authors.}
 \item
   \textbf{txt\_files folder }
   \textcolor{magenta}{This folder houses all of the text (.txt or .csv) files used to generate tables.}
@@ -923,6 +917,8 @@ Test_figures_tables.tex
 *unnamed-chunk*
 \end{Verbatim}
 
+\newpage
+
 \subsection{The YAML}\label{the-yaml}
 
 The YAML contains all of the document front-matter and must be the first
@@ -953,7 +949,7 @@ before\_body: Titlepage.tex
 \textcolor{magenta}{Include Titlepage.tex (title page first)}\\
 \hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}
 in\_header: header.tex
-\textcolor{magenta}{Include header.tex (all necessary \LaTeX packages)}\\
+\textcolor{magenta}{Include header.tex (all necessary LaTeX packages)}\\
 \hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}
 keep\_tex: yes
 \textcolor{magenta}{Keep intermediate .tex ouput? yes or no}\\
@@ -975,7 +971,7 @@ toc\_depth: 4
 toc: yes \textcolor{magenta}{Include a table of contents? yes or no}\\
 \hspace*{0.333em}\hspace*{0.333em} word\_document: default
 \textcolor{magenta}{Begin defining Word document output variables}\\
-documentclass: article \textcolor{magenta}{\LaTeX document class}\\
+documentclass: article \textcolor{magenta}{LaTeX document class}\\
 fontsize: 12pt \textcolor{magenta}{Default font size}\\
 geometry: margin=1in \textcolor{magenta}{Page margin size}\\
 csl: CJAFS.csl \textcolor{magenta}{Bibliography style}\\
@@ -1031,8 +1027,8 @@ The following Executive Summary tables are associated with .csv files,
 which will need to be replaced with your data. This may also require
 editing the column alignment options if you have a different number of
 columns than in the default template. This is where you'll want to test
-your tables and figures in the Test\_figures\_tables.Rmd file copying
-the code to the main documents.
+your tables and figures in the Test\_figures\_tables.Rmd file, by
+copying the code to the main documents.
 
 \begin{itemize}
 \tightlist
@@ -1201,7 +1197,7 @@ new group and drag all of the references you want from the China
 Rockfish assessment to your new group.
 
 \textbf{Workaround for italicizing scientific names (knit to pdf)} The
-.bib file is rendered via \LaTeX, so you can enclose a scientific name
+.bib file is rendered via LaTeX, so you can enclose a scientific name
 with \texttt{\textbackslash{}emph\{\}} in the Mendeley citation, e.g.,
 \texttt{\textbackslash{}emph\{Sebastes\ nebulosus\}}, to produce
 \emph{Sebastes nebulosus}. Once you create the .bib file, the scientific
@@ -1214,6 +1210,8 @@ up by by using Find and Replace (Ctrl+F). Wait to do this until you have
 the final version of your .bib file, or you'll have to do this every
 time you edit and overwrite the .bib file. You can view and edit the
 .bib file in RStudio.
+
+\newpage
 
 \subsection{Before you publish}\label{before-you-publish}
 
@@ -1380,7 +1378,7 @@ the ./txt\_files/Exec\_mngmt\_performance.csv file.
 \subsubsection{Table content from R code
 chunks}\label{table-content-from-r-code-chunks}
 
-\LaTeX syntax can be included in R code or R code chunks. You must
+LaTeX syntax can be included in R code or R code chunks. You must
 precede each LaTeX command with two backslashes instead of one. The
 following will bold and italicize the text:
 \texttt{\textbackslash{}\textbackslash{}textbf\{\textbackslash{}\textbackslash{}textit\{Reference\ points\ based\ on\ SPR\ proxy\ for\ MSY\}\}}.
@@ -1396,7 +1394,7 @@ necessary in the main text of the R markdown document.
 You can use inline math mode just as you would in the main text. For
 example, \texttt{\$SPR\_\{B40\textbackslash{}\textbackslash{}\%\}\$}
 produces \(SPR_{B40\%}\) within an R code chunk. Note that if you are
-using a \% sign in math mode in the main text, which is \LaTeX, it must
+using a \% sign in math mode in the main text, which is LaTeX, it must
 be preceded with one backslash.
 
 \subsection{Spanning multiple columns}\label{spanning-multiple-columns}
@@ -1486,7 +1484,7 @@ align(decision_mod2.table) = c('l','l|','c','c|',
 
 \subsection{Shading table cells}\label{shading-table-cells}
 
-Need to remember how to do this!
+TOADS
 
 \section{Creating/Inserting Figures}\label{creatinginserting-figures}
 
@@ -1531,8 +1529,8 @@ the R Code Chunks section).
      CA_rec_remov1 = melt(CA_rec_remov,id='Year')
      colnames(CA_rec_remov1) = c('Year','Fleet','Removals')
 ```
-```{r,fig.cap="Removals (mt) from the California recreational party/charter and 
-private sectors, north and south of $40^\\circ 10^\\prime$. 
+```{r,fig.cap="Removals (mt) from the California recreational party/charter 
+   and private sectors, north and south of $40^\\circ 10^\\prime$. 
 \\label{fig:CA_rec_removal}"}
       ggplot(CA_rec_remov1, aes(x=Year, y=Removals,fill=Fleet)) +
       geom_area(poistion='stack') + 
@@ -1545,14 +1543,14 @@ private sectors, north and south of $40^\\circ 10^\\prime$.
 
 \section{General topics}\label{general-topics}
 
-\subsection{\texorpdfstring{Syntax (R markdown and
-\LaTeX)}{Syntax (R markdown and )}}\label{syntax-r-markdown-and}
+\subsection{Syntax (R markdown and
+LaTeX)}\label{syntax-r-markdown-and-latex}
 
 The syntax used throughout will depend on the output file type, .pdf or
 HTML. If you only want to knit to a pdf, you can use either the R
-markdown or \LaTeX syntax in the exmples below. However, if you want to
-be able to knit to HTML you're better off using the R markdown syntax as
-HTML will not render \LaTeX. See the section on
+markdown or LaTeX syntax in the exmples below. However, if you want to
+be able to knit to HTML you're better off using the R markdown syntax,
+since HTML will not render LaTeX. See the section on
 \href{http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html}{pandoc
 markdown} for more on syntax.
 
@@ -1575,9 +1573,12 @@ will not start a new paragraph without a blank line.
 
 Do not completely rely on RStudio's spell checker. Use the spell
 checker, but edit the document yourself as well. There is not
-autocorrect as in Word.
+autocorrect function, as in Word.
 
 \subsection{LaTeX}\label{latex}
+
+If you're looking for a specific LaTeX symbol or command, it's easiest
+just to Google it.
 
 You can use LaTeX commands throughout the document, such as
 `\textbackslash{}newpage' and `\textbackslash{}FloatBarrier,' which are
@@ -1688,7 +1689,7 @@ sections.
 
 I prefer using LaTeX for lists, but
 \href{http://rmarkdown.rstudio.com/authoring_basics.html}{R markdown}
-also has its own syntax for lists. A \LaTeX example is below:
+also has its own syntax for lists. A LaTeX example is below:
 
 \begin{Verbatim}[frame=single]
 Ordered lists:
@@ -1729,6 +1730,25 @@ syntax, \(<!-- \text{Add your comment here} --!>\)
 
 R comments within an HTML comment are still rendered, and can cause
 errors if they aren't commented with an R comment.
+
+\begin{Verbatim}[frame=single]
+If you type:
+<!--R code within an HTML comment that is NOT commented will
+be evaluated, 'r 1+1'. -->
+
+This is the result:
+<!-- R code within an HTML comment that is NOT commented will 
+be evaluated, 2. -->
+
+If you type:
+<!-- R code within an HTML comment that IS commented out  
+produces a blank space, 'r #1+1'. -->
+
+This is the result:
+<!-- R code within an HTML comment that IS commented out  
+produces a blank space, . -->
+
+\end{Verbatim}
 
 \subsection{R code chunks}\label{r-code-chunks}
 
@@ -1805,8 +1825,12 @@ tagged in Adobe Pro in a matter of seconds.
   alignment parameters. Simplify the alignment and add in alignment
   justifications incrementally
 \item
-  You don't have enough float barrier between tables or figures,
-  Error:``LaTeX Error: too many unprocessed floats.''
+  You have too many tables or figures in a row without a float barrier.
+  You need to insert `\textbackslash{}Floatbarrier' between table or
+  figure, Error:``LaTeX Error: too many unprocessed floats.''
+\item
+  You have a space in a file name somewhere. LaTeX cannot read file
+  names with spaces.
 \end{itemize}
 
 \end{document}
