@@ -27,7 +27,7 @@ stop("\n  This file should not be sourced!") # note to stop from accidental sour
 # xtable for creating tables, ggplot2 for plotting, reshape2 for melting
 # dataframes, scales for printing percents
 
-requiredPackages = c('xtable', 'ggplot2', 'reshape2', 'scales', 'rmarkdown', 'knitr')
+requiredPackages = c('xtable', 'ggplot2', 'reshape2', 'scales', 'rmarkdown', 'knitr', 'r4ss')
 for(p in requiredPackages){
   if(!require(p,character.only = TRUE)) install.packages(p)
   library(p,character.only = TRUE)
@@ -262,7 +262,7 @@ legend('topright', legend=mod.names, col=mod.cols, lwd=3, bg='white', bty='n')
 dev.off()
 
 # =============================================================================
-# END SECTION 3================================================================
+# END SECTION 2================================================================
 # =============================================================================
 
 
@@ -273,10 +273,11 @@ dev.off()
 # writes the entire myreplist and mod structure to a file
 # useful if you need to find a particular variable r4ss creates
 # change model and directory
-sink("./r4ss/plots_mod1/list_of_dataframes.csv", type="output")
-invisible(lapply(mod1, function(x) dput(write.csv(x))))
-sink()
 
-sink("./r4ss/plots_mod1/mod_structure.csv", type="output")
-invisible(str(mod1,list.len = 9999))
-sink()
+#sink("./r4ss/plots_mod1/list_of_dataframes.csv", type="output")
+#invisible(lapply(mod1, function(x) dput(write.csv(x))))
+#sink()
+
+#sink("./r4ss/plots_mod1/mod_structure.csv", type="output")
+#invisible(str(mod1,list.len = 9999))
+#sink()
