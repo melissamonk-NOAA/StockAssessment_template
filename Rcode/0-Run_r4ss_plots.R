@@ -27,11 +27,15 @@ stop("\n  This file should not be sourced!") # note to stop from accidental sour
 # xtable for creating tables, ggplot2 for plotting, reshape2 for melting
 # dataframes, scales for printing percents
 
-requiredPackages = c('xtable', 'ggplot2', 'reshape2', 'scales', 'rmarkdown', 'knitr', 'r4ss')
+requiredPackages = c('xtable', 'ggplot2', 'reshape2', 'scales', 'rmarkdown', 'knitr', 'devtools')
 for(p in requiredPackages){
   if(!require(p,character.only = TRUE)) install.packages(p)
   library(p,character.only = TRUE)
 }
+
+# Install the latest version of r4ss using devtools
+devtools::install_github("r4ss/r4ss")
+library(r4ss)
 
 # CHANGE values in this section ===============================================
 
