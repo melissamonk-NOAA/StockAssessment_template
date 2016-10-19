@@ -239,17 +239,19 @@ version is usually a good idea)\\
  * \href{https://www.rstudio.com/products/rstudio/download3/}{RStudio}
 (Note: RStudio Preview will NOT work with the template until a bug is
 fixed)\\
- * \href{http://miktex.org/}{MiKTeX} (needed to render a .pdf to LaTeX)
-or \href{https://www.tug.org/texlive/}{TeX Live} *
-\href{https://www.mendeley.com/}{Mendeley} (optional, but useful for
-citation management)
+ * PC users: \href{http://miktex.org/}{MiKTeX} or
+\href{https://www.tug.org/texlive/}{TeX Live} (needed to render a .pdf
+to LaTeX) * Mac users: \href{http://www.tug.org/mactex/}{MacTeX} (needed
+to render a .pdf to LaTeX) * \href{https://www.mendeley.com/}{Mendeley}
+(optional, but useful for citation management)
 
-R packages are automatically checked for in the \texttt{Preamble.R}
-script. You can add any other packages you want to load there. You may
-have to make sure you have \texttt{rmarkdown} and \texttt{knitr}
-installed, but usually RStudio will ask you to do this if you haven't
-already. The r4ss package is only called in the
-\texttt{0-Run\_r4ss\_plots.R} script and is loaded there.
+Eric Anderson has directions for the Git and R setup for Mac users
+\href{http://eriqande.github.io/rep-res-web/assign/assign-0.html\#assignment-0}{here}.
+
+R packages are automatically checked for in the
+\texttt{0-Run\_r4ss\_plots.R} script. You can add any other packages you
+want to load there. You may get an error and have to install
+\texttt{rmarkdown} and \texttt{knitr} manually.
 
 \subsection{Git, GitHub and SSH
 authentication}\label{git-github-and-ssh-authentication}
@@ -976,6 +978,7 @@ fontsize: 12pt \textcolor{magenta}{Default font size}\\
 geometry: margin=1in \textcolor{magenta}{Page margin size}\\
 csl: CJAFS.csl \textcolor{magenta}{Bibliography style}\\
 bibliography: BibFile.bib \textcolor{magenta}{Bibliography file name}\\
+link-citations: yes \textcolor{magenta}{Adds hyperlinks to citations}
 \texttt{-\/-\/-}
 \textcolor{magenta}{YAML ends with a line of three hyphens, no spaces}
 
@@ -988,8 +991,8 @@ Notes:
   \begin{itemize}
   \tightlist
   \item
-    The line number for a given error can either refer to the .Rmd or
-    .tex file
+    The line number for a given error can refer to .Rmd, .tex file, or
+    be completely random
   \end{itemize}
 \item
   Options for the R script highlighting include: default, tango,
@@ -1829,8 +1832,11 @@ tagged in Adobe Pro in a matter of seconds.
   You need to insert `\textbackslash{}Floatbarrier' between table or
   figure, Error:``LaTeX Error: too many unprocessed floats.''
 \item
-  You have a space in a file name somewhere. LaTeX cannot read file
-  names with spaces.
+  You have a space in a file name somewhere. LaTeX does not like to read
+  file names with spaces.
+\item
+  You have an illegal space or carriage return, most likley in the R
+  markdown image syntax
 \end{itemize}
 
 \end{document}

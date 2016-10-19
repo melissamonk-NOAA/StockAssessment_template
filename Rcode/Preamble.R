@@ -6,7 +6,7 @@ rm(list=ls(all=TRUE))
 
 # Load necessary packages
 
-requiredPackages = c('xtable', 'ggplot2', 'reshape2', 'scales', 'rmarkdown', 'knitr')
+requiredPackages = c('xtable', 'ggplot2', 'reshape2', 'scales')
 for(p in requiredPackages){
   library(p,character.only = TRUE)
 }

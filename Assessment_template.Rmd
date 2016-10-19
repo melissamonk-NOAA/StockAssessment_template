@@ -22,6 +22,7 @@ fontsize: 12pt
 geometry: margin=1in
 csl: CJFAS.csl
 bibliography: BibFile.bib
+link-citations: yes
 ---
 ```{r global_options, include=FALSE}
     # set global options for R code chunks: echo=FALSE (don't include source code); 

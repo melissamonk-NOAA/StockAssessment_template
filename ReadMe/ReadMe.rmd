@@ -23,7 +23,7 @@ The stock assessment template described is based on the [2015 China rockfish ass
 
 The current repository contains .csv, SS, and r4ss files for an arbitrary stock assessment. Removing these files before you replace them with your own will result in runtime errors.  It is recommended that you replace the files as you prepare them, knitting and committing the document each time you make a significant change.  
 
-Portions of the document need to be edited via .csv files, which will be discussed below.  Please note, all of the instructions herein are geared towards PC users.
+Portions of the document need to be edited via .csv files, which will be discussed below.  Please note, all of the instructions herein are geared towards PC users. 
 
 ##R markdown and Git
 The template was created for version control (Git) use in RStudio. R markdown integrates plain text, LaTeX, HTML, and R code to create a reproducible document. The template is an R project (.Rproj), that keeps all of the files associated with the template organized.  More on RStudio projects [here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).  [R markdown's website](http://rmarkdown.rstudio.com/) is also full of resources.
@@ -57,11 +57,13 @@ Make sure you have the latest versions of the following programs installed on yo
     * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) (Contains instructions to install on Linux, Mac, and PC)  
     * [R](https://cran.r-project.org/bin/windows/base/) (latest version is usually a good idea)    
     * [RStudio](https://www.rstudio.com/products/rstudio/download3/) (Note: RStudio Preview will NOT work with the template until a bug is fixed)    
-    * [MiKTeX](http://miktex.org/) (needed to render a .pdf to LaTeX) or [TeX Live](https://www.tug.org/texlive/)
+    * PC users: [MiKTeX](http://miktex.org/) or [TeX Live](https://www.tug.org/texlive/) (needed to render a .pdf to LaTeX)
+    * Mac users: [MacTeX](http://www.tug.org/mactex/) (needed to render a .pdf to LaTeX)
     * [Mendeley](https://www.mendeley.com/) (optional, but useful for citation management)    
     
-   
-R packages are automatically checked for in the `Preamble.R` script.  You can add any other packages you want to load there. You may have to make sure you have `rmarkdown` and `knitr` installed, but usually RStudio will ask you to do this if you haven't already.  The r4ss package is only called in the `0-Run_r4ss_plots.R` script and is loaded there.
+Eric Anderson has directions for the Git and R setup for Mac users [here](http://eriqande.github.io/rep-res-web/assign/assign-0.html#assignment-0).
+
+R packages are automatically checked for in the `0-Run_r4ss_plots.R` script.  You can add any other packages you want to load there. You may get an error and have to install `rmarkdown` and `knitr` manually.
     
 ##Git, GitHub and SSH authentication
 
@@ -350,12 +352,15 @@ fontsize:                         12pt   \textcolor{magenta}{Default font size}
 geometry:                         margin=1in   \textcolor{magenta}{Page margin size}  
 csl:                              CJAFS.csl   \textcolor{magenta}{Bibliography style}  
 bibliography:                     BibFile.bib  \textcolor{magenta}{Bibliography file name}  
-`---`                             \textcolor{magenta}{YAML ends with a line of three hyphens, no spaces}   
+link-citations:                   yes \textcolor{magenta}{Adds hyperlinks to citations}
+`---`                             \textcolor{magenta}{YAML ends with a line of three hyphens, no spaces}  
+
+
 
 Notes:  
 
 * Keeping the .tex file can help with debugging. 
-    + The line number for a given error can either refer to the .Rmd or .tex file
+    + The line number for a given error can refer to .Rmd, .tex file, or be completely random
 * Options for the R script highlighting include: default, tango, pygments, kate, monochrome, espresso, zenburn, haddock and textmate. Play around with them to see which color you like best.
 
 * The HTML and Word document settings are currently dummy settings just so you can knit to these.  Future work can be done to knit the document to these formats.
@@ -763,7 +768,9 @@ To create the ADA compliant .pdf, you'll need to take the final .tex document an
 
 * You have too many tables or figures in a row without a float barrier. You need to insert `\\Floatbarrier' between table or figure, Error:"LaTeX Error: too many unprocessed floats."
 
-* You have a space in a file name somewhere.  LaTeX cannot read file names with spaces.
+* You have a space in a file name somewhere.  LaTeX does not like to read file names with spaces.
+
+* You have an illegal space or carriage return, most likley in the R markdown image syntax 
 
 
 

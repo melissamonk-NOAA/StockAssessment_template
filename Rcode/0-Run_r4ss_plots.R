@@ -23,9 +23,10 @@ rm(list=ls(all=TRUE))
 stop("\n  This file should not be sourced!") # note to stop from accidental sourcing
 
 # Here we're going to make sure you have all the required packages for the template
-# Check for installtion and read in necessary R libraries
+# Check for installtion and make sure all R libraries can be loaded
 # xtable for creating tables, ggplot2 for plotting, reshape2 for melting
 # dataframes, scales for printing percents
+# You may have to manually install knitr - reason unknown!
 
 requiredPackages = c('xtable', 'ggplot2', 'reshape2', 'scales', 'rmarkdown', 'knitr', 'devtools')
 for(p in requiredPackages){
