@@ -136,11 +136,11 @@ To reference these figures in the document, use label created for each plot.
 ![Summary of data sources used in the base case assessment. \label{fig:data_plot}](C:/Assessment_template/r4ss/plots_mod1/data_plot.png)
 
 <!-- Plots have to be the same directory, or a subdirectory of the .Rmd file
-     Copy the below code to the Assessment_template.Rmd document to use
+     Copy the below code to the Assessment_template.Rmd document to use  -->
      
 ![Summary of data sources used in the base case assessment. \label{fig:data_plot}](r4ss/plots_mod1/data_plot.png)
 
--->
+
 
 
 
@@ -175,12 +175,13 @@ To reference these figures in the document, use label created for each plot.
 <!-- Biology (Bio) r4ss plots --------------------------------------------- -->
 ```{r, results='asis'}
     # Plot all of the bio plots
-#    for(i in 1:dim(Bio_mod1)[1]) {
+    for(i in 1:dim(Bio_mod1)[1]) {
 
        # concatenate the caption column, label columnm and the plot location into the r Markdown
        # syntax so that when converted to LaTeX it'll print the plot
-#      cat('\n![', Bio_mod1[i,2], ' \\label{fig:mod1_', i, '_', Bio_mod1[i,9], '}](', Bio_mod1[i, 1], ')\n', #sep='')
-#}
+      cat('\n![', Bio_mod1[i,2], ' \\label{fig:mod1_', i, '_', Bio_mod1[i,9], '}](', Bio_mod1[i, 1], ')\n', sep='')
+    }
+
 ```
 
 \FloatBarrier
