@@ -13,7 +13,6 @@
     \usepackage{fontspec}
   \fi
   \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
-  \newcommand{\euro}{€}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -24,7 +23,6 @@
 }{}
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
-\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
 \hypersetup{unicode=true,
             pdftitle={Stock Assessment Template in R Markdown and Git},
             pdfauthor={Melissa Monk, NMFS SWFSC},
@@ -40,38 +38,25 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
-
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
-
-%%% Change title format to be more compact
-\usepackage{titling}
-
-% Create subtitle command for use in maketitle
-\newcommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
-
-\setlength{\droptitle}{-2em}
-  \title{Stock Assessment Template in R Markdown and Git}
-  \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
-  \author{Melissa Monk, NMFS SWFSC}
-  \preauthor{\centering\large\emph}
-  \postauthor{\par}
-  \date{}
-  \predate{}\postdate{}
-
-
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
 % This file contains all of the LaTeX packages you may need to compile the document
 % Documentation for each package can be found onlines
 \usepackage{tabularx}                                             % table environment providing flexibility
@@ -106,15 +91,29 @@
 
 \definecolor{light-gray}{gray}{.85}
 
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{Stock Assessment Template in R Markdown and Git}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Melissa Monk, NMFS SWFSC}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \date{}
+  \predate{}\postdate{}
 
 \begin{document}
 \maketitle
@@ -243,6 +242,9 @@ installed on your machine:\\
 
 Eric Anderson has directions for the Git and R setup for Mac users
 \href{http://eriqande.github.io/rep-res-web/assign/assign-0.html\#assignment-0}{here}.
+Mac users, put the line
+\texttt{PATH=\$PATH:\textasciitilde{}/Library/TeX/texbin} in your
+\texttt{\textasciitilde{}/.bash\_profile} before starting RStudio.
 
 R packages are automatically checked for in the
 \texttt{0-Run\_r4ss\_plots.R} script. You can add any other packages you
@@ -1846,5 +1848,6 @@ tagged in Adobe Pro in a matter of seconds.
   you'll get an error if you end an R code chunk and on the next line
   include a float barrier or other LaTeX syntax.
 \end{itemize}
+
 
 \end{document}

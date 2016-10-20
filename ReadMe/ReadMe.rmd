@@ -63,9 +63,9 @@ Make sure you have the latest versions of the following programs installed on yo
 \item \href{https://www.mendeley.com/}{Mendeley} (optional, but useful for citation management)    
  \end{itemize}
  
-Eric Anderson has directions for the Git and R setup for Mac users [here](http://eriqande.github.io/rep-res-web/assign/assign-0.html#assignment-0).
+Eric Anderson has directions for the Git and R setup for Mac users [here](http://eriqande.github.io/rep-res-web/assign/assign-0.html#assignment-0).  Mac users, put the line `PATH=$PATH:~/Library/TeX/texbin` in your `~/.bash_profile` before starting RStudio.
 
-R packages are automatically checked for in the `0-Run_r4ss_plots.R` script.  You can add any other packages you want to load there. You may get an error and have to install `rmarkdown` and `knitr` manually.
+R packages are automatically checked for in the `0-Run_r4ss_plots.R` script.  You can add any other packages you want to load there. You may get an error and have to install `rmarkdown` and `knitr` manually.  
     
 ##Git, GitHub and SSH authentication
 
