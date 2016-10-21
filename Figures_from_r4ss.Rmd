@@ -1,7 +1,7 @@
 ---
-title: "r4ss Figure Examples"
+title: "How to insert r4ss Figure"
 author: "Melissa Monk"
-date: "July 26, 2016"
+date: 
 output: 
   pdf_document:
     fig_caption: yes
@@ -11,11 +11,59 @@ output:
     latex_engine: xelatex
 ---
 
+<!-- 
+This script contains options for including figures produced by r4ss.
+Option 1: Insert a figure using R markdown syntax and the name of the figure
+
+Option 2: Insert a figure using R makrdown syntax and the figure number 
+          from plotInfoTable.  If the figure location within plotInfoTable
+          changes with a new run, the figure will also change.
+          
+Option 3: Insert a series of figures from an R code chunk.  I've parsed the 
+          plotInfoTable into smaller tables by category (Bio, Sel, Catch, etc.)
+          This is done in Preamble.R and you can view each table in the Global
+          Environment. Currently these are all set up for model one (mod1). If you
+          have multiple models you'll just copy the code to the correct place in 
+          the document and change mod1 to the appropriate model number.
+          
+          I have set up the labels for these plots to be numbered.  For example, label
+          fig:mod1_1_bio1_sizeatage, indicates this is a figure from model 1 (fig:mod1)
+          and the next number (1 in this case) is the first plot from the Bio dataframe.
+          You can print them all here in this document and then reference the labels 
+          (printed by each figure) to decide which plots to include in the final document 
+          before you copy the R code chunk to Assessment_template.  To reference a figure
+          in the text, use the label or the plot location, either \ref(fig:mod1_1_bio1_sizeatage)
+          or \ref{paste0(fig:mod1_1_', Bio_mod1[1,9])} where you've replaced the 'i's' with 
+          the correct number.  The latter option is less intuitive when you're writine the 
+          document and referecing figures.
+          
+          You can also print a series of plots and if a plot has multiple pages, only the first
+          in the series will have the figure number and caption.
+          
+          Downfall to this option: you can either add code to change the caption,
+          or change the caption in the plotInfoTable .csv if you don't like the 
+          default, which will overwrite each time you run the Parse_r4ss_plotInfoTable.R 
+          script within the 0-Run_r4ss_plots.R script, which should really be once with a
+          final model...
+
+Option 4: Insert two plots where you have a page1 and page2 and want the same
+          caption (sort of a hack, but it works!)
+
+You'll copy the code chunks from this file into the Assessment_template.Rmd to insert the figures.
+
+To reference these figures in the document, use label created for each plot.
+-->
+
 ```{r global_options, include=FALSE}
+    # Do not worry about this R code chunk (unless you need to change the 
+    # number of models) - it's a repeat from the Preamble.R file, so you 
+    # can recreate the dataframes used for the tables
     # set global options for R code chunks: echo=FALSE (don't include source code); 
     # warning=FALSE (suppress R warnings); message=FALSE (suppress R messages)
     # eval = TRUE is default
-    knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+     n_models = 1  ##CHANGE   
+
+     knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
     options(xtable.comment=FALSE)
     
     library(xtable)    # create tables
@@ -24,14 +72,8 @@ output:
     library(scales)    # print percents
     library(knitr)
 
-    
-    n_models = 1  ##CHANGE
-```
-
-
-```{r}
-# Load in the plotInfoTable and parse the table as an option to use for figures
-for(imod in 1:n_models) {
+   # Load in the plotInfoTable and parse the table as an option to use for figures
+   for(imod in 1:n_models) {
   if (imod==1) {
       mod_num = 'mod1'
     } else {
@@ -43,7 +85,7 @@ for(imod in 1:n_models) {
   
   
   # Read in the plotInfoTable.csv containining the list of plots created from r4SS
-  plotInfoTable = read.csv(paste0('C:/Assessment_template/r4ss/plots_',mod_num,'/plotInfoTable_',mod_num,'_final.csv'))
+  plotInfoTable = read.csv(paste0('C:/StockAssessment_template/r4ss/plots_',mod_num,'/plotInfoTable_',mod_num,'_final.csv'))
   
   # Replace the @ in A@L with AAL and the - in S-R with S_R
   # And get rid of other funny characters
@@ -72,58 +114,22 @@ for(imod in 1:n_models) {
     dummy_df = subset(plotInfoTable,category==categories[icat])
     dummy_df = data.frame(lapply(dummy_df, as.character), stringsAsFactors=FALSE)
     dummy_df$label = substr(dummy_df$basename,1, nchar(dummy_df$basename)-4)
+    dummy_df$filepath = paste0('./r4ss/plots_',mod_num,'/',dummy_df$basename)
     assign(paste0(categories[icat],'_',mod_num),dummy_df)
   }
 } # end n_models
 
-# multiple models
-multi_page_fig = c('page2', 'page3', 'page4', 'page5', 'page6', 'page7')
-
+   # multiple models
+   multi_page_fig = c('page2', 'page3', 'page4', 'page5', 'page6', 'page7')
+  
+  # Tells R which columns to look in for the caption, label and path 
+  caption_col = 2
+  label_col = 10
+  path_col =  11
 
 ```
 
-<!-- 
-This script contains options for including figures produced by r4ss.
-Option 1: Insert a figure using R markdown syntax and the name of the figure
 
-Option 2: Insert a figure using R makrdown syntax and the figure number 
-          from plotInfoTable.  If the figure location within plotInfoTable
-          changes with a new run, the figure will also change.
-          
-Option 3: Insert a series of figures from an R code chunk.  I've parsed the 
-          plotInfoTable into smaller tables by category (Bio, Sel, Catch, etc.)
-          This is done in Preamble.R and you can view each table in the Global
-          Environment. Currently these are all set up for model one (mod1). If you
-          have multiple models you'll just copy the code to the correct place in 
-          the document and change mod1 to the appropriate model number.
-          
-          I have set up the labels for these plots to be numbered.  For example, label
-          fig:mod1_1_bio1_sizeatage, indicates this is a figure from model 1 (fig:mod1)
-          and the next number (1 in this case) is the first plot from the Bio dataframe.
-          You can print them all here in this document and then reference the labels 
-          (printed by each figure) to decide which plots to include in the final document 
-          before you copy the r code chunk to Assessment_template.  To reference a figure
-          in the text, use the label or the plot location, either \ref(fig:mod1_1_bio1_sizeatage)
-          or \ref{paste0(fig:mod1_1_', Bio_mod1[1,9])} where you've replaced the 'i's' with 
-          the correct number.  The latter option is less intuitive when you're writine the 
-          document and referecing figures.
-          
-          You can also print a series of plots and if a plot has multiple pages, only the first
-          in the series will have the figure number and caption.
-          
-          Downfall to this option: you can either add code to change the caption,
-          or change the caption in the plotInfoTable .csv if you don't like the 
-          default, which will overwrite each time you run the Parse_r4ss_plotInfoTable.R 
-          script within the 0-Run_r4ss_plots.R script, which should really be once with a
-          final model...
-
-Option 4: Insert two plots where you have a page1 and page2 and want the same
-          caption (sort of a hack, but it works!)
-
-
-
-To reference these figures in the document, use label created for each plot.
--->
 
 <!--========================================================================-->
 <!-- Option 1: type out the code for a figure using the filename -->
@@ -156,7 +162,7 @@ To reference these figures in the document, use label created for each plot.
      figures change position in the file due to a new run, they will all shift...
 
 
-![`r plotInfoTable_mod1[25,2]` \label{`r paste0('fig:mod1_', plotInfoTable_mod1[25,5])`}](`r plotInfoTable_mod1[25,1]`)
+![`r plotInfoTable_mod1[25,caption_col]` \label{`r paste0('fig:mod1_', plotInfoTable_mod1[25,5])`}](`r plotInfoTable_mod1[25,1]`)
 
 ![Writing my own caption. \label{`r paste0('fig:mod1_', plotInfoTable_mod1[25,5])`}](`r plotInfoTable_mod1[25,1]`)
 
@@ -179,7 +185,7 @@ To reference these figures in the document, use label created for each plot.
 
        # concatenate the caption column, label columnm and the plot location into the r Markdown
        # syntax so that when converted to LaTeX it'll print the plot
-      cat('\n![', Bio_mod1[i,2], ' \\label{fig:mod1_', i, '_', Bio_mod1[i,9], '}](', Bio_mod1[i, 1], ')\n', sep='')
+      cat('\n![', Bio_mod1[i,caption_col], ' \\label{fig:mod1_', i, '_', Bio_mod1[i,label_col], '}](', Bio_mod1[i, path_col], ')\n', sep='')
     }
 
 ```
@@ -190,7 +196,7 @@ To reference these figures in the document, use label created for each plot.
 ```{r, results='asis'}
     # Plot all of the selectivity plots - only plotting a select few here
 #   for(i in 1:15) { #dim(Sel_mod1)[1]) {
-#      cat('\n![', Sel_mod1[i,2], ' \\label{fig:mod1_', i, '_', Sel_mod1[i, 9], '}](', Sel_mod1[i, 1], ')\n', sep='')
+#      cat('\n![', Sel_mod1[i,caption_col], ' \\label{fig:mod1_', i, '_', Sel_mod1[i, label_col], '}](', Sel_mod1[i, path_col], ')\n', sep='')
 #}
 ```
 
@@ -200,7 +206,7 @@ To reference these figures in the document, use label created for each plot.
 ```{r, results='asis'}
     # Plot all of the timeseries plots
 #     for(i in 1:dim(Timeseries_mod1)[1]) {
-#        cat('\n![', Timeseries_mod1[i,2], ' \\label{fig:mod1_', i, '_', Timeseries_mod1[i, 9], '}](', Timeseries_mod1[i, 1], ')\n', sep='')
+#        cat('\n![', Timeseries_mod1[i,caption_col], ' \\label{fig:mod1_', i, '_', Timeseries_mod1[i, label_col], '}](', Timeseries_mod1[i, path_col], ')\n', sep='')
 # }
 ```
 \FloatBarrier
@@ -209,7 +215,7 @@ To reference these figures in the document, use label created for each plot.
 ```{r, results='asis'}
 #     # Plot all of the timeseries plots
 #     for(i in 1:5) { #dim(RecDev_mod1)[1]) {
-#       cat('\n![', RecDev_mod1[i,2], ' \\label{fig:mod1_', i, '_', RecDev_mod1[i, 9], '}](', RecDev_mod1[i, 1], ')\n', sep='')
+#       cat('\n![', RecDev_mod1[i,caption_col], ' \\label{fig:mod1_', i, '_', RecDev_mod1[i, label_col], '}](', RecDev_mod1[i, path_col], ')\n', sep='')
 # }
 ```
 \FloatBarrier
@@ -218,7 +224,7 @@ To reference these figures in the document, use label created for each plot.
 ```{r, results='asis'}
     # Plot all of the timeseries plots
 #    for(i in 1:dim(S_R_mod1)[1]) {
-#      cat('\n![', S_R_mod1[i,2], ' \\label{fig:mod1_', i, '_', S_R_mod1[i, 9], '}](', S_R_mod1[i, 1], ')\n', sep='')
+#      cat('\n![', S_R_mod1[i,caption_col], ' \\label{fig:mod1_', i, '_', S_R_mod1[i, label_col], '}](', S_R_mod1[i, path_col], ')\n', sep='')
 #}
 ```
 
@@ -228,7 +234,7 @@ To reference these figures in the document, use label created for each plot.
 ```{r, results='asis'}
     # Plot all of the timeseries plots
 #     for(i in 1:dim(Catch_mod1)[1]) {
-#       cat('\n![', Catch_mod1[i,2], ' \\label{fig:mod1_', i, '_', Catch_mod1[i, 9], '}](', Catch_mod1[i, 1], ')\n', sep='')
+#       cat('\n![', Catch_mod1[i,caption_col], ' \\label{fig:mod1_', i, '_', Catch_mod1[i, label_col], '}](', Catch_mod1[i, path_col], ')\n', sep='')
 # }
 ```
 
@@ -238,7 +244,7 @@ To reference these figures in the document, use label created for each plot.
 ```{r, results='asis'}
     # Plot all of the timeseries plots
 #     for(i in 1:dim(SPR_mod1)[1]) {
-#       cat('\n![', SPR_mod1[i,2], ' \\label{fig:mod1_', i, '_', SPR_mod1[i, 9], '}](', SPR_mod1[i, 1], ')\n', sep='')
+#       cat('\n![', SPR_mod1[i,caption_col], ' \\label{fig:mod1_', i, '_', SPR_mod1[i, label_col], '}](', SPR_mod1[i, path_col], ')\n', sep='')
 # }
 ```
 
@@ -248,7 +254,7 @@ To reference these figures in the document, use label created for each plot.
 ```{r, results='asis'}
     # Plot all of the timeseries plots
 #     for(i in 1:3) { #dim(Index_mod1)[1]) {
-#       cat('\n![', Index_mod1[i,2], ' \\label{fig:mod1_', i, '_', Index_mod1[i, 9], '}](', Index_mod1[i, 1], ')\n', sep='')
+#       cat('\n![', Index_mod1[i,caption_col], ' \\label{fig:mod1_', i, '_', Index_mod1[i, label_col], '}](', Index_mod1[i, path_col], ')\n', sep='')
 # }
 ```
 
@@ -258,7 +264,7 @@ To reference these figures in the document, use label created for each plot.
 ```{r, results='asis'}
     # Plot all of the timeseries plots
 #     for(i in 1:3) { #dim(Numbers_mod1)[1]) {
-#       cat('\n![', Numbers_mod1[i,2], ' \\label{fig:mod1_', i, '_', Numbers_mod1[i, 9], '}](', Numbers_mod1[i, 1], ')\n', sep='')
+#       cat('\n![', Numbers_mod1[i,caption_col], ' \\label{fig:mod1_', i, '_', Numbers_mod1[i, label_col], '}](', Numbers_mod1[i, pah_col], ')\n', sep='')
 # }
 ```
 
@@ -274,7 +280,7 @@ To reference these figures in the document, use label created for each plot.
  #       
  #       # if the plot is page2+ of a series, add the extra caption
  #        if(TRUE %in% page_test) {
- #         cat('\n![](', CompDat_mod1[i, 1], ')', sep='')
+ #         cat('\n![](', CompDat_mod1[i, path_col], ')', sep='')
  #      
  #         cat('\\begin{center} \n
  #              Figure continued from previous page \n
@@ -282,7 +288,7 @@ To reference these figures in the document, use label created for each plot.
  #       
  #       } else {
  # 
- #       cat('\n![', CompDat_mod1[i,2], ' \\label{fig:mod1_', i, '_', CompDat_mod1[i, 9], '}](', CompDat_mod1[i, 1], ')\n', sep='')
+ #       cat('\n![', CompDat_mod1[i,caption_col], ' \\label{fig:mod1_', i, '_', CompDat_mod1[i, label_col], '}](', CompDat_mod1[i, path_col], ')\n', sep='')
  # } }
 ```
 
@@ -298,7 +304,7 @@ To reference these figures in the document, use label created for each plot.
        
        # if the plot is page2+ of a series, add the extra caption
         if(TRUE %in% page_test) {
-         cat('\n![](', LenComp_mod1[i, 1], ')', sep='')
+         cat('\n![](', LenComp_mod1[i, path_col], ')', sep='')
       
          cat('\\begin{center} \n
               Figure continued from previous page \n
@@ -306,7 +312,7 @@ To reference these figures in the document, use label created for each plot.
        
        } else {
 
-        cat('\n![', LenComp_mod1[i,2], ' \\label{fig:mod1_', i, '_', LenComp_mod1[i, 9], '}](', LenComp_mod1[i, 1], ')\n', sep='')
+        cat('\n![', LenComp_mod1[i,caption_col], ' \\label{fig:mod1_', i, '_', LenComp_mod1[i, label_col], '}](', LenComp_mod1[i, path_col], ')\n', sep='')
  } }
 ```
 
@@ -322,7 +328,7 @@ To reference these figures in the document, use label created for each plot.
 #      
 #      # if the plot is page2+ of a series, add the extra caption
 #      if(TRUE %in% page_test) {
-#        cat('\n![](', AALComp_mod1[i, 1], ')', sep='')
+#        cat('\n![](', AALComp_mod1[i, path_col], ')', sep='')
 #       
 #        cat('\\begin{center} \n
 #              Figure continued from previous page \n
@@ -330,7 +336,7 @@ To reference these figures in the document, use label created for each plot.
 #        
 #      } else {
 #      
-#     cat('\n![', AALComp_mod1[i,2], ' \\label{fig:mod1_', i, '_', AALComp_mod1[i, 9], '}](', AALComp_mod1[i, 1], ')\n', sep='')
+#     cat('\n![', AALComp_mod1[i,caption_col], ' \\label{fig:mod1_', i, '_', AALComp_mod1[i, label_col], '}](', AALComp_mod1[i, path_col], ')\n', sep='')
 # } }
 ```
 
@@ -340,7 +346,7 @@ To reference these figures in the document, use label created for each plot.
 ```{r, results='asis'}
     # Plot all of the timeseries plots
  #    for(i in 1:dim(Yield_mod1)[1]) {
- #       cat('\n![', Yield_mod1[i,2], ' \\label{fig:mod1_', i, '_', Yield_mod1[i, 9], '}](', Yield_mod1[i, 1], ')\n', sep='')
+ #       cat('\n![', Yield_mod1[i,caption_col], ' \\label{fig:mod1_', i, '_', Yield_mod1[i, label_col], '}](', Yield_mod1[i, path_col], ')\n', sep='')
  # }
 ```
 

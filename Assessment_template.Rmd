@@ -1728,14 +1728,15 @@ assessment team. Not required in draft assessment undergoing review.
 <!-- ***********MODEL 1**************************************************** -->
  
 ```{r, results='asis'}
-  for(i in 1:5) { 
+    # Plot all of the timeseries plots
+      for(i in 1:10) { #dim(LenComp_mod1)[1]) {
        
         # find matches to multi-page plots
         page_test = sapply(multi_page_fig, grepl, LenComp_mod1$label[i])
        
        # if the plot is page2+ of a series, add the extra caption
         if(TRUE %in% page_test) {
-         cat('\n![](', LenComp_mod1[i, 1], ')', sep='')
+         cat('\n![](', LenComp_mod1[i, path_col], ')', sep='')
       
          cat('\\begin{center} \n
               Figure continued from previous page \n
@@ -1743,7 +1744,7 @@ assessment team. Not required in draft assessment undergoing review.
        
        } else {
 
-        cat('\n![', LenComp_mod1[i,2], ' \\label{fig:mod1_', i, '_', LenComp_mod1[i, 9], '}](', LenComp_mod1[i, 1], ')\n', sep='')
+        cat('\n![', LenComp_mod1[i,caption_col], ' \\label{fig:mod1_', i, '_', LenComp_mod1[i, label_col], '}](', LenComp_mod1[i, path_col], ')\n', sep='')
  } }
 ```
 
