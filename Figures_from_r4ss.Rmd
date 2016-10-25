@@ -321,23 +321,23 @@ To reference these figures in the document, use label created for each plot.
 <!-- Age at Length Composition (AALComp) r4ss plots ------------------------ -->
 ```{r, results='asis'}
 #     # Plot all of the timeseries plots
-#     for(i in 1:10){ #dim(AALComp_mod1)[1]) {
+     for(i in 1:8){ #dim(AALComp_mod1)[1]) {
 #         
 #      # find matches to multi-page plots
-#      page_test = sapply(multi_page_fig, grepl, AALComp_mod1$label[i])
+      page_test = sapply(multi_page_fig, grepl, AALComp_mod1$label[i])
 #      
 #      # if the plot is page2+ of a series, add the extra caption
-#      if(TRUE %in% page_test) {
-#        cat('\n![](', AALComp_mod1[i, path_col], ')', sep='')
+      if(TRUE %in% page_test) {
+        cat('\n![](', AALComp_mod1[i, path_col], ')', sep='')
 #       
-#        cat('\\begin{center} \n
-#              Figure continued from previous page \n
-#             \\end{center}',sep='')
+        cat('\\begin{center} \n
+              Figure continued from previous page \n
+             \\end{center}',sep='')
 #        
-#      } else {
+      } else {
 #      
-#     cat('\n![', AALComp_mod1[i,caption_col], ' \\label{fig:mod1_', i, '_', AALComp_mod1[i, label_col], '}](', AALComp_mod1[i, path_col], ')\n', sep='')
-# } }
+    cat('\n![', AALComp_mod1[i,caption_col], ' \\label{fig:mod1_', i, '_', AALComp_mod1[i, label_col], '}](', AALComp_mod1[i, path_col], ')\n', sep='')
+ } }
 ```
 
 \FloatBarrier

@@ -293,12 +293,6 @@ for (model in 1:n_models) {
     Recruityrs$lowerCI <- Recruityrs$lowerCI/1000
     Recruityrs$upperCI <- Recruityrs$upperCI/1000
   }
-  ### old method assuming normal distribution
-  #Recruityrs$lowerCI = round(Recruityrs$Value + 
-  #                           qnorm(0.025) * Recruityrs$StdDev, digits = 2)
-  
-  #Recruityrs$upperCI = round(Recruityrs$Value - 
-  #                           qnorm(0.025)*Recruityrs$StdDev, digits=2)
   
   Recruityrs$CI = paste('(', round(Recruityrs$lowerCI, digits = 2), 
                         ' - ', round(Recruityrs$upperCI, digits = 2), ')', sep='')

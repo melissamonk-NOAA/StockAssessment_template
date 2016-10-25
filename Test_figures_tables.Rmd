@@ -67,5 +67,3 @@ OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$LABEL),]
 
    
 ```
-
-

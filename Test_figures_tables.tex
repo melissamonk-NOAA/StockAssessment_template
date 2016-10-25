@@ -1,0 +1,182 @@
+\documentclass[12pt,]{article}
+%\usepackage{lmodern}  Melissa removed to deal with font rendering issue
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+
+%Melissa removed the following section to deal with font rendering issue
+%\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+%  \usepackage[T1]{fontenc}
+%  \usepackage[utf8]{inputenc}
+%%\else % if luatex or xelatex
+%  \ifxetex
+%    \usepackage{mathspec}
+%  \else
+%    \usepackage{fontspec}
+%  \fi
+%  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+%  \newcommand{\euro}{€}
+%%%%%%\fi
+
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
+\hypersetup{unicode=true,
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{}
+  \pretitle{\vspace{\droptitle}}
+  \posttitle{}
+  \author{}
+  \preauthor{}\postauthor{}
+  \date{}
+  \predate{}\postdate{}
+
+
+% This file contains all of the LaTeX packages you may need to compile the document
+% Documentation for each package can be found onlines
+\usepackage{tabularx}                                             % table environment providing flexibility
+\usepackage{caption}                                              % for creating captions  
+\usepackage{longtable}                                            % allows tables to span multiple pages
+\usepackage{rotating}                                             % allows for sideways tables
+\usepackage{float}                                                % floating environments; may not need in rmarkdown
+\usepackage{placeins}                                             % keeps floats from moving
+\usepackage{indentfirst}                                          % indents first paragraph of a section
+\usepackage{mdwtab}                                               % continued float multi-page figure
+\usepackage{enumerate}                                            % create lists
+\usepackage{hyperref}                                             % highlight cross references
+\hypersetup{colorlinks=true, urlcolor=blue, linktoc=page, linkcolor=blue, citecolor=blue} %define referencing colors
+%\usepackage{makebox}                                             % make boxes around text
+\usepackage[usenames,dvipsnames]{xcolor}                          % color name options
+%\usepackage[space]{grffile}                                      % spaces in file name path
+\usepackage{soul}                                                 % highlight text
+\usepackage{enumitem}                                             % numbered lists
+\usepackage{lineno}                                               % Line numbers; comment out for final
+\usepackage{upquote}                                              % produce grave accent in latex
+\usepackage{verbatim}                                             % produces verbatim results
+\usepackage{fancyvrb}                                             % verbatim in a box
+\usepackage[inline]{showlabels}                                   % show table and figure labels; comment out for final
+%\usepackage{draftwatermark}                                      % places Draft watermark in background; comment out for final
+\usepackage{textcomp}                                             % fixes error with packages interfering
+\usepackage{lscape}                                               % rotate pages - to allow for landscape longtables
+%\pdfinterwordspaceon                                              % fix loss of inter word spacing
+\usepackage{cmap}                                                 % fix mapping characters to unicode
+\RequirePackage[linewidth = 1]{pdfcomment}                        %pdf comments
+\RequirePackage[l2tabu, orthodox]{nag}                            %checks packages related to the accessibility?
+%\RequirePackage[tagged]{accessibilityMeta}
+
+\linenumbers                                                      % specify use of line numbers
+
+\definecolor{light-gray}{gray}{.85}
+%\usepackage[tagged]{accessibility-meta}
+
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\begin{document}
+
+{
+\setcounter{tocdepth}{4}
+\tableofcontents
+}
+USE THIS .Rmd TO TEST R CODE CHUNKS, FIGURES AND PLOTS BEFORE INSERTING
+INTO THE MAIN TEXT OR TO DEBUG
+
+\begin{verbatim}
+OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$LABEL),]
+      OFL_mod1 = OFL_mod1[c(-1,-2),2]
+      
+      #Turn into a dataframe and get the total
+      OFL = as.data.frame(OFL_mod1)
+      OFL$Year=seq(Project_firstyr+2,Project_lastyr,1)
+      OFL$Year = as.factor(OFL$Year)
+      OFL = OFL[,c(2,1)]
+      colnames(OFL) = c('Year','OFL') 
+
+# Create the table
+      OFL.table = xtable(OFL, caption=c('Projections of potential OFL (mt) for each model, using the base model forecast.'),
+                  label = 'tab:OFL_projection')}
+\end{verbatim}
+
+\begin{table}[ht]
+\centering
+\caption{Projections of potential OFL (mt) for each model, using the base model forecast.} 
+\label{tab:OFL_projection}
+\begin{tabular}{lr}
+  \hline
+Year & OFL \\ 
+  \hline
+2015 & 9.51 \\ 
+  2016 & 9.57 \\ 
+  2017 & 9.63 \\ 
+  2018 & 9.29 \\ 
+  2019 & 8.98 \\ 
+  2020 & 8.69 \\ 
+  2021 & 8.43 \\ 
+  2022 & 8.20 \\ 
+  2023 & 7.99 \\ 
+  2024 & 7.80 \\ 
+  2025 & 7.64 \\ 
+  2026 & 7.49 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Summary of the biomass/abundance
+                                              time series used in the stock
+                                              assessment.} 
+\label{tab:Index_summary}
+\begin{tabular}{>{\centering}p{.4in}>{\centering}p{.3in}>{\centering}p{.3in}>{\centering}p{.3in}>{\centering}p{.6in}>{\centering}p{.5in}>{\centering}p{.2in}>{\centering}p{.8in}>{\centering}p{.3in}>{\centering}p{.5in}}
+  \hline
+Region & ID & Fleet & Years & Name & Fishery ind. & Filtering & Method & Rank & Endorsed \\ 
+  \hline
+WA & 1 & 4 & 1981-2014 & Dockside CPUE & No & trip, area, month, Stephens-MacCall & delta-GLM (bin-gamma) & 1 & SSC \\ 
+  - & - & - & - & - & - & - & - & - & - \\ 
+  - & - & - & - & - & - & - & - & - & - \\ 
+  - & - & - & - & - & - & - & - & - & - \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+\hypertarget{refs}{}
+
+\end{document}

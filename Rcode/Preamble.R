@@ -30,14 +30,7 @@ spp.sci = "Sebastes nebulosus"
 # minimum vulnerable age class
 min_age = "1+"
 
-# Fecundity relationship?; could change this to look at the SS input...
-# whether spawning output is billions of eggs (fecundity relationship on) or 
-# mt (no fecundity relationship)
-# TRUE = Fecundity relationship turned on ; FALSE = no fecundity relationship 
-fecund = TRUE  
-     # Fecundity text depending on the input value above (can change this line if you like)
-     if(fecund == TRUE){fecund_unit='billion eggs'} else {fecund_unit = 'mt'}
-  
+
 # number of independent assessment models to include in the document
 n_models = 1
   
@@ -53,6 +46,13 @@ MT   = 0.4   # management target; .4 for rockfish
 MSST = 0.25  # minimum stock size threshold; 0.25 for rockfish
 
 # -----------------------------------------------------------------------------
+# Fecundity relationship
+# whether spawning output is billions of eggs (fecundity relationship on) or 
+# mt (no fecundity relationship)
+fecund = mod1$SpawnOutputUnits  
+# Fecundity text depending on the input value above (can change this line if you like)
+if(fecund == 'numbers'){fecund_unit='billion eggs'} else {fecund_unit = 'mt'}
+
 # Change these years either here or in the table code if you need to
 
 # First and last years of the model
