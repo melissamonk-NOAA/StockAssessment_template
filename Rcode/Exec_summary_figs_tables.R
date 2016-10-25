@@ -280,19 +280,36 @@ for (model in 1:n_models) {
   
   Recruityrs$YEAR = seq(FirstYR, LastYR)
   
-  Recruityrs$lowerCI = round(Recruityrs$Value + 
-                             qnorm(0.025) * Recruityrs$StdDev, digits = 2)
+  # assume recruitments have log-normal distribution 
+  # from first principals (multiplicative survival probabilities)
+  Recruityrs$logint <- sqrt(log(1+(Recruityrs$StdDev/Recruityrs$Value)^2))
+  Recruityrs$lowerCI <- exp(log(Recruityrs$Value) + qnorm(0.025)*Recruityrs$logint)
+  Recruityrs$upperCI <- exp(log(Recruityrs$Value) + qnorm(0.975)*Recruityrs$logint)
   
-  Recruityrs$upperCI = round(Recruityrs$Value - 
-                             qnorm(0.025)*Recruityrs$StdDev, digits=2)
+  Recruit_units <- "1,000s"
+  if(mean(Recruityrs$Value) > 1000){
+    Recruit_units <- "millions"
+    Recruityrs$Value <- Recruityrs$Value/1000
+    Recruityrs$lowerCI <- Recruityrs$lowerCI/1000
+    Recruityrs$upperCI <- Recruityrs$upperCI/1000
+  }
+  ### old method assuming normal distribution
+  #Recruityrs$lowerCI = round(Recruityrs$Value + 
+  #                           qnorm(0.025) * Recruityrs$StdDev, digits = 2)
   
-  Recruityrs$CI = paste('(', Recruityrs$lowerCI, ' - ', Recruityrs$upperCI, ')', sep='')
+  #Recruityrs$upperCI = round(Recruityrs$Value - 
+  #                           qnorm(0.025)*Recruityrs$StdDev, digits=2)
+  
+  Recruityrs$CI = paste('(', round(Recruityrs$lowerCI, digits = 2), 
+                        ' - ', round(Recruityrs$upperCI, digits = 2), ')', sep='')
   
   Recruityrs$Value = round(Recruityrs$Value, digits = 2)
   
   Recruittab=subset(Recruityrs, select = c('YEAR', 'Value', 'CI'))
   
-  colnames(Recruittab) = c('Year','Estimated Recruitment (1,000s)','~ 95% confidence interval')
+  colnames(Recruittab) = c('Year',
+                           paste0('Estimated Recruitment (',Recruit_units,')'),
+                           '~ 95% confidence interval')
   
   assign(paste('Recruittab_',mod_area,sep=''), Recruittab)
 
