@@ -30,7 +30,17 @@ spp.sci = "Sebastes nebulosus"
 # minimum vulnerable age class
 min_age = "1+"
 
+<<<<<<< HEAD
 
+=======
+# Fecundity relationship?; could change this to look at the SS input...
+# whether spawning output is billions of eggs (fecundity relationship on) or 
+# mt (no fecundity relationship)
+fecund = mod1$SpawnOutputUnits
+
+
+  
+>>>>>>> 596aaf7235c5af12b89ab8dc2b58c0a9fbf313a3
 # number of independent assessment models to include in the document
 n_models = 1
   
