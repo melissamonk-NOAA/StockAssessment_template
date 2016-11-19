@@ -171,7 +171,9 @@ The estimated relative depletion level of model 3 in `r LastYR` is
 
     # Select which file to use for the recuitment figure, depending on if you have one model or multiple models
     if(n_models == 1) {
-      spawn.file  = 'r4ss/plots_mod1/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png'
+      spawn.file  = ifelse(fecund=='numbers',
+                           'r4ss/plots_mod1/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png',
+                           'r4ss/plots_mod1/ts7_Spawning_biomass_(mt)_with_95_asymptotic_intervals_intervals.png')
       Bratio.file = 'r4ss/plots_mod1/ts9_Spawning_depletion_with_95_asymptotic_intervals_intervals.png' 
      } else {
       spawn.file  = 'r4ss/plots_compare/base_compare2_spawnbio_uncertainty.png'
@@ -1394,14 +1396,21 @@ assessment team. Not required in draft assessment undergoing review.
     # Total biomass, extract and subset
     Bio_all = mod1$sprseries[, c('Year', 'Bio_all')]
     Bio_allyrs = subset(Bio_all, Year > (Dat_start - 1) & Year < (Dat_end + 1))
-    
-   
+    Bio_allyrs$Bio_all = round(Bio_allyrs$Bio_all, 0)
+  
+  
     # Spawning biomass, extract and subset, and turn into scientific notation
     SpawningB = mod1$derived_quants[grep('SPB', mod1$derived_quants$LABEL), ]
     SpawningB = SpawningB[c(-1, -2), ]
     SpawningByrs = SpawningB[SpawningB$LABEL >= paste('SPB_', Dat_start, sep='') &  
                              SpawningB$LABEL <= paste('SPB_', Dat_end, sep=''), ] 
-    if(SpawningByrs[2,1] > 9999999){SpawningByrs$Value = as.character(format(SpawningByrs$Value, scientific = T, digits = 3))}
+        
+        SpawningB_units = ''
+        if(mean(SpawningByrs$Value) > 1000000){
+            SpawningB_units <- "million"
+            SpawningByrs$Value <- SpawningByrs$Value/1000000
+         }
+
     
     # Depletion, extract, rename and subset
     Depl_years = as.data.frame(seq(Dat_start, Dat_end, 1))
@@ -1454,17 +1463,17 @@ assessment team. Not required in draft assessment undergoing review.
   # Bind all the columns together for the table
   Timeseries = as.data.frame(cbind(seq(Dat_start, Dat_end, 1), 
                                        Bio_allyrs$Bio_all, 
-                                       SpawningByrs$Value,
+                                       round(SpawningByrs$Value, 0),
                                        round(Depleteyrs$total, 2),
                                        Recruityrs$Value, 
                                        Landingsyrs$Dead_Catch_B, 
                                        round(Exploited$total,2),
                                        round(SPRyrs$SPR, 2)))
-                     
+
  # Add colulmn names    
  colnames(Timeseries)=c('Year', 
                         'Total biomass (mt)', 
-                        'Spawning biomass (mt)',
+                        paste0('Spawning biomass', SpawningB_units, ' (mt)'),
                         'Depletion', 
                         'Age-0 recruits', 
                         'Total catch (mt)',
@@ -1484,7 +1493,7 @@ assessment team. Not required in draft assessment undergoing review.
                               caption = c('Time-series of population estimates 
                                         from the base-case model.'),
                               label='tab:Timeseries_mod1',
-                              digits = 2)   
+                              digits = c(0,0,0,0,2,0,0,2,2))   
 
     # Add alignment
     align(Timeseries.table) = c('l',

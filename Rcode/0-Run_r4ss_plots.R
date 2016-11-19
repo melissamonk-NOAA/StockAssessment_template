@@ -52,7 +52,7 @@ library(r4ss)
 
 # Give the names of the data and control files, for each model
 # Used in the SS_files_linebreaks.R
-mod1_dat = 'china_WAonly_data.ss'
+mod1_dat =   'china_WAonly_data.ss'
 # mod2_dat = 'china_central_data.ss'
 # mod3_dat = 'china_south_data.ss'
 
@@ -88,7 +88,7 @@ do.call(file.remove, list(list.files(file.path(output.dir,'plots_mod3'), full.na
 if(n_models>1){mod2 = SS_output(dir = file.path(input.dir,'Base_model2'), forecast=T, covar=T, ncol=1000)}
 if(n_models>2){mod3 = SS_output(dir = file.path(input.dir,'Base_model3'), forecast=T, covar=T, ncol=1000)}
 
-# Rave the workspace an image
+# Save the workspace an image
 save.image('./r4ss/SS_output.RData')
 
 
@@ -104,45 +104,45 @@ out.dir.mod3 = file.path(output.dir,'plots_mod3')
 
 # Model 1
 SS_plots(mod1,
-         png=TRUE,
-         html=FALSE,
-         datplot=TRUE,
-         uncertainty=TRUE,
-         maxrows=6, 
-         maxcols=6, 
-         maxrows2=4, 
-         maxcols2=4, 
-         printfolder='', 
-         dir=out.dir.mod1)
+         png = TRUE,
+         html = FALSE,
+         datplot = TRUE,
+         uncertainty = TRUE,
+         maxrows = 6, 
+         maxcols = 6, 
+         maxrows2 = 4, 
+         maxcols2 = 4, 
+         printfolder = '', 
+         dir = out.dir.mod1)
 
 # Model2
-if(n_models>1){
+if(n_models > 1){
   SS_plots(mod2,
-           png=TRUE,
-           html=FALSE,
-           datplot=TRUE,
-           uncertainty=TRUE,
-           maxrows=6, 
-           maxcols=6, 
-           maxrows2=4, 
-           maxcols2=4, 
-           printfolder='', 
-           dir=out.dir.mod2)
+           png = TRUE,
+           html = FALSE,
+           datplot = TRUE,
+           uncertainty = TRUE,
+           maxrows = 6, 
+           maxcols = 6, 
+           maxrows2 = 4, 
+           maxcols2 = 4, 
+           printfolder = '', 
+           dir = out.dir.mod2)
 }
 
 # Model3
-if(n_models>2){
+if(n_models > 2){
   SS_plots(mod3,
-           png=TRUE,
-           html=FALSE,
-           datplot=TRUE,
-           uncertainty=TRUE,
-           maxrows=6, 
-           maxcols=6, 
-           maxrows2=4, 
-           maxcols2=4, 
-           printfolder='', 
-           dir=out.dir.mod3)
+           png = TRUE,
+           html = FALSE,
+           datplot = TRUE,
+           uncertainty = TRUE,
+           maxrows = 6, 
+           maxcols = 6, 
+           maxrows2 = 4, 
+           maxcols2 = 4, 
+           printfolder = '', 
+           dir = out.dir.mod3)
 }
 
 # -----------------------------------------------------------------------------
@@ -164,7 +164,7 @@ source('./Rcode/SS_files_linebreaks.R')
 
 # SECTION 2: COMPARISON PLOTS ACROSS MODELS ===================================
 
-if(n_models>1){
+if(n_models > 1){
 
  # if you need to reload the workspace
  load("SS_output.RData")
@@ -190,55 +190,55 @@ if(n_models>1){
 # Time series comparison plots for exec summary -------------------------------
 # These plots are repeated with regular plots
 SSplotComparisons(base.summary, 
-                  plot=FALSE, 
-                  print=TRUE, 
-                  plotdir=dir.compare.plots,
-                  spacepoints=20,  # years between points on each line
-                  initpoint=0,     # "first" year of points (modular arithmetic)
-                  staggerpoints=0, # points aligned across models
-                  endyrvec=2015,   # final year to show in time series
-                  legendlabels=mod.names, 
-                  filenameprefix="base_", 
-                  col=mod.cols)
+                  plot = FALSE, 
+                  print = TRUE, 
+                  plotdir = dir.compare.plots,
+                  spacepoints = 20,  # years between points on each line
+                  initpoint = 0,     # "first" year of points (modular arithmetic)
+                  staggerpoints = 0, # points aligned across models
+                  endyrvec = 2015,   # final year to show in time series
+                  legendlabels = mod.names, 
+                  filenameprefix = "base_", 
+                  col = mod.cols)
 
 SSplotComparisons(base.summary, 
-                  plot=FALSE, 
-                  print=TRUE, 
-                  plotdir=dir.plots,
-                  subplot=1:10,
-                  spacepoints=20,  # years between points on each line
-                  initpoint=0,     # "first" year of points (modular arithmetic)
-                  staggerpoints=0, # points aligned across models
-                  endyrvec=2025,   # final year to show in time series
-                  legendlabels=mod.names, 
-                  filenameprefix="forecast_", 
-                  col=mod.cols)
+                  plot = FALSE, 
+                  print = TRUE, 
+                  plotdir = dir.plots,
+                  subplot = 1:10,
+                  spacepoints = 20,  # years between points on each line
+                  initpoint = 0,     # "first" year of points (modular arithmetic)
+                  staggerpoints = 0, # points aligned across models
+                  endyrvec = 2025,   # final year to show in time series
+                  legendlabels = mod.names, 
+                  filenameprefix = "forecast_", 
+                  col = mod.cols)
   
   
   
 # Plot comparison of growth curves --------------------------------------------
 png(file.path(dir.compare.plots, 'growth_comparison_June11_beta.png'),
-    width=6.5, 
-    height=5, 
-    res=300, 
-    units='in')
+    width = 6.5, 
+    height = 5, 
+    res = 300, 
+    units = 'in')
 
 SSplotBiology(out.mod1, 
-              colvec=c(mod.cols[1],NA,NA), 
-              subplot=1)
+              colvec = c(mod.cols[1], NA, NA), 
+              subplot = 1)
       
 SSplotBiology(out.mod2, 
-              colvec=c(mod.cols[2],NA,NA),
-              subplot=1, 
-              add=TRUE)
+              colvec = c(mod.cols[2], NA, NA),
+              subplot = 1, 
+              add = TRUE)
       
 SSplotBiology(out.mod3, 
-              colvec=c(mod.cols[3],NA,NA), 
-              subplot=1, 
-              add=TRUE)
+              colvec = c(mod.cols[3], NA, NA), 
+              subplot = 1, 
+              add = TRUE)
  
 # legend to cover up non-useful Females/Males default legend
-legend('topleft', legend=mod.names, col=mod.cols, lwd=3, bg='white')
+legend('topleft', legend = mod.names, col = mod.cols, lwd = 3, bg = 'white')
  
 # close PNG file
 dev.off()
@@ -246,22 +246,22 @@ dev.off()
 
 # Plot comparison of yield curves ---------------------------------------------
 png(file.path(dir.compare.plots, 'yield_comparison_3_models.png'),
-    width=6.5, 
-    height=6.5, 
-    res=300, 
-    units='in', 
-    pointsize=10)
-par(las=1)
+    width = 6.5, 
+    height = 6.5, 
+    res = 300, 
+    units = 'in', 
+    pointsize = 10)
+par(las = 1)
 
-SSplotYield(out.mod3, col=mod.cols[3], subplot=1)
+SSplotYield(out.mod3, col = mod.cols[3], subplot = 1)
 
 grid()
 
-SSplotYield(out.mod2, col=mod.cols[2], subplot=1, add=TRUE)
-SSplotYield(out.mod1, col=mod.cols[1], subplot=1, add=TRUE)
+SSplotYield(out.mod2, col = mod.cols[2], subplot = 1, add = TRUE)
+SSplotYield(out.mod1, col = mod.cols[1], subplot = 1, add = TRUE)
 
 # legend to cover up non-useful Females/Males default legend
-legend('topright', legend=mod.names, col=mod.cols, lwd=3, bg='white', bty='n')
+legend('topright', legend = mod.names, col = mod.cols, lwd = 3, bg = 'white', bty = 'n')
 
 # close PNG file
 dev.off()
