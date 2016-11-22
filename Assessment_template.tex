@@ -96,20 +96,25 @@ Pacific Coast in x2015x}
 \usepackage{upquote}                                              % produce grave accent in latex
 \usepackage{verbatim}                                             % produces verbatim results
 \usepackage{fancyvrb}                                             % verbatim in a box
-\usepackage[inline]{showlabels}                                   % show table and figure labels; comment out for final
 %\usepackage{draftwatermark}                                      % places Draft watermark in background; comment out for final
 \usepackage{textcomp}                                             % fixes error with packages interfering
 \usepackage{lscape}                                               % rotate pages - to allow for landscape longtables
-%\pdfinterwordspaceon                                              % fix loss of inter word spacing
+%\pdfinterwordspaceon                                             % fix loss of inter word spacing
 \usepackage{cmap}                                                 % fix mapping characters to unicode
-\RequirePackage[linewidth = 1]{pdfcomment}                        %pdf comments
-\RequirePackage[l2tabu, orthodox]{nag}                            %checks packages related to the accessibility?
+\RequirePackage[linewidth = 1]{pdfcomment}                        % pdf comments
+\RequirePackage[l2tabu, orthodox]{nag}                            % checks packages related to the accessibility?
+\usepackage[inline]{showlabels}                                   % show table and figure labels; comment out for final
 %\RequirePackage[tagged]{accessibilityMeta}
+
 
 \linenumbers                                                      % specify use of line numbers
 
-\definecolor{light-gray}{gray}{.85}
+
+\definecolor{light-gray}{gray}{.85}                               % define light-gray as a color
 %\usepackage[tagged]{accessibility-meta}
+
+ 
+%\showlabels[\color{mred}]{label}
 
 % Redefines (sub)paragraphs to behave more like sections
 \ifx\paragraph\undefined\else
@@ -235,7 +240,7 @@ California by fleet (recreational and commercial).
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{r4ss/plots_mod1/catch2\%20landings\%20stacked.png}
+\includegraphics{r4ss/plots_mod1/catch2 landings stacked.png}
 \caption{Landings history of China rockfish. \label{fig:r4ss_catches}}
 \end{figure}
 
@@ -1388,7 +1393,7 @@ undergoing review.
 \FloatBarrier
 
 \begin{landscape}
-\begin{longtable}{rlrrcrcl}
+\begin{longtable}{rlrrcccl}
 \caption{List of parameters used in
                                               the base model, including estimated 
                                               values and standard deviations (SD), 
@@ -1398,7 +1403,7 @@ undergoing review.
                                               parameters are near bounds, and prior type
                                               information (mean, SD).} \\ 
   \hline
-No. & Parameter & Value & SD & Bounds & Phase & Status & Prior \\ 
+No. & Parameter & Value & Phase & Bounds & Status & SD & Prior (Exp.Val, SD)  \\ 
   \hline 
 \endhead 
 \hline 
@@ -1406,49 +1411,49 @@ No. & Parameter & Value & SD & Bounds & Phase & Status & Prior \\
 \endfoot 
 \endlastfoot 
  \hline
-1 & NatM\_p\_1\_Fem\_GP\_1 & 0.07 &  & (0.01, 0.15) & -3 &  & Log\_Norm (-2.94, 0.53) \\ 
-  2 & L\_at\_Amin\_Fem\_GP\_1 & 2.00 &  & (-10, 45) & -2 &  & Normal (2, 10) \\ 
-  3 & L\_at\_Amax\_Fem\_GP\_1 & 35.41 & 0.36 & (20, 50) & 6 & OK & Normal (34, 10) \\ 
-  4 & VonBert\_K\_Fem\_GP\_1 & 0.15 & 0.01 & (0.01, 0.3) & 6 & OK & Normal (0.1, 0.8) \\ 
-  5 & CV\_young\_Fem\_GP\_1 & 0.10 &  & (0.01, 0.25) & -6 &  & None \\ 
-  6 & CV\_old\_Fem\_GP\_1 & 0.08 & 0.01 & (0.01, 0.25) & 6 & OK & None \\ 
-  7 & NatM\_p\_1\_Mal\_GP\_1 & 0.00 &  & (-1, 0.15) & -3 &  & None \\ 
-  8 & L\_at\_Amin\_Mal\_GP\_1 & 0.00 &  & (-1, 45) & -2 &  & Normal (2, 10) \\ 
-  9 & L\_at\_Amax\_Mal\_GP\_1 & 0.00 &  & (-1, 50) & -4 &  & Normal (33.13, 10) \\ 
-  10 & VonBert\_K\_Mal\_GP\_1 & 0.00 &  & (-1, 0.3) & -4 &  & Normal (0.246, 0.8) \\ 
-  11 & CV\_young\_Mal\_GP\_1 & 0.00 &  & (-1, 0.25) & -3 &  & None \\ 
-  12 & CV\_old\_Mal\_GP\_1 & 0.00 &  & (-1, 0.25) & -3 &  & None \\ 
-  13 & Wtlen\_1\_Fem & 0.00 &  & (0, 1) & -3 &  & None \\ 
-  14 & Wtlen\_2\_Fem & 3.18 &  & (2, 4) & -3 &  & None \\ 
-  15 & Mat50\%\_Fem & 28.50 &  & (1, 100) & -3 &  & None \\ 
-  16 & Mat\_slope\_Fem & -1.00 &  & (-9, 9) & -3 &  & None \\ 
-  17 & Eggs/kg\_inter\_Fem & 0.20 &  & (-3, 3) & -3 &  & None \\ 
-  18 & Eggs/kg\_slope\_wt\_Fem & 0.06 &  & (-3, 3) & -3 &  & None \\ 
-  19 & Wtlen\_1\_Mal & 0.00 &  & (0, 1) & -3 &  & None \\ 
-  20 & Wtlen\_2\_Mal & 3.18 &  & (2, 4) & -3 &  & None \\ 
-  24 & CohortGrowDev & 0.00 &  & (0, 0) & -4 &  & None \\ 
-  25 & SR\_LN(R0) & 3.53 & 0.18 & (2, 12) & 1 & OK & None \\ 
-  26 & SR\_BH\_steep & 0.77 &  & (0.2, 1) & -3 &  & Full\_Beta (0.773, 0.147) \\ 
-  27 & SR\_sigmaR & 0.50 &  & (0, 2) & -3 &  & None \\ 
-  28 & SR\_envlink & 0.10 &  & (-5, 5) & -3 &  & None \\ 
-  29 & SR\_R1\_offset & 0.00 &  & (-5, 5) & -4 &  & None \\ 
-  30 & SR\_autocorr & 0.00 &  & (0, 0) & -99 &  & None \\ 
-  68 & InitF\_11\_WA\_SouthernWA\_Rec\_PCPR & 0.00 &  & (0, 1) & -1 &  & None \\ 
-  69 & InitF\_22\_WA\_NorthernWA\_Rec\_PC & 0.00 &  & (0, 1) & -1 &  & None \\ 
-  70 & InitF\_33\_WA\_NorthernWA\_Rec\_PR & 0.00 &  & (0, 1) & -1 &  & None \\ 
-  71 & Q\_extraSD\_3\_3\_WA\_NorthernWA\_Rec\_PR & 0.13 & 0.02 & (0, 2) & 2 & OK & None \\ 
-  72 & SizeSel\_1P\_1\_1\_WA\_SouthernWA\_Rec\_PCPR & 34.89 &  & (19, 36) & -4 &  & None \\ 
-  73 & SizeSel\_1P\_2\_1\_WA\_SouthernWA\_Rec\_PCPR & -4.00 &  & (-9, 5) & -9 &  & None \\ 
-  74 & SizeSel\_1P\_3\_1\_WA\_SouthernWA\_Rec\_PCPR & 3.97 & 0.36 & (0, 9) & 5 & OK & None \\ 
-  75 & SizeSel\_1P\_4\_1\_WA\_SouthernWA\_Rec\_PCPR & 8.00 &  & (0, 9) & -9 &  & None \\ 
-  76 & SizeSel\_1P\_5\_1\_WA\_SouthernWA\_Rec\_PCPR & -8.00 &  & (-9, 9) & -9 &  & None \\ 
-  77 & SizeSel\_1P\_6\_1\_WA\_SouthernWA\_Rec\_PCPR & 8.00 &  & (-9, 9) & -9 &  & None \\ 
-  78 & SizeSel\_2P\_1\_2\_WA\_NorthernWA\_Rec\_PC & 34.86 & 1.00 & (19, 36) & 4 & OK & None \\ 
-  79 & SizeSel\_2P\_2\_2\_WA\_NorthernWA\_Rec\_PC & -4.00 &  & (-9, 5) & -9 &  & None \\ 
-  80 & SizeSel\_2P\_3\_2\_WA\_NorthernWA\_Rec\_PC & 2.92 & 0.35 & (0, 9) & 5 & OK & None \\ 
-  81 & SizeSel\_2P\_4\_2\_WA\_NorthernWA\_Rec\_PC & 8.00 &  & (0, 9) & -9 &  & None \\ 
-  82 & SizeSel\_2P\_5\_2\_WA\_NorthernWA\_Rec\_PC & -8.00 &  & (-9, 9) & -9 &  & None \\ 
-  83 & SizeSel\_2P\_6\_2\_WA\_NorthernWA\_Rec\_PC & 8.00 &  & (-9, 9) & -9 &  & None \\ 
+1 & NatM\_p\_1\_Fem\_GP\_1 & 0.070 & -3 & (0.01, 0.15) &  &  & Log\_Norm (-2.94, 0.53) \\ 
+  2 & L\_at\_Amin\_Fem\_GP\_1 & 2.000 & -2 & (-10, 45) &  &  & Normal (2, 10) \\ 
+  3 & L\_at\_Amax\_Fem\_GP\_1 & 35.411 & 6 & (20, 50) & OK & 0.364 & Normal (34, 10) \\ 
+  4 & VonBert\_K\_Fem\_GP\_1 & 0.147 & 6 & (0.01, 0.3) & OK & 0.006 & Normal (0.1, 0.8) \\ 
+  5 & CV\_young\_Fem\_GP\_1 & 0.100 & -6 & (0.01, 0.25) &  &  & None \\ 
+  6 & CV\_old\_Fem\_GP\_1 & 0.080 & 6 & (0.01, 0.25) & OK & 0.007 & None \\ 
+  7 & NatM\_p\_1\_Mal\_GP\_1 & 0.000 & -3 & (-1, 0.15) &  &  & None \\ 
+  8 & L\_at\_Amin\_Mal\_GP\_1 & 0.000 & -2 & (-1, 45) &  &  & Normal (2, 10) \\ 
+  9 & L\_at\_Amax\_Mal\_GP\_1 & 0.000 & -4 & (-1, 50) &  &  & Normal (33.13, 10) \\ 
+  10 & VonBert\_K\_Mal\_GP\_1 & 0.000 & -4 & (-1, 0.3) &  &  & Normal (0.2461, 0.8) \\ 
+  11 & CV\_young\_Mal\_GP\_1 & 0.000 & -3 & (-1, 0.25) &  &  & None \\ 
+  12 & CV\_old\_Mal\_GP\_1 & 0.000 & -3 & (-1, 0.25) &  &  & None \\ 
+  13 & Wtlen\_1\_Fem & 0.000 & -3 & (0, 1) &  &  & None \\ 
+  14 & Wtlen\_2\_Fem & 3.177 & -3 & (2, 4) &  &  & None \\ 
+  15 & Mat50\%\_Fem & 28.500 & -3 & (1, 100) &  &  & None \\ 
+  16 & Mat\_slope\_Fem & -1.000 & -3 & (-9, 9) &  &  & None \\ 
+  17 & Eggs/kg\_inter\_Fem & 0.196 & -3 & (-3, 3) &  &  & None \\ 
+  18 & Eggs/kg\_slope\_wt\_Fem & 0.057 & -3 & (-3, 3) &  &  & None \\ 
+  19 & Wtlen\_1\_Mal & 0.000 & -3 & (0, 1) &  &  & None \\ 
+  20 & Wtlen\_2\_Mal & 3.177 & -3 & (2, 4) &  &  & None \\ 
+  24 & CohortGrowDev & 0.000 & -4 & (0, 0) &  &  & None \\ 
+  25 & SR\_LN(R0) & 3.531 & 1 & (2, 12) & OK & 0.177 & None \\ 
+  26 & SR\_BH\_steep & 0.773 & -3 & (0.2, 1) &  &  & Full\_Beta (0.773, 0.147) \\ 
+  27 & SR\_sigmaR & 0.500 & -3 & (0, 2) &  &  & None \\ 
+  28 & SR\_envlink & 0.100 & -3 & (-5, 5) &  &  & None \\ 
+  29 & SR\_R1\_offset & 0.000 & -4 & (-5, 5) &  &  & None \\ 
+  30 & SR\_autocorr & 0.000 & -99 & (0, 0) &  &  & None \\ 
+  68 & InitF\_11\_WA\_SouthernWA\_Rec\_PCPR & 0.000 & -1 & (0, 1) &  &  & None \\ 
+  69 & InitF\_22\_WA\_NorthernWA\_Rec\_PC & 0.000 & -1 & (0, 1) &  &  & None \\ 
+  70 & InitF\_33\_WA\_NorthernWA\_Rec\_PR & 0.000 & -1 & (0, 1) &  &  & None \\ 
+  71 & Q\_extraSD\_3\_3\_WA\_NorthernWA\_Rec\_PR & 0.126 & 2 & (0, 2) & OK & 0.024 & None \\ 
+  72 & SizeSel\_1P\_1\_1\_WA\_SouthernWA\_Rec\_PCPR & 34.890 & -4 & (19, 36) &  &  & None \\ 
+  73 & SizeSel\_1P\_2\_1\_WA\_SouthernWA\_Rec\_PCPR & -4.000 & -9 & (-9, 5) &  &  & None \\ 
+  74 & SizeSel\_1P\_3\_1\_WA\_SouthernWA\_Rec\_PCPR & 3.970 & 5 & (0, 9) & OK & 0.364 & None \\ 
+  75 & SizeSel\_1P\_4\_1\_WA\_SouthernWA\_Rec\_PCPR & 8.000 & -9 & (0, 9) &  &  & None \\ 
+  76 & SizeSel\_1P\_5\_1\_WA\_SouthernWA\_Rec\_PCPR & -8.000 & -9 & (-9, 9) &  &  & None \\ 
+  77 & SizeSel\_1P\_6\_1\_WA\_SouthernWA\_Rec\_PCPR & 8.000 & -9 & (-9, 9) &  &  & None \\ 
+  78 & SizeSel\_2P\_1\_2\_WA\_NorthernWA\_Rec\_PC & 34.862 & 4 & (19, 36) & OK & 1.001 & None \\ 
+  79 & SizeSel\_2P\_2\_2\_WA\_NorthernWA\_Rec\_PC & -4.000 & -9 & (-9, 5) &  &  & None \\ 
+  80 & SizeSel\_2P\_3\_2\_WA\_NorthernWA\_Rec\_PC & 2.925 & 5 & (0, 9) & OK & 0.347 & None \\ 
+  81 & SizeSel\_2P\_4\_2\_WA\_NorthernWA\_Rec\_PC & 8.000 & -9 & (0, 9) &  &  & None \\ 
+  82 & SizeSel\_2P\_5\_2\_WA\_NorthernWA\_Rec\_PC & -8.000 & -9 & (-9, 9) &  &  & None \\ 
+  83 & SizeSel\_2P\_6\_2\_WA\_NorthernWA\_Rec\_PC & 8.000 & -9 & (-9, 9) &  &  & None \\ 
    \hline
 \hline
 \label{tab:model_params}
@@ -1463,14 +1468,14 @@ No. & Parameter & Value & SD & Bounds & Phase & Status & Prior \\
                                               time series used in the stock
                                               assessment.} 
 \label{tab:Index_summary}
-\begin{tabular}{>{\centering}p{.4in}>{\centering}p{.3in}>{\centering}p{.3in}>{\centering}p{.3in}>{\centering}p{.6in}>{\centering}p{.5in}>{\centering}p{.8in}>{\centering}p{.8in}>{\centering}p{.3in}>{\centering}p{.5in}}
+\begin{tabular}{>{\centering}p{.4in}>{\centering}p{.3in}>{\centering}p{.3in}>{\centering}p{.3in}>{\centering}p{.6in}>{\centering}p{.5in}>{\centering}p{.8in}>{\centering}p{.8in}>{\centering}p{.5in}}
   \hline
-Region & ID & Fleet & Years & Name & Fishery ind. & Filtering & Method & Rank & Endorsed \\ 
+Region & ID & Fleet & Years & Name & Fishery ind. & Filtering & Method & Endorsed \\ 
   \hline
-WA & 1 & 4 & 1981-2014 & Dockside CPUE & No & trip, area, month, Stephens-MacCall & delta-GLM (bin-gamma) & 1 & SSC \\ 
-  - & - & - & - & - & - & - & - & - & - \\ 
-  - & - & - & - & - & - & - & - & - & - \\ 
-  - & - & - & - & - & - & - & - & - & - \\ 
+WA & 1 & 4 & 1981-2014 & Dockside CPUE & No & trip, area, month, Stephens-MacCall & delta-GLM (bin-gamma) & SSC \\ 
+  - & - & - & - & - & - & - & - & - \\ 
+  - & - & - & - & - & - & - & - & - \\ 
+  - & - & - & - & - & - & - & - & - \\ 
    \hline
 \end{tabular}
 \end{table}
@@ -1775,7 +1780,7 @@ and open bubbles are negative residuals (observed \textless{} expected).
 \caption{Francis data weighting method TA1.8
 1\_WA\_SouthernWA\_Rec\_PCPR Suggested sample size adjustment (with 95\%
 interval) for len data from 1\_WA\_SouthernWA\_Rec\_PCPR: 0.9991
-(0.6694\_2.1596)
+(0.6666\_2.1943)
 \label{fig:mod1_4_comp_lenfit_data_weighting_TA1.8_1_WA_SouthernWA_Rec_PCPR}}
 \end{figure}
 
@@ -1809,7 +1814,7 @@ and open bubbles are negative residuals (observed \textless{} expected).
 \includegraphics{./r4ss/plots_mod1/comp_lenfit_data_weighting_TA1.8_3_WA_NorthernWA_Rec_PR.png}
 \caption{Francis data weighting method TA1.8 3\_WA\_NorthernWA\_Rec\_PR
 Suggested sample size adjustment (with 95\% interval) for len data from
-3\_WA\_NorthernWA\_Rec\_PR: 0.9797 (0.6276\_2.2231)
+3\_WA\_NorthernWA\_Rec\_PR: 0.9797 (0.657\_2.2699)
 \label{fig:mod1_8_comp_lenfit_data_weighting_TA1.8_3_WA_NorthernWA_Rec_PR}}
 \end{figure}
 
@@ -1846,6 +1851,8 @@ and open bubbles are negative residuals (observed \textless{} expected).
 \FloatBarrier
 
 \newpage
+
+\color{black}
 
 \section*{References}\label{references}
 \addcontentsline{toc}{section}{References}

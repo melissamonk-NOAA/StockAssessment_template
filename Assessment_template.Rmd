@@ -50,6 +50,7 @@ link-citations: yes
 \renewcommand{\thetable}{\alph{table}}
 
 
+
 #Executive Summary{-}
 
 ##Stock{-}
@@ -1196,17 +1197,14 @@ assessment team. Not required in draft assessment undergoing review.
 <!-- ***********MODEL 1 PARAMETERS***************************************** --> 
 \begin{landscape}
 ```{r, results='asis'}
-    # If you use this for more than one model = change mod1 to mod2 or mod3
+       # If you use this for more than one model = change mod1 to mod2 or mod3
     mod_params = mod1$parameters[-c(grep('Recr',mod1$parameters$Label),
-                                grep('Impl',mod1$parameters$Label)),
-                             c(1, 2, 3, 10, 6, 5, 9, 11, 12, 13, 7)]  
-    
-    # So that decimals won't show up in these columns and control digits
-    mod_params$Num = as.factor(mod_params$Num)
-    mod_params$Phase = as.factor(mod_params$Phase)
-    mod_params$Prior = round(mod_params$Prior, digits = 3)
-    mod_params$Pr_SD = round(mod_params$Pr_SD, digits = 3)
-    
+                                         grep('Impl',mod1$parameters$Label)),
+                                      (names(mod1$parameters) %in%
+                                         c("Num","Label","Value","Phase","Min",
+                                           "Max","Status","Parm_StDev",
+                                           "PR_type","Prior","Pr_SD"))]  
+
     # Combine bounds into one column
     mod_params$Min = paste('(', mod_params$Min, ', ', mod_params$Max, ')', sep='')
     
@@ -1225,11 +1223,11 @@ assessment team. Not required in draft assessment undergoing review.
     colnames(mod_params) = c('No.',
                              'Parameter',
                              'Value',
-                             'SD',
-                             'Bounds',
                              'Phase',
+                             'Bounds',
                              'Status',
-                             'Prior')
+                             'SD',
+                             'Prior (Exp.Val, SD) ')
 
     # Model 1 model parameters
     mod_params.table = xtable(mod_params, 
@@ -1242,10 +1240,23 @@ assessment team. Not required in draft assessment undergoing review.
                                               parameters are near bounds, and prior type
                                               information (mean, SD).'
                                               , sep='')), 
-                              label='tab:model_params')  
+                              label='tab:model_params',
+                              digits = c(0,0,0,3,0,3,0,3,0))  
 
     # Add alignment  
-    align(mod_params.table) = c('lrlrrcrcl')
+    align(mod_params.table) = c('lrlrrcccl')
+        # Add alignment  
+     # align(mod_params.table) = c('l',
+    #                                 '>{\\raggedright}p{.4in}',
+    #                                 '>{\\raggedright}p{.8in}',
+    #                                 '>{\\centering}p{.3in}',
+    #                                 '>{\\centering}p{.3in}',
+    #                                 '>{\\centering}p{.4in}',
+    #                                 '>{\\centering}p{.4in}', 
+    #                                 '>{\\centering}p{.4in}',
+    #                                 '>{\\centering}p{.4in}',
+    #                                '>{\\centering}p{.5in}',
+    #                                 '>{\\centering}p{.5in}')  
  
     # Add "continued on next page"" footnote   
     addtorow          <- list()
@@ -1287,7 +1298,6 @@ assessment team. Not required in draft assessment undergoing review.
                                   'Fishery ind.',
                                   'Filtering',
                                   'Method',	
-                                  'Rank',	
                                   'Endorsed')
 
    # Index of abundance summary, create table   
@@ -1307,7 +1317,6 @@ assessment team. Not required in draft assessment undergoing review.
                                      '>{\\centering}p{.5in}', 
                                      '>{\\centering}p{.8in}',
                                      '>{\\centering}p{.8in}',
-                                     '>{\\centering}p{.3in}',
                                      '>{\\centering}p{.5in}')  
     
     # Print index summary table
@@ -1573,7 +1582,7 @@ assessment team. Not required in draft assessment undergoing review.
                               caption = c('Projection of potential
                                         OFL, spawning biomass, and depletion for the
                                         base case model.'),
-                              label = 'tab:Forecast_mod1', digist = 2)
+                              label = 'tab:Forecast_mod1', digits = 2)
     # Add alignment
     align(Forecast_mod1.table) = c('l',
                                    'c',
@@ -1960,6 +1969,7 @@ assessment team. Not required in draft assessment undergoing review.
 <!-- ====================================================================== -->
 <!-- **********REFERENCES - WILL APPEAR AFTER APPENDICES******************* -->
 <!-- ====================================================================== -->
+\color{black}
 
 #References{-}
 \renewcommand{\thepage}{}
