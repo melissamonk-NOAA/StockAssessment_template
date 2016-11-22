@@ -55,7 +55,7 @@ Plot_catch = function(Catch_df) {
              ggplot(Catch_df, aes(x=Year, y=Removals,fill=Fleet)) +
              geom_area(position='stack') +
              scale_fill_manual(values=c('lightsteelblue3','coral')) +
-             scale_x_continuous(breaks=seq(Dat_start,Dat_end,20)) +
+             scale_x_continuous(breaks=seq(Dat_start_mod1, Dat_end_mod1, 20)) +
              ylab('Landings (mt)')
 }
 
@@ -106,6 +106,7 @@ for (model in 1:n_models) {
      mod=mod2
      mod_area='mod2'
     } else {
+      
      mod=mod3
      mod_area='mod3'
     }}
@@ -287,7 +288,7 @@ for (model in 1:n_models) {
   Recruityrs$upperCI <- exp(log(Recruityrs$Value) + qnorm(0.975)*Recruityrs$logint)
   
   Recruit_units <- "1,000s"
-  if(mean(Recruityrs$Value) > 1000){
+  if(mean(Recruityrs$Value) > 10000){
     Recruit_units <- "millions"
     Recruityrs$Value <- Recruityrs$Value/1000
     Recruityrs$lowerCI <- Recruityrs$lowerCI/1000
@@ -317,25 +318,24 @@ for (model in 1:n_models) {
 Recruit_mod1.table = xtable(Recruittab_mod1, 
                             caption = c(paste('Recent recruitment for the ', 
                                         mod1_label, '.', sep='')),
-                            label = 'tab:Recruit_mod1', digits = 2)     
+                            label = 'tab:Recruit_mod1', digits = 2)   
+
+align(Recruit_mod1.table) = c('l',
+                              '>{\\centering}p{.8in}',
+                              '>{\\centering}p{1.6in}',
+                              '>{\\centering}p{1.3in}')
         
-# Add alignment
-#align(Recruit_mod1.table) = c('l', 'l',
-#                              '>{\\centering}p{1in}',
-#                              '>{\\centering}p{1.2in}') 
-
-
-    
 # Model 2
 if (n_models >= 2) {
 Recruit_mod2.table = xtable(Recruittab_mod2, 
                             caption=c(paste('Recent recruitment for the ',
                                       mod2_label,'.',sep='')),
                             label='tab:Recruit_mod2', digits = 2) 
-# Add alignment       
-#align(Recruit_mod2.table) = c('l', 'l',
-#                              '>{\\centering}p{1in}',
-#                              '>{\\centering}p{1.2in}') 
+
+align(Recruit_mod2.table) = c('l',
+                              '>{\\centering}p{.8in}',
+                              '>{\\centering}p{1.6in}',
+                              '>{\\centering}p{1.3in}')
 }
 
 
@@ -345,10 +345,10 @@ Recruit_mod3.table = xtable(Recruittab_mod3,
                             caption=c(paste('Recent recruitment for the ', 
                                       mod3_label,'.',sep='')), 
                             label = 'tab:Recruit_mod3', digits = 2)  
-# Add alignment       
-#align(Recruit_mod3.table) = c('l', 'l',
-#                              '>{\\centering}p{1in}',
-#                              '>{\\centering}p{1.2in}') 
+align(Recruit_mod3.table) = c('l',
+                              '>{\\centering}p{.8in}',
+                              '>{\\centering}p{1.6in}',
+                              '>{\\centering}p{1.3in}')
 }
 
 # =============================================================================
@@ -645,9 +645,9 @@ if (n_models == 1) {
       
       #Turn into a dataframe and get the total
       OFL = as.data.frame(OFL_mod1)
-      OFL$Year=seq(Project_firstyr,Project_lastyr,1)
+      OFL$Year=seq(Project_firstyr,Project_lastyr, 1)
       OFL$Year = as.factor(OFL$Year)
-      OFL = OFL[,c(2,1)]
+      OFL = OFL[,c(2, 1)]
       colnames(OFL) = c('Year','OFL') 
 
 # Create the table
@@ -657,12 +657,12 @@ if (n_models == 1) {
 
 # For 2 models:
       if (n_models == 2) {
-        # Extract OFLs for next 10 years for each model
+        # Extract predicted OFLs for each model
         OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$LABEL),]
-        OFL_mod1 = OFL_mod1[c(-1,-2),2]
+        OFL_mod1 = OFL_mod1[, 2]
         
         OFL_mod2 = mod2$derived_quants[grep('OFL',mod2$derived_quants$LABEL),]
-        OFL_mod2 = OFL_mod2[c(-1,-2),2]
+        OFL_mod2 = OFL_mod2[, 2]
         
         # Turn into a dataframe and get the total
         OFL = as.data.frame(cbind(OFL_mod1, OFL_mod2))
@@ -682,13 +682,13 @@ if (n_models == 1) {
 if (n_models == 3) {
       # Extract OFLs for next 10 years for each model
       OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$LABEL),]
-      OFL_mod1 = OFL_mod1[c(-1,-2),2]
+      OFL_mod1 = OFL_mod1[, 2]
       
       OFL_mod2 = mod2$derived_quants[grep('OFL',mod2$derived_quants$LABEL),]
-      OFL_mod2 = OFL_mod2[c(-1,-2),2]
+      OFL_mod2 = OFL_mod2[, 2]
       
       OFL_mod3 = mod3$derived_quants[grep('OFL',mod3$derived_quants$LABEL),]
-      OFL_mod3 = OFL_mod3[c(-1,-2),2]
+      OFL_mod3 = OFL_mod3[, 2]
       
       #Turn into a dataframe and get the total
       OFL = as.data.frame(cbind(OFL_mod1, OFL_mod2, OFL_mod2))

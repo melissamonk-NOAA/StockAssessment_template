@@ -52,14 +52,14 @@ library(r4ss)
 
 # Give the names of the data and control files, for each model
 # Used in the SS_files_linebreaks.R
-mod1_dat =  'china_WAonly_data.ss'
-# mod2_dat = 'china_central_data.ss'
-# mod3_dat = 'china_south_data.ss'
+mod1_dat =  'china_WAonly_data.ss'  # 'BLK_WA_dat.ss'
+#mod2_dat =  'BLK_CA_dat.ss' #'china_central_data.ss'
+#mod3_dat =  'BLK_OR_dat.ss' #'china_south_data.ss'
 
 # Control file names 
-mod1_ctrl = 'china_WAonly_control.ss'
-# mod2_ctrl = 'china_central_control.ss'
-# mod3_ctrl = 'china_south_control.ss'
+mod1_ctrl = 'china_WAonly_control.ss'# 'BLK_WA_dat.ss' 
+#mod2_ctrl = 'BLK_CA_dat.ss' #'china_central_control.ss'
+#mod3_ctrl = 'BLK_OR_dat.ss' #'china_south_control.ss'
 
 # =============================================================================
 
@@ -167,7 +167,7 @@ source('./Rcode/SS_files_linebreaks.R')
 if(n_models > 1){
 
  # if you need to reload the workspace
- load("SS_output.RData")
+ load("./r4ss/SS_output.RData")
   
  # create base model summary list
  out.mod1 = mod1
@@ -177,10 +177,11 @@ if(n_models > 1){
  base.summary <- SSsummarize(list(out.mod1,out.mod2, out.mod3))
     
  # save results to this comparison directory  
+ dir.create(file.path(output.dir,'plots_compare'))
  dir.compare.plots <- file.path(getwd(),'/r4ss/plots_compare') 
     
  # vector of names and colors models as defined
- mod.names <- c("North","Central","South")
+ mod.names <- c("WA","CA","OR")
  mod.cols  <- c("blue", "purple", "red")
 } # end n_models if
 
@@ -204,7 +205,7 @@ SSplotComparisons(base.summary,
 SSplotComparisons(base.summary, 
                   plot = FALSE, 
                   print = TRUE, 
-                  plotdir = dir.plots,
+                  plotdir = dir.compare.plots,
                   subplot = 1:10,
                   spacepoints = 20,  # years between points on each line
                   initpoint = 0,     # "first" year of points (modular arithmetic)
@@ -217,7 +218,7 @@ SSplotComparisons(base.summary,
   
   
 # Plot comparison of growth curves --------------------------------------------
-png(file.path(dir.compare.plots, 'growth_comparison_June11_beta.png'),
+png(file.path(dir.compare.plots, 'growth_comparison.png'),
     width = 6.5, 
     height = 5, 
     res = 300, 

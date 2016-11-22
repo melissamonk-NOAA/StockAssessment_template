@@ -1,5 +1,5 @@
 ---
-title: 'Status of China Rockfish (*Sebastes nebulosus*) Along the U.S. Pacific Coast in x2015x'
+title: 'Status of China Rockfish (*Sebastes nebulosus*) Along the U.S. Pacific Coast in 2015'
 author: ''
 date: ''
 output:
@@ -59,7 +59,7 @@ for regional management.}
 
 This assessment reports the status of the `r spp` (\emph{`r spp.sci`}) resource 
 in U.S. waters off the coast of the California, Oregon, and Washington using data 
-through `r LastYR-1`.  Etc...
+through `r LastYR`.  Etc...
 
 
 
@@ -101,7 +101,12 @@ Catch table:                 (Table \ref{tab:Exec_catch})
       Plot_catch(Catch_df = Exec_region3_catch)
 ```
 
-![Landings history of `r spp`. \label{fig:r4ss_catches}](r4ss/plots_mod1/catch2 landings stacked.png)
+\FloatBarrier
+
+![Landings history of `r spp` in the `r mod1_label`. \label{fig:r4ss_catches}](r4ss/plots_mod1/catch2 landings stacked.png)
+
+
+
 
 
 <!-- ***********CATCH TABLE************************************************ -->
@@ -127,7 +132,7 @@ Catch table:                 (Table \ref{tab:Exec_catch})
 information, and information lacking.}
 
 `r spp` was assessed....  This assessment uses the newest version of Stock 
-Synthesis (3.24u).  The model begins in `r Dat_start`, and assumes the stock 
+Synthesis (3.xxx).  The model begins in `r Dat_start_mod1`, and assumes the stock 
 was at an unfished equilibrium that year.
 
 
@@ -278,7 +283,7 @@ A summary of `r spp` exploitation histories for base model is provided as Figure
 
 \FloatBarrier
 
-![Estimated spawning potential ratio (SPR) for the base-case model. One minus SPR is plotted so that higher exploitation rates occur on the upper portion of the y-axis. The management target is plotted as a red horizontal line and values above this reflect harvests in excess of the overfishing proxy based on the SPR\textsubscript{50\%} harvest rate. The last year in the time series is `r Dat_end`. \label{fig:SPR_all}](`r SPR.file`)
+![Estimated spawning potential ratio (SPR) for the base-case model. One minus SPR is plotted so that higher exploitation rates occur on the upper portion of the y-axis. The management target is plotted as a red horizontal line and values above this reflect harvests in excess of the overfishing proxy based on the SPR\textsubscript{50\%} harvest rate. The last year in the time series is `r Dat_end_mod1`. \label{fig:SPR_all}](`r SPR.file`)
 
 
 ![Phase plot of estimated relative (1-SPR) vs. relative spawning biomass for the base case model. The relative (1-SPR) is (1-SPR) divided by 50\% (the SPR target). Relative depletion is the annual spawning biomass divided by the unfished spawning biomass. \label{fig:Phase_all}](`r Phase.file`)
@@ -513,7 +518,7 @@ if(n_models == 3){
 ```
 <!-- ***********Edit caption based on fixed params************************* -->
 
-![Equilibrium yield curve for the base case model. Values are based on the `r Dat_end` fishery selectivity and with steepness fixed at... \label{fig:Yield_all}](`r yield.file`)
+![Equilibrium yield curve for the base case model. Values are based on the `r Dat_end_mod1` fishery selectivity and with steepness fixed at... \label{fig:Yield_all}](`r yield.file`)
 
 <!-- ***********END EXECUTIVE SUMMARY RESULTS SUMMARY TABLE AND YIELD CURVE -->
 
@@ -1404,15 +1409,15 @@ assessment team. Not required in draft assessment undergoing review.
     
     # Total biomass, extract and subset
     Bio_all = mod1$sprseries[, c('Year', 'Bio_all')]
-    Bio_allyrs = subset(Bio_all, Year > (Dat_start - 1) & Year < (Dat_end + 1))
-    Bio_allyrs$Bio_all = round(Bio_allyrs$Bio_all, 0)
+    Bio_allyrs = subset(Bio_all, Year > (Dat_start_mod1 - 1) & Year < (LastYR + 1))
+
   
   
     # Spawning biomass, extract and subset, and turn into scientific notation
     SpawningB = mod1$derived_quants[grep('SPB', mod1$derived_quants$LABEL), ]
     SpawningB = SpawningB[c(-1, -2), ]
-    SpawningByrs = SpawningB[SpawningB$LABEL >= paste('SPB_', Dat_start, sep='') &  
-                             SpawningB$LABEL <= paste('SPB_', Dat_end, sep=''), ] 
+    SpawningByrs = SpawningB[SpawningB$LABEL >= paste('SPB_', Dat_start_mod1, sep='') &  
+                             SpawningB$LABEL <= paste('SPB_', LastYR, sep=''), ] 
         
         SpawningB_units = ''
         if(mean(SpawningByrs$Value) > 1000000){
@@ -1422,12 +1427,12 @@ assessment team. Not required in draft assessment undergoing review.
 
     
     # Depletion, extract, rename and subset
-    Depl_years = as.data.frame(seq(Dat_start, Dat_end, 1))
+    Depl_years = as.data.frame(seq(Dat_start_mod1, LastYR, 1))
     colnames(Depl_years) = 'Year'
     Depl_years$Depl = 0
     Depletion = mod1$derived_quants[grep('Bratio', mod1$derived_quants$LABEL), ]
-    Depletionyrs = Depletion[Depletion$LABEL >= paste('Bratio_', Dat_start, sep = '') &  
-                             Depletion$LABEL <= paste('Bratio_', Dat_end, sep = ''), ]
+    Depletionyrs = Depletion[Depletion$LABEL >= paste0('Bratio_', Dat_start_mod1) &  
+                             Depletion$LABEL <= paste0('Bratio_', LastYR), ]
     
     Depletionyrs$Year = Depletionyrs$Label1 = substr(Depletionyrs$LABEL,
                                                      (nchar(Depletionyrs$LABEL) + 1) - 4, 
@@ -1441,24 +1446,24 @@ assessment team. Not required in draft assessment undergoing review.
    # Recruits, extract and subset
    Recruit = mod1$derived_quants[grep('Recr', mod1$derived_quants$LABEL), ]
    Recruit = Recruit[c(-1, -2), ]
-   Recruityrs = Recruit[Recruit$LABEL >= paste('Recr_', Dat_start, sep='') &  
-                        Recruit$LABEL <= paste('Recr_', Dat_end, sep=''), ]  
+   Recruityrs = Recruit[Recruit$LABEL >= paste('Recr_', Dat_start_mod1, sep='') &  
+                        Recruit$LABEL <= paste('Recr_', LastYR, sep=''), ]  
     
     
    # Landings/total catch, extract and subset years
    Landings = mod1$sprseries[ , c('Year','Dead_Catch_B')]
-   Landingsyrs = subset(Landings, Year > (Dat_start - 1) & Year < (Dat_end + 1))
+   Landingsyrs = subset(Landings, Year > (Dat_start_mod1 - 1) & Year < (LastYR + 1))
     
   
     
    # Relatvie exploitation rate, extract, subset and merge
    Exploit = mod1$derived_quants[grep('F', mod1$derived_quants$LABEL), ]
    Exploit = Exploit[c(-1, -2), ]
-   Exploityrs = Exploit[Exploit$LABEL >= paste('F_', Dat_start, sep = '') &  
-                        Exploit$LABEL <= paste('F_', Dat_end, sep = ''), ]  
+   Exploityrs = Exploit[Exploit$LABEL >= paste('F_', Dat_start_mod1, sep = '') &  
+                        Exploit$LABEL <= paste('F_', LastYR, sep = ''), ]  
    Exploityrs$Year = Exploityrs$Label1 = substr(Exploityrs$LABEL, 
                                                (nchar(Exploityrs$LABEL) + 1) - 4,
-                                               nchar(Exploityrs$LABEL))
+                                                nchar(Exploityrs$LABEL))
    Exploityrs$Year = as.numeric(Exploityrs$Year)
    Exploited = merge(Depl_years, Exploityrs, all.x=T, all.y=T, by.x='Year', by.y='Year')
    Exploited[is.na(Exploited)] <- 0
@@ -1466,18 +1471,18 @@ assessment team. Not required in draft assessment undergoing review.
     
   # SPR, extract and subset years
   SPR = mod1$sprseries[, c('Year', 'SPR')]
-  SPRyrs = subset(SPR, Year > (Dat_start - 1) & Year < (Dat_end + 1))
+  SPRyrs = subset(SPR, Year > (Dat_start_mod1 - 1) & Year < (LastYR + 1))
   
   
   # Bind all the columns together for the table
-  Timeseries = as.data.frame(cbind(seq(Dat_start, Dat_end, 1), 
+  Timeseries = as.data.frame(cbind(seq(Dat_start_mod1, LastYR, 1), 
                                        Bio_allyrs$Bio_all, 
-                                       round(SpawningByrs$Value, 0),
-                                       round(Depleteyrs$total, 2),
+                                       SpawningByrs$Value,
+                                       Depleteyrs$total,
                                        Recruityrs$Value, 
                                        Landingsyrs$Dead_Catch_B, 
-                                       round(Exploited$total,2),
-                                       round(SPRyrs$SPR, 2)))
+                                       Exploited$total,
+                                       SPRyrs$SPR))
 
  # Add colulmn names    
  colnames(Timeseries)=c('Year', 
@@ -1652,8 +1657,7 @@ assessment team. Not required in draft assessment undergoing review.
 <!-- *************************Data FIGURES********************************* --> 
 <!-- ********************************************************************** -->
 
-![Summary of data sources used in the northern assessment. \label{fig:data_plot}](r4ss/plots_mod1/data_plot.png)
-
+![Summary of data sources used in the `r mod1_label`. \label{fig:data_plot}](r4ss/plots_mod1/data_plot.png)
 
 
 
