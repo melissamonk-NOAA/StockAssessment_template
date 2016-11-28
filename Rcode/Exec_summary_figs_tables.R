@@ -691,7 +691,7 @@ if (n_models == 3) {
       OFL_mod3 = OFL_mod3[, 2]
       
       #Turn into a dataframe and get the total
-      OFL = as.data.frame(cbind(OFL_mod1, OFL_mod2, OFL_mod2))
+      OFL = as.data.frame(cbind(OFL_mod1, OFL_mod2, OFL_mod3))
       OFL$Total = rowSums(OFL)
       OFL$Year=seq(Project_firstyr,Project_lastyr,1)
       OFL$Year = as.factor(OFL$Year)
