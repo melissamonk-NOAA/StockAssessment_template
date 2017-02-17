@@ -20,7 +20,7 @@ rm(list=ls(all=TRUE))
 
 # SECTION1: Run r4ss, parse plotInfoTable.csv file, & add linebreaks to SS files
 
-stop("\n  This file should not be sourced!") # note to stop from accidental sourcing
+#stop("\n  This file should not be sourced!") # note to stop from accidental sourcing
 
 # Here we're going to make sure you have all the required packages for the template
 # Check for installtion and make sure all R libraries can be loaded
@@ -28,7 +28,9 @@ stop("\n  This file should not be sourced!") # note to stop from accidental sour
 # dataframes, scales for printing percents
 # You may have to manually install knitr - reason unknown!
 
-requiredPackages = c('xtable', 'ggplot2', 'reshape2', 'scales', 'rmarkdown', 'knitr', 'devtools')
+requiredPackages = c('xtable', 'ggplot2', 'reshape2', 'scales', 
+                     'rmarkdown', 'knitr', 'devtools')
+
 for(p in requiredPackages){
   if(!require(p,character.only = TRUE)) install.packages(p)
   library(p,character.only = TRUE)
@@ -52,14 +54,14 @@ library(r4ss)
 
 # Give the names of the data and control files, for each model
 # Used in the SS_files_linebreaks.R
-mod1_dat =  'china_WAonly_data.ss'  # 'BLK_WA_dat.ss'
-#mod2_dat =  'BLK_CA_dat.ss' #'china_central_data.ss'
-#mod3_dat =  'BLK_OR_dat.ss' #'china_south_data.ss'
+mod1_dat =  'china_WAonly_data.ss'  
+mod2_dat =  'china_central_data.ss'
+mod3_dat =  'china_south_data.ss'
 
 # Control file names 
-mod1_ctrl = 'china_WAonly_control.ss'# 'BLK_WA_dat.ss' 
-#mod2_ctrl = 'BLK_CA_dat.ss' #'china_central_control.ss'
-#mod3_ctrl = 'BLK_OR_dat.ss' #'china_south_control.ss'
+mod1_ctrl = 'china_WAonly_control.ss' 
+mod2_ctrl = 'china_central_control.ss'
+mod3_ctrl = 'china_south_control.ss'
 
 # =============================================================================
 
@@ -78,10 +80,10 @@ dir.create(file.path(output.dir,'plots_mod3'))
 # BEGIN r4ss===================================================================
 # REMOVE OLD r4SS OUTPUT!!!!! -------------------------------------------------
 # Run this deliberately - it deletes the r4SS output plots files
-do.call(file.remove, list(list.files(file.path(output.dir,'plots_mod1'), full.names=TRUE)))
-do.call(file.remove, list(list.files(file.path(output.dir,'plots_mod2'), full.names=TRUE)))
-do.call(file.remove, list(list.files(file.path(output.dir,'plots_mod3'), full.names=TRUE)))
-
+do.call(file.remove, list(list.files(file.path(output.dir, 'plots_mod1'),    full.names=TRUE)))
+do.call(file.remove, list(list.files(file.path(output.dir, 'plots_mod2'),    full.names=TRUE)))
+do.call(file.remove, list(list.files(file.path(output.dir, 'plots_mod3'),    full.names=TRUE)))
+do.call(file.remove, list(list.files(file.path(output.dir, 'plots_compare'), full.names=TRUE)))
 
 # Run r4ss for each model - **CHANGE DIRECTORY if necessary**
                mod1 = SS_output(dir = file.path(input.dir,'Base_model1'), forecast=T, covar=T, ncol=1000)
@@ -163,6 +165,9 @@ source('./Rcode/SS_files_linebreaks.R')
 
 
 # SECTION 2: COMPARISON PLOTS ACROSS MODELS ===================================
+# IT it not recommended to blindly run this section.  You'll need to change names,
+# possibly margins, etc!!!
+
 
 if(n_models > 1){
 
@@ -172,9 +177,14 @@ if(n_models > 1){
  # create base model summary list
  out.mod1 = mod1
  out.mod2 = mod2
- out.mod3 = mod3
-      
- base.summary <- SSsummarize(list(out.mod1,out.mod2, out.mod3))
+if(n_models==3) {out.mod3 = mod3}
+     
+ 
+# base.summary <-  SSsummarize(list(out.mod1, out.mod2))
+ 
+ 
+ base.summary <-  ifelse(n_models==2,SSsummarize(list(out.mod1, out.mod2)),
+                                     SSsummarize(list(out.mod1, out.mod2 , out.mod3)))
     
  # save results to this comparison directory  
  dir.create(file.path(output.dir,'plots_compare'))
@@ -233,11 +243,13 @@ SSplotBiology(out.mod2,
               subplot = 1, 
               add = TRUE)
       
-SSplotBiology(out.mod3, 
+if(n_models>2){
+  SSplotBiology(out.mod3, 
               colvec = c(mod.cols[3], NA, NA), 
               subplot = 1, 
               add = TRUE)
- 
+}
+
 # legend to cover up non-useful Females/Males default legend
 legend('topleft', legend = mod.names, col = mod.cols, lwd = 3, bg = 'white')
  
@@ -246,7 +258,7 @@ dev.off()
 
 
 # Plot comparison of yield curves ---------------------------------------------
-png(file.path(dir.compare.plots, 'yield_comparison_3_models.png'),
+png(file.path(dir.compare.plots, 'yield_comparison_n_models.png'),
     width = 6.5, 
     height = 6.5, 
     res = 300, 
@@ -254,12 +266,21 @@ png(file.path(dir.compare.plots, 'yield_comparison_3_models.png'),
     pointsize = 10)
 par(las = 1)
 
-SSplotYield(out.mod3, col = mod.cols[3], subplot = 1)
 
-grid()
+if(n_models==2){
+  SSplotYield(out.mod2, col = mod.cols[2], subplot = 1)
+  grid()
+  SSplotYield(out.mod1, col = mod.cols[1], subplot = 1, add = TRUE)
+}
 
-SSplotYield(out.mod2, col = mod.cols[2], subplot = 1, add = TRUE)
-SSplotYield(out.mod1, col = mod.cols[1], subplot = 1, add = TRUE)
+if(n_models==3){
+  SSplotYield(out.mod3, col = mod.cols[3], subplot = 1)
+  grid()
+  SSplotYield(out.mod2, col = mod.cols[2], subplot = 1)
+  SSplotYield(out.mod1, col = mod.cols[1], subplot = 1, add = TRUE)
+  
+}
+
 
 # legend to cover up non-useful Females/Males default legend
 legend('topright', legend = mod.names, col = mod.cols, lwd = 3, bg = 'white', bty = 'n')

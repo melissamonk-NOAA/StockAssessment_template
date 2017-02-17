@@ -64,7 +64,7 @@ Table 33. California CalCOM biological sample sizes
 Table 1. Oregon commercial removals- LONGTABLE EXAMPLE-->
 
 ```{r, results='asis'}
-OR_comm_removal = read.csv('./txt_files/1_OR_comm_removals.csv')
+OR_comm_removal = read.csv('./txt_files/01_OR_comm_removals.csv')
 colnames(OR_comm_removal) = c('Year','Southern Dead','Northern Dead',
                               'Southern Live','Northern Live',
                               'Total Removals','Source')
@@ -104,7 +104,7 @@ print(OR_comm_removal.table,
 Table 3. WCGOP estimated discard --> 
 
 ```{r, results = 'asis'}
-WCGOP_trip_discard = read.csv('./txt_files/3_WCGOP_trips.csv')
+WCGOP_trip_discard = read.csv('./txt_files/03_WCGOP_trips.csv')
 colnames(WCGOP_trip_discard) = c('Year','Area','Estimated total discard (mt)',
                                  'CV of total discard','Estimated dead discard (mt)',
                                  'Estimated mortality fraction',
@@ -152,7 +152,7 @@ print(WCGOP_trip_discard.table,
 Table 5. Washington recreational removals --> 
 ```{r, results='asis'}
     # Read in the data and edit column names 
-    WA_rec_removal = read.csv('./txt_files/5_WA_rec_removals.csv')
+    WA_rec_removal = read.csv('./txt_files/05_WA_rec_removals.csv')
     colnames(WA_rec_removal) = c('Year','Southern PC','Southern PR','Northern PC',
                                  'Northern PR','Total Removals')
 
@@ -185,7 +185,7 @@ Table 5. Washington recreational removals -->
 Table 6. Oregon recreational removals -->
 ```{r, results='asis'}
     # Read in OR sport remove data
-    Or_rec_removal = read.csv('./txt_files/6_OR_rec_removals.csv')
+    Or_rec_removal = read.csv('./txt_files/06_OR_rec_removals.csv')
 
     colnames(Or_rec_removal) = c('Year', 'Charter North',	'Charter South',	
                                  'Private North',	'Private South',	'Total North',
@@ -220,7 +220,7 @@ Table 6. Oregon recreational removals -->
 <!--===========================================================================
 Table 7. California recreational removals --> 
 ```{r, results='asis'}
-    CA_rec_removal = read.csv('./txt_files/7_CA_rec_removals.csv')
+    CA_rec_removal = read.csv('./txt_files/07_CA_rec_removals.csv')
     
     colnames(CA_rec_removal) = c('Year','South of $40^\\circ 10^\\prime$ PC',
                                  'South of $40^\\circ 10^\\prime$ PR',

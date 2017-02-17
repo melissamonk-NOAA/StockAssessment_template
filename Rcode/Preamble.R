@@ -32,7 +32,7 @@ min_age = "1+"
 
 
 # number of independent assessment models to include in the document
-n_models = 1
+n_models = 1 
 
 
 # model names; if you only have one model the label will just be "model"
@@ -56,19 +56,19 @@ if(fecund == 'numbers'){fecund_unit='billion eggs'} else {fecund_unit = 'mt'}
 # Change these years either here or in the table code if you need to
 
 # First and last years of model model 1
-Dat_start_mod1 =  mod1$startyr #min(mod1$MGparmAdj$Year)       # year model 1 data starts 
-Dat_end_mod1   =  mod1$endyr #max(mod1$MGparmAdj$Year)       # year model 1 data ends
+Dat_start_mod1 =  mod1$startyr          # year model 1 data starts 
+Dat_end_mod1   =  mod1$endyr            # year model 1 data ends
 
 # First and last years of model 2
 if(n_models>1){
-   Dat_start_mod2  = min(mod2$MGparmAdj$Year)       # year model 2 data starts 
-   Dat_end_mod2    = max(mod2$MGparmAdj$Year)      # year model 2 data ends
+   Dat_start_mod2  = mod2$startyr      # year model 2 data starts 
+   Dat_end_mod2    = mod2$endyr        # year model 2 data ends
 }
 
 # First and last years of model 3
 if(n_models>2){
-   Dat_start_mod3 = min(mod3$MGparmAdj$Year)       # year model 3 data starts 
-   Dat_end_mod3   = max(mod3$MGparmAdj$Year)       # year model 3 data ends
+   Dat_start_mod3 = mod2$startyr       # year model 3 data starts 
+   Dat_end_mod3   = mod3$endyr         # year model 3 data ends
 }
 
 # First and last years for the the "recent" 10 years data tables  

@@ -513,7 +513,7 @@ if(n_models == 3){
    if(n_models == 1) {
      yield.file  = 'r4ss/plots_mod1/yield1_yield_curve.png'
     } else {
-     yield.file  = 'r4ss/plots_compare/yield_comparison_3_models.png'
+     yield.file  = 'r4ss/plots_compare/yield_comparison_n_models.png'
    }
 ```
 <!-- ***********Edit caption based on fixed params************************* -->
