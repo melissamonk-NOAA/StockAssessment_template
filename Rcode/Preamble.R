@@ -56,8 +56,8 @@ if(fecund == 'numbers'){fecund_unit='billion eggs'} else {fecund_unit = 'mt'}
 # Change these years either here or in the table code if you need to
 
 # First and last years of model model 1
-Dat_start_mod1 = min(mod1$MGparmAdj$Year)       # year model 1 data starts 
-Dat_end_mod1   = max(mod1$MGparmAdj$Year)       # year model 1 data ends
+Dat_start_mod1 =  mod1$startyr #min(mod1$MGparmAdj$Year)       # year model 1 data starts 
+Dat_end_mod1   =  mod1$endyr #max(mod1$MGparmAdj$Year)       # year model 1 data ends
 
 # First and last years of model 2
 if(n_models>1){
@@ -71,9 +71,9 @@ if(n_models>2){
    Dat_end_mod3   = max(mod3$MGparmAdj$Year)       # year model 3 data ends
 }
 
-# First and last years for the the "recent"  10 years data tables  
-FirstYR = Dat_end_mod1 - 8       # first year of recent     
-LastYR  = Dat_end_mod1 + 1       # last year   
+# First and last years for the the "recent" 10 years data tables  
+FirstYR = mod1$endyr - 9 #Dat_end_mod1 - 8       # first year of recent     
+LastYR  = mod1$endyr     #Dat_end_mod1 + 1       # last year   
 
 # Projection years - years where Era is "forecast"
 Project_firstyr = min(mod1$timeseries$Yr[mod1$timeseries$Era=='FORE'])

@@ -117,10 +117,10 @@ for (model in 1:n_models) {
      
       
   # Spawning biomass and std.dev data, calculate lower and upper 95% CI                 
-  SpawningByrs = SpawningB[SpawningB$LABEL >= paste('SPB_', FirstYR,sep='') 
-                         & SpawningB$LABEL <= paste('SPB_', LastYR,sep=''), ]     
+  SpawningByrs = SpawningB[SpawningB$LABEL >= paste('SPB_', FirstYR+1,sep='') 
+                         & SpawningB$LABEL <= paste('SPB_', LastYR+1,sep=''), ]     
   
-  SpawningByrs$YEAR = seq(FirstYR, LastYR)
+  SpawningByrs$YEAR = seq(FirstYR+1, LastYR+1)
   
   SpawningByrs$lowerCI = round(SpawningByrs$Value + 
                                  qnorm(0.025) * SpawningByrs$StdDev, 
@@ -149,10 +149,10 @@ for (model in 1:n_models) {
   Depletion = Depletion[c(-1, -2), ]
      
   # Estimated depletion, pull out correct years, list years, and estimate 95% CI
-  Depletionyrs = Depletion[Depletion$LABEL >= paste('Bratio_', FirstYR,sep='') &
-                           Depletion$LABEL <= paste('Bratio_', LastYR,sep=''), ]     
+  Depletionyrs = Depletion[Depletion$LABEL >= paste('Bratio_', FirstYR+1,sep='') &
+                           Depletion$LABEL <= paste('Bratio_', LastYR+1,sep=''), ]     
   
-  Depletionyrs$YEAR = seq(FirstYR, LastYR)
+  Depletionyrs$YEAR = seq(FirstYR+1, LastYR+1)
   
   Depletion$Value = round(Depletion$Value, digits=3)
   
@@ -276,10 +276,10 @@ for (model in 1:n_models) {
   Recruit = Recruit[c(-1,-2),]
   
   # Recruitment and std.dev data, calculate lower and upper 95% CI                 
-  Recruityrs = Recruit[Recruit$LABEL >= paste('Recr_', FirstYR, sep = '') &  
-                       Recruit$LABEL <= paste('Recr_', LastYR, sep = ''), ]     
+  Recruityrs = Recruit[Recruit$LABEL >= paste('Recr_', FirstYR+1, sep = '') &  
+                       Recruit$LABEL <= paste('Recr_', LastYR+1, sep = ''), ]     
   
-  Recruityrs$YEAR = seq(FirstYR, LastYR)
+  Recruityrs$YEAR = seq(FirstYR+1, LastYR+1)
   
   # assume recruitments have log-normal distribution 
   # from first principals (multiplicative survival probabilities)
@@ -376,10 +376,10 @@ for (model in 1:n_models) {
   SPRratio = SPRratio[c(-1,-2),]
         
   # Exploitation and calculate lower and upper 95% CI                 
-  Exploityrs = Exploit[Exploit$LABEL >= paste('F_', FirstYR-1, sep='') &
-                       Exploit$LABEL <= paste('F_', LastYR-1, sep=''), ]     
+  Exploityrs = Exploit[Exploit$LABEL >= paste('F_', FirstYR, sep='') &
+                       Exploit$LABEL <= paste('F_', LastYR, sep=''), ]     
   
-  Exploityrs$YEAR = seq(FirstYR-1, LastYR-1)
+  Exploityrs$YEAR = seq(FirstYR, LastYR)
   
   Exploityrs$lowerCI = round(Exploityrs$Value +
                             qnorm(0.025) * Exploityrs$StdDev, digits = 2)
@@ -395,10 +395,10 @@ for (model in 1:n_models) {
         
         
   # Spawning potential ratio and calculate lower and upper 95% CI  
-  SPRratioyrs = SPRratio[SPRratio$LABEL >= paste('SPRratio_', FirstYR-1, sep='') 
-                       & SPRratio$LABEL <= paste('SPRratio_', LastYR-1, sep=''), ]     
+  SPRratioyrs = SPRratio[SPRratio$LABEL >= paste('SPRratio_', FirstYR, sep='') 
+                       & SPRratio$LABEL <= paste('SPRratio_', LastYR, sep=''), ]     
   
-  SPRratioyrs$Year = seq(FirstYR-1, LastYR-1)
+  SPRratioyrs$Year = seq(FirstYR, LastYR)
   
   SPRratioyrs$lowerCI = round(SPRratioyrs$Value +
                               qnorm(0.025) * SPRratioyrs$StdDev, digits = 2)
@@ -861,13 +861,13 @@ mngmt = mngmt[,-1]
     
 # Model 1
   # SPR ratio and exploitation
-  SPRratio_Exploit_mod1 = SPRratio_Exploit_mod1[,c(2,4)]
+  SPRratio_Exploit_mod1 = SPRratio_Exploit_mod1[2:nrow(SPRratio_Exploit_mod1),c(2,4)]
   SPRratio_Exploit_mod1[,c(1,2)] = round(SPRratio_Exploit_mod1[,c(1,2)],2)
-  SPRratio_Exploit_mod1 = SPRratio_Exploit_mod1[-dim(SPRratio_Exploit_mod1)[1],]
 
   # SPR blanks for the last year
   blanks = c(NA,NA)
   SPRratio_Exploit_mod1 = rbind(SPRratio_Exploit_mod1,blanks)
+  rownames(SPRratio_Exploit_mod1)[10]='Lastyear'
   
   # Age 5+ biomass
   Age5biomass_mod1 = mod1$timeseries[,c('Yr','Bio_smry')]
@@ -945,11 +945,10 @@ mod3_summary = cbind(SPRratio_Exploit_mod3,Age5biomassyrs_mod3,SpawnDeplete_mod3
 # ONE MODEL
 if (n_models == 1) {
   # Bind data from all three models together
-  base_summary = cbind(mngmt,mod1_summary)
-  
-  
+  base_summary1 = as.data.frame(cbind(mngmt,mod1_summary))
+
   # Transpose the dataframe to create the table and create data labels  
-  base_summary = as.data.frame(t(base_summary))
+  base_summary = as.data.frame(t(base_summary1))
   base_summary$names=c('Landings (mt)',
                        'Total Est. Catch (mt)',
                        'OFL (mt)', 
@@ -965,34 +964,34 @@ if (n_models == 1) {
                        'Recruits',
                        '~95\\% CI')
   
-  base_summary = base_summary[,c(11,10,1:9)]
-  colnames(base_summary) = c('Quantity',seq(FirstYR,LastYR))
+  base_summary = base_summary[,c(ncol(base_summary),1:(ncol(base_summary)-1))]
+  colnames(base_summary) = c('Quantity',seq(FirstYR+1,LastYR+1))
   
-  # Create the table
-  base_summary.table = xtable(base_summary, caption=c('Base case results summary.'), 
-                              label='tab:base_summary',digits=0) 
-  # Add alignment   
+  # # Create the table``
+  base_summary.table = xtable(base_summary, caption=c('Base case results summary.'),
+                              label='tab:base_summary',digits=0)
+  # # Add alignment   
   align(base_summary.table) = c('l',
-                                'r', 
+                                'r',
                                 '>{\\centering}p{1.1in}',
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}')    
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}')
 }
   # TWO MODELS
 if (n_models == 2) {
   # Bind data from all three models together
-  base_summary = cbind(mngmt,mod1_summary, mod2_summary)
+  base_summary1 = as.data.frame(cbind(mngmt,mod1_summary, mod2_summary))
   
   
   # Transpose the dataframe to create the table and create data labels  
-  base_summary = as.data.frame(t(base_summary))
+  base_summary = as.data.frame(t(base_summary1))
   base_summary$names=c('Landings (mt)',
                        'Total Est. Catch (mt)',
                        'OFL (mt)', 
@@ -1022,35 +1021,39 @@ if (n_models == 2) {
                           'Model 1','Base Case','','','','','','','',
                           'Model 2','Base Case','','','','','','','' )
   
-  base_summary = base_summary[,c(12,11,1:10)]
-  colnames(base_summary) = c('Model Region','Quantity',seq(FirstYR,LastYR))
+  base_summary = base_summary[,c(ncol(base_summary),
+                                 (ncol(base_summary)-1),
+                                1:(ncol(base_summary)-2))]
   
-  # Create the table
-  base_summary.table = xtable(base_summary, caption=c(paste(spp,' base case results summary.',sep='')), 
-                              label='tab:base_summary',digits=0) 
-  # Add alignment   
+  colnames(base_summary) = c('Model Region','Quantity',seq(FirstYR+1,LastYR+1))
+  
+  # # Create the table
+  base_summary.table = xtable(base_summary, caption=c(paste(spp,' base case results summary.',sep='')),
+                              label='tab:base_summary',digits=0)
+  # # Add alignment   
   align(base_summary.table) = c('l',
                                 'r',
-                                'r', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}')    
+                                'r',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}')
 }
 #THREE MODELS 
 if (n_models == 3) {
 # Bind data from all three models together
-base_summary = cbind(mngmt,mod1_summary, mod2_summary, mod3_summary)
+base_summary1 = as.data.frame(cbind(mngmt,mod1_summary, mod2_summary, mod3_summary))
     
     
 # Transpose the dataframe to create the table and create data labels  
-base_summary = as.data.frame(t(base_summary))
+base_summary = as.data.frame(t(base_summary1))
+
 base_summary$names=c('Landings (mt)',
                      'Total Est. Catch (mt)',
                      'OFL (mt)', 
@@ -1091,8 +1094,13 @@ base_summary$region = c('','','','',
                         'Model 2','Base Case','','','','','','','',
                         'Model 3','Base Case','','','','','','','')
 
-base_summary = base_summary[,c(12,11,1:10)]
-colnames(base_summary) = c('Region','Quantity',seq(FirstYR,LastYR))
+base_summary = base_summary[,c(ncol(base_summary),
+                              (ncol(base_summary)-1),
+                              1:(ncol(base_summary)-2))]
+
+colnames(base_summary) = c('Model Region','Quantity',seq(FirstYR+1,LastYR+1))
+
+
 
 # Create the table
 base_summary.table = xtable(base_summary, caption=c('Base case results summary.'), 
@@ -1111,4 +1119,5 @@ align(base_summary.table) = c('l',
                               '>{\\centering}p{1.1in}', 
                               '>{\\centering}p{1.1in}', 
                               '>{\\centering}p{1.1in}')  
+
 }
