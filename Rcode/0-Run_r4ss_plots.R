@@ -20,7 +20,7 @@ rm(list=ls(all=TRUE))
 
 # SECTION1: Run r4ss, parse plotInfoTable.csv file, & add linebreaks to SS files
 
-#stop("\n  This file should not be sourced!") # note to stop from accidental sourcing
+stop("\n  This file should not be sourced!") # note to stop from accidental sourcing
 
 # Here we're going to make sure you have all the required packages for the template
 # Check for installtion and make sure all R libraries can be loaded
