@@ -67,7 +67,7 @@ if(n_models>1){
 
 # First and last years of model 3
 if(n_models>2){
-   Dat_start_mod3 = mod2$startyr       # year model 3 data starts 
+   Dat_start_mod3 = mod3$startyr       # year model 3 data starts 
    Dat_end_mod3   = mod3$endyr         # year model 3 data ends
 }
 

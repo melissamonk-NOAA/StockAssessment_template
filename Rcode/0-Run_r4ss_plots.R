@@ -183,8 +183,8 @@ if(n_models==3) {out.mod3 = mod3}
 # base.summary <-  SSsummarize(list(out.mod1, out.mod2))
  
  
- base.summary <-  ifelse(n_models==2,SSsummarize(list(out.mod1, out.mod2)),
-                                     SSsummarize(list(out.mod1, out.mod2 , out.mod3)))
+ base.summary <-  if (n_models==2) {SSsummarize(list(out.mod1, out.mod2))} else
+                   {SSsummarize(list(out.mod1, out.mod2 , out.mod3))}
     
  # save results to this comparison directory  
  dir.create(file.path(output.dir,'plots_compare'))
@@ -276,7 +276,7 @@ if(n_models==2){
 if(n_models==3){
   SSplotYield(out.mod3, col = mod.cols[3], subplot = 1)
   grid()
-  SSplotYield(out.mod2, col = mod.cols[2], subplot = 1)
+  SSplotYield(out.mod2, col = mod.cols[2], subplot = 1, add = TRUE)
   SSplotYield(out.mod1, col = mod.cols[1], subplot = 1, add = TRUE)
   
 }

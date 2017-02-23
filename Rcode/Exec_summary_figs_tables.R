@@ -641,7 +641,7 @@ align(mngmnt.table) = c('l',
 if (n_models == 1) {
 # Extract OFLs for next 10 years for each model
       OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$LABEL),]
-      OFL_mod1 = OFL_mod1[, 2]    #OFL_mod1[c(-1,-2),2]
+      OFL_mod1 = OFL_mod1[, 2]    
       
       #Turn into a dataframe and get the total
       OFL = as.data.frame(OFL_mod1)
@@ -651,7 +651,8 @@ if (n_models == 1) {
       colnames(OFL) = c('Year','OFL') 
 
 # Create the table
-      OFL.table = xtable(OFL, caption=c('Projections of potential OFL (mt) for each model, using the base model forecast.'),
+      OFL.table = xtable(OFL, caption=c('Projections of potential OFL (mt) for 
+                                        each model, using the base model forecast.'),
                   label = 'tab:OFL_projection')
 }
 
@@ -699,7 +700,8 @@ if (n_models == 3) {
       colnames(OFL) = c('Year','North','Central','South','Total') 
       
       # Create the table
-      OFL.table = xtable(OFL, caption=c('Projections of potential OFL (mt) for each model, using the base model forecast.'),
+      OFL.table = xtable(OFL, caption=c('Projections of potential OFL (mt) for 
+                                        each model, using the base model forecast.'),
                          label = 'tab:OFL_projection')     
       
 }      
@@ -885,15 +887,19 @@ mngmt = mngmt[,-1]
   Recruittab_mod1[,2] = Recruittab_mod1[,2]
   
   # BIND ALL DATA TOGETHER
-  mod1_summary = cbind(SPRratio_Exploit_mod1,Age5biomassyrs_mod1,SpawnDeplete_mod1,Recruittab_mod1)
+  mod1_summary = cbind(SPRratio_Exploit_mod1,
+                       Age5biomassyrs_mod1,
+                       SpawnDeplete_mod1,
+                       Recruittab_mod1)
     
 # Model 2
 if (n_models >= 2) {
   # SPR ratio and exploitation
-  SPRratio_Exploit_mod2 = SPRratio_Exploit_mod2[,c(2,4)]
+  SPRratio_Exploit_mod2 = SPRratio_Exploit_mod2[2:nrow(SPRratio_Exploit_mod2),c(2,4)]
   SPRratio_Exploit_mod2[,c(1,2)] = round(SPRratio_Exploit_mod2[,c(1,2)],2)
-  SPRratio_Exploit_mod2 = SPRratio_Exploit_mod2[-dim(SPRratio_Exploit_mod2)[1],]
+  #SPRratio_Exploit_mod2 = SPRratio_Exploit_mod2[-dim(SPRratio_Exploit_mod2)[1],]
   SPRratio_Exploit_mod2 = rbind(SPRratio_Exploit_mod2,blanks)
+  rownames(SPRratio_Exploit_mod2)[10]='Lastyear'
 
   # Age 5+ biomass 
   Age5biomass_mod2 = mod2$timeseries[,c('Yr','Bio_smry')]
@@ -916,11 +922,12 @@ if (n_models >= 2) {
 # Model 3
 if (n_models == 3) {
   # SPR ratio and exploitation
-  SPRratio_Exploit_mod3 = SPRratio_Exploit_mod3[,c(2,4)]
+  SPRratio_Exploit_mod3 = SPRratio_Exploit_mod3[2:nrow(SPRratio_Exploit_mod3),c(2,4)]
   SPRratio_Exploit_mod3[,c(1,2)] = round(SPRratio_Exploit_mod3[,c(1,2)],2)
-  SPRratio_Exploit_mod3 = SPRratio_Exploit_mod3[-dim(SPRratio_Exploit_mod3)[1],]
+  #SPRratio_Exploit_mod3 = SPRratio_Exploit_mod3[-dim(SPRratio_Exploit_mod3)[1],]
   SPRratio_Exploit_mod3 = rbind(SPRratio_Exploit_mod3,blanks)
- 
+  rownames(SPRratio_Exploit_mod3)[10]='Lastyear'
+  
   # Age 5+ biomass 
   Age5biomass_mod3 = mod3$timeseries[,c('Yr','Bio_smry')]
   Age5biomassyrs_mod3 = subset(Age5biomass_mod3, Yr>=(FirstYR) & Yr<=(LastYR))
@@ -1048,7 +1055,7 @@ if (n_models == 2) {
 #THREE MODELS 
 if (n_models == 3) {
 # Bind data from all three models together
-base_summary1 = as.data.frame(cbind(mngmt,mod1_summary, mod2_summary, mod3_summary))
+base_summary1 = as.data.frame(cbind(mngmt, mod1_summary, mod2_summary, mod3_summary))
     
     
 # Transpose the dataframe to create the table and create data labels  
