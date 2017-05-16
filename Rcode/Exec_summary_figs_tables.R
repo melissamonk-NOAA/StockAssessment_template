@@ -112,7 +112,7 @@ for (model in 1:n_models) {
     }}
           
   # Extract biomass/output  
-  SpawningB = mod$derived_quants[grep('SPB', mod$derived_quants$LABEL), ]
+  SpawningB = mod$derived_quants[grep('SPB', mod$derived_quants$Label), ]
   SpawningB = SpawningB[c(-1, -2), ]
      
       
@@ -145,7 +145,7 @@ for (model in 1:n_models) {
   
   
   # Extract Depletion values  
-  Depletion = mod$derived_quants[grep('Bratio', mod$derived_quants$LABEL), ]
+  Depletion = mod$derived_quants[grep('Bratio', mod$derived_quants$Label), ]
   Depletion = Depletion[c(-1, -2), ]
      
   # Estimated depletion, pull out correct years, list years, and estimate 95% CI
@@ -272,7 +272,7 @@ for (model in 1:n_models) {
  }}
         
   # Pull out recuitment  
-  Recruit = mod$derived_quants[grep('Recr',mod$derived_quants$LABEL),]
+  Recruit = mod$derived_quants[grep('Recr',mod$derived_quants$Label),]
   Recruit = Recruit[c(-1,-2),]
   
   # Recruitment and std.dev data, calculate lower and upper 95% CI                 
@@ -369,10 +369,10 @@ for (model in 1:n_models) {
  }}  
       
   # Extract exploitation and SPR ratio values from r4SS output
-  Exploit = mod$derived_quants[grep('F',mod$derived_quants$LABEL),]
+  Exploit = mod$derived_quants[grep('F',mod$derived_quants$Label),]
   Exploit = Exploit[c(-1,-2),]
         
-  SPRratio = mod$derived_quants[grep('SPRratio',mod$derived_quants$LABEL),]
+  SPRratio = mod$derived_quants[grep('SPRratio',mod$derived_quants$Label),]
   SPRratio = SPRratio[c(-1,-2),]
         
   # Exploitation and calculate lower and upper 95% CI                 
@@ -491,26 +491,26 @@ for (model in 1:n_models) {
 
   # Rbind all of the data for the big summary reference table  
   Ref_pts = rbind (
-  SSB_Unfished    = mod$derived_quants[grep('SSB_U', mod$derived_quants$LABEL), ],
-  TotBio_Unfished = mod$derived_quants[grep('TotBio', mod$derived_quants$LABEL), ],
-  Recr_Unfished   = mod$derived_quants[grep('Recr_Un', mod$derived_quants$LABEL), ],
-  SPB_lastyr      = mod$derived_quants[grep(paste0('SPB_', LastYR), mod$derived_quants$LABEL), ],
-  Depletion_lastyr= mod$derived_quants[grep(paste0('Bratio_', LastYR), mod$derived_quants$LABEL), ],
+  SSB_Unfished    = mod$derived_quants[grep('SSB_U', mod$derived_quants$Label), ],
+  TotBio_Unfished = mod$derived_quants[grep('TotBio', mod$derived_quants$Label), ],
+  Recr_Unfished   = mod$derived_quants[grep('Recr_Un', mod$derived_quants$Label), ],
+  SPB_lastyr      = mod$derived_quants[grep(paste0('SPB_', LastYR), mod$derived_quants$Label), ],
+  Depletion_lastyr= mod$derived_quants[grep(paste0('Bratio_', LastYR), mod$derived_quants$Label), ],
   Refpt_sB        = c(NA, NA, NA),
-  SSB_Btgt        = mod$derived_quants[grep('SSB_Btgt', mod$derived_quants$LABEL), ],
-  SPR_Btgt        = mod$derived_quants[grep('SPR_Btgt', mod$derived_quants$LABEL), ],
-  Fstd_Btgt       = mod$derived_quants[grep('Fstd_Btgt', mod$derived_quants$LABEL), ],
-  TotYield_Btgt   = mod$derived_quants[grep('TotYield_Btgt', mod$derived_quants$LABEL), ],
+  SSB_Btgt        = mod$derived_quants[grep('SSB_Btgt', mod$derived_quants$Label), ],
+  SPR_Btgt        = mod$derived_quants[grep('SPR_Btgt', mod$derived_quants$Label), ],
+  Fstd_Btgt       = mod$derived_quants[grep('Fstd_Btgt', mod$derived_quants$Label), ],
+  TotYield_Btgt   = mod$derived_quants[grep('TotYield_Btgt', mod$derived_quants$Label), ],
   Refpt_SPR       = c(NA, NA, NA),
-  SSB_SPRtgt      = mod$derived_quants[grep('SSB_SPRtgt', mod$derived_quants$LABEL), ],
+  SSB_SPRtgt      = mod$derived_quants[grep('SSB_SPRtgt', mod$derived_quants$Label), ],
   SPR_proxy       = c('SPR_proxy', .5, NA),
-  Fstd_SPRtgt     = mod$derived_quants[grep('Fstd_SPRtgt', mod$derived_quants$LABEL), ],
-  TotYield_SPRtgt = mod$derived_quants[grep('TotYield_SPRtgt', mod$derived_quants$LABEL), ],
+  Fstd_SPRtgt     = mod$derived_quants[grep('Fstd_SPRtgt', mod$derived_quants$Label), ],
+  TotYield_SPRtgt = mod$derived_quants[grep('TotYield_SPRtgt', mod$derived_quants$Label), ],
   Refpts_MSY      = c(NA, NA, NA),
-  SSB_MSY         = mod$derived_quants[grep('SSB_MSY', mod$derived_quants$LABEL), ],
-  SPR_MSY         = mod$derived_quants[grep('SPR_MSY', mod$derived_quants$LABEL), ],
-  Fstd_MSY        = mod$derived_quants[grep('Fstd_MSY', mod$derived_quants$LABEL), ],
-  TotYield_MSY    = mod$derived_quants[grep('TotYield_MSY', mod$derived_quants$LABEL), ] )
+  SSB_MSY         = mod$derived_quants[grep('SSB_MSY', mod$derived_quants$Label), ],
+  SPR_MSY         = mod$derived_quants[grep('SPR_MSY', mod$derived_quants$Label), ],
+  Fstd_MSY        = mod$derived_quants[grep('Fstd_MSY', mod$derived_quants$Label), ],
+  TotYield_MSY    = mod$derived_quants[grep('TotYield_MSY', mod$derived_quants$Label), ] )
   Ref_pts         = Ref_pts[, 1:3]
   Ref_pts$Value   = as.numeric(Ref_pts$Value)
   Ref_pts$StdDev  = as.numeric(Ref_pts$StdDev)
@@ -640,7 +640,7 @@ align(mngmnt.table) = c('l',
 #For 1 model:
 if (n_models == 1) {
 # Extract OFLs for next 10 years for each model
-      OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$LABEL),]
+      OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$Label),]
       OFL_mod1 = OFL_mod1[, 2]    
       
       #Turn into a dataframe and get the total
@@ -659,10 +659,10 @@ if (n_models == 1) {
 # For 2 models:
       if (n_models == 2) {
         # Extract predicted OFLs for each model
-        OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$LABEL),]
+        OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$Label),]
         OFL_mod1 = OFL_mod1[, 2]
         
-        OFL_mod2 = mod2$derived_quants[grep('OFL',mod2$derived_quants$LABEL),]
+        OFL_mod2 = mod2$derived_quants[grep('OFL',mod2$derived_quants$Label),]
         OFL_mod2 = OFL_mod2[, 2]
         
         # Turn into a dataframe and get the total
@@ -682,13 +682,13 @@ if (n_models == 1) {
 #For 3 models:
 if (n_models == 3) {
       # Extract OFLs for next 10 years for each model
-      OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$LABEL),]
+      OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$Label),]
       OFL_mod1 = OFL_mod1[, 2]
       
-      OFL_mod2 = mod2$derived_quants[grep('OFL',mod2$derived_quants$LABEL),]
+      OFL_mod2 = mod2$derived_quants[grep('OFL',mod2$derived_quants$Label),]
       OFL_mod2 = OFL_mod2[, 2]
       
-      OFL_mod3 = mod3$derived_quants[grep('OFL',mod3$derived_quants$LABEL),]
+      OFL_mod3 = mod3$derived_quants[grep('OFL',mod3$derived_quants$Label),]
       OFL_mod3 = OFL_mod3[, 2]
       
       #Turn into a dataframe and get the total
