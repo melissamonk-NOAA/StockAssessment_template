@@ -44,6 +44,189 @@ bibliography: BibFile.bib
 USE THIS .Rmd TO TEST R CODE CHUNKS, FIGURES AND PLOTS BEFORE INSERTING INTO THE MAIN TEXT OR TO DEBUG
 
 
+\begin{landscape}
+```{r}
+# test the model parameters table for SS3.30 compatibility
+
+    # If you use this for more than one model = change mod1 to mod2 or mod3
+    mod_params = mod1$parameters[-c(grep('Recr',mod1$parameters$Label),
+                                         grep('Impl',mod1$parameters$Label)),
+                                      (names(mod1$parameters) %in%
+                                         c("Num","Label","Value","Phase","Min",
+                                           "Max","Status","Parm_StDev","Gradient",
+                                           "PR_type","Prior","Pr_SD","Prior_Like"))]  
+    
+    # So that decimals won't show up in these columns and control digits
+  #  mod_params$Num = as.factor(mod_params$Num)
+  #  mod_params$Phase = as.factor(mod_params$Phase)
+  #  mod_params$Prior = round(mod_params$Prior, digits = 3)
+  #  mod_params$Pr_SD = round(mod_params$Pr_SD, digits = 3)
+    
+    # Combine bounds into one column
+    mod_params$Min = paste('(', mod_params$Min, ', ', mod_params$Max, ')', sep='')
+    
+    
+    # Combine prior info to one column
+    #mod_params$PR_type = gsub('No_prior', 'None', mod_params$PR_type)
+    mod_params$PR_type = ifelse(mod_params$PR_type == 'No_prior' , 'None',
+                                paste(mod_params$PR_type,' (', mod_params$Prior, 
+                                      ', ', mod_params$Pr_SD, ')', sep = ''))
+    
+    # Remove the max, prior and prior sd columns
+    drops = c('Max', 'Prior', 'Pr_SD')
+    mod_params = mod_params[, !(names(mod_params) %in% drops)]
+    
+    # Add column names
+    colnames(mod_params) = c('No.',
+                             'Parameter',
+                             'Value',
+                             'Phase',
+                             'Bounds',
+                             'Status',
+                             'SD',
+                             'Gradient',
+                             'Prior',
+                             'Prior like')
+
+    # Model 1 model parameters
+    mod_params.table = xtable(mod_params, 
+                              caption=c(paste('List of parameters used in
+                                              the base model, including estimated 
+                                              values and standard deviations (SD), 
+                                              bounds (minimum and maximum), 
+                                              estimation phase (negative values indicate
+                                              not estimated), status (indicates if 
+                                              parameters are near bounds, and prior type
+                                              information (mean, SD).'
+                                              , sep='')), 
+                              label='tab:model_params')  
+
+    # Add alignment  
+    align(mod_params.table) = c('lrlrrcrclll')
+ 
+    # Add "continued on next page"" footnote   
+    addtorow          <- list()
+    addtorow$pos      <- list()
+    addtorow$pos[[1]] <- c(0)
+    addtorow$command  <- c(paste("\\hline \n",
+                                 "\\endhead \n",
+                                 "\\hline \n",
+                                 "\\multicolumn{3}{l}",
+                                 "{\\footnotesize Continued on next page} \n",
+                                 "\\endfoot \n",
+                                 "\\endlastfoot \n",sep=""))
+
+
+
+    # Print Model 1 parameters
+    print(mod_params.table, 
+          include.rownames = FALSE,
+          caption.placement = 'top',
+          tabular.environment = 'longtable',
+          floating = FALSE,
+          add.to.row = addtorow)
+
+```
+\end{landscape}
+
+
+
+```{r}
+#Test the time-series table
+    # Total biomass, extract and subset
+    Bio_all = mod1$sprseries[, c('Year', 'Bio_all')]
+    Bio_allyrs = subset(Bio_all, Year > (Dat_start - 1) & Year < (Dat_end + 1))
+    Bio_allyrs$Bio_all = round(Bio_allyrs$Bio_all, 0)
+  
+  
+    # Spawning biomass, extract and subset, and turn into scientific notation
+    SpawningB = mod1$derived_quants[grep('SPB', mod1$derived_quants$LABEL), ]
+    SpawningB = SpawningB[c(-1, -2), ]
+    SpawningByrs = SpawningB[SpawningB$LABEL >= paste('SPB_', Dat_start, sep='') &  
+                             SpawningB$LABEL <= paste('SPB_', Dat_end, sep=''), ] 
+        
+        SpawningB_units = ''
+        if(mean(SpawningByrs$Value) > 1000000){
+            SpawningB_units <- "million"
+            SpawningByrs$Value <- SpawningByrs$Value/1000000
+         }
+
+    
+    # Depletion, extract, rename and subset
+    Depl_years = as.data.frame(seq(Dat_start, Dat_end, 1))
+    colnames(Depl_years) = 'Year'
+    Depl_years$Depl = 0
+    Depletion = mod1$derived_quants[grep('Bratio', mod1$derived_quants$LABEL), ]
+    Depletionyrs = Depletion[Depletion$LABEL >= paste('Bratio_', Dat_start, sep = '') &  
+                             Depletion$LABEL <= paste('Bratio_', Dat_end, sep = ''), ]
+    
+    Depletionyrs$Year = Depletionyrs$Label1 = substr(Depletionyrs$LABEL,
+                                                     (nchar(Depletionyrs$LABEL) + 1) - 4, 
+                                                      nchar(Depletionyrs$LABEL))
+   # Make sure depletion is numeric and merge ...
+   Depletionyrs$Year = as.numeric(Depletionyrs$Year)
+   Depleteyrs = merge(Depl_years, Depletionyrs, all.x=T, all.y=T, by.x='Year', by.y='Year')
+   Depleteyrs[is.na(Depleteyrs)] <- 0
+   Depleteyrs$total = Depleteyrs$Depl + Depleteyrs$Value
+    
+   # Recruits, extract and subset
+   Recruit = mod1$derived_quants[grep('Recr', mod1$derived_quants$LABEL), ]
+   Recruit = Recruit[c(-1, -2), ]
+   Recruityrs = Recruit[Recruit$LABEL >= paste('Recr_', Dat_start, sep='') &  
+                        Recruit$LABEL <= paste('Recr_', Dat_end, sep=''), ]  
+    
+    
+   # Landings/total catch, extract and subset years
+   Landings = mod1$sprseries[ , c('Year','Dead_Catch_B')]
+   Landingsyrs = subset(Landings, Year > (Dat_start - 1) & Year < (Dat_end + 1))
+    
+  
+    
+   # Relatvie exploitation rate, extract, subset and merge
+   Exploit = mod1$derived_quants[grep('F', mod1$derived_quants$LABEL), ]
+   Exploit = Exploit[c(-1, -2), ]
+   Exploityrs = Exploit[Exploit$LABEL >= paste('F_', Dat_start, sep = '') &  
+                        Exploit$LABEL <= paste('F_', Dat_end, sep = ''), ]  
+   Exploityrs$Year = Exploityrs$Label1 = substr(Exploityrs$LABEL, 
+                                               (nchar(Exploityrs$LABEL) + 1) - 4,
+                                               nchar(Exploityrs$LABEL))
+   Exploityrs$Year = as.numeric(Exploityrs$Year)
+   Exploited = merge(Depl_years, Exploityrs, all.x=T, all.y=T, by.x='Year', by.y='Year')
+   Exploited[is.na(Exploited)] <- 0
+   Exploited$total = Exploited$Depl + Exploited$Value
+    
+  # SPR, extract and subset years
+  SPR = mod1$sprseries[, c('Year', 'SPR')]
+  SPRyrs = subset(SPR, Year > (Dat_start - 1) & Year < (Dat_end + 1))
+  
+  
+  # Bind all the columns together for the table
+  Timeseries = as.data.frame(cbind(seq(Dat_start, Dat_end, 1), 
+                                       Bio_allyrs$Bio_all, 
+                                       round(SpawningByrs$Value, 0),
+                                       round(Depleteyrs$total, 2),
+                                       Recruityrs$Value, 
+                                       Landingsyrs$Dead_Catch_B, 
+                                       round(Exploited$total,2),
+                                       round(SPRyrs$SPR, 2)))
+
+ # Add colulmn names    
+ colnames(Timeseries)=c('Year', 
+                        'Total biomass (mt)', 
+                        paste0('Spawning biomass', SpawningB_units, '(mt)'),
+                        'Depletion', 
+                        'Age-0 recruits', 
+                        'Total catch (mt)',
+                        'Relative exploitation rate', 
+                        'SPR')
+ 
+ # Make year a factor so you don't have a decimal   
+ Timeseries$Year = as.factor(Timeseries$Year)
+    
+ # Remove 2015 values for last three columns since year isn't complete
+ Timeseries[nrow(Timeseries), c((ncol(Timeseries) - 2):ncol(Timeseries))] <- NA
+```
+
 
 ```{r]
 OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$LABEL),]
@@ -67,5 +250,3 @@ OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$LABEL),]
 
    
 ```
-
-

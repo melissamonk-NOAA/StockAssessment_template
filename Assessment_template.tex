@@ -29,7 +29,7 @@
 \usepackage{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
 \hypersetup{unicode=true,
-            pdftitle={Status of China Rockfish (Sebastes nebulosus) Along the U.S. Pacific Coast in x2015x},
+            pdftitle={Status of China Rockfish (Sebastes nebulosus) Along the U.S. Pacific Coast in 2015},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -65,7 +65,7 @@
 
 \setlength{\droptitle}{-2em}
   \title{Status of China Rockfish (\emph{Sebastes nebulosus}) Along the U.S.
-Pacific Coast in x2015x}
+Pacific Coast in 2015}
   \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
   \author{}
@@ -96,20 +96,25 @@ Pacific Coast in x2015x}
 \usepackage{upquote}                                              % produce grave accent in latex
 \usepackage{verbatim}                                             % produces verbatim results
 \usepackage{fancyvrb}                                             % verbatim in a box
-\usepackage[inline]{showlabels}                                   % show table and figure labels; comment out for final
 %\usepackage{draftwatermark}                                      % places Draft watermark in background; comment out for final
 \usepackage{textcomp}                                             % fixes error with packages interfering
 \usepackage{lscape}                                               % rotate pages - to allow for landscape longtables
-%\pdfinterwordspaceon                                              % fix loss of inter word spacing
+%\pdfinterwordspaceon                                             % fix loss of inter word spacing
 \usepackage{cmap}                                                 % fix mapping characters to unicode
-\RequirePackage[linewidth = 1]{pdfcomment}                        %pdf comments
-\RequirePackage[l2tabu, orthodox]{nag}                            %checks packages related to the accessibility?
+\RequirePackage[linewidth = 1]{pdfcomment}                        % pdf comments
+\RequirePackage[l2tabu, orthodox]{nag}                            % checks packages related to the accessibility?
+\usepackage[inline]{showlabels}                                   % show table and figure labels; comment out for final
 %\RequirePackage[tagged]{accessibilityMeta}
+
 
 \linenumbers                                                      % specify use of line numbers
 
-\definecolor{light-gray}{gray}{.85}
+
+\definecolor{light-gray}{gray}{.85}                               % define light-gray as a color
 %\usepackage[tagged]{accessibility-meta}
+
+ 
+%\showlabels[\color{mred}]{label}
 
 % Redefines (sub)paragraphs to behave more like sections
 \ifx\paragraph\undefined\else
@@ -198,7 +203,7 @@ for regional management.}
 
 This assessment reports the status of the China rockfish
 (\emph{Sebastes nebulosus}) resource in U.S. waters off the coast of the
-California, Oregon, and Washington using data through 2013. Etc\ldots{}
+California, Oregon, and Washington using data through 2014. Etc\ldots{}
 
 \subsection*{Catches}\label{catches}
 \addcontentsline{toc}{subsection}{Catches}
@@ -233,10 +238,13 @@ California by fleet (recreational and commercial).
 \label{fig:Exec_catch3}}
 \end{figure}
 
+\FloatBarrier
+
 \begin{figure}[htbp]
 \centering
-\includegraphics{r4ss/plots_mod1/catch2\%20landings\%20stacked.png}
-\caption{Landings history of China rockfish. \label{fig:r4ss_catches}}
+\includegraphics{r4ss/plots_mod1/catch2 landings stacked.png}
+\caption{Landings history of China rockfish in the Northern model.
+\label{fig:r4ss_catches}}
 \end{figure}
 
 \begin{table}[ht]
@@ -273,7 +281,7 @@ Year & Landings 1 & Landings 2 & Landings 3 & Landings 4 & Landings 5 & Total \\
 information, and information lacking.}
 
 China rockfish was assessed\ldots{}. This assessment uses the newest
-version of Stock Synthesis (3.24u). The model begins in 1900, and
+version of Stock Synthesis (3.xxx). The model begins in 1900, and
 assumes the stock was at an unfished equilibrium that year.
 
 Map of assessment region: (Figure \ref{fig:assess_region_map}).
@@ -319,14 +327,13 @@ The estimated relative depletion level of model 3 in 2014 is
 \centering
 \caption{Recent trend in beginning of the 
                                       year spawning output and depletion for
-                                      the base model for China rockfish.} 
+                                      the Northern model for China rockfish.} 
 \label{tab:SpawningDeplete_mod1}
 \begin{tabular}{l>{\centering}p{1.3in}>{\centering}p{1.2in}>{\centering}p{1in}>{\centering}p{1.2in}}
   \hline
 Year & Spawning Output (billion eggs) & \~{} 95\% confidence interval & Estimated depletion & \~{} 95\% confidence interval \\ 
   \hline
-2005 & 17.891 & (8.81-26.97) & 0.732 & (0.635-0.829) \\ 
-  2006 & 17.942 & (8.86-27.03) & 0.734 & (0.638-0.83) \\ 
+2006 & 17.942 & (8.86-27.03) & 0.734 & (0.638-0.83) \\ 
   2007 & 18.030 & (8.94-27.12) & 0.738 & (0.642-0.833) \\ 
   2008 & 18.044 & (8.95-27.14) & 0.738 & (0.643-0.833) \\ 
   2009 & 18.034 & (8.93-27.13) & 0.738 & (0.642-0.833) \\ 
@@ -335,6 +342,7 @@ Year & Spawning Output (billion eggs) & \~{} 95\% confidence interval & Estimate
   2012 & 17.971 & (8.86-27.08) & 0.735 & (0.638-0.832) \\ 
   2013 & 17.981 & (8.87-27.09) & 0.736 & (0.639-0.833) \\ 
   2014 & 17.944 & (8.83-27.06) & 0.734 & (0.637-0.832) \\ 
+  2015 & 17.950 & (8.83-27.07) & 0.734 & (0.637-0.832) \\ 
    \hline
 \end{tabular}
 \end{table}
@@ -371,22 +379,22 @@ Recruitment Tables: (Tables \ref{tab:Recruit_mod1},
 
 \begin{table}[ht]
 \centering
-\caption{Recent recruitment for the base model.} 
+\caption{Recent recruitment for the Northern model.} 
 \label{tab:Recruit_mod1}
-\begin{tabular}{rrl}
+\begin{tabular}{>{\centering}p{.8in}>{\centering}p{1.6in}>{\centering}p{1.3in}}
   \hline
 Year & Estimated Recruitment (1,000s) & \~{} 95\% confidence interval \\ 
   \hline
-2005 & 33.28 & (21.32 - 45.23) \\ 
-  2006 & 33.29 & (21.33 - 45.24) \\ 
-  2007 & 33.30 & (21.35 - 45.25) \\ 
-  2008 & 33.30 & (21.35 - 45.26) \\ 
-  2009 & 33.30 & (21.35 - 45.26) \\ 
-  2010 & 33.31 & (21.35 - 45.26) \\ 
-  2011 & 33.30 & (21.34 - 45.25) \\ 
-  2012 & 33.29 & (21.33 - 45.25) \\ 
-  2013 & 33.29 & (21.33 - 45.25) \\ 
-  2014 & 33.29 & (21.33 - 45.25) \\ 
+2006 & 33.29 & (23.31 - 47.53) \\ 
+  2007 & 33.30 & (23.33 - 47.54) \\ 
+  2008 & 33.30 & (23.33 - 47.54) \\ 
+  2009 & 33.30 & (23.33 - 47.54) \\ 
+  2010 & 33.31 & (23.33 - 47.55) \\ 
+  2011 & 33.30 & (23.32 - 47.54) \\ 
+  2012 & 33.29 & (23.31 - 47.54) \\ 
+  2013 & 33.29 & (23.32 - 47.54) \\ 
+  2014 & 33.29 & (23.31 - 47.54) \\ 
+  2015 & 33.29 & (23.31 - 47.54) \\ 
    \hline
 \end{tabular}
 \end{table}
@@ -420,7 +428,7 @@ provided as Figure \ref{fig:Phase_all}.
 \begin{table}[ht]
 \centering
 \caption{Recent trend in spawning potential 
-                                        ratio and exploitation for China rockfish in the base model.  Fishing intensity is (1-SPR) 
+                                        ratio and exploitation for China rockfish in the Northern model.  Fishing intensity is (1-SPR) 
                                         divided by 50\% (the SPR target) and exploitation 
                                         is F divided by F\textsubscript{SPR}.} 
 \label{tab:SPR_Exploit_mod1}
@@ -428,8 +436,7 @@ provided as Figure \ref{fig:Phase_all}.
   \hline
 Year & Fishing intensity & \~{} 95\% confidence interval & Exploitation rate & \~{} 95\% confidence interval \\ 
   \hline
-2004 & 0.39 & (0.23-0.54) & 0.27 & (0.14-0.39) \\ 
-  2005 & 0.44 & (0.27-0.61) & 0.32 & (0.17-0.47) \\ 
+2005 & 0.44 & (0.27-0.61) & 0.32 & (0.17-0.47) \\ 
   2006 & 0.39 & (0.24-0.55) & 0.28 & (0.15-0.4) \\ 
   2007 & 0.47 & (0.3-0.65) & 0.35 & (0.19-0.51) \\ 
   2008 & 0.50 & (0.32-0.68) & 0.38 & (0.2-0.55) \\ 
@@ -438,6 +445,7 @@ Year & Fishing intensity & \~{} 95\% confidence interval & Exploitation rate & \
   2011 & 0.51 & (0.32-0.7) & 0.39 & (0.21-0.57) \\ 
   2012 & 0.48 & (0.3-0.66) & 0.35 & (0.19-0.52) \\ 
   2013 & 0.53 & (0.34-0.72) & 0.41 & (0.22-0.59) \\ 
+  2014 & 0.48 & (0.3-0.67) & 0.36 & (0.19-0.53) \\ 
    \hline
 \end{tabular}
 \end{table}
@@ -484,13 +492,13 @@ SPRproxy for MSY, and estimated MSY values
 
 \hl{Write intro paragraph....and remove text for Models 2 and 3 if not needed}
 
-This stock assessment estimates that China rockfish in the base model
-are above the biomass target, but above the minimum stock size
+This stock assessment estimates that China rockfish in the Northern
+model are above the biomass target, but above the minimum stock size
 threshold. \hl{Add sentence about spawning output trend.} The estimated
 relative depletion level for \hl{Model 1} in 2014 is 73.4\%
 (\textasciitilde{}95\% asymptotic interval: \(\pm\) 63.7\%-83.2\%,
-corresponding to an unfished spawning output of 17.9443 billion eggs
-(\textasciitilde{}95\% asymptotic interval: 8.83-27.06 billion eggs) of
+corresponding to an unfished spawning output of 17.9497 billion eggs
+(\textasciitilde{}95\% asymptotic interval: 8.83-27.07 billion eggs) of
 spawning output in the base model (Table \ref{tab:Ref_pts_mod1}).
 Unfished age 1+ biomass was estimated to be 240.8 mt in the base case
 model. The target spawning output based on the biomass target
@@ -533,7 +541,7 @@ rate corresponding to \(SPR_{50\%}\) is mt.
 \centering
 \caption{Summary of reference 
                                       points and management quantities for the 
-                                      base case base model.} 
+                                      base case Northern model.} 
 \label{tab:Ref_pts_mod1}
 \begin{tabular}{>{\raggedright}p{4.1in}>{\centering}p{.65in}>{\centering}p{1.4in}}
   \hline
@@ -597,6 +605,8 @@ Year & OFL (mt; ABC prior to 2011) & ABC (mt) & ACL (mt; OY prior to 2011) & Est
   \textbf{2014} & - & - & - & - \\ 
   \textbf{2015} & - & - & - & - \\ 
   \textbf{2016} & - & - & - & - \\ 
+  \textbf{2017} & - & - & - & - \\ 
+  \textbf{2018} & - & - & - & - \\ 
    \hline
 \end{tabular}
 }
@@ -629,7 +639,8 @@ Yield curve: Figure \ref{fig:Yield_all}
 
 \begin{table}[ht]
 \centering
-\caption{Projections of potential OFL (mt) for each model, using the base model forecast.} 
+\caption{Projections of potential OFL (mt) for 
+                                        each model, using the base model forecast.} 
 \label{tab:OFL_projection}
 \begin{tabular}{lr}
   \hline
@@ -654,7 +665,7 @@ Year & OFL \\
 \caption{Summary of 10-year 
                                              projections beginning in 2016 
                                              for alternate states of nature based on 
-                                             an axis of uncertainty for the base model.  Columns range over low, mid, and high
+                                             an axis of uncertainty for the Northern model.  Columns range over low, mid, and high
                                              states of nature, and rows range over different 
                                              assumptions of catch levels. An entry of "--" 
                                              indicates that the stock is driven to very low 
@@ -726,26 +737,26 @@ Year & OFL \\
 \scalebox{0.6}{
 \begin{tabular}{r>{\centering}p{1.1in}>{\centering}p{1.1in}>{\centering}p{1.1in}>{\centering}p{1.1in}>{\centering}p{1.1in}>{\centering}p{1.1in}>{\centering}p{1.1in}>{\centering}p{1.1in}>{\centering}p{1.1in}>{\centering}p{1.1in}}
   \hline
-Quantity & 2005 & 2006 & 2007 & 2008 & 2009 & 2010 & 2011 & 2012 & 2013 & 2014 \\ 
+Quantity & 2006 & 2007 & 2008 & 2009 & 2010 & 2011 & 2012 & 2013 & 2014 & 2015 \\ 
   \hline
 Landings (mt) &  &  &  &  &  &  &  &  &  &  \\ 
   Total Est. Catch (mt) &  &  &  &  &  &  &  &  &  &  \\ 
   OFL (mt) &  &  &  &  &  &  &  &  &  &  \\ 
   ACL (mt) &  &  &  &  &  &  &  &  &  &  \\ 
    \hline
-(1-$SPR$)(1-$SPR_{50\%}$) &  & 0.39 & 0.44 & 0.39 & 0.47 & 0.50 & 0.45 & 0.56 & 0.51 & 0.48 \\ 
+(1-$SPR$)(1-$SPR_{50\%}$) & 0.39 & 0.47 & 0.50 & 0.45 & 0.56 & 0.51 & 0.48 & 0.53 & 0.48 &  \\ 
    \hline
-Exploitation rate &  & 0.27 & 0.32 & 0.28 & 0.35 & 0.38 & 0.33 & 0.44 & 0.39 & 0.35 \\ 
-  Age 1+ biomass (mt) & 182.52 & 182.15 & 182.55 & 183.26 & 183.36 & 183.25 & 183.49 & 182.90 & 182.72 & 182.82 \\ 
+Exploitation rate & 0.28 & 0.35 & 0.38 & 0.33 & 0.44 & 0.39 & 0.35 & 0.41 & 0.36 &  \\ 
+  Age 1+ biomass (mt) & 182.15 & 182.55 & 183.26 & 183.36 & 183.25 & 183.49 & 182.90 & 182.72 & 182.82 & 182.52 \\ 
    \hline
-Spawning Output & 17.9 & 17.9 & 17.9 & 18.0 & 18.0 & 18.0 & 18.1 & 18.0 & 18.0 & 18.0 \\ 
-  ~95\% CI & (8.83-27.06) & (8.81-26.97) & (8.86-27.03) & (8.94-27.12) & (8.95-27.14) & (8.93-27.13) & (8.96-27.17) & (8.89-27.1) & (8.86-27.08) & (8.87-27.09) \\ 
+Spawning Output & 17.9 & 18.0 & 18.0 & 18.0 & 18.1 & 18.0 & 18.0 & 18.0 & 17.9 & 17.9 \\ 
+  ~95\% CI & (8.86-27.03) & (8.94-27.12) & (8.95-27.14) & (8.93-27.13) & (8.96-27.17) & (8.89-27.1) & (8.86-27.08) & (8.87-27.09) & (8.83-27.06) & (8.83-27.07) \\ 
    \hline
 Depletion & 0.7 & 0.7 & 0.7 & 0.7 & 0.7 & 0.7 & 0.7 & 0.7 & 0.7 & 0.7 \\ 
-  ~95\% CI & (0.637-0.832) & (0.635-0.829) & (0.638-0.83) & (0.642-0.833) & (0.643-0.833) & (0.642-0.833) & (0.644-0.834) & (0.64-0.833) & (0.638-0.832) & (0.639-0.833) \\ 
+  ~95\% CI & (0.638-0.83) & (0.642-0.833) & (0.643-0.833) & (0.642-0.833) & (0.644-0.834) & (0.64-0.833) & (0.638-0.832) & (0.639-0.833) & (0.637-0.832) & (0.637-0.832) \\ 
    \hline
-Recruits & 33.29 & 33.28 & 33.29 & 33.30 & 33.30 & 33.30 & 33.31 & 33.30 & 33.29 & 33.29 \\ 
-  ~95\% CI & (21.33 - 45.25) & (21.32 - 45.23) & (21.33 - 45.24) & (21.35 - 45.25) & (21.35 - 45.26) & (21.35 - 45.26) & (21.35 - 45.26) & (21.34 - 45.25) & (21.33 - 45.25) & (21.33 - 45.25) \\ 
+Recruits & 33.29 & 33.30 & 33.30 & 33.30 & 33.31 & 33.30 & 33.29 & 33.29 & 33.29 & 33.29 \\ 
+  ~95\% CI & (23.31 - 47.53) & (23.33 - 47.54) & (23.33 - 47.54) & (23.33 - 47.54) & (23.33 - 47.55) & (23.32 - 47.54) & (23.31 - 47.54) & (23.32 - 47.54) & (23.31 - 47.54) & (23.31 - 47.54) \\ 
    \hline
 \end{tabular}
 }
@@ -1388,7 +1399,7 @@ undergoing review.
 \FloatBarrier
 
 \begin{landscape}
-\begin{longtable}{rlrrcrcl}
+\begin{longtable}{rlrrcccl}
 \caption{List of parameters used in
                                               the base model, including estimated 
                                               values and standard deviations (SD), 
@@ -1398,7 +1409,7 @@ undergoing review.
                                               parameters are near bounds, and prior type
                                               information (mean, SD).} \\ 
   \hline
-No. & Parameter & Value & SD & Bounds & Phase & Status & Prior \\ 
+No. & Parameter & Value & Phase & Bounds & Status & SD & Prior (Exp.Val, SD)  \\ 
   \hline 
 \endhead 
 \hline 
@@ -1406,49 +1417,49 @@ No. & Parameter & Value & SD & Bounds & Phase & Status & Prior \\
 \endfoot 
 \endlastfoot 
  \hline
-1 & NatM\_p\_1\_Fem\_GP\_1 & 0.07 &  & (0.01, 0.15) & -3 &  & Log\_Norm (-2.94, 0.53) \\ 
-  2 & L\_at\_Amin\_Fem\_GP\_1 & 2.00 &  & (-10, 45) & -2 &  & Normal (2, 10) \\ 
-  3 & L\_at\_Amax\_Fem\_GP\_1 & 35.41 & 0.36 & (20, 50) & 6 & OK & Normal (34, 10) \\ 
-  4 & VonBert\_K\_Fem\_GP\_1 & 0.15 & 0.01 & (0.01, 0.3) & 6 & OK & Normal (0.1, 0.8) \\ 
-  5 & CV\_young\_Fem\_GP\_1 & 0.10 &  & (0.01, 0.25) & -6 &  & None \\ 
-  6 & CV\_old\_Fem\_GP\_1 & 0.08 & 0.01 & (0.01, 0.25) & 6 & OK & None \\ 
-  7 & NatM\_p\_1\_Mal\_GP\_1 & 0.00 &  & (-1, 0.15) & -3 &  & None \\ 
-  8 & L\_at\_Amin\_Mal\_GP\_1 & 0.00 &  & (-1, 45) & -2 &  & Normal (2, 10) \\ 
-  9 & L\_at\_Amax\_Mal\_GP\_1 & 0.00 &  & (-1, 50) & -4 &  & Normal (33.13, 10) \\ 
-  10 & VonBert\_K\_Mal\_GP\_1 & 0.00 &  & (-1, 0.3) & -4 &  & Normal (0.246, 0.8) \\ 
-  11 & CV\_young\_Mal\_GP\_1 & 0.00 &  & (-1, 0.25) & -3 &  & None \\ 
-  12 & CV\_old\_Mal\_GP\_1 & 0.00 &  & (-1, 0.25) & -3 &  & None \\ 
-  13 & Wtlen\_1\_Fem & 0.00 &  & (0, 1) & -3 &  & None \\ 
-  14 & Wtlen\_2\_Fem & 3.18 &  & (2, 4) & -3 &  & None \\ 
-  15 & Mat50\%\_Fem & 28.50 &  & (1, 100) & -3 &  & None \\ 
-  16 & Mat\_slope\_Fem & -1.00 &  & (-9, 9) & -3 &  & None \\ 
-  17 & Eggs/kg\_inter\_Fem & 0.20 &  & (-3, 3) & -3 &  & None \\ 
-  18 & Eggs/kg\_slope\_wt\_Fem & 0.06 &  & (-3, 3) & -3 &  & None \\ 
-  19 & Wtlen\_1\_Mal & 0.00 &  & (0, 1) & -3 &  & None \\ 
-  20 & Wtlen\_2\_Mal & 3.18 &  & (2, 4) & -3 &  & None \\ 
-  24 & CohortGrowDev & 0.00 &  & (0, 0) & -4 &  & None \\ 
-  25 & SR\_LN(R0) & 3.53 & 0.18 & (2, 12) & 1 & OK & None \\ 
-  26 & SR\_BH\_steep & 0.77 &  & (0.2, 1) & -3 &  & Full\_Beta (0.773, 0.147) \\ 
-  27 & SR\_sigmaR & 0.50 &  & (0, 2) & -3 &  & None \\ 
-  28 & SR\_envlink & 0.10 &  & (-5, 5) & -3 &  & None \\ 
-  29 & SR\_R1\_offset & 0.00 &  & (-5, 5) & -4 &  & None \\ 
-  30 & SR\_autocorr & 0.00 &  & (0, 0) & -99 &  & None \\ 
-  68 & InitF\_11\_WA\_SouthernWA\_Rec\_PCPR & 0.00 &  & (0, 1) & -1 &  & None \\ 
-  69 & InitF\_22\_WA\_NorthernWA\_Rec\_PC & 0.00 &  & (0, 1) & -1 &  & None \\ 
-  70 & InitF\_33\_WA\_NorthernWA\_Rec\_PR & 0.00 &  & (0, 1) & -1 &  & None \\ 
-  71 & Q\_extraSD\_3\_3\_WA\_NorthernWA\_Rec\_PR & 0.13 & 0.02 & (0, 2) & 2 & OK & None \\ 
-  72 & SizeSel\_1P\_1\_1\_WA\_SouthernWA\_Rec\_PCPR & 34.89 &  & (19, 36) & -4 &  & None \\ 
-  73 & SizeSel\_1P\_2\_1\_WA\_SouthernWA\_Rec\_PCPR & -4.00 &  & (-9, 5) & -9 &  & None \\ 
-  74 & SizeSel\_1P\_3\_1\_WA\_SouthernWA\_Rec\_PCPR & 3.97 & 0.36 & (0, 9) & 5 & OK & None \\ 
-  75 & SizeSel\_1P\_4\_1\_WA\_SouthernWA\_Rec\_PCPR & 8.00 &  & (0, 9) & -9 &  & None \\ 
-  76 & SizeSel\_1P\_5\_1\_WA\_SouthernWA\_Rec\_PCPR & -8.00 &  & (-9, 9) & -9 &  & None \\ 
-  77 & SizeSel\_1P\_6\_1\_WA\_SouthernWA\_Rec\_PCPR & 8.00 &  & (-9, 9) & -9 &  & None \\ 
-  78 & SizeSel\_2P\_1\_2\_WA\_NorthernWA\_Rec\_PC & 34.86 & 1.00 & (19, 36) & 4 & OK & None \\ 
-  79 & SizeSel\_2P\_2\_2\_WA\_NorthernWA\_Rec\_PC & -4.00 &  & (-9, 5) & -9 &  & None \\ 
-  80 & SizeSel\_2P\_3\_2\_WA\_NorthernWA\_Rec\_PC & 2.92 & 0.35 & (0, 9) & 5 & OK & None \\ 
-  81 & SizeSel\_2P\_4\_2\_WA\_NorthernWA\_Rec\_PC & 8.00 &  & (0, 9) & -9 &  & None \\ 
-  82 & SizeSel\_2P\_5\_2\_WA\_NorthernWA\_Rec\_PC & -8.00 &  & (-9, 9) & -9 &  & None \\ 
-  83 & SizeSel\_2P\_6\_2\_WA\_NorthernWA\_Rec\_PC & 8.00 &  & (-9, 9) & -9 &  & None \\ 
+1 & NatM\_p\_1\_Fem\_GP\_1 & 0.070 & -3 & (0.01, 0.15) &  &  & Log\_Norm (-2.94, 0.53) \\ 
+  2 & L\_at\_Amin\_Fem\_GP\_1 & 2.000 & -2 & (-10, 45) &  &  & Normal (2, 10) \\ 
+  3 & L\_at\_Amax\_Fem\_GP\_1 & 35.411 & 6 & (20, 50) & OK & 0.364 & Normal (34, 10) \\ 
+  4 & VonBert\_K\_Fem\_GP\_1 & 0.147 & 6 & (0.01, 0.3) & OK & 0.006 & Normal (0.1, 0.8) \\ 
+  5 & CV\_young\_Fem\_GP\_1 & 0.100 & -6 & (0.01, 0.25) &  &  & None \\ 
+  6 & CV\_old\_Fem\_GP\_1 & 0.080 & 6 & (0.01, 0.25) & OK & 0.007 & None \\ 
+  7 & NatM\_p\_1\_Mal\_GP\_1 & 0.000 & -3 & (-1, 0.15) &  &  & None \\ 
+  8 & L\_at\_Amin\_Mal\_GP\_1 & 0.000 & -2 & (-1, 45) &  &  & Normal (2, 10) \\ 
+  9 & L\_at\_Amax\_Mal\_GP\_1 & 0.000 & -4 & (-1, 50) &  &  & Normal (33.13, 10) \\ 
+  10 & VonBert\_K\_Mal\_GP\_1 & 0.000 & -4 & (-1, 0.3) &  &  & Normal (0.2461, 0.8) \\ 
+  11 & CV\_young\_Mal\_GP\_1 & 0.000 & -3 & (-1, 0.25) &  &  & None \\ 
+  12 & CV\_old\_Mal\_GP\_1 & 0.000 & -3 & (-1, 0.25) &  &  & None \\ 
+  13 & Wtlen\_1\_Fem & 0.000 & -3 & (0, 1) &  &  & None \\ 
+  14 & Wtlen\_2\_Fem & 3.177 & -3 & (2, 4) &  &  & None \\ 
+  15 & Mat50\%\_Fem & 28.500 & -3 & (1, 100) &  &  & None \\ 
+  16 & Mat\_slope\_Fem & -1.000 & -3 & (-9, 9) &  &  & None \\ 
+  17 & Eggs/kg\_inter\_Fem & 0.196 & -3 & (-3, 3) &  &  & None \\ 
+  18 & Eggs/kg\_slope\_wt\_Fem & 0.057 & -3 & (-3, 3) &  &  & None \\ 
+  19 & Wtlen\_1\_Mal & 0.000 & -3 & (0, 1) &  &  & None \\ 
+  20 & Wtlen\_2\_Mal & 3.177 & -3 & (2, 4) &  &  & None \\ 
+  24 & CohortGrowDev & 0.000 & -4 & (0, 0) &  &  & None \\ 
+  25 & SR\_LN(R0) & 3.531 & 1 & (2, 12) & OK & 0.177 & None \\ 
+  26 & SR\_BH\_steep & 0.773 & -3 & (0.2, 1) &  &  & Full\_Beta (0.773, 0.147) \\ 
+  27 & SR\_sigmaR & 0.500 & -3 & (0, 2) &  &  & None \\ 
+  28 & SR\_envlink & 0.100 & -3 & (-5, 5) &  &  & None \\ 
+  29 & SR\_R1\_offset & 0.000 & -4 & (-5, 5) &  &  & None \\ 
+  30 & SR\_autocorr & 0.000 & -99 & (0, 0) &  &  & None \\ 
+  68 & InitF\_11\_WA\_SouthernWA\_Rec\_PCPR & 0.000 & -1 & (0, 1) &  &  & None \\ 
+  69 & InitF\_22\_WA\_NorthernWA\_Rec\_PC & 0.000 & -1 & (0, 1) &  &  & None \\ 
+  70 & InitF\_33\_WA\_NorthernWA\_Rec\_PR & 0.000 & -1 & (0, 1) &  &  & None \\ 
+  71 & Q\_extraSD\_3\_3\_WA\_NorthernWA\_Rec\_PR & 0.126 & 2 & (0, 2) & OK & 0.024 & None \\ 
+  72 & SizeSel\_1P\_1\_1\_WA\_SouthernWA\_Rec\_PCPR & 34.890 & -4 & (19, 36) &  &  & None \\ 
+  73 & SizeSel\_1P\_2\_1\_WA\_SouthernWA\_Rec\_PCPR & -4.000 & -9 & (-9, 5) &  &  & None \\ 
+  74 & SizeSel\_1P\_3\_1\_WA\_SouthernWA\_Rec\_PCPR & 3.970 & 5 & (0, 9) & OK & 0.364 & None \\ 
+  75 & SizeSel\_1P\_4\_1\_WA\_SouthernWA\_Rec\_PCPR & 8.000 & -9 & (0, 9) &  &  & None \\ 
+  76 & SizeSel\_1P\_5\_1\_WA\_SouthernWA\_Rec\_PCPR & -8.000 & -9 & (-9, 9) &  &  & None \\ 
+  77 & SizeSel\_1P\_6\_1\_WA\_SouthernWA\_Rec\_PCPR & 8.000 & -9 & (-9, 9) &  &  & None \\ 
+  78 & SizeSel\_2P\_1\_2\_WA\_NorthernWA\_Rec\_PC & 34.862 & 4 & (19, 36) & OK & 1.001 & None \\ 
+  79 & SizeSel\_2P\_2\_2\_WA\_NorthernWA\_Rec\_PC & -4.000 & -9 & (-9, 5) &  &  & None \\ 
+  80 & SizeSel\_2P\_3\_2\_WA\_NorthernWA\_Rec\_PC & 2.925 & 5 & (0, 9) & OK & 0.347 & None \\ 
+  81 & SizeSel\_2P\_4\_2\_WA\_NorthernWA\_Rec\_PC & 8.000 & -9 & (0, 9) &  &  & None \\ 
+  82 & SizeSel\_2P\_5\_2\_WA\_NorthernWA\_Rec\_PC & -8.000 & -9 & (-9, 9) &  &  & None \\ 
+  83 & SizeSel\_2P\_6\_2\_WA\_NorthernWA\_Rec\_PC & 8.000 & -9 & (-9, 9) &  &  & None \\ 
    \hline
 \hline
 \label{tab:model_params}
@@ -1463,14 +1474,14 @@ No. & Parameter & Value & SD & Bounds & Phase & Status & Prior \\
                                               time series used in the stock
                                               assessment.} 
 \label{tab:Index_summary}
-\begin{tabular}{>{\centering}p{.4in}>{\centering}p{.3in}>{\centering}p{.3in}>{\centering}p{.3in}>{\centering}p{.6in}>{\centering}p{.5in}>{\centering}p{.8in}>{\centering}p{.8in}>{\centering}p{.3in}>{\centering}p{.5in}}
+\begin{tabular}{>{\centering}p{.4in}>{\centering}p{.3in}>{\centering}p{.3in}>{\centering}p{.3in}>{\centering}p{.6in}>{\centering}p{.5in}>{\centering}p{.8in}>{\centering}p{.8in}>{\centering}p{.5in}}
   \hline
-Region & ID & Fleet & Years & Name & Fishery ind. & Filtering & Method & Rank & Endorsed \\ 
+Region & ID & Fleet & Years & Name & Fishery ind. & Filtering & Method & Endorsed \\ 
   \hline
-WA & 1 & 4 & 1981-2014 & Dockside CPUE & No & trip, area, month, Stephens-MacCall & delta-GLM (bin-gamma) & 1 & SSC \\ 
-  - & - & - & - & - & - & - & - & - & - \\ 
-  - & - & - & - & - & - & - & - & - & - \\ 
-  - & - & - & - & - & - & - & - & - & - \\ 
+WA & 1 & 4 & 1981-2014 & Dockside CPUE & No & trip, area, month, Stephens-MacCall & delta-GLM (bin-gamma) & SSC \\ 
+  - & - & - & - & - & - & - & - & - \\ 
+  - & - & - & - & - & - & - & - & - \\ 
+  - & - & - & - & - & - & - & - & - \\ 
    \hline
 \end{tabular}
 \end{table}
@@ -1557,121 +1568,121 @@ TOTAL\_like & - & - & - & - & - & - & - & - \\
   \hline
 Year & Total biomass (mt) & Spawning biomass (mt) & Depletion & Age-0 recruits & Total catch (mt) & Relative exploitation rate & SPR \\ 
   \hline \endhead  \hline
-1900 & 240.806 & 2.44e+01 & 0 & 34.1631 & 0 & 0 & 1 \\ 
-  1901 & 240.806 & 2.44e+01 & 0 & 34.1631 & 0 & 0 & 1 \\ 
-  1902 & 240.806 & 2.44e+01 & 0 & 34.1631 & 0 & 0 & 1 \\ 
-  1903 & 240.806 & 2.44e+01 & 0 & 34.1631 & 0 & 0 & 1 \\ 
-  1904 & 240.806 & 2.44e+01 & 0 & 34.1631 & 0 & 0 & 1 \\ 
-  1905 & 240.806 & 2.44e+01 & 0 & 34.1631 & 0 & 0 & 1 \\ 
-  1906 & 240.806 & 2.44e+01 & 0 & 34.1631 & 0 & 0 & 1 \\ 
-  1907 & 240.806 & 2.44e+01 & 0 & 34.1631 & 0 & 0 & 1 \\ 
-  1908 & 240.806 & 2.44e+01 & 0 & 34.1631 & 0 & 0 & 1 \\ 
-  1909 & 240.806 & 2.44e+01 & 0 & 34.1631 & 0 & 0 & 1 \\ 
-  1910 & 240.806 & 2.44e+01 & 0 & 34.1631 & 0 & 0 & 1 \\ 
-  1911 & 240.806 & 2.44e+01 & 0 & 34.1632 & 0 & 0 & 1 \\ 
-  1912 & 240.806 & 2.44e+01 & 0 & 34.1632 & 0 & 0 & 1 \\ 
-  1913 & 240.806 & 2.44e+01 & 0 & 34.1632 & 0 & 0 & 1 \\ 
-  1914 & 240.806 & 2.44e+01 & 0 & 34.1632 & 0 & 0 & 1 \\ 
-  1915 & 240.806 & 2.44e+01 & 0 & 34.1633 & 0 & 0 & 1 \\ 
-  1916 & 240.806 & 2.44e+01 & 0 & 34.1633 & 0 & 0 & 1 \\ 
-  1917 & 240.806 & 2.44e+01 & 0 & 34.1633 & 0 & 0 & 1 \\ 
-  1918 & 240.806 & 2.44e+01 & 0 & 34.1633 & 0 & 0 & 1 \\ 
-  1919 & 240.806 & 2.44e+01 & 0 & 34.1634 & 0 & 0 & 1 \\ 
-  1920 & 240.806 & 2.44e+01 & 0 & 34.1634 & 0 & 0 & 1 \\ 
-  1921 & 240.806 & 2.44e+01 & 0 & 34.1634 & 0 & 0 & 1 \\ 
-  1922 & 240.806 & 2.44e+01 & 0 & 34.1635 & 0 & 0 & 1 \\ 
-  1923 & 240.806 & 2.44e+01 & 0 & 34.1635 & 0 & 0 & 1 \\ 
-  1924 & 240.806 & 2.44e+01 & 0 & 34.1635 & 0 & 0 & 1 \\ 
-  1925 & 240.806 & 2.44e+01 & 0 & 34.1635 & 0 & 0 & 1 \\ 
-  1926 & 240.806 & 2.44e+01 & 0 & 34.1635 & 0 & 0 & 1 \\ 
-  1927 & 240.806 & 2.44e+01 & 0 & 34.1636 & 0 & 0 & 1 \\ 
-  1928 & 240.806 & 2.44e+01 & 0 & 34.1636 & 0 & 0 & 1 \\ 
-  1929 & 240.806 & 2.44e+01 & 0 & 34.1636 & 0 & 0 & 1 \\ 
-  1930 & 240.806 & 2.44e+01 & 0 & 34.1636 & 0 & 0 & 1 \\ 
-  1931 & 240.806 & 2.44e+01 & 0 & 34.1636 & 0 & 0 & 1 \\ 
-  1932 & 240.806 & 2.44e+01 & 0 & 34.1637 & 0 & 0 & 1 \\ 
-  1933 & 240.806 & 2.44e+01 & 0 & 34.1637 & 0 & 0 & 1 \\ 
-  1934 & 240.806 & 2.44e+01 & 0 & 34.1637 & 0 & 0 & 1 \\ 
-  1935 & 240.806 & 2.44e+01 & 0 & 34.1637 & 0 & 0 & 1 \\ 
-  1936 & 240.806 & 2.44e+01 & 0 & 34.1637 & 0 & 0 & 1 \\ 
-  1937 & 240.806 & 2.44e+01 & 0 & 34.1637 & 0 & 0 & 1 \\ 
-  1938 & 240.806 & 2.44e+01 & 0 & 34.1637 & 0 & 0 & 1 \\ 
-  1939 & 240.806 & 2.44e+01 & 0 & 34.1637 & 0 & 0 & 1 \\ 
-  1940 & 240.806 & 2.44e+01 & 0 & 34.1637 & 0 & 0 & 1 \\ 
-  1941 & 240.806 & 2.44e+01 & 0 & 34.1638 & 0 & 0 & 1 \\ 
-  1942 & 240.806 & 2.44e+01 & 0 & 34.1638 & 0 & 0 & 1 \\ 
-  1943 & 240.806 & 2.44e+01 & 0 & 34.1638 & 0 & 0 & 1 \\ 
-  1944 & 240.806 & 2.44e+01 & 0 & 34.1638 & 0 & 0 & 1 \\ 
-  1945 & 240.806 & 2.44e+01 & 0 & 34.1638 & 0 & 0 & 1 \\ 
-  1946 & 240.806 & 2.44e+01 & 0 & 34.1638 & 0 & 0 & 1 \\ 
-  1947 & 240.806 & 2.44e+01 & 0 & 34.1638 & 0 & 0 & 1 \\ 
-  1948 & 240.806 & 2.44e+01 & 0 & 34.1638 & 0 & 0 & 1 \\ 
-  1949 & 240.806 & 2.44e+01 & 0 & 34.1638 & 0 & 0 & 1 \\ 
-  1950 & 240.806 & 2.44e+01 & 0 & 34.1638 & 0 & 0 & 1 \\ 
-  1951 & 240.806 & 2.44e+01 & 0 & 34.1638 & 0 & 0 & 1 \\ 
-  1952 & 240.806 & 2.44e+01 & 0 & 34.1638 & 0 & 0 & 1 \\ 
-  1953 & 240.806 & 2.44e+01 & 0 & 34.1638 & 0 & 0 & 1 \\ 
-  1954 & 240.806 & 2.44e+01 & 0 & 34.1638 & 0 & 0 & 1 \\ 
-  1955 & 240.806 & 2.44e+01 & 0 & 34.1638 & 0 & 0 & 1 \\ 
-  1956 & 240.806 & 2.44e+01 & 0 & 34.1638 & 0 & 0 & 1 \\ 
-  1957 & 240.806 & 2.44e+01 & 0 & 34.1638 & 0 & 0 & 1 \\ 
-  1958 & 240.806 & 2.44e+01 & 0 & 34.1639 & 0 & 0 & 1 \\ 
-  1959 & 240.806 & 2.44e+01 & 0 & 34.1639 & 0 & 0 & 1 \\ 
-  1960 & 240.806 & 2.44e+01 & 0 & 34.1639 & 0 & 0 & 1 \\ 
-  1961 & 240.806 & 2.44e+01 & 0 & 34.1639 & 0 & 0 & 1 \\ 
-  1962 & 240.806 & 2.44e+01 & 0 & 34.1639 & 0 & 0 & 1 \\ 
-  1963 & 240.806 & 2.44e+01 & 0 & 34.1639 & 0 & 0 & 1 \\ 
-  1964 & 240.806 & 2.44e+01 & 0 & 34.1639 & 0 & 0 & 1 \\ 
-  1965 & 240.806 & 2.44e+01 & 0 & 34.1639 & 0 & 0 & 1 \\ 
-  1966 & 240.806 & 2.44e+01 & 0 & 34.1639 & 0 & 0 & 1 \\ 
-  1967 & 223.102 & 2.44e+01 & 0 & 34.1639 & 1.31 & 0 & 0.91 \\ 
-  1968 & 219.589 & 2.43e+01 & 0.99 & 34.1491 & 1.59 & 0 & 0.89 \\ 
-  1969 & 216.262 & 2.41e+01 & 0.99 & 34.1316 & 1.86 & 0.17 & 0.87 \\ 
-  1970 & 212.766 & 2.39e+01 & 0.98 & 34.1115 & 2.15 & 0.2 & 0.86 \\ 
-  1971 & 209.434 & 2.37e+01 & 0.97 & 34.0886 & 2.43 & 0.23 & 0.84 \\ 
-  1972 & 206.144 & 2.35e+01 & 0.96 & 34.063 & 2.71 & 0.26 & 0.82 \\ 
-  1973 & 202.901 & 2.32e+01 & 0.95 & 34.0348 & 2.99 & 0.29 & 0.8 \\ 
-  1974 & 199.776 & 2.30e+01 & 0.94 & 34.004 & 3.26 & 0.32 & 0.79 \\ 
-  1975 & 196.575 & 2.27e+01 & 0.93 & 33.9706 & 3.54 & 0.35 & 0.77 \\ 
-  1976 & 214.297 & 2.24e+01 & 0.92 & 33.9346 & 1.88 & 0.19 & 0.86 \\ 
-  1977 & 220.007 & 2.23e+01 & 0.91 & 33.9217 & 1.42 & 0.14 & 0.89 \\ 
-  1978 & 192.863 & 2.22e+01 & 0.91 & 33.9158 & 3.86 & 0.39 & 0.75 \\ 
-  1979 & 200.664 & 2.19e+01 & 0.9 & 33.8778 & 3.03 & 0.31 & 0.79 \\ 
-  1980 & 205.144 & 2.17e+01 & 0.89 & 33.8522 & 2.59 & 0.27 & 0.82 \\ 
-  1981 & 207.538 & 2.16e+01 & 0.88 & 33.8337 & 2.36 & 0.24 & 0.83 \\ 
-  1982 & 202.508 & 2.14e+01 & 0.88 & 33.8195 & 2.79 & 0.29 & 0.8 \\ 
-  1983 & 199.611 & 2.13e+01 & 0.87 & 33.7998 & 3.04 & 0.32 & 0.79 \\ 
-  1984 & 195.443 & 2.11e+01 & 0.86 & 33.7774 & 3.4 & 0.36 & 0.77 \\ 
-  1985 & 195.356 & 2.09e+01 & 0.86 & 33.7506 & 3.38 & 0.36 & 0.77 \\ 
-  1986 & 189.136 & 2.07e+01 & 0.85 & 33.725 & 3.96 & 0.42 & 0.73 \\ 
-  1987 & 179.585 & 2.05e+01 & 0.84 & 33.6914 & 4.96 & 0.53 & 0.69 \\ 
-  1988 & 170.707 & 2.02e+01 & 0.82 & 33.643 & 5.96999 & 0.65 & 0.64 \\ 
-  1989 & 162.489 & 1.97e+01 & 0.81 & 33.5791 & 6.96999 & 0.77 & 0.6 \\ 
-  1990 & 154.635 & 1.92e+01 & 0.79 & 33.4985 & 7.97999 & 0.9 & 0.56 \\ 
-  1991 & 181.084 & 1.86e+01 & 0.76 & 33.3996 & 4.32 & 0.5 & 0.69 \\ 
-  1992 & 154.687 & 1.84e+01 & 0.75 & 33.3684 & 7.61999 & 0.89 & 0.56 \\ 
-  1993 & 160.668 & 1.79e+01 & 0.73 & 33.2763 & 6.52999 & 0.78 & 0.59 \\ 
-  1994 & 174.296 & 1.75e+01 & 0.72 & 33.2059 & 4.73999 & 0.58 & 0.66 \\ 
-  1995 & 179.989 & 1.73e+01 & 0.71 & 33.1738 & 4.13 & 0.51 & 0.69 \\ 
-  1996 & 194.007 & 1.72e+01 & 0.71 & 33.1561 & 2.86 & 0.35 & 0.76 \\ 
-  1997 & 195.797 & 1.73e+01 & 0.71 & 33.1664 & 2.72 & 0.33 & 0.77 \\ 
-  1998 & 205.73 & 1.74e+01 & 0.71 & 33.1801 & 1.99 & 0.24 & 0.82 \\ 
-  1999 & 199.207 & 1.75e+01 & 0.72 & 33.2085 & 2.5 & 0.3 & 0.79 \\ 
-  2000 & 192.842 & 1.76e+01 & 0.72 & 33.2256 & 3.02 & 0.37 & 0.75 \\ 
-  2001 & 185.803 & 1.76e+01 & 0.72 & 33.2317 & 3.63 & 0.44 & 0.72 \\ 
-  2002 & 199.49 & 1.76e+01 & 0.72 & 33.2253 & 2.49 & 0.3 & 0.79 \\ 
-  2003 & 200.973 & 1.77e+01 & 0.72 & 33.2412 & 2.39 & 0.29 & 0.8 \\ 
-  2004 & 203.26 & 1.78e+01 & 0.73 & 33.258 & 2.23 & 0.27 & 0.81 \\ 
-  2005 & 197.681 & 1.79e+01 & 0.73 & 33.277 & 2.68 & 0.32 & 0.78 \\ 
-  2006 & 202.563 & 1.79e+01 & 0.73 & 33.2862 & 2.31 & 0.28 & 0.8 \\ 
-  2007 & 194.619 & 1.80e+01 & 0.74 & 33.3018 & 2.95 & 0.35 & 0.76 \\ 
-  2008 & 192.079 & 1.80e+01 & 0.74 & 33.3043 & 3.16 & 0.38 & 0.75 \\ 
-  2009 & 196.572 & 1.80e+01 & 0.74 & 33.3025 & 2.79 & 0.33 & 0.77 \\ 
-  2010 & 186.329 & 1.81e+01 & 0.74 & 33.3075 & 3.68 & 0.44 & 0.72 \\ 
-  2011 & 190.936 & 1.80e+01 & 0.74 & 33.2953 & 3.26 & 0.39 & 0.74 \\ 
-  2012 & 194.381 & 1.80e+01 & 0.74 & 33.2913 & 2.96 & 0.35 & 0.76 \\ 
-  2013 & 189.331 & 1.80e+01 & 0.74 & 33.2931 & 3.4 & 0.41 & 0.74 \\ 
-  2014 & 193.653 & 1.79e+01 & 0.73 & 33.2865 &  &  &  \\ 
+1900 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1901 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1902 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1903 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1904 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1905 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1906 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1907 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1908 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1909 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1910 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1911 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1912 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1913 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1914 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1915 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1916 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1917 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1918 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1919 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1920 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1921 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1922 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1923 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1924 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1925 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1926 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1927 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1928 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1929 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1930 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1931 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1932 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1933 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1934 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1935 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1936 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1937 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1938 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1939 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1940 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1941 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1942 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1943 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1944 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1945 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1946 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1947 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1948 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1949 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1950 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1951 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1952 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1953 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1954 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1955 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1956 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1957 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1958 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1959 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1960 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1961 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1962 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1963 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1964 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1965 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1966 & 241 & 24 & 0.00 & 34 & 0 & 0.00 & 1.00 \\ 
+  1967 & 223 & 24 & 0.00 & 34 & 1 & 0.00 & 0.91 \\ 
+  1968 & 220 & 24 & 0.99 & 34 & 2 & 0.00 & 0.89 \\ 
+  1969 & 216 & 24 & 0.99 & 34 & 2 & 0.17 & 0.87 \\ 
+  1970 & 213 & 24 & 0.98 & 34 & 2 & 0.20 & 0.86 \\ 
+  1971 & 209 & 24 & 0.97 & 34 & 2 & 0.23 & 0.84 \\ 
+  1972 & 206 & 23 & 0.96 & 34 & 3 & 0.26 & 0.82 \\ 
+  1973 & 203 & 23 & 0.95 & 34 & 3 & 0.29 & 0.80 \\ 
+  1974 & 200 & 23 & 0.94 & 34 & 3 & 0.32 & 0.79 \\ 
+  1975 & 197 & 23 & 0.93 & 34 & 4 & 0.35 & 0.77 \\ 
+  1976 & 214 & 22 & 0.92 & 34 & 2 & 0.19 & 0.86 \\ 
+  1977 & 220 & 22 & 0.91 & 34 & 1 & 0.14 & 0.89 \\ 
+  1978 & 193 & 22 & 0.91 & 34 & 4 & 0.39 & 0.75 \\ 
+  1979 & 201 & 22 & 0.90 & 34 & 3 & 0.31 & 0.79 \\ 
+  1980 & 205 & 22 & 0.89 & 34 & 3 & 0.27 & 0.82 \\ 
+  1981 & 208 & 22 & 0.88 & 34 & 2 & 0.24 & 0.83 \\ 
+  1982 & 203 & 21 & 0.88 & 34 & 3 & 0.29 & 0.80 \\ 
+  1983 & 200 & 21 & 0.87 & 34 & 3 & 0.32 & 0.79 \\ 
+  1984 & 195 & 21 & 0.86 & 34 & 3 & 0.36 & 0.77 \\ 
+  1985 & 195 & 21 & 0.86 & 34 & 3 & 0.36 & 0.77 \\ 
+  1986 & 189 & 21 & 0.85 & 34 & 4 & 0.42 & 0.73 \\ 
+  1987 & 180 & 20 & 0.84 & 34 & 5 & 0.53 & 0.69 \\ 
+  1988 & 171 & 20 & 0.82 & 34 & 6 & 0.65 & 0.64 \\ 
+  1989 & 162 & 20 & 0.81 & 34 & 7 & 0.77 & 0.60 \\ 
+  1990 & 155 & 19 & 0.79 & 33 & 8 & 0.90 & 0.56 \\ 
+  1991 & 181 & 19 & 0.76 & 33 & 4 & 0.50 & 0.69 \\ 
+  1992 & 155 & 18 & 0.75 & 33 & 8 & 0.89 & 0.56 \\ 
+  1993 & 161 & 18 & 0.73 & 33 & 7 & 0.78 & 0.59 \\ 
+  1994 & 174 & 18 & 0.72 & 33 & 5 & 0.58 & 0.66 \\ 
+  1995 & 180 & 17 & 0.71 & 33 & 4 & 0.51 & 0.69 \\ 
+  1996 & 194 & 17 & 0.71 & 33 & 3 & 0.35 & 0.76 \\ 
+  1997 & 196 & 17 & 0.71 & 33 & 3 & 0.33 & 0.77 \\ 
+  1998 & 206 & 17 & 0.71 & 33 & 2 & 0.24 & 0.82 \\ 
+  1999 & 199 & 18 & 0.72 & 33 & 2 & 0.30 & 0.79 \\ 
+  2000 & 193 & 18 & 0.72 & 33 & 3 & 0.37 & 0.75 \\ 
+  2001 & 186 & 18 & 0.72 & 33 & 4 & 0.44 & 0.72 \\ 
+  2002 & 199 & 18 & 0.72 & 33 & 2 & 0.30 & 0.79 \\ 
+  2003 & 201 & 18 & 0.72 & 33 & 2 & 0.29 & 0.80 \\ 
+  2004 & 203 & 18 & 0.73 & 33 & 2 & 0.27 & 0.81 \\ 
+  2005 & 198 & 18 & 0.73 & 33 & 3 & 0.32 & 0.78 \\ 
+  2006 & 203 & 18 & 0.73 & 33 & 2 & 0.28 & 0.80 \\ 
+  2007 & 195 & 18 & 0.74 & 33 & 3 & 0.35 & 0.76 \\ 
+  2008 & 192 & 18 & 0.74 & 33 & 3 & 0.38 & 0.75 \\ 
+  2009 & 197 & 18 & 0.74 & 33 & 3 & 0.33 & 0.77 \\ 
+  2010 & 186 & 18 & 0.74 & 33 & 4 & 0.44 & 0.72 \\ 
+  2011 & 191 & 18 & 0.74 & 33 & 3 & 0.39 & 0.74 \\ 
+  2012 & 194 & 18 & 0.74 & 33 & 3 & 0.35 & 0.76 \\ 
+  2013 & 189 & 18 & 0.74 & 33 & 3 & 0.41 & 0.74 \\ 
+  2014 & 194 & 18 & 0.73 & 33 &  &  &  \\ 
    \hline
 \hline
 \label{tab:Timeseries_mod1}
@@ -1728,7 +1739,7 @@ stratification. \label{fig:boundary_map}}
 \begin{figure}[htbp]
 \centering
 \includegraphics{r4ss/plots_mod1/data_plot.png}
-\caption{Summary of data sources used in the northern assessment.
+\caption{Summary of data sources used in the Northern model.
 \label{fig:data_plot}}
 \end{figure}
 
@@ -1775,7 +1786,7 @@ and open bubbles are negative residuals (observed \textless{} expected).
 \caption{Francis data weighting method TA1.8
 1\_WA\_SouthernWA\_Rec\_PCPR Suggested sample size adjustment (with 95\%
 interval) for len data from 1\_WA\_SouthernWA\_Rec\_PCPR: 0.9991
-(0.6704\_2.4014)
+(0.675\_2.2146)
 \label{fig:mod1_4_comp_lenfit_data_weighting_TA1.8_1_WA_SouthernWA_Rec_PCPR}}
 \end{figure}
 
@@ -1809,7 +1820,7 @@ and open bubbles are negative residuals (observed \textless{} expected).
 \includegraphics{./r4ss/plots_mod1/comp_lenfit_data_weighting_TA1.8_3_WA_NorthernWA_Rec_PR.png}
 \caption{Francis data weighting method TA1.8 3\_WA\_NorthernWA\_Rec\_PR
 Suggested sample size adjustment (with 95\% interval) for len data from
-3\_WA\_NorthernWA\_Rec\_PR: 0.9797 (0.6466\_2.3089)
+3\_WA\_NorthernWA\_Rec\_PR: 0.9797 (0.6349\_2.3753)
 \label{fig:mod1_8_comp_lenfit_data_weighting_TA1.8_3_WA_NorthernWA_Rec_PR}}
 \end{figure}
 
@@ -1846,6 +1857,8 @@ and open bubbles are negative residuals (observed \textless{} expected).
 \FloatBarrier
 
 \newpage
+
+\color{black}
 
 \section*{References}\label{references}
 \addcontentsline{toc}{section}{References}

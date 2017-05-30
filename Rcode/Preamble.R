@@ -30,22 +30,15 @@ spp.sci = "Sebastes nebulosus"
 # minimum vulnerable age class
 min_age = "1+"
 
-# Fecundity relationship?; could change this to look at the SS input...
-# whether spawning output is billions of eggs (fecundity relationship on) or 
-# mt (no fecundity relationship)
-# TRUE = Fecundity relationship turned on ; FALSE = no fecundity relationship 
-fecund = TRUE  
-     # Fecundity text depending on the input value above (can change this line if you like)
-     if(fecund == TRUE){fecund_unit='billion eggs'} else {fecund_unit = 'mt'}
-  
+
 # number of independent assessment models to include in the document
-n_models = 1
-  
-  
+n_models = 1 
+
+
 # model names; if you only have one model the label will just be "model"
-mod1_label = "base model" 
-mod2_label = "central model (north of $40^\\circ 10^\\prime$ N. latitude to the OR-WA border)"
-mod3_label = "southern model (south of $40^\\circ 10^\\prime$ N. latitude)"
+mod1_label = "Northern model" 
+mod2_label = "Central model"  # (north of $40^\\circ 10^\\prime$ N. latitude to the OR-WA border)"
+mod3_label = "Southern model" # (south of $40^\\circ 10^\\prime$ N. latitude)"
   
 
 # Management targets
@@ -53,15 +46,34 @@ MT   = 0.4   # management target; .4 for rockfish
 MSST = 0.25  # minimum stock size threshold; 0.25 for rockfish
 
 # -----------------------------------------------------------------------------
+# Fecundity relationship
+# whether spawning output is billions of eggs (fecundity relationship on) or 
+# mt (no fecundity relationship)
+fecund = mod1$SpawnOutputUnits  
+# Fecundity text depending on the input value above (can change this line if you like)
+if(fecund == 'numbers'){fecund_unit='billion eggs'} else {fecund_unit = 'mt'}
+
 # Change these years either here or in the table code if you need to
 
-# First and last years of the model
-Dat_start = min(mod1$MGparmAdj$Year)       # year model data starts 
-Dat_end   = max(mod1$MGparmAdj$Year)       # year model data ends
+# First and last years of model model 1
+Dat_start_mod1 =  mod1$startyr          # year model 1 data starts 
+Dat_end_mod1   =  mod1$endyr            # year model 1 data ends
 
-# First and last years for the the "recent"  10 years data tables  
-FirstYR = max(mod1$MGparmAdj$Year) - 9   # first year     
-LastYR  = max(mod1$MGparmAdj$Year)       # last year   
+# First and last years of model 2
+if(n_models>1){
+   Dat_start_mod2  = mod2$startyr      # year model 2 data starts 
+   Dat_end_mod2    = mod2$endyr        # year model 2 data ends
+}
+
+# First and last years of model 3
+if(n_models>2){
+   Dat_start_mod3 = mod3$startyr       # year model 3 data starts 
+   Dat_end_mod3   = mod3$endyr         # year model 3 data ends
+}
+
+# First and last years for the the "recent" 10 years data tables  
+FirstYR = mod1$endyr - 9 #Dat_end_mod1 - 8       # first year of recent     
+LastYR  = mod1$endyr     #Dat_end_mod1 + 1       # last year   
 
 # Projection years - years where Era is "forecast"
 Project_firstyr = min(mod1$timeseries$Yr[mod1$timeseries$Era=='FORE'])

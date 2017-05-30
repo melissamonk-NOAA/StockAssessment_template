@@ -1,5 +1,5 @@
 ---
-title: 'Status of China Rockfish (*Sebastes nebulosus*) Along the U.S. Pacific Coast in x2015x'
+title: 'Status of China Rockfish (*Sebastes nebulosus*) Along the U.S. Pacific Coast in 2015'
 author: ''
 date: ''
 output:
@@ -50,6 +50,7 @@ link-citations: yes
 \renewcommand{\thetable}{\alph{table}}
 
 
+
 #Executive Summary{-}
 
 ##Stock{-}
@@ -58,7 +59,7 @@ for regional management.}
 
 This assessment reports the status of the `r spp` (\emph{`r spp.sci`}) resource 
 in U.S. waters off the coast of the California, Oregon, and Washington using data 
-through `r LastYR-1`.  Etc...
+through `r LastYR`.  Etc...
 
 
 
@@ -100,7 +101,12 @@ Catch table:                 (Table \ref{tab:Exec_catch})
       Plot_catch(Catch_df = Exec_region3_catch)
 ```
 
-![Landings history of `r spp`. \label{fig:r4ss_catches}](r4ss/plots_mod1/catch2 landings stacked.png)
+\FloatBarrier
+
+![Landings history of `r spp` in the `r mod1_label`. \label{fig:r4ss_catches}](r4ss/plots_mod1/catch2 landings stacked.png)
+
+
+
 
 
 <!-- ***********CATCH TABLE************************************************ -->
@@ -126,7 +132,7 @@ Catch table:                 (Table \ref{tab:Exec_catch})
 information, and information lacking.}
 
 `r spp` was assessed....  This assessment uses the newest version of Stock 
-Synthesis (3.24u).  The model begins in `r Dat_start`, and assumes the stock 
+Synthesis (3.xxx).  The model begins in `r Dat_start_mod1`, and assumes the stock 
 was at an unfished equilibrium that year.
 
 
@@ -171,7 +177,9 @@ The estimated relative depletion level of model 3 in `r LastYR` is
 
     # Select which file to use for the recuitment figure, depending on if you have one model or multiple models
     if(n_models == 1) {
-      spawn.file  = 'r4ss/plots_mod1/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png'
+      spawn.file  = ifelse(fecund=='numbers',
+                           'r4ss/plots_mod1/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png',
+                           'r4ss/plots_mod1/ts7_Spawning_biomass_(mt)_with_95_asymptotic_intervals_intervals.png')
       Bratio.file = 'r4ss/plots_mod1/ts9_Spawning_depletion_with_95_asymptotic_intervals_intervals.png' 
      } else {
       spawn.file  = 'r4ss/plots_compare/base_compare2_spawnbio_uncertainty.png'
@@ -275,7 +283,7 @@ A summary of `r spp` exploitation histories for base model is provided as Figure
 
 \FloatBarrier
 
-![Estimated spawning potential ratio (SPR) for the base-case model. One minus SPR is plotted so that higher exploitation rates occur on the upper portion of the y-axis. The management target is plotted as a red horizontal line and values above this reflect harvests in excess of the overfishing proxy based on the SPR\textsubscript{50\%} harvest rate. The last year in the time series is `r Dat_end`. \label{fig:SPR_all}](`r SPR.file`)
+![Estimated spawning potential ratio (SPR) for the base-case model. One minus SPR is plotted so that higher exploitation rates occur on the upper portion of the y-axis. The management target is plotted as a red horizontal line and values above this reflect harvests in excess of the overfishing proxy based on the SPR\textsubscript{50\%} harvest rate. The last year in the time series is `r Dat_end_mod1`. \label{fig:SPR_all}](`r SPR.file`)
 
 
 ![Phase plot of estimated relative (1-SPR) vs. relative spawning biomass for the base case model. The relative (1-SPR) is (1-SPR) divided by 50\% (the SPR target). Relative depletion is the annual spawning biomass divided by the unfished spawning biomass. \label{fig:Phase_all}](`r Phase.file`)
@@ -505,12 +513,12 @@ if(n_models == 3){
    if(n_models == 1) {
      yield.file  = 'r4ss/plots_mod1/yield1_yield_curve.png'
     } else {
-     yield.file  = 'r4ss/plots_compare/yield_comparison_3_models.png'
+     yield.file  = 'r4ss/plots_compare/yield_comparison_n_models.png'
    }
 ```
 <!-- ***********Edit caption based on fixed params************************* -->
 
-![Equilibrium yield curve for the base case model. Values are based on the `r Dat_end` fishery selectivity and with steepness fixed at... \label{fig:Yield_all}](`r yield.file`)
+![Equilibrium yield curve for the base case model. Values are based on the `r Dat_end_mod1` fishery selectivity and with steepness fixed at... \label{fig:Yield_all}](`r yield.file`)
 
 <!-- ***********END EXECUTIVE SUMMARY RESULTS SUMMARY TABLE AND YIELD CURVE -->
 
@@ -1194,17 +1202,14 @@ assessment team. Not required in draft assessment undergoing review.
 <!-- ***********MODEL 1 PARAMETERS***************************************** --> 
 \begin{landscape}
 ```{r, results='asis'}
-    # If you use this for more than one model = change mod1 to mod2 or mod3
+       # If you use this for more than one model = change mod1 to mod2 or mod3
     mod_params = mod1$parameters[-c(grep('Recr',mod1$parameters$Label),
-                                grep('Impl',mod1$parameters$Label)),
-                             c(1, 2, 3, 10, 6, 5, 9, 11, 12, 13, 7)]  
-    
-    # So that decimals won't show up in these columns and control digits
-    mod_params$Num = as.factor(mod_params$Num)
-    mod_params$Phase = as.factor(mod_params$Phase)
-    mod_params$Prior = round(mod_params$Prior, digits = 3)
-    mod_params$Pr_SD = round(mod_params$Pr_SD, digits = 3)
-    
+                                         grep('Impl',mod1$parameters$Label)),
+                                      (names(mod1$parameters) %in%
+                                         c("Num","Label","Value","Phase","Min",
+                                           "Max","Status","Parm_StDev",
+                                           "PR_type","Prior","Pr_SD"))]  
+
     # Combine bounds into one column
     mod_params$Min = paste('(', mod_params$Min, ', ', mod_params$Max, ')', sep='')
     
@@ -1223,11 +1228,11 @@ assessment team. Not required in draft assessment undergoing review.
     colnames(mod_params) = c('No.',
                              'Parameter',
                              'Value',
-                             'SD',
-                             'Bounds',
                              'Phase',
+                             'Bounds',
                              'Status',
-                             'Prior')
+                             'SD',
+                             'Prior (Exp.Val, SD) ')
 
     # Model 1 model parameters
     mod_params.table = xtable(mod_params, 
@@ -1240,10 +1245,23 @@ assessment team. Not required in draft assessment undergoing review.
                                               parameters are near bounds, and prior type
                                               information (mean, SD).'
                                               , sep='')), 
-                              label='tab:model_params')  
+                              label='tab:model_params',
+                              digits = c(0,0,0,3,0,3,0,3,0))  
 
     # Add alignment  
-    align(mod_params.table) = c('lrlrrcrcl')
+    align(mod_params.table) = c('lrlrrcccl')
+        # Add alignment  
+     # align(mod_params.table) = c('l',
+    #                                 '>{\\raggedright}p{.4in}',
+    #                                 '>{\\raggedright}p{.8in}',
+    #                                 '>{\\centering}p{.3in}',
+    #                                 '>{\\centering}p{.3in}',
+    #                                 '>{\\centering}p{.4in}',
+    #                                 '>{\\centering}p{.4in}', 
+    #                                 '>{\\centering}p{.4in}',
+    #                                 '>{\\centering}p{.4in}',
+    #                                '>{\\centering}p{.5in}',
+    #                                 '>{\\centering}p{.5in}')  
  
     # Add "continued on next page"" footnote   
     addtorow          <- list()
@@ -1285,7 +1303,6 @@ assessment team. Not required in draft assessment undergoing review.
                                   'Fishery ind.',
                                   'Filtering',
                                   'Method',	
-                                  'Rank',	
                                   'Endorsed')
 
    # Index of abundance summary, create table   
@@ -1305,7 +1322,6 @@ assessment team. Not required in draft assessment undergoing review.
                                      '>{\\centering}p{.5in}', 
                                      '>{\\centering}p{.8in}',
                                      '>{\\centering}p{.8in}',
-                                     '>{\\centering}p{.3in}',
                                      '>{\\centering}p{.5in}')  
     
     # Print index summary table
@@ -1393,23 +1409,30 @@ assessment team. Not required in draft assessment undergoing review.
     
     # Total biomass, extract and subset
     Bio_all = mod1$sprseries[, c('Year', 'Bio_all')]
-    Bio_allyrs = subset(Bio_all, Year > (Dat_start - 1) & Year < (Dat_end + 1))
-    
-   
+    Bio_allyrs = subset(Bio_all, Year > (Dat_start_mod1 - 1) & Year < (LastYR + 1))
+
+  
+  
     # Spawning biomass, extract and subset, and turn into scientific notation
     SpawningB = mod1$derived_quants[grep('SPB', mod1$derived_quants$LABEL), ]
     SpawningB = SpawningB[c(-1, -2), ]
-    SpawningByrs = SpawningB[SpawningB$LABEL >= paste('SPB_', Dat_start, sep='') &  
-                             SpawningB$LABEL <= paste('SPB_', Dat_end, sep=''), ] 
-    if(SpawningByrs[2,1] > 9999999){SpawningByrs$Value = as.character(format(SpawningByrs$Value, scientific = T, digits = 3))}
+    SpawningByrs = SpawningB[SpawningB$LABEL >= paste('SPB_', Dat_start_mod1, sep='') &  
+                             SpawningB$LABEL <= paste('SPB_', LastYR, sep=''), ] 
+        
+        SpawningB_units = ''
+        if(mean(SpawningByrs$Value) > 1000000){
+            SpawningB_units <- "million"
+            SpawningByrs$Value <- SpawningByrs$Value/1000000
+         }
+
     
     # Depletion, extract, rename and subset
-    Depl_years = as.data.frame(seq(Dat_start, Dat_end, 1))
+    Depl_years = as.data.frame(seq(Dat_start_mod1, LastYR, 1))
     colnames(Depl_years) = 'Year'
     Depl_years$Depl = 0
     Depletion = mod1$derived_quants[grep('Bratio', mod1$derived_quants$LABEL), ]
-    Depletionyrs = Depletion[Depletion$LABEL >= paste('Bratio_', Dat_start, sep = '') &  
-                             Depletion$LABEL <= paste('Bratio_', Dat_end, sep = ''), ]
+    Depletionyrs = Depletion[Depletion$LABEL >= paste0('Bratio_', Dat_start_mod1) &  
+                             Depletion$LABEL <= paste0('Bratio_', LastYR), ]
     
     Depletionyrs$Year = Depletionyrs$Label1 = substr(Depletionyrs$LABEL,
                                                      (nchar(Depletionyrs$LABEL) + 1) - 4, 
@@ -1423,24 +1446,24 @@ assessment team. Not required in draft assessment undergoing review.
    # Recruits, extract and subset
    Recruit = mod1$derived_quants[grep('Recr', mod1$derived_quants$LABEL), ]
    Recruit = Recruit[c(-1, -2), ]
-   Recruityrs = Recruit[Recruit$LABEL >= paste('Recr_', Dat_start, sep='') &  
-                        Recruit$LABEL <= paste('Recr_', Dat_end, sep=''), ]  
+   Recruityrs = Recruit[Recruit$LABEL >= paste('Recr_', Dat_start_mod1, sep='') &  
+                        Recruit$LABEL <= paste('Recr_', LastYR, sep=''), ]  
     
     
    # Landings/total catch, extract and subset years
    Landings = mod1$sprseries[ , c('Year','Dead_Catch_B')]
-   Landingsyrs = subset(Landings, Year > (Dat_start - 1) & Year < (Dat_end + 1))
+   Landingsyrs = subset(Landings, Year > (Dat_start_mod1 - 1) & Year < (LastYR + 1))
     
   
     
    # Relatvie exploitation rate, extract, subset and merge
    Exploit = mod1$derived_quants[grep('F', mod1$derived_quants$LABEL), ]
    Exploit = Exploit[c(-1, -2), ]
-   Exploityrs = Exploit[Exploit$LABEL >= paste('F_', Dat_start, sep = '') &  
-                        Exploit$LABEL <= paste('F_', Dat_end, sep = ''), ]  
+   Exploityrs = Exploit[Exploit$LABEL >= paste('F_', Dat_start_mod1, sep = '') &  
+                        Exploit$LABEL <= paste('F_', LastYR, sep = ''), ]  
    Exploityrs$Year = Exploityrs$Label1 = substr(Exploityrs$LABEL, 
                                                (nchar(Exploityrs$LABEL) + 1) - 4,
-                                               nchar(Exploityrs$LABEL))
+                                                nchar(Exploityrs$LABEL))
    Exploityrs$Year = as.numeric(Exploityrs$Year)
    Exploited = merge(Depl_years, Exploityrs, all.x=T, all.y=T, by.x='Year', by.y='Year')
    Exploited[is.na(Exploited)] <- 0
@@ -1448,23 +1471,23 @@ assessment team. Not required in draft assessment undergoing review.
     
   # SPR, extract and subset years
   SPR = mod1$sprseries[, c('Year', 'SPR')]
-  SPRyrs = subset(SPR, Year > (Dat_start - 1) & Year < (Dat_end + 1))
+  SPRyrs = subset(SPR, Year > (Dat_start_mod1 - 1) & Year < (LastYR + 1))
   
   
   # Bind all the columns together for the table
-  Timeseries = as.data.frame(cbind(seq(Dat_start, Dat_end, 1), 
+  Timeseries = as.data.frame(cbind(seq(Dat_start_mod1, LastYR, 1), 
                                        Bio_allyrs$Bio_all, 
                                        SpawningByrs$Value,
-                                       round(Depleteyrs$total, 2),
+                                       Depleteyrs$total,
                                        Recruityrs$Value, 
                                        Landingsyrs$Dead_Catch_B, 
-                                       round(Exploited$total,2),
-                                       round(SPRyrs$SPR, 2)))
-                     
+                                       Exploited$total,
+                                       SPRyrs$SPR))
+
  # Add colulmn names    
  colnames(Timeseries)=c('Year', 
                         'Total biomass (mt)', 
-                        'Spawning biomass (mt)',
+                        paste0('Spawning biomass', SpawningB_units, ' (mt)'),
                         'Depletion', 
                         'Age-0 recruits', 
                         'Total catch (mt)',
@@ -1484,7 +1507,7 @@ assessment team. Not required in draft assessment undergoing review.
                               caption = c('Time-series of population estimates 
                                         from the base-case model.'),
                               label='tab:Timeseries_mod1',
-                              digits = 2)   
+                              digits = c(0,0,0,0,2,0,0,2,2))   
 
     # Add alignment
     align(Timeseries.table) = c('l',
@@ -1564,7 +1587,7 @@ assessment team. Not required in draft assessment undergoing review.
                               caption = c('Projection of potential
                                         OFL, spawning biomass, and depletion for the
                                         base case model.'),
-                              label = 'tab:Forecast_mod1', digist = 2)
+                              label = 'tab:Forecast_mod1', digits = 2)
     # Add alignment
     align(Forecast_mod1.table) = c('l',
                                    'c',
@@ -1634,8 +1657,7 @@ assessment team. Not required in draft assessment undergoing review.
 <!-- *************************Data FIGURES********************************* --> 
 <!-- ********************************************************************** -->
 
-![Summary of data sources used in the northern assessment. \label{fig:data_plot}](r4ss/plots_mod1/data_plot.png)
-
+![Summary of data sources used in the `r mod1_label`. \label{fig:data_plot}](r4ss/plots_mod1/data_plot.png)
 
 
 
@@ -1747,6 +1769,7 @@ assessment team. Not required in draft assessment undergoing review.
         cat('\n![', LenComp_mod1[i,caption_col], ' \\label{fig:mod1_', i, '_', LenComp_mod1[i, label_col], '}](', LenComp_mod1[i, path_col], ')\n', sep='')
  } }
 ```
+
 
 
 
@@ -1950,6 +1973,7 @@ assessment team. Not required in draft assessment undergoing review.
 <!-- ====================================================================== -->
 <!-- **********REFERENCES - WILL APPEAR AFTER APPENDICES******************* -->
 <!-- ====================================================================== -->
+\color{black}
 
 #References{-}
 \renewcommand{\thepage}{}

@@ -57,6 +57,31 @@
 \let\oldsubparagraph\subparagraph
 \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{Stock Assessment Template in R Markdown and Git}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Melissa Monk, NMFS SWFSC}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \date{}
+  \predate{}\postdate{}
+
 % This file contains all of the LaTeX packages you may need to compile the document
 % Documentation for each package can be found onlines
 \usepackage{tabularx}                                             % table environment providing flexibility
@@ -90,30 +115,6 @@
 \linenumbers                                                      % specify use of line numbers
 
 \definecolor{light-gray}{gray}{.85}
-
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
-
-%%% Change title format to be more compact
-\usepackage{titling}
-
-% Create subtitle command for use in maketitle
-\newcommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
-
-\setlength{\droptitle}{-2em}
-  \title{Stock Assessment Template in R Markdown and Git}
-  \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
-  \author{Melissa Monk, NMFS SWFSC}
-  \preauthor{\centering\large\emph}
-  \postauthor{\par}
-  \date{}
-  \predate{}\postdate{}
 
 \begin{document}
 \maketitle
@@ -225,8 +226,8 @@ get you ready to create R Markdown documents with GitHub and RStudio.
 \subsection{Necessary software}\label{necessary-software}
 
 If you have not registered for free \href{https://github.com}{GitHub}
-and \href{www.mendeley.com}{Mendeley} accounts, do so now. We'll cover
-more on Mendeley later on.
+and \href{www.mendeley.com}{Mendeley} or \href{www.zotero.org}{Zotero}
+accounts, do so now. We'll cover more on Mendeley later on.
 
 Make sure you have the latest versions of the following programs
 installed on your machine:\\
@@ -235,9 +236,9 @@ installed on your machine:\\
 \item \href{https://git-scm.com/book/en/v2/Getting-Started-Installing-Git}{Git} (Contains instructions to install on Linux, Mac, and PC)  
 \item \href{https://cran.r-project.org/bin/windows/base/}{R} (latest version is usually a good idea)    
 \item \href{https://www.rstudio.com/products/rstudio/download3/}{RStudio} (Note: RStudio Preview will NOT work with the template until a bug is fixed)    
-\item PC users: \href{http://miktex.org/}{MikTeX} or \href{https://www.tug.org/texlive/}{TeX Live} (needed to render a PDF to LaTeX)   
+\item PC users: \href{http://miktex.org/}{MikTeX} or \href{https://www.tug.org/texlive/}{TeX Live} (TeX Live requires more work;needed to render a PDF to LaTeX)   
 \item Mac users: \href{http://www.tug.org/mactex/}{MacTeX} (needed to render a PDF to LaTeX)   
-\item \href{https://www.mendeley.com/}{Mendeley} (optional, but useful for citation management)    
+\item \href{https://www.mendeley.com/}{Mendeley} (or any other citation manager)    
  \end{itemize}
 
 Eric Anderson has directions for the Git and R setup for Mac users
@@ -247,9 +248,10 @@ Mac users, put the line
 \texttt{\textasciitilde{}/.bash\_profile} before starting RStudio.
 
 R packages are automatically checked for in the
-\texttt{0-Run\_r4ss\_plots.R} script. You can add any other packages you
-want to load there. You may get an error and have to install
-\texttt{rmarkdown} and \texttt{knitr} manually.
+\texttt{0-Run\_r4ss\_plots.R} script (in the StockAssessment\_template
+repository). You can add any other packages you want to load there. You
+may get an error and have to install \texttt{rmarkdown} and
+\texttt{knitr} manually.
 
 \subsection{Git, GitHub and SSH
 authentication}\label{git-github-and-ssh-authentication}
@@ -268,8 +270,8 @@ authentication}\label{git-github-and-ssh-authentication}
 \end{enumerate}
 
 \begin{quote}
-\colorbox{light-gray}{\makebox{git config --global user.name 'Melissa Monk'}}\\
-\colorbox{light-gray}{\makebox{git config --global user.email 'melissa.monk@noaa.gov'}}
+\colorbox{light-gray}{\makebox{git config $--$global user.name 'Melissa Monk'}}\\
+\colorbox{light-gray}{\makebox{git config - -global user.email 'melissa.monk@noaa.gov'}}
 \end{quote}
 
 \begin{enumerate}
@@ -1190,6 +1192,13 @@ table, figures, and appendices.
   GitHub.
 \end{enumerate}
 
+The .bib file is rendered via LaTeX, so you can enclose a scientific
+name with \texttt{\textbackslash{}emph\{\}} in the Mendeley citation,
+e.g., \texttt{\textbackslash{}emph\{Sebastes\ nebulosus\}}, to produce
+\emph{Sebastes nebulosus}. To make sure these render properly, go to
+Tools -\textgreater{} Options -\textgreater{} BibTeX and uncheck the box
+that says ``escape LaTeX special characters.''
+
 To add a reference to the document type {[}@CitationKey{]}, which will
 include the reference in parentheses. To include the reference as the
 year only, type {[}-@CitationKey{]}. If you include a year only
@@ -1200,21 +1209,6 @@ Mendeley. You can find it in Mendeley by searching for the group ``China
 Rockfish Assessment 2015.'' Once you join the group, you can create a
 new group and drag all of the references you want from the China
 Rockfish assessment to your new group.
-
-\textbf{Workaround for italicizing scientific names (knit to pdf)} The
-.bib file is rendered via LaTeX, so you can enclose a scientific name
-with \texttt{\textbackslash{}emph\{\}} in the Mendeley citation, e.g.,
-\texttt{\textbackslash{}emph\{Sebastes\ nebulosus\}}, to produce
-\emph{Sebastes nebulosus}. Once you create the .bib file, the scientific
-names are converted to
-\texttt{\$\textbackslash{}backslash\$emph\textbackslash{}\{Sebastes\ nebulosus\textbackslash{}\}}.
-You will have to manually go into the .bib file and edit the scientific
-names so they once again look like
-\texttt{\textbackslash{}emph\{Sebastes\ nebulosus\}}, which can be sped
-up by by using Find and Replace (Ctrl+F). Wait to do this until you have
-the final version of your .bib file, or you'll have to do this every
-time you edit and overwrite the .bib file. You can view and edit the
-.bib file in RStudio.
 
 \newpage
 

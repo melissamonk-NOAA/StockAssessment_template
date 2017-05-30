@@ -55,7 +55,7 @@ Plot_catch = function(Catch_df) {
              ggplot(Catch_df, aes(x=Year, y=Removals,fill=Fleet)) +
              geom_area(position='stack') +
              scale_fill_manual(values=c('lightsteelblue3','coral')) +
-             scale_x_continuous(breaks=seq(Dat_start,Dat_end,20)) +
+             scale_x_continuous(breaks=seq(Dat_start_mod1, Dat_end_mod1, 20)) +
              ylab('Landings (mt)')
 }
 
@@ -106,20 +106,21 @@ for (model in 1:n_models) {
      mod=mod2
      mod_area='mod2'
     } else {
+      
      mod=mod3
      mod_area='mod3'
     }}
           
   # Extract biomass/output  
-  SpawningB = mod$derived_quants[grep('SPB', mod$derived_quants$LABEL), ]
+  SpawningB = mod$derived_quants[grep('SPB', mod$derived_quants$Label), ]
   SpawningB = SpawningB[c(-1, -2), ]
      
       
   # Spawning biomass and std.dev data, calculate lower and upper 95% CI                 
-  SpawningByrs = SpawningB[SpawningB$LABEL >= paste('SPB_', FirstYR,sep='') 
-                         & SpawningB$LABEL <= paste('SPB_', LastYR,sep=''), ]     
+  SpawningByrs = SpawningB[SpawningB$LABEL >= paste('SPB_', FirstYR+1,sep='') 
+                         & SpawningB$LABEL <= paste('SPB_', LastYR+1,sep=''), ]     
   
-  SpawningByrs$YEAR = seq(FirstYR, LastYR)
+  SpawningByrs$YEAR = seq(FirstYR+1, LastYR+1)
   
   SpawningByrs$lowerCI = round(SpawningByrs$Value + 
                                  qnorm(0.025) * SpawningByrs$StdDev, 
@@ -144,14 +145,14 @@ for (model in 1:n_models) {
   
   
   # Extract Depletion values  
-  Depletion = mod$derived_quants[grep('Bratio', mod$derived_quants$LABEL), ]
+  Depletion = mod$derived_quants[grep('Bratio', mod$derived_quants$Label), ]
   Depletion = Depletion[c(-1, -2), ]
      
   # Estimated depletion, pull out correct years, list years, and estimate 95% CI
-  Depletionyrs = Depletion[Depletion$LABEL >= paste('Bratio_', FirstYR,sep='') &
-                           Depletion$LABEL <= paste('Bratio_', LastYR,sep=''), ]     
+  Depletionyrs = Depletion[Depletion$LABEL >= paste('Bratio_', FirstYR+1,sep='') &
+                           Depletion$LABEL <= paste('Bratio_', LastYR+1,sep=''), ]     
   
-  Depletionyrs$YEAR = seq(FirstYR, LastYR)
+  Depletionyrs$YEAR = seq(FirstYR+1, LastYR+1)
   
   Depletion$Value = round(Depletion$Value, digits=3)
   
@@ -271,14 +272,14 @@ for (model in 1:n_models) {
  }}
         
   # Pull out recuitment  
-  Recruit = mod$derived_quants[grep('Recr',mod$derived_quants$LABEL),]
+  Recruit = mod$derived_quants[grep('Recr',mod$derived_quants$Label),]
   Recruit = Recruit[c(-1,-2),]
   
   # Recruitment and std.dev data, calculate lower and upper 95% CI                 
-  Recruityrs = Recruit[Recruit$LABEL >= paste('Recr_', FirstYR, sep = '') &  
-                       Recruit$LABEL <= paste('Recr_', LastYR, sep = ''), ]     
+  Recruityrs = Recruit[Recruit$LABEL >= paste('Recr_', FirstYR+1, sep = '') &  
+                       Recruit$LABEL <= paste('Recr_', LastYR+1, sep = ''), ]     
   
-  Recruityrs$YEAR = seq(FirstYR, LastYR)
+  Recruityrs$YEAR = seq(FirstYR+1, LastYR+1)
   
   # assume recruitments have log-normal distribution 
   # from first principals (multiplicative survival probabilities)
@@ -287,18 +288,12 @@ for (model in 1:n_models) {
   Recruityrs$upperCI <- exp(log(Recruityrs$Value) + qnorm(0.975)*Recruityrs$logint)
   
   Recruit_units <- "1,000s"
-  if(mean(Recruityrs$Value) > 1000){
+  if(mean(Recruityrs$Value) > 10000){
     Recruit_units <- "millions"
     Recruityrs$Value <- Recruityrs$Value/1000
     Recruityrs$lowerCI <- Recruityrs$lowerCI/1000
     Recruityrs$upperCI <- Recruityrs$upperCI/1000
   }
-  ### old method assuming normal distribution
-  #Recruityrs$lowerCI = round(Recruityrs$Value + 
-  #                           qnorm(0.025) * Recruityrs$StdDev, digits = 2)
-  
-  #Recruityrs$upperCI = round(Recruityrs$Value - 
-  #                           qnorm(0.025)*Recruityrs$StdDev, digits=2)
   
   Recruityrs$CI = paste('(', round(Recruityrs$lowerCI, digits = 2), 
                         ' - ', round(Recruityrs$upperCI, digits = 2), ')', sep='')
@@ -323,25 +318,24 @@ for (model in 1:n_models) {
 Recruit_mod1.table = xtable(Recruittab_mod1, 
                             caption = c(paste('Recent recruitment for the ', 
                                         mod1_label, '.', sep='')),
-                            label = 'tab:Recruit_mod1', digits = 2)     
+                            label = 'tab:Recruit_mod1', digits = 2)   
+
+align(Recruit_mod1.table) = c('l',
+                              '>{\\centering}p{.8in}',
+                              '>{\\centering}p{1.6in}',
+                              '>{\\centering}p{1.3in}')
         
-# Add alignment
-#align(Recruit_mod1.table) = c('l', 'l',
-#                              '>{\\centering}p{1in}',
-#                              '>{\\centering}p{1.2in}') 
-
-
-    
 # Model 2
 if (n_models >= 2) {
 Recruit_mod2.table = xtable(Recruittab_mod2, 
                             caption=c(paste('Recent recruitment for the ',
                                       mod2_label,'.',sep='')),
                             label='tab:Recruit_mod2', digits = 2) 
-# Add alignment       
-#align(Recruit_mod2.table) = c('l', 'l',
-#                              '>{\\centering}p{1in}',
-#                              '>{\\centering}p{1.2in}') 
+
+align(Recruit_mod2.table) = c('l',
+                              '>{\\centering}p{.8in}',
+                              '>{\\centering}p{1.6in}',
+                              '>{\\centering}p{1.3in}')
 }
 
 
@@ -351,10 +345,10 @@ Recruit_mod3.table = xtable(Recruittab_mod3,
                             caption=c(paste('Recent recruitment for the ', 
                                       mod3_label,'.',sep='')), 
                             label = 'tab:Recruit_mod3', digits = 2)  
-# Add alignment       
-#align(Recruit_mod3.table) = c('l', 'l',
-#                              '>{\\centering}p{1in}',
-#                              '>{\\centering}p{1.2in}') 
+align(Recruit_mod3.table) = c('l',
+                              '>{\\centering}p{.8in}',
+                              '>{\\centering}p{1.6in}',
+                              '>{\\centering}p{1.3in}')
 }
 
 # =============================================================================
@@ -375,17 +369,17 @@ for (model in 1:n_models) {
  }}  
       
   # Extract exploitation and SPR ratio values from r4SS output
-  Exploit = mod$derived_quants[grep('F',mod$derived_quants$LABEL),]
+  Exploit = mod$derived_quants[grep('F',mod$derived_quants$Label),]
   Exploit = Exploit[c(-1,-2),]
         
-  SPRratio = mod$derived_quants[grep('SPRratio',mod$derived_quants$LABEL),]
+  SPRratio = mod$derived_quants[grep('SPRratio',mod$derived_quants$Label),]
   SPRratio = SPRratio[c(-1,-2),]
         
   # Exploitation and calculate lower and upper 95% CI                 
-  Exploityrs = Exploit[Exploit$LABEL >= paste('F_', FirstYR-1, sep='') &
-                       Exploit$LABEL <= paste('F_', LastYR-1, sep=''), ]     
+  Exploityrs = Exploit[Exploit$LABEL >= paste('F_', FirstYR, sep='') &
+                       Exploit$LABEL <= paste('F_', LastYR, sep=''), ]     
   
-  Exploityrs$YEAR = seq(FirstYR-1, LastYR-1)
+  Exploityrs$YEAR = seq(FirstYR, LastYR)
   
   Exploityrs$lowerCI = round(Exploityrs$Value +
                             qnorm(0.025) * Exploityrs$StdDev, digits = 2)
@@ -401,10 +395,10 @@ for (model in 1:n_models) {
         
         
   # Spawning potential ratio and calculate lower and upper 95% CI  
-  SPRratioyrs = SPRratio[SPRratio$LABEL >= paste('SPRratio_', FirstYR-1, sep='') 
-                       & SPRratio$LABEL <= paste('SPRratio_', LastYR-1, sep=''), ]     
+  SPRratioyrs = SPRratio[SPRratio$LABEL >= paste('SPRratio_', FirstYR, sep='') 
+                       & SPRratio$LABEL <= paste('SPRratio_', LastYR, sep=''), ]     
   
-  SPRratioyrs$Year = seq(FirstYR-1, LastYR-1)
+  SPRratioyrs$Year = seq(FirstYR, LastYR)
   
   SPRratioyrs$lowerCI = round(SPRratioyrs$Value +
                               qnorm(0.025) * SPRratioyrs$StdDev, digits = 2)
@@ -497,26 +491,26 @@ for (model in 1:n_models) {
 
   # Rbind all of the data for the big summary reference table  
   Ref_pts = rbind (
-  SSB_Unfished    = mod$derived_quants[grep('SSB_U', mod$derived_quants$LABEL), ],
-  TotBio_Unfished = mod$derived_quants[grep('TotBio', mod$derived_quants$LABEL), ],
-  Recr_Unfished   = mod$derived_quants[grep('Recr_Un', mod$derived_quants$LABEL), ],
-  SPB_lastyr      = mod$derived_quants[grep(paste0('SPB_', LastYR), mod$derived_quants$LABEL), ],
-  Depletion_lastyr= mod$derived_quants[grep(paste0('Bratio_', LastYR), mod$derived_quants$LABEL), ],
+  SSB_Unfished    = mod$derived_quants[grep('SSB_U', mod$derived_quants$Label), ],
+  TotBio_Unfished = mod$derived_quants[grep('TotBio', mod$derived_quants$Label), ],
+  Recr_Unfished   = mod$derived_quants[grep('Recr_Un', mod$derived_quants$Label), ],
+  SPB_lastyr      = mod$derived_quants[grep(paste0('SPB_', LastYR), mod$derived_quants$Label), ],
+  Depletion_lastyr= mod$derived_quants[grep(paste0('Bratio_', LastYR), mod$derived_quants$Label), ],
   Refpt_sB        = c(NA, NA, NA),
-  SSB_Btgt        = mod$derived_quants[grep('SSB_Btgt', mod$derived_quants$LABEL), ],
-  SPR_Btgt        = mod$derived_quants[grep('SPR_Btgt', mod$derived_quants$LABEL), ],
-  Fstd_Btgt       = mod$derived_quants[grep('Fstd_Btgt', mod$derived_quants$LABEL), ],
-  TotYield_Btgt   = mod$derived_quants[grep('TotYield_Btgt', mod$derived_quants$LABEL), ],
+  SSB_Btgt        = mod$derived_quants[grep('SSB_Btgt', mod$derived_quants$Label), ],
+  SPR_Btgt        = mod$derived_quants[grep('SPR_Btgt', mod$derived_quants$Label), ],
+  Fstd_Btgt       = mod$derived_quants[grep('Fstd_Btgt', mod$derived_quants$Label), ],
+  TotYield_Btgt   = mod$derived_quants[grep('TotYield_Btgt', mod$derived_quants$Label), ],
   Refpt_SPR       = c(NA, NA, NA),
-  SSB_SPRtgt      = mod$derived_quants[grep('SSB_SPRtgt', mod$derived_quants$LABEL), ],
+  SSB_SPRtgt      = mod$derived_quants[grep('SSB_SPRtgt', mod$derived_quants$Label), ],
   SPR_proxy       = c('SPR_proxy', .5, NA),
-  Fstd_SPRtgt     = mod$derived_quants[grep('Fstd_SPRtgt', mod$derived_quants$LABEL), ],
-  TotYield_SPRtgt = mod$derived_quants[grep('TotYield_SPRtgt', mod$derived_quants$LABEL), ],
+  Fstd_SPRtgt     = mod$derived_quants[grep('Fstd_SPRtgt', mod$derived_quants$Label), ],
+  TotYield_SPRtgt = mod$derived_quants[grep('TotYield_SPRtgt', mod$derived_quants$Label), ],
   Refpts_MSY      = c(NA, NA, NA),
-  SSB_MSY         = mod$derived_quants[grep('SSB_MSY', mod$derived_quants$LABEL), ],
-  SPR_MSY         = mod$derived_quants[grep('SPR_MSY', mod$derived_quants$LABEL), ],
-  Fstd_MSY        = mod$derived_quants[grep('Fstd_MSY', mod$derived_quants$LABEL), ],
-  TotYield_MSY    = mod$derived_quants[grep('TotYield_MSY', mod$derived_quants$LABEL), ] )
+  SSB_MSY         = mod$derived_quants[grep('SSB_MSY', mod$derived_quants$Label), ],
+  SPR_MSY         = mod$derived_quants[grep('SPR_MSY', mod$derived_quants$Label), ],
+  Fstd_MSY        = mod$derived_quants[grep('Fstd_MSY', mod$derived_quants$Label), ],
+  TotYield_MSY    = mod$derived_quants[grep('TotYield_MSY', mod$derived_quants$Label), ] )
   Ref_pts         = Ref_pts[, 1:3]
   Ref_pts$Value   = as.numeric(Ref_pts$Value)
   Ref_pts$StdDev  = as.numeric(Ref_pts$StdDev)
@@ -646,29 +640,30 @@ align(mngmnt.table) = c('l',
 #For 1 model:
 if (n_models == 1) {
 # Extract OFLs for next 10 years for each model
-      OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$LABEL),]
-      OFL_mod1 = OFL_mod1[, 2]    #OFL_mod1[c(-1,-2),2]
+      OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$Label),]
+      OFL_mod1 = OFL_mod1[, 2]    
       
       #Turn into a dataframe and get the total
       OFL = as.data.frame(OFL_mod1)
-      OFL$Year=seq(Project_firstyr,Project_lastyr,1)
+      OFL$Year=seq(Project_firstyr,Project_lastyr, 1)
       OFL$Year = as.factor(OFL$Year)
-      OFL = OFL[,c(2,1)]
+      OFL = OFL[,c(2, 1)]
       colnames(OFL) = c('Year','OFL') 
 
 # Create the table
-      OFL.table = xtable(OFL, caption=c('Projections of potential OFL (mt) for each model, using the base model forecast.'),
+      OFL.table = xtable(OFL, caption=c('Projections of potential OFL (mt) for 
+                                        each model, using the base model forecast.'),
                   label = 'tab:OFL_projection')
 }
 
 # For 2 models:
       if (n_models == 2) {
-        # Extract OFLs for next 10 years for each model
-        OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$LABEL),]
-        OFL_mod1 = OFL_mod1[c(-1,-2),2]
+        # Extract predicted OFLs for each model
+        OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$Label),]
+        OFL_mod1 = OFL_mod1[, 2]
         
-        OFL_mod2 = mod2$derived_quants[grep('OFL',mod2$derived_quants$LABEL),]
-        OFL_mod2 = OFL_mod2[c(-1,-2),2]
+        OFL_mod2 = mod2$derived_quants[grep('OFL',mod2$derived_quants$Label),]
+        OFL_mod2 = OFL_mod2[, 2]
         
         # Turn into a dataframe and get the total
         OFL = as.data.frame(cbind(OFL_mod1, OFL_mod2))
@@ -687,17 +682,17 @@ if (n_models == 1) {
 #For 3 models:
 if (n_models == 3) {
       # Extract OFLs for next 10 years for each model
-      OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$LABEL),]
-      OFL_mod1 = OFL_mod1[c(-1,-2),2]
+      OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$Label),]
+      OFL_mod1 = OFL_mod1[, 2]
       
-      OFL_mod2 = mod2$derived_quants[grep('OFL',mod2$derived_quants$LABEL),]
-      OFL_mod2 = OFL_mod2[c(-1,-2),2]
+      OFL_mod2 = mod2$derived_quants[grep('OFL',mod2$derived_quants$Label),]
+      OFL_mod2 = OFL_mod2[, 2]
       
-      OFL_mod3 = mod3$derived_quants[grep('OFL',mod3$derived_quants$LABEL),]
-      OFL_mod3 = OFL_mod3[c(-1,-2),2]
+      OFL_mod3 = mod3$derived_quants[grep('OFL',mod3$derived_quants$Label),]
+      OFL_mod3 = OFL_mod3[, 2]
       
       #Turn into a dataframe and get the total
-      OFL = as.data.frame(cbind(OFL_mod1, OFL_mod2, OFL_mod2))
+      OFL = as.data.frame(cbind(OFL_mod1, OFL_mod2, OFL_mod3))
       OFL$Total = rowSums(OFL)
       OFL$Year=seq(Project_firstyr,Project_lastyr,1)
       OFL$Year = as.factor(OFL$Year)
@@ -705,7 +700,8 @@ if (n_models == 3) {
       colnames(OFL) = c('Year','North','Central','South','Total') 
       
       # Create the table
-      OFL.table = xtable(OFL, caption=c('Projections of potential OFL (mt) for each model, using the base model forecast.'),
+      OFL.table = xtable(OFL, caption=c('Projections of potential OFL (mt) for 
+                                        each model, using the base model forecast.'),
                          label = 'tab:OFL_projection')     
       
 }      
@@ -867,13 +863,13 @@ mngmt = mngmt[,-1]
     
 # Model 1
   # SPR ratio and exploitation
-  SPRratio_Exploit_mod1 = SPRratio_Exploit_mod1[,c(2,4)]
+  SPRratio_Exploit_mod1 = SPRratio_Exploit_mod1[2:nrow(SPRratio_Exploit_mod1),c(2,4)]
   SPRratio_Exploit_mod1[,c(1,2)] = round(SPRratio_Exploit_mod1[,c(1,2)],2)
-  SPRratio_Exploit_mod1 = SPRratio_Exploit_mod1[-dim(SPRratio_Exploit_mod1)[1],]
 
   # SPR blanks for the last year
   blanks = c(NA,NA)
   SPRratio_Exploit_mod1 = rbind(SPRratio_Exploit_mod1,blanks)
+  rownames(SPRratio_Exploit_mod1)[10]='Lastyear'
   
   # Age 5+ biomass
   Age5biomass_mod1 = mod1$timeseries[,c('Yr','Bio_smry')]
@@ -891,15 +887,19 @@ mngmt = mngmt[,-1]
   Recruittab_mod1[,2] = Recruittab_mod1[,2]
   
   # BIND ALL DATA TOGETHER
-  mod1_summary = cbind(SPRratio_Exploit_mod1,Age5biomassyrs_mod1,SpawnDeplete_mod1,Recruittab_mod1)
+  mod1_summary = cbind(SPRratio_Exploit_mod1,
+                       Age5biomassyrs_mod1,
+                       SpawnDeplete_mod1,
+                       Recruittab_mod1)
     
 # Model 2
 if (n_models >= 2) {
   # SPR ratio and exploitation
-  SPRratio_Exploit_mod2 = SPRratio_Exploit_mod2[,c(2,4)]
+  SPRratio_Exploit_mod2 = SPRratio_Exploit_mod2[2:nrow(SPRratio_Exploit_mod2),c(2,4)]
   SPRratio_Exploit_mod2[,c(1,2)] = round(SPRratio_Exploit_mod2[,c(1,2)],2)
-  SPRratio_Exploit_mod2 = SPRratio_Exploit_mod2[-dim(SPRratio_Exploit_mod2)[1],]
+  #SPRratio_Exploit_mod2 = SPRratio_Exploit_mod2[-dim(SPRratio_Exploit_mod2)[1],]
   SPRratio_Exploit_mod2 = rbind(SPRratio_Exploit_mod2,blanks)
+  rownames(SPRratio_Exploit_mod2)[10]='Lastyear'
 
   # Age 5+ biomass 
   Age5biomass_mod2 = mod2$timeseries[,c('Yr','Bio_smry')]
@@ -922,11 +922,12 @@ if (n_models >= 2) {
 # Model 3
 if (n_models == 3) {
   # SPR ratio and exploitation
-  SPRratio_Exploit_mod3 = SPRratio_Exploit_mod3[,c(2,4)]
+  SPRratio_Exploit_mod3 = SPRratio_Exploit_mod3[2:nrow(SPRratio_Exploit_mod3),c(2,4)]
   SPRratio_Exploit_mod3[,c(1,2)] = round(SPRratio_Exploit_mod3[,c(1,2)],2)
-  SPRratio_Exploit_mod3 = SPRratio_Exploit_mod3[-dim(SPRratio_Exploit_mod3)[1],]
+  #SPRratio_Exploit_mod3 = SPRratio_Exploit_mod3[-dim(SPRratio_Exploit_mod3)[1],]
   SPRratio_Exploit_mod3 = rbind(SPRratio_Exploit_mod3,blanks)
- 
+  rownames(SPRratio_Exploit_mod3)[10]='Lastyear'
+  
   # Age 5+ biomass 
   Age5biomass_mod3 = mod3$timeseries[,c('Yr','Bio_smry')]
   Age5biomassyrs_mod3 = subset(Age5biomass_mod3, Yr>=(FirstYR) & Yr<=(LastYR))
@@ -951,11 +952,10 @@ mod3_summary = cbind(SPRratio_Exploit_mod3,Age5biomassyrs_mod3,SpawnDeplete_mod3
 # ONE MODEL
 if (n_models == 1) {
   # Bind data from all three models together
-  base_summary = cbind(mngmt,mod1_summary)
-  
-  
+  base_summary1 = as.data.frame(cbind(mngmt,mod1_summary))
+
   # Transpose the dataframe to create the table and create data labels  
-  base_summary = as.data.frame(t(base_summary))
+  base_summary = as.data.frame(t(base_summary1))
   base_summary$names=c('Landings (mt)',
                        'Total Est. Catch (mt)',
                        'OFL (mt)', 
@@ -971,34 +971,34 @@ if (n_models == 1) {
                        'Recruits',
                        '~95\\% CI')
   
-  base_summary = base_summary[,c(11,10,1:9)]
-  colnames(base_summary) = c('Quantity',seq(FirstYR,LastYR))
+  base_summary = base_summary[,c(ncol(base_summary),1:(ncol(base_summary)-1))]
+  colnames(base_summary) = c('Quantity',seq(FirstYR+1,LastYR+1))
   
-  # Create the table
-  base_summary.table = xtable(base_summary, caption=c('Base case results summary.'), 
-                              label='tab:base_summary',digits=0) 
-  # Add alignment   
+  # # Create the table``
+  base_summary.table = xtable(base_summary, caption=c('Base case results summary.'),
+                              label='tab:base_summary',digits=0)
+  # # Add alignment   
   align(base_summary.table) = c('l',
-                                'r', 
+                                'r',
                                 '>{\\centering}p{1.1in}',
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}')    
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}')
 }
   # TWO MODELS
 if (n_models == 2) {
   # Bind data from all three models together
-  base_summary = cbind(mngmt,mod1_summary, mod2_summary)
+  base_summary1 = as.data.frame(cbind(mngmt,mod1_summary, mod2_summary))
   
   
   # Transpose the dataframe to create the table and create data labels  
-  base_summary = as.data.frame(t(base_summary))
+  base_summary = as.data.frame(t(base_summary1))
   base_summary$names=c('Landings (mt)',
                        'Total Est. Catch (mt)',
                        'OFL (mt)', 
@@ -1028,35 +1028,39 @@ if (n_models == 2) {
                           'Model 1','Base Case','','','','','','','',
                           'Model 2','Base Case','','','','','','','' )
   
-  base_summary = base_summary[,c(12,11,1:10)]
-  colnames(base_summary) = c('Model Region','Quantity',seq(FirstYR,LastYR))
+  base_summary = base_summary[,c(ncol(base_summary),
+                                 (ncol(base_summary)-1),
+                                1:(ncol(base_summary)-2))]
   
-  # Create the table
-  base_summary.table = xtable(base_summary, caption=c(paste(spp,' base case results summary.',sep='')), 
-                              label='tab:base_summary',digits=0) 
-  # Add alignment   
+  colnames(base_summary) = c('Model Region','Quantity',seq(FirstYR+1,LastYR+1))
+  
+  # # Create the table
+  base_summary.table = xtable(base_summary, caption=c(paste(spp,' base case results summary.',sep='')),
+                              label='tab:base_summary',digits=0)
+  # # Add alignment   
   align(base_summary.table) = c('l',
                                 'r',
-                                'r', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}', 
-                                '>{\\centering}p{1.1in}')    
+                                'r',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}',
+                                '>{\\centering}p{1.1in}')
 }
 #THREE MODELS 
 if (n_models == 3) {
 # Bind data from all three models together
-base_summary = cbind(mngmt,mod1_summary, mod2_summary, mod3_summary)
+base_summary1 = as.data.frame(cbind(mngmt, mod1_summary, mod2_summary, mod3_summary))
     
     
 # Transpose the dataframe to create the table and create data labels  
-base_summary = as.data.frame(t(base_summary))
+base_summary = as.data.frame(t(base_summary1))
+
 base_summary$names=c('Landings (mt)',
                      'Total Est. Catch (mt)',
                      'OFL (mt)', 
@@ -1097,8 +1101,13 @@ base_summary$region = c('','','','',
                         'Model 2','Base Case','','','','','','','',
                         'Model 3','Base Case','','','','','','','')
 
-base_summary = base_summary[,c(12,11,1:10)]
-colnames(base_summary) = c('Region','Quantity',seq(FirstYR,LastYR))
+base_summary = base_summary[,c(ncol(base_summary),
+                              (ncol(base_summary)-1),
+                              1:(ncol(base_summary)-2))]
+
+colnames(base_summary) = c('Model Region','Quantity',seq(FirstYR+1,LastYR+1))
+
+
 
 # Create the table
 base_summary.table = xtable(base_summary, caption=c('Base case results summary.'), 
@@ -1117,4 +1126,5 @@ align(base_summary.table) = c('l',
                               '>{\\centering}p{1.1in}', 
                               '>{\\centering}p{1.1in}', 
                               '>{\\centering}p{1.1in}')  
+
 }

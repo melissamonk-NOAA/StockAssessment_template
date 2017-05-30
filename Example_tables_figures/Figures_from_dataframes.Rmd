@@ -39,16 +39,18 @@ if you use any of these code chunks.
 List of figures in this document and their table number from the 2015 China
 rockfish assessment for reference.
 
-1. Oregon commercial landings
-2. Washington recreational removals
-3. Oregon recreational removals
-4. California recreational removals
-5. California commercial discards from r4ss
-6.
-7.
-
-
+5. Oregon commercial landings
+14. Washington recreational removals
+15. Oregon recreational removals
+16. California recreational removals
 -->
+
+
+
+
+
+
+
 
 
 <!--===========================================================================
@@ -74,7 +76,7 @@ Figure 5.Oregon commercial landings FIGURES-->
 
 
 <!--===========================================================================
-Figure . Washington recreational removals --> 
+Figure 14. Washington recreational removals --> 
 ```{r, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
    
    WA_rec_removal = read.csv('./txt_files/WA_rec_removals.csv')     
@@ -94,7 +96,7 @@ Figure . Washington recreational removals -->
 
 
 <!--===========================================================================
-3. Oregon recreational removals -->
+15. Oregon recreational removals -->
 ```{r, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
     OR_rec_removal = read.csv('./txt_files/OR_rec_removals.csv')    
     OR_rec_remov = OR_rec_removal[,1:5]
@@ -114,7 +116,7 @@ Figure . Washington recreational removals -->
 
 
 <!--===========================================================================
-4. California recreational removals -->
+16. California recreational removals -->
 ```{r, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
     CA_rec_removal = read.csv('./txt_files/CA_rec_removals.csv')   
     CA_rec_remov = CA_rec_removal[,1:5]
@@ -130,153 +132,5 @@ Figure . Washington recreational removals -->
            scale_fill_manual(values = c('lightsteelblue3', 'coral', 'aquamarine2', 'mediumpurple')) + 
            scale_x_continuous(breaks = seq(1928, 2014, 10)) + 
            ylab('Removals (mt)')
-```
-<!--========================================================================-->
-<!-- Attempting to pull figures from r4ss using the plotInfoTable -->
-
-
-```{r}
-    # Load in the plotInfoTable for model 1; change factors to strings
-    plotInfoTable_mod1 = read.csv('C:/Assessment_template/r4ss/plots_mod1/plotInfoTable_mod1_final.csv')
-    plotInfoTable_mod1 = data.frame(lapply(plotInfoTable_mod1, as.character), stringsAsFactors=FALSE)
-
-    # Pull out the different categories of plots, e.g., Bio, Sel, Timeseries, etc
-    categories = as.vector(unique(plotInfoTable_mod1$category))
-    
-    # Create a dataframe for each category
-    for(icat in 1:length(categories)){
-      dummy_df = data.frame()
-      dummy_df = subset(plotInfoTable_mod1,category==categories[icat])
-      dummy_df = data.frame(lapply(dummy_df, as.character), stringsAsFactors=FALSE)
-      dummy_df$label = substr(dummy_df$basename,1, nchar(dummy_df$basename)-4)
-      assign(paste0(categories[icat],'_mod1'),dummy_df)
-         }
-```
-
-
-\FloatBarrier
-
-<!-- Biology (Bio) r4ss plots --------------------------------------------- -->
-```{r, results='asis'}
-    # Plot all of the bio plots
-    for(i in 1:dim(Bio_mod1)[1]) {
-      cat('\n![', Bio_mod1[i,2], ' \\label{fig:mod1_', i, '_', Bio_mod1[i,9], '}](', Bio_mod1[i, 1], ')\n', sep='')
-}
-```
-\FloatBarrier
-
-<!-- Selectivity (Sel) r4ss plots ----------------------------------------- -->
-```{r, results='asis'}
-    # Plot all of the selectivity plots
-    for(i in c(1,3,5:9,9:13)) {
-       cat('\n![', Sel_mod1[i,2], ' \\label{fig:mod1_', i, '_', Sel_mod1[i, 9], '}](', Sel_mod1[i, 1], ')\n', sep='')
-}
-```
-\FloatBarrier
-
-<!-- Timeseries r4ss plots ------------------------------------------------ -->
-```{r, results='asis'}
-    # Plot all of the timeseries plots
-    for(i in 1:dim(Timeseries_mod1)[1]) {
-       cat('\n![', Timeseries_mod1[i,2], ' \\label{fig:mod1_', i, '_', Timeseries_mod1[i, 9], '}](', Timeseries_mod1[i, 1], ')\n', sep='')
-}
-```
-\FloatBarrier
-
-<!-- Recruitment deviations (RecDev) r4ss plots --------------------------- -->
-```{r, results='asis'}
-#     # Plot all of the timeseries plots
-#     for(i in 1:5) { #dim(RecDev_mod1)[1]) {
-#       cat('\n![', RecDev_mod1[i,2], ' \\label{fig:mod1_', i, '_', RecDev_mod1[i, 9], '}](', RecDev_mod1[i, 1], ')\n', sep='')
-# }
-```
-\FloatBarrier
-
-<!-- Stock-recuitment (S-R) r4ss plots ------------------------------------ -->
-```{r, results='asis'}
-    # Plot all of the timeseries plots
-#    for(i in 1:dim('S-R_mod1')[1]) {
-#      cat('\n![', S-R_mod1[i,2], ' \\label{fig:mod1_', i, '_', S-R_mod1[i, 9], '}](', S-R_mod1[i, 1], ')\n', sep='')
-#}
-```
-
-\FloatBarrier
-
-<!-- Catch (Catch) r4ss plots --------------------------------------------- -->
-```{r, results='asis'}
-    # Plot all of the timeseries plots
-    for(i in 1:dim(Catch_mod1)[1]) {
-      cat('\n![', Catch_mod1[i,2], ' \\label{fig:mod1_', i, '_', Catch_mod1[i, 9], '}](', Catch_mod1[i, 1], ')\n', sep='')
-}
-```
-
-\FloatBarrier
-
-<!-- Spawning Potential Ratio (SPR) r4ss plots ---------------------------- -->
-```{r, results='asis'}
-    # Plot all of the timeseries plots
-    for(i in 1:dim(SPR_mod1)[1]) {
-      cat('\n![', SPR_mod1[i,2], ' \\label{fig:mod1_', i, '_', SPR_mod1[i, 9], '}](', SPR_mod1[i, 1], ')\n', sep='')
-}
-```
-
-\FloatBarrier
-
-<!-- Indices of Abundance (Index) r4ss plots ------------------------------ -->
-```{r, results='asis'}
-    # Plot all of the timeseries plots
-    for(i in 1:3) { #dim(Index_mod1)[1]) {
-      cat('\n![', Index_mod1[i,2], ' \\label{fig:mod1_', i, '_', Index_mod1[i, 9], '}](', Index_mod1[i, 1], ')\n', sep='')
-}
-```
-
-\FloatBarrier
-
-<!-- Numbers at age/length (Numbers) r4ss plots ---------------------------- -->
-```{r, results='asis'}
-    # Plot all of the timeseries plots
-    for(i in 1:3) { #dim(Numbers_mod1)[1]) {
-      cat('\n![', Numbers_mod1[i,2], ' \\label{fig:mod1_', i, '_', Numbers_mod1[i, 9], '}](', Numbers_mod1[i, 1], ')\n', sep='')
-}
-```
-
-\FloatBarrier
-
-<!-- Composition (CompDat) r4ss plots -------------------------------------- -->
-```{r, results='asis'}
-    # Plot all of the timeseries plots
-    for(i in 1:3) { #dim(CompDat_mod1)[1]) {
-      cat('\n![', CompDat_mod1[i,2], ' \\label{fig:mod1_', i, '_', CompDat_mod1[i, 9], '}](', CompDat_mod1[i, 1], ')\n', sep='')
-}
-```
-
-\FloatBarrier
-
-<!-- Length Composition (LenComp) r4ss plots ------------------------------- -->
-```{r, results='asis'}
-    # Plot all of the timeseries plots
-    for(i in 1:3) { #dim(LenComp_mod1)[1]) {
-      cat('\n![', LenComp_mod1[i,2], ' \\label{fig:mod1_', i, '_', LenComp_mod1[i, 9], '}](', LenComp_mod1[i, 1], ')\n', sep='')
-}
-```
-
-\FloatBarrier
-
-<!-- Age at Length Composition (A@LComp) r4ss plots ------------------------ -->
-```{r, results='asis'}
-    # Plot all of the timeseries plots
- #   for(i in 1:dim(A@LComp_mod1)[1]) {
-#      cat('\n![', A@LComp_mod1[i,2], ' \\label{fig:mod1_', i, '_', A@LComp_mod1[i, 9], '}](', A@LComp_mod1[i, 1], ')\n', sep='')
-#}
-```
-
-\FloatBarrier
-
-<!-- Yield (Yield) r4ss plots --------------------------------------------- -->
-```{r, results='asis'}
-    # Plot all of the timeseries plots
-    for(i in 1:dim(Yield_mod1)[1]) {
-      cat('\n![', Yield_mod1[i,2], ' \\label{fig:mod1_', i, '_', Yield_mod1[i, 9], '}](', Yield_mod1[i, 1], ')\n', sep='')
-}
 ```
 

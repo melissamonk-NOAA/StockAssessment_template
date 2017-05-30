@@ -51,21 +51,21 @@ If you want more than one person to have read/write access to the repository, yo
 Jennifer (Jenny) Bryan has a top-notch tutorial, ['Happy Git and GitHub for the useR'](http://happygitwithr.com/) on the Git basics and connecting GitHub to RStudio. I HIGHLY recommend reading through her tutorials.  I produced some documentation below (before discovering Jenny's work) and the combination of the two should get you ready to create R Markdown documents with GitHub and RStudio.
 
 ##Necessary software
-If you have not registered for free [GitHub](https://github.com) and [Mendeley](www.mendeley.com) accounts, do so now.  We'll cover more on Mendeley later on.  
+If you have not registered for free [GitHub](https://github.com) and [Mendeley](www.mendeley.com) or [Zotero](www.zotero.org) accounts, do so now.  We'll cover more on Mendeley later on.  
 
 Make sure you have the latest versions of the following programs installed on your machine:    
 \begin{itemize}[noitemsep,nolistsep,topsep=0pt]
 \item \href{https://git-scm.com/book/en/v2/Getting-Started-Installing-Git}{Git} (Contains instructions to install on Linux, Mac, and PC)  
 \item \href{https://cran.r-project.org/bin/windows/base/}{R} (latest version is usually a good idea)    
 \item \href{https://www.rstudio.com/products/rstudio/download3/}{RStudio} (Note: RStudio Preview will NOT work with the template until a bug is fixed)    
-\item PC users: \href{http://miktex.org/}{MikTeX} or \href{https://www.tug.org/texlive/}{TeX Live} (needed to render a PDF to LaTeX)   
+\item PC users: \href{http://miktex.org/}{MikTeX} or \href{https://www.tug.org/texlive/}{TeX Live} (TeX Live requires more work;needed to render a PDF to LaTeX)   
 \item Mac users: \href{http://www.tug.org/mactex/}{MacTeX} (needed to render a PDF to LaTeX)   
-\item \href{https://www.mendeley.com/}{Mendeley} (optional, but useful for citation management)    
+\item \href{https://www.mendeley.com/}{Mendeley} (or any other citation manager)    
  \end{itemize}
  
 Eric Anderson has directions for the Git and R setup for Mac users [here](http://eriqande.github.io/rep-res-web/assign/assign-0.html#assignment-0).  Mac users, put the line `PATH=$PATH:~/Library/TeX/texbin` in your `~/.bash_profile` before starting RStudio.
 
-R packages are automatically checked for in the `0-Run_r4ss_plots.R` script.  You can add any other packages you want to load there. You may get an error and have to install `rmarkdown` and `knitr` manually.  
+R packages are automatically checked for in the `0-Run_r4ss_plots.R` script (in the StockAssessment_template repository).  You can add any other packages you want to load there. You may get an error and have to install `rmarkdown` and `knitr` manually.  
     
 ##Git, GitHub and SSH authentication
 
@@ -73,12 +73,12 @@ R packages are automatically checked for in the `0-Run_r4ss_plots.R` script.  Yo
 
 2. In Git Bash, set your username and email (if you haven't done this previously). The username does not have to be your GitHub username, but the email address HAS to be the email you registered with GitHub, it can also be your first and last name. In the below commands, replace 'Melissa Monk' and my email with your name and email:
 
->\colorbox{light-gray}{\makebox{git config --global user.name 'Melissa Monk'}}  
->\colorbox{light-gray}{\makebox{git config --global user.email 'melissa.monk@noaa.gov'}} 
+>\colorbox{light-gray}{\makebox{git config $--$global user.name 'Melissa Monk'}}  
+>\colorbox{light-gray}{\makebox{git config $--$global user.email 'melissa.monk@noaa.gov'}} 
 
 3. Because these commands return nothing, check to see that git registered your information by typing:
 
->\colorbox{light-gray}{\makebox{git config --global --list}}
+>\colorbox{light-gray}{\makebox{git config $--$global $--$list}}
 
 
 4. If you want to avoid the prompt for your username and password every time you push and pull the repository, read the remainder of this section.  Otherwise, skip it!  Getting the SSH-authentication to work took me a few tries, so be patient if it doesn't work the first time.  If the steps below don't work for you, check out [Jenny Bryan's tutorial](http://happygitwithr.com/) or this [R-blogger post](http://www.r-bloggers.com/rstudio-pushing-to-github-with-ssh-authentication/).
@@ -129,7 +129,7 @@ R packages are automatically checked for in the `0-Run_r4ss_plots.R` script.  Yo
 >*Hi your\_username! You’ve successfully authenticated, but GitHub does not provide shell access.*
 
 
-11. Remember to copy the SSH URL from the repository page to clone the repository.
+11. On Github, when you clone a repository remember to copy the SSH URL from the repository page to clone the repository.
 
 >Change remote.origin.url from HTTPS to HTTP (step may not be necessary)
 
@@ -150,20 +150,8 @@ If you're writing R code chunks that use ODBC connections, you can use the follo
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`uid="username",`   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`pwd=.rs.askForPassword("Enter password:"))`   
 
-
-##Update your fork from GitHub
-If the StockAssessment_template repository on Melissa's GitHub is updated, you can update your fork.  The directions below work, but they will leave you "1 commit head of the master."
-
-
-1. Open your fork repository on GitHub.
-2. Click on `Pull Requests`.
-3. Click on `New Pull Request`. By default, GitHub will compare the original with your fork, and there shouldn’t be nothing to compare if you didn’t make any changes.
-4. Change the `Base` drop down's so both point to your fork and then you'll get a prompt to `Compare across repos` (if no changes were made in the fork) or click Edit and switch the base manually. Now GitHub will compare your fork with the original, and you should see all the latest changes.
-5. Click on `Create` to create a pull request for this comparison and assign a predictable name to your pull request (e.g., Update from original).
-6. Click on Send pull request.
-7. Scroll down and click `Merge pull request` and finally Confirm merge (If your fork didn’t have any changes, you will be able to merge it automatically).
-
-Directions I think will work better are [here](https://2buntu.com/articles/1459/keeping-your-forked-repo-synced-with-the-upstream-source/), but I haven't tried them yet!.
+##Forking and cloning
+TOADS - If you need to fork your own repository see this link: http://www.tilcode.com/fork-your-own-repo-on-github/
 
 
 # Using the template step-by-step
@@ -257,7 +245,9 @@ Note: you can rename "Base\_model1" to something more intuitive.  If you do, you
 
 Run the script `0-Run_r4ss_plots.R`.  If you have only one model, you can skip the plot comparisons section.  You can also add plot modifications in this script, e.g., extending plot margins for a plot group.  The SS\_output object(s) will be saved within the workspace `SS_output.RData` in the r4ss subfolder.  Within the r4ss subfolder, model specific plots are saved in a `plots_mod#` folder (i.e., `plots_mod1`) and model comparison plots are saved in `plots_compre`.  The r4ss subfolder also contains placeholder folders for forecast plots (`plots_forecast`), profile likelihood plots (`plots_profiles`), retrospective analysis plots (`plots_retros`), and sensitivity analysis plots (`plots_sensitivity`).
 
+###SS_plots
 
+###Custom r4ss plots
 
 #The document, section by section
 All files used within the project need to be in the same parent folder. Be careful pasting text from Word, Google Docs, Textpad, etc. into R.  Symbols such as a hyphens, quotes, apostrophes may not copy "correctly" and will either not show up when the document is knitted, or will be knitted as the incorrect symbol.
@@ -430,13 +420,13 @@ R Markdown can read a number of bibliography styles, see [Bibliographies section
     + Save and overwrite the BibFile.bib file in your version-controlled working folder.
 7. Make sure you include the new .bib file when you push your changes to GitHub.
 
+The .bib file is rendered via LaTeX, so you can enclose a scientific name with `\emph{}` in the Mendeley citation, e.g., `\emph{Sebastes nebulosus}`, to produce \emph{Sebastes nebulosus}. To make sure these render properly, go to Tools -> Options -> BibTeX and uncheck the box that says "escape LaTeX special characters."
+
 To add a reference to the document type [@CitationKey], which will include the reference in parentheses.  To include the reference as the year only, type [-@CitationKey].  If you include a year only citation, remember to manually type in the author part of the citation.
 
 The 2015 China rockfish assessment bibliography collection is public in Mendeley.  You can find it in Mendeley by searching for the group "China Rockfish Assessment 2015."  Once you join the group, you can create a new group and drag all of the references you want from the China Rockfish assessment to your new group.
 
 
-**Workaround for italicizing scientific names (knit to pdf)**
-The .bib file is rendered via LaTeX, so you can enclose a scientific name with `\emph{}` in the Mendeley citation, e.g., `\emph{Sebastes nebulosus}`, to produce \emph{Sebastes nebulosus}. Once you create the .bib file, the scientific names are converted to `$\backslash$emph\{Sebastes nebulosus\}`.  You will have to manually go into the .bib file and edit the scientific names so they once again look like `\emph{Sebastes nebulosus}`, which can be sped up by by using Find and Replace (Ctrl+F).  Wait to do this until you have the final version of your .bib file, or you'll have to do this every time you edit and overwrite the .bib file. You can view and edit the .bib file in RStudio.
 
 \newpage
 
@@ -573,7 +563,7 @@ comp_lendat_flt5mkt2.png)
 \end{Verbatim}
 
 
-To create a figure within R code chunks, I find it helpful to actually use two R code chunks, one for data manipulation and a second to plot the figure.  This is because you want to set include=FALSE for the chunk manipulating the data, and include=TRUE (default value) for the chunk plotting the figure, and also so we can include the figure caption. An example is below.  Notice too, you need to only change the R code chunk options if they differ from the document's global options (described in the R Code Chunks section).
+To create a figure within R code chunks, I find it helpful to actually use two R code chunks, one for data manipulation and a second to plot the figure.  This is because you want to set include=FALSE for the chunk manipulating the data, and include=TRUE (default value) for the chunk plotting the figure, and also so we can include the figure caption. An example is below.  Notice too, you need to only change the R code chunk options if they differ from the document's global options (described in the R Code Chunks section).  TOADS - figures created in R code chunks are stored in ....
 
 \begin{Verbatim}[frame=single]
 ```{r, include=FALSE}    #include is the only option we need to change
@@ -785,6 +775,8 @@ To create the ADA compliant PDF, you'll need to take the final TeX document and 
 * You have an illegal space or carriage return, most likely in the R Markdown image syntax 
 
 * You don't have a blank line after an R code chunk.  *Sometimes*, you'll get an error if you end an R code chunk and on the next line include a float barrier or other LaTeX syntax.
+
+* You have ?? in your PDF where a figure or table reference should be.  Do a search and find for ?? in your PDF to see if you're missing references.  You'll have to go back to the code to identify where the reference is missing.
 
 
 
