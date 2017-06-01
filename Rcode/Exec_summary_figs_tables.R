@@ -117,8 +117,8 @@ for (model in 1:n_models) {
      
       
   # Spawning biomass and std.dev data, calculate lower and upper 95% CI                 
-  SpawningByrs = SpawningB[SpawningB$LABEL >= paste('SPB_', FirstYR+1,sep='') 
-                         & SpawningB$LABEL <= paste('SPB_', LastYR+1,sep=''), ]     
+  SpawningByrs = SpawningB[SpawningB$Label >= paste('SPB_', FirstYR+1,sep='') 
+                         & SpawningB$Label <= paste('SPB_', LastYR+1,sep=''), ]     
   
   SpawningByrs$YEAR = seq(FirstYR+1, LastYR+1)
   
@@ -149,8 +149,8 @@ for (model in 1:n_models) {
   Depletion = Depletion[c(-1, -2), ]
      
   # Estimated depletion, pull out correct years, list years, and estimate 95% CI
-  Depletionyrs = Depletion[Depletion$LABEL >= paste('Bratio_', FirstYR+1,sep='') &
-                           Depletion$LABEL <= paste('Bratio_', LastYR+1,sep=''), ]     
+  Depletionyrs = Depletion[Depletion$Label >= paste('Bratio_', FirstYR+1,sep='') &
+                           Depletion$Label <= paste('Bratio_', LastYR+1,sep=''), ]     
   
   Depletionyrs$YEAR = seq(FirstYR+1, LastYR+1)
   
@@ -276,8 +276,8 @@ for (model in 1:n_models) {
   Recruit = Recruit[c(-1,-2),]
   
   # Recruitment and std.dev data, calculate lower and upper 95% CI                 
-  Recruityrs = Recruit[Recruit$LABEL >= paste('Recr_', FirstYR+1, sep = '') &  
-                       Recruit$LABEL <= paste('Recr_', LastYR+1, sep = ''), ]     
+  Recruityrs = Recruit[Recruit$Label >= paste('Recr_', FirstYR+1, sep = '') &  
+                       Recruit$Label <= paste('Recr_', LastYR+1, sep = ''), ]     
   
   Recruityrs$YEAR = seq(FirstYR+1, LastYR+1)
   
@@ -376,8 +376,8 @@ for (model in 1:n_models) {
   SPRratio = SPRratio[c(-1,-2),]
         
   # Exploitation and calculate lower and upper 95% CI                 
-  Exploityrs = Exploit[Exploit$LABEL >= paste('F_', FirstYR, sep='') &
-                       Exploit$LABEL <= paste('F_', LastYR, sep=''), ]     
+  Exploityrs = Exploit[Exploit$Label >= paste('F_', FirstYR, sep='') &
+                       Exploit$Label <= paste('F_', LastYR, sep=''), ]     
   
   Exploityrs$YEAR = seq(FirstYR, LastYR)
   
@@ -395,8 +395,8 @@ for (model in 1:n_models) {
         
         
   # Spawning potential ratio and calculate lower and upper 95% CI  
-  SPRratioyrs = SPRratio[SPRratio$LABEL >= paste('SPRratio_', FirstYR, sep='') 
-                       & SPRratio$LABEL <= paste('SPRratio_', LastYR, sep=''), ]     
+  SPRratioyrs = SPRratio[SPRratio$Label >= paste('SPRratio_', FirstYR, sep='') 
+                       & SPRratio$Label <= paste('SPRratio_', LastYR, sep=''), ]     
   
   SPRratioyrs$Year = seq(FirstYR, LastYR)
   
