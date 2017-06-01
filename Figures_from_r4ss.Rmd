@@ -296,8 +296,8 @@ To reference these figures in the document, use label created for each plot.
 
 <!-- Length Composition (LenComp) r4ss plots ------------------------------- -->
 ```{r, results='asis'}
-    # Plot all of the timeseries plots
-      for(i in 1:10) { #dim(LenComp_mod1)[1]) {
+    # Plot all of the length comp plots
+      for(i in 1:dim(LenComp_mod1)[1]) { # was previously 1:10 but caused error due to no 10th figure
        
         # find matches to multi-page plots
         page_test = sapply(multi_page_fig, grepl, LenComp_mod1$label[i])

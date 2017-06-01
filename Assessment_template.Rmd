@@ -1208,16 +1208,16 @@ assessment team. Not required in draft assessment undergoing review.
                                       (names(mod1$parameters) %in%
                                          c("Num","Label","Value","Phase","Min",
                                            "Max","Status","Parm_StDev",
-                                           "PR_type","Prior","Pr_SD"))]  
+                                           "Pr_type","Prior","Pr_SD"))]  
 
     # Combine bounds into one column
     mod_params$Min = paste('(', mod_params$Min, ', ', mod_params$Max, ')', sep='')
     
     
     # Combine prior info to one column
-    #mod_params$PR_type = gsub('No_prior', 'None', mod_params$PR_type)
-    mod_params$PR_type = ifelse(mod_params$PR_type == 'No_prior' , 'None',
-                                paste(mod_params$PR_type,' (', mod_params$Prior, 
+    #mod_params$Pr_type = gsub('No_prior', 'None', mod_params$Pr_type)
+    mod_params$Pr_type = ifelse(mod_params$Pr_type == 'No_prior' , 'None',
+                                paste(mod_params$Pr_type,' (', mod_params$Prior, 
                                       ', ', mod_params$Pr_SD, ')', sep = ''))
     
     # Remove the max, prior and prior sd columns
@@ -1408,16 +1408,16 @@ assessment team. Not required in draft assessment undergoing review.
    
     
     # Total biomass, extract and subset
-    Bio_all = mod1$sprseries[, c('Year', 'Bio_all')]
-    Bio_allyrs = subset(Bio_all, Year > (Dat_start_mod1 - 1) & Year < (LastYR + 1))
+    Bio_all = mod1$sprseries[, c('Yr', 'Bio_all')]
+    Bio_allyrs = subset(Bio_all, Yr > (Dat_start_mod1 - 1) & Yr < (LastYR + 1))
 
   
   
     # Spawning biomass, extract and subset, and turn into scientific notation
-    SpawningB = mod1$derived_quants[grep('SPB', mod1$derived_quants$LABEL), ]
+    SpawningB = mod1$derived_quants[grep('SPB', mod1$derived_quants$Label), ]
     SpawningB = SpawningB[c(-1, -2), ]
-    SpawningByrs = SpawningB[SpawningB$LABEL >= paste('SPB_', Dat_start_mod1, sep='') &  
-                             SpawningB$LABEL <= paste('SPB_', LastYR, sep=''), ] 
+    SpawningByrs = SpawningB[SpawningB$Label >= paste('SPB_', Dat_start_mod1, sep='') &  
+                             SpawningB$Label <= paste('SPB_', LastYR, sep=''), ] 
         
         SpawningB_units = ''
         if(mean(SpawningByrs$Value) > 1000000){
@@ -1428,50 +1428,50 @@ assessment team. Not required in draft assessment undergoing review.
     
     # Depletion, extract, rename and subset
     Depl_years = as.data.frame(seq(Dat_start_mod1, LastYR, 1))
-    colnames(Depl_years) = 'Year'
+    colnames(Depl_years) = 'Yr'
     Depl_years$Depl = 0
-    Depletion = mod1$derived_quants[grep('Bratio', mod1$derived_quants$LABEL), ]
-    Depletionyrs = Depletion[Depletion$LABEL >= paste0('Bratio_', Dat_start_mod1) &  
-                             Depletion$LABEL <= paste0('Bratio_', LastYR), ]
+    Depletion = mod1$derived_quants[grep('Bratio', mod1$derived_quants$Label), ]
+    Depletionyrs = Depletion[Depletion$Label >= paste0('Bratio_', Dat_start_mod1) &  
+                             Depletion$Label <= paste0('Bratio_', LastYR), ]
     
-    Depletionyrs$Year = Depletionyrs$Label1 = substr(Depletionyrs$LABEL,
-                                                     (nchar(Depletionyrs$LABEL) + 1) - 4, 
-                                                      nchar(Depletionyrs$LABEL))
+    Depletionyrs$Yr = Depletionyrs$Label1 = substr(Depletionyrs$Label,
+                                                     (nchar(Depletionyrs$Label) + 1) - 4, 
+                                                      nchar(Depletionyrs$Label))
    # Make sure depletion is numeric and merge ...
-   Depletionyrs$Year = as.numeric(Depletionyrs$Year)
-   Depleteyrs = merge(Depl_years, Depletionyrs, all.x=T, all.y=T, by.x='Year', by.y='Year')
+   Depletionyrs$Yr = as.numeric(Depletionyrs$Yr)
+   Depleteyrs = merge(Depl_years, Depletionyrs, all.x=T, all.y=T, by.x='Yr', by.y='Yr')
    Depleteyrs[is.na(Depleteyrs)] <- 0
    Depleteyrs$total = Depleteyrs$Depl + Depleteyrs$Value
     
    # Recruits, extract and subset
-   Recruit = mod1$derived_quants[grep('Recr', mod1$derived_quants$LABEL), ]
+   Recruit = mod1$derived_quants[grep('Recr', mod1$derived_quants$Label), ]
    Recruit = Recruit[c(-1, -2), ]
-   Recruityrs = Recruit[Recruit$LABEL >= paste('Recr_', Dat_start_mod1, sep='') &  
-                        Recruit$LABEL <= paste('Recr_', LastYR, sep=''), ]  
+   Recruityrs = Recruit[Recruit$Label >= paste('Recr_', Dat_start_mod1, sep='') &  
+                        Recruit$Label <= paste('Recr_', LastYR, sep=''), ]  
     
     
    # Landings/total catch, extract and subset years
-   Landings = mod1$sprseries[ , c('Year','Dead_Catch_B')]
-   Landingsyrs = subset(Landings, Year > (Dat_start_mod1 - 1) & Year < (LastYR + 1))
+   Landings = mod1$sprseries[ , c('Yr','Dead_Catch_B')]
+   Landingsyrs = subset(Landings, Yr > (Dat_start_mod1 - 1) & Yr < (LastYR + 1))
     
   
     
    # Relatvie exploitation rate, extract, subset and merge
-   Exploit = mod1$derived_quants[grep('F', mod1$derived_quants$LABEL), ]
+   Exploit = mod1$derived_quants[grep('F', mod1$derived_quants$Label), ]
    Exploit = Exploit[c(-1, -2), ]
-   Exploityrs = Exploit[Exploit$LABEL >= paste('F_', Dat_start_mod1, sep = '') &  
-                        Exploit$LABEL <= paste('F_', LastYR, sep = ''), ]  
-   Exploityrs$Year = Exploityrs$Label1 = substr(Exploityrs$LABEL, 
-                                               (nchar(Exploityrs$LABEL) + 1) - 4,
-                                                nchar(Exploityrs$LABEL))
-   Exploityrs$Year = as.numeric(Exploityrs$Year)
-   Exploited = merge(Depl_years, Exploityrs, all.x=T, all.y=T, by.x='Year', by.y='Year')
+   Exploityrs = Exploit[Exploit$Label >= paste('F_', Dat_start_mod1, sep = '') &  
+                        Exploit$Label <= paste('F_', LastYR, sep = ''), ]  
+   Exploityrs$Yr = Exploityrs$Label1 = substr(Exploityrs$Label, 
+                                               (nchar(Exploityrs$Label) + 1) - 4,
+                                                nchar(Exploityrs$Label))
+   Exploityrs$Yr = as.numeric(Exploityrs$Yr)
+   Exploited = merge(Depl_years, Exploityrs, all.x=T, all.y=T, by.x='Yr', by.y='Yr')
    Exploited[is.na(Exploited)] <- 0
    Exploited$total = Exploited$Depl + Exploited$Value
     
   # SPR, extract and subset years
-  SPR = mod1$sprseries[, c('Year', 'SPR')]
-  SPRyrs = subset(SPR, Year > (Dat_start_mod1 - 1) & Year < (LastYR + 1))
+  SPR = mod1$sprseries[, c('Yr', 'SPR')]
+  SPRyrs = subset(SPR, Yr > (Dat_start_mod1 - 1) & Yr < (LastYR + 1))
   
   
   # Bind all the columns together for the table
@@ -1485,7 +1485,7 @@ assessment team. Not required in draft assessment undergoing review.
                                        SPRyrs$SPR))
 
  # Add colulmn names    
- colnames(Timeseries)=c('Year', 
+ colnames(Timeseries)=c('Yr', 
                         'Total biomass (mt)', 
                         paste0('Spawning biomass', SpawningB_units, ' (mt)'),
                         'Depletion', 
@@ -1495,7 +1495,7 @@ assessment team. Not required in draft assessment undergoing review.
                         'SPR')
  
  # Make year a factor so you don't have a decimal   
- Timeseries$Year = as.factor(Timeseries$Year)
+ Timeseries$Yr = as.factor(Timeseries$Yr)
     
  # Remove 2015 values for last three columns since year isn't complete
  Timeseries[nrow(Timeseries), c((ncol(Timeseries) - 2):ncol(Timeseries))] <- NA
@@ -1538,9 +1538,9 @@ assessment team. Not required in draft assessment undergoing review.
 \newpage
 ```{r, results = 'asis'}
     # Pull OFL contribution and subset years
-    OFLcatch = mod1$derived_quants[grep('OFLCatch', mod1$derived_quants$LABEL), ]
-    OFLcatchyrs = OFLcatch[OFLcatch$LABEL >= paste('OFLCatch_', Project_firstyr, sep = '') &
-                           OFLcatch$LABEL <= paste('OFLCatch_', Project_lastyr, sep = ''), ]
+    OFLcatch = mod1$derived_quants[grep('OFLCatch', mod1$derived_quants$Label), ]
+    OFLcatchyrs = OFLcatch[OFLcatch$Label >= paste('OFLCatch_', Project_firstyr, sep = '') &
+                           OFLcatch$Label <= paste('OFLCatch_', Project_lastyr, sep = ''), ]
 
     # Pull forecasted landings and subset years
     ForecastC = mod1$timeseries[, grepl('Yr|retain[(]B[)]', names(mod1$timeseries))]
@@ -1553,16 +1553,16 @@ assessment team. Not required in draft assessment undergoing review.
 
 
     # Pull spawning biomass and subset years
-    SpawningB = mod1$derived_quants[grep('SPB', mod1$derived_quants$LABEL), ]
+    SpawningB = mod1$derived_quants[grep('SPB', mod1$derived_quants$Label), ]
     SpawningB = SpawningB[c(-1, -2), ]
-    SpawningByrs = SpawningB[SpawningB$LABEL >= paste('SPB_', Project_firstyr, sep = '') &
-                             SpawningB$LABEL <= paste('SPB_', Project_lastyr, sep = ''), ]
+    SpawningByrs = SpawningB[SpawningB$Label >= paste('SPB_', Project_firstyr, sep = '') &
+                             SpawningB$Label <= paste('SPB_', Project_lastyr, sep = ''), ]
 
     # Pull depletion and subset years
-    Depletion = mod1$derived_quants[grep('Bratio', mod1$derived_quants$LABEL), ]
+    Depletion = mod1$derived_quants[grep('Bratio', mod1$derived_quants$Label), ]
     Depletion = Depletion[c(-1, -2), ]
-    Depletionyrs = Depletion[Depletion$LABEL >= paste('Bratio_', Project_firstyr, sep = '') &
-                             Depletion$LABEL <= paste('Bratio_', Project_lastyr, sep = ''), ]
+    Depletionyrs = Depletion[Depletion$Label >= paste('Bratio_', Project_firstyr, sep = '') &
+                             Depletion$Label <= paste('Bratio_', Project_lastyr, sep = ''), ]
 
     # Combine the data for the forecast table
     Forecast_mod1 = as.data.frame(cbind(seq(Project_firstyr, Project_lastyr, 1),
@@ -1572,7 +1572,7 @@ assessment team. Not required in draft assessment undergoing review.
                                         SpawningByrs$Value,
                                         Depletionyrs$Value))
     # Add column names
-    colnames(Forecast_mod1)=c('Year',
+    colnames(Forecast_mod1)=c('Yr',
                            'OFL contriubtion (mt)',
                            'ACL landings (mt)',
                            'Age 5+ biomass (mt)',
@@ -1580,7 +1580,7 @@ assessment team. Not required in draft assessment undergoing review.
                            'Depletion')
 
     # Make sure year is a factor, so you don't get decimals
-    Forecast_mod1$Year = as.factor(Forecast_mod1$Year)
+    Forecast_mod1$Yr = as.factor(Forecast_mod1$Yr)
 
     # Create the forecast table
     Forecast_mod1.table = xtable(Forecast_mod1,
@@ -1751,7 +1751,7 @@ assessment team. Not required in draft assessment undergoing review.
  
 ```{r, results='asis'}
     # Plot all of the timeseries plots
-      for(i in 1:10) { #dim(LenComp_mod1)[1]) {
+      for(i in 1:dim(LenComp_mod1)[1]) { # was previously 1:10 but caused error due to no 10th figure
        
         # find matches to multi-page plots
         page_test = sapply(multi_page_fig, grepl, LenComp_mod1$label[i])
