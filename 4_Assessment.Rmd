@@ -4,59 +4,24 @@
 ##Previous Assessments
 
 ###History of Modeling Approaches Used for this Stock
-California scorpionfish was first assessed in 2005 [@Maunder2005] using SS2 (version 1.18). 
-The 2005 model was a one-area model for the population south of Pt. Conception to 
-the U.S.-Mexico border. The assessment was sensitive to the inclusion of the POTW trawl survey 
-index of abundance and the STAT team provided reference points for a model that 
-included the POTW trawl survey index and one excluding it.  The stock was found to be at 80% 
-of unfished levels for the model with the POTW trawl survey index and 58% for the model without 
-the POTW trawl survey index.  The 2015 catch-only projections used the same version of SS2 as the 2005 assessment model. 
-The 2005 model assumed removals equivalent to the ACL in all years from 2004-2016.  The 
-2015 model included catch estimates from 2004-2014, and the ACLs for 2015 and 2016 were 
-assumed to be attained.  Maunder et al. [-@Maunder2005] assumed no discard mortality, 
-while the 2015 update applied a 7% discard mortality rate derived by the Groundfish 
-Management Team (GMT) ([2009-2010 SPEX EIS, Chapter 4, pg. 290](http://www.pcouncil.org/wp-content/uploads/chp4_0910.pdf)) was applied to the 
-estimate of discards to provide an estimate of discard mortality for the recreational fleet.
 
-###2005 Assessment Recommendations
+
+###yyyy Assessment Recommendations
 
 \begin{description}[style=unboxed]
 
-  \item[Recommendation 1: The POTW trawl surveys (referred to as sanitation district 
-  surveys in the 2005 assessment) conducted to track the impact 
-  of sewage outfall provided a fishery independent index of abundance for 
-  scorpionfish. This data source should be more fully explored for other 
-  nearshore species of recreational or commercial interest. Methods should 
-  be developed to produce a more statistically rigorous index from the 
-  separate surveys.] \hfill \\
+  \item[Recommendation 1: ] \hfill \\
 
-   STAT response: Data from all large POTWs in southern California 
-   were obtained for this assessment.  All of the data were pooled across
-   surveys to develop one index of abundance using the delta-GLM method
+   STAT response: xxxxx
 
-\item[Recommendation 2: An age, growth and maturity study for scorpionfish is 
-needed.  Although there has been previous research on scorpionfish age and growth, 
-the available information is not appropriate for stock assessment modeling.] \hfill \\
+\item[Recommendation 2: ] \hfill \\
 
-  STAT response: Age data are available from the NWFSC trawl survey from 2005-2016.
-  There have been no additional studies on growth or maturity for California 
-  scorpionfish since the 2005 assessment.
+  STAT response: xxxxx
 
-\item[Recommendation 3: Location information for the historic groundfish data 
-of all species is currently available, in hard copy form only, from the 
-California Department of Fish and Game. Putting this information into electronic 
-format would greatly improve the ability to assign catches of all species to 
-specific stocks on a trip-by-trip basis.] \hfill \\
+\item[Recommendation 3: ] \hfill \\
 
-  STAT response: The location-specific catches referred to above have been
-  key-punched and are available in electronic form from the SWFSC, Santa Cruz.
+  STAT response: xxxx
 
-\item[Recommendation 4: The SS2 model should be modified to allow for projections 
-of user-specified recruitment at user defined values. It would be most helpful if 
-the default harvest policies were then recalculated automatically for these 
-user-specified recruitments.] \hfill \\
-
-  STAT response: The status of this within Stock Synthesis is unknown.
   
 \end{description}
 
@@ -65,226 +30,23 @@ user-specified recruitments.] \hfill \\
 
 <!-- ************************MODEL DESCRIPTION***************************** -->
 ##Model Description
-The mode descriptions in the following sections reflect decisions and modelling 
-choices the STAT team made prior to the STAR panel.  Changes from the pre-STAR 
-base model to the final 
-post-STAR base model are documented in the "Responses to the Current STAR Panel 
-Requests" section.  None of the data changed during the STAR panel, and the figures 
-and tables reflect the post-STAR final base model.
+
 
 ###Transition to the Current Stock Assessment
-The first formal stock assessment for California scorpionfish was conducted in 2005 
-[@Maunder2005].  The 2005 model conducted in SS2 version 1.18 was first transitioned 
-to SS3.24z as a bridge model, before moving forward to SS3.30.  During the model transition 
-to SS3.24z an error was found in the 2005 model.  The harvest rate was estimated at the 
-upper limit of 0.9 and could not remove all of the input catch (Figure \ref{fig:bridge_harvestrate}).  
 
-The older SS2 output did not include separate columns for the observed (input) catch and 
-dead removals by the model (output), which would have prevented the 2005 STAT team from 
-discovering that the two time series differed (Figure \ref{fig:bridge_catch}).  The recreational 
-fishery selects the largest fish and removes the highest biomass of California 
-scorpionfish.  When the harvest rate hit the upper bounds as in the 1970s, there were 
-not enough fish estimated in the population to support the large removals, i.e., stock 
-estimated at 500 mt and the recreational catch was 100 mt. The stock was not productive 
-enough to sustain the observed catch. A comparison of time series from the 2005 model, 
-the SS3.24z transition model, and the base model from this assessment are in Figure 
-\ref{fig:bridge_timeseries}.
-
-Below, we describe the most important changes made since the last full assessment in 2005 
-and explain rationale for each change.  Some of these items are changes due to structure 
-changes with Stock Synthesis, and some denote parameters chosen for options that were not
-available in SS2 (version 1.18).
-
-Changes in the bridge model from SS2 version 1.8 to SS3.24z and SS3.30.03.05 include:
-
-The way growth is modeled for age-0 fish has changed.  More recent versions of Stock Synthesis 
-model length-at-age for fish below the first reference age (Amin) as linearly increasing 
-from the initial length bin to the length given by the L_at_Amin parameter.  Since small 
-California scorpionfish are selected in the POTW trawl survey data, the change 
-in modeled growth has the potential to affect estimates of recruitment.  We took the 
-following approach in order to mimic the methods of SS2 version 1.8:
- \begin{enumerate}
- 
- \item Replaced initial value of length at minimum age for females with 7.26567 (the Length begin value for age 
- 0 from the SS2.rep file).
- 
-  \item Replaced initial offset value of length at minimum age for males with 0.35366 (= LN(10.3483/7.26567), the 
-  log of the ratio of Male to Female length at age 0 from the SS2.rep file)
-
-\end{enumerate}
-
-This assessment aggregated the catches from the commercial fish pot fleet with the 
-hook-and-line fleet.  There were no measured California scorpionfish from the fish 
-pot fleet and overall catches were minimal.  The commercial trawl and gillnet fleets 
-were disaggregated as in  the 2005 model. The current model also assumes no discards 
-in the commercial fishery.  The previous assessment combined the recreational party/charter 
-and private modes into a single fishery.  This assessment disaggregates the two sectors of 
-the recreational fishery and adds a fleet to represent the discards (party/charter and private 
-modes combined) from the recreational fleet
-
-The 2005 model was a length-based model.  This assessment uses conditional age-at-length from 
-fish aged from the NWFSC trawl survey.
-
- The historical commercial catches were the same as those used in the previous assessment 
- and were updated using CFIS data from 2005-2016.  The CFIS database was used instead of 
- CALCOM because landings in CALCOM included catches from Mexican waters. 
-
-The recreational catches differed from the catch history used in the previous assessment. 
-In 2010 a catch reconstruction was completed for California [@Ralston2010]. Methods 
-provided were applied in reconstructing the catch of California scorpionfish for this assessment.  
-Both assessments utilized similar data sources including CPFV logbooks and MRFSS data 
-providing catch estimates, with the addition of data from the CRFS program for 2004-2016. 
-The main difference resides with accounting for discard mortality as well as landed catch 
-allowing discards to be modeled as a separate fleet making use of length distribution data 
-for discards for 2003-2016.  In addition, the recreational catch time series terminated in 
-1928 for the current assessment, as specified for rockfish catch reconstructions in the 
-historical catch reconstruction document, rather than in 1916.  The ratio of catches for 
-the party-charter boat mode to the private and rental boat mode from the MRFSS period were 
-used in combination with catch estimates from the CPFV logbook estimates back to 1932 in 
-both assessments to approximate mortality the private rental boat mode prior to 1980.  A 
-ramp accounting for the increase relative contribution of the private boat mode relative to 
-the party charter mode from the mid 1965 to 1980, as conducted for rockfish in the historical 
-catch reconstruction document.  A constant ratio of catch compared to the party charter boat 
-mode was applied for man-made and beach and bank modes to provide an estimate of catch back 
-to 1936 as was done for the private and rental boat mode in the previous assessment.  The 
-CPFV logbook data terminated in 1935 and a linear ramp was used to approximate catch from 
-1936 back to zero in 1928 for each mode as compared to 1916 in the 2005 assessment.
-
-The bias adjustment for recruitment deviations did not exist in SS2 (version 1.198). We set 
-1965-2015 as the range of years with full bias adjustment in SS3.24z to span the time series 
-that was modeled.
-
-Length composition data were updated and sources added for this assessment.  The 2005 assessment 
-used the same source for length compositions for the commercial fisheries, the CDFW market category 
-study.  The length compositions from CALCOM were all from single trips within a year and are not 
-used in the assessment.  The measured fish from RecFIN (dockside intercept surveys) were disaggregated 
-to the party/charter and private modes.  Preliminary analyses indicated the recreational private 
-and rental boat mode selects larger fish than the party and charter boat mode (add plot).  
-
-The 2005 assessment converted all length parameters to SL, which prevented comparisons with some 
-of the growth parameters.  The values in the SS files from the previous assessment also did not 
-match those in the written document.  The current model uses TL for all length compositions and 
-growth parameters.
-
-The previous assessment modeled selectivity using the double logistic, with defined peak, and 
-smooth joiners for all fleets with estimated selectivity.  Two parameters were estimated for 
-each selectivity curve, the size at which selectivity is halfway between the selectivity at 
-length bin = 1 and one, and the slope of the left side of the selectivity curve.  This 
-selectivity pattern has since been discontinued in SS.   All of the double logistic selectivity 
-patterns in the 2005 assessment were asymptotic and are the same in this assessment. 
-Selectivity in this model is assumed to be length-based and is modeled as double-normal 
-for all fleets that were also in the previous assessment. This assessment mirrors the 
-selectivity for the trawl and gillnet commercial fisheries to the commercial 
-hook-and-line fishery.  The 2005 assessment included two surveys, the CPFV logbook 
-and POTW trawl surveys.  The length composition measurement for the CPFV 
-logbook survey are from the dockside intercept surveys in RecFIN and were updated to 
-double normal selectivity in this model.
-
-The time blocks for the commercial fishery is the same as in the previous assessment 
-(1916-1998 and 1999-2017).  There have been no additional major changes to the commercial 
-regulations since the 10-inch minimum size limit and the catches from the commercial fleets 
-in the last 10 years have been minimal compared to historical catches.  The time blocks for 
-the recreational fleets were updated to include a third time block from 2000-2005, when 
-closures of the recreational fishery fluctuated annually.  Since 2006, the recreational 
-regulations have remained fairly consistent.
-
-The 2005 assessment considered six candidate indices of abundance (fishery-dependent: 
-CPFV logbook, CDFW monthly block summaries, RecFIN dockside intercept survey, trawl 
-logbook; fishery-independent: POTW trawl survey, CalCOFI, but only included two in the 
-final model (CPFV logbook and POTW trawl surveys).  The POTW trawl 
-surveys ended up being the basis for the decision table in the 2005 assessment, with 
-more weight given to the model without the POTW trawl survey.  All 
-indices were re-evaluated and updated through 2016 for this assessment.  As in the 
-2005 assessment, we did not consider the CalCOFI index, CDFW monthly block summaries, 
-or the trawl logbook for the current model.  The current model includes four 
-fishery-dependent indices and four fishery-independent indices.  The RecFIN 
-party/charter mode dockside intercept survey was not available at the trip-level 
-at the time of the 2005 assessment and it is unclear how the 2005 assessment treated data record entries from 
-RecFIN.  The RecFIN private mode index is currently only available at the trip-level for the CRFS sampling period, 
-2004-2016.  The onboard observer database was also not available for the 2005 assessment 
-and is used here as both retained-only and discard-only indices.  The CPFV logbook data
-was updated and reevaluated from the 2005 assessment.
-
-The fishery-independent indices are all new for this assessment, except for the 
-POTW trawl surveys.  
-
-Maturity was changed for this assessment.  The Love et al. [-@Love1987] study is 
-the only study that estimated the maturity ogive.  The CDFW cross-shelf halibut 
-survey used in the 2005 assessment to estimate the GSI were not used in this study 
-as GSI is not an indicator of fecundity.  Fecundity estimates are available for a number 
-of rockfish species [@Dick2017], but there is currently no information on fecundity 
-available for California scorpionfish.  This assessment uses the assumption that eggs are equivalent to spawning biomass.  
-
-In this assessment, steepness was set at 0.718, the mean of the beta prior developed 
-from a meta-analysis of West Coast groundfish and updated in 2017 (James Thorson, 
-personal communication, NWFSC, NOAA).  
-
-The prior for female natural mortality was updated to the median of the prior 
-from a meta-analysis conducted by Owen Hamel (personal communication, NWFSC, NOAA).  
-Assuming a maximum age of 21 years, the median of the prior is 0.2547, close to the 
-fixed value for younger fish in the 2005 assessment of 0.25.
-
-Due to the fact that the 2005 model was erroneous, a bridge from the 2014 catch 
-update, which used SS2 version 1.8 and the 2005 model, was not developed.
-
-Changes in the bridge model from the SS3.24z model closely matched with the 
-SS2 version 1.8 model to SS3.30.
 
 
 ###Summary of Data for Fleets and Areas
-There are twelve fleets in the base model.  They include:
+There are xxx fleets in the base model.  They include:
 
-*Commercial*: The commercial fleets include three separate fleets, one each for the 
-hook-and-line, gillnet, and trawl fisheries.  The catch from all other commercial 
-gears is included in the hook-and-line catch.
+*Commercial*: The commercial fleets include ...
 
-*Recreational*: The recreational fleets include three separate fleets, one each for 
-retained catch from the recreational party/charter boat and private boat modes, and 
-one for the dead discards from the recreational party/charter boat and private boat modes 
-combined.
+*Recreational*: The recreational fleets include ...
 
-*Research*: There are six sources of fishery-independent data available for California 
-scorpionfish, including the POTW trawl surveys, NWFSC trawl survey, 
-the CSUN/VRG gillnet survey, the generating stations surveys, Southern California 
-Bight regional monitoring trawl survey, and the recreational party/charter onboard 
-observer retained-only catch data.
+*Research*: There are xx sources of fishery-independent data available ...
 
 ###Other Specifications
-Stock synthesis has a broad suite of structural options available.  Where possible, 
-the ‘default’ or most commonly used approaches are applied to this stock assessment.
-The assessment is sex-specific, including the estimation of separate growth curves, 
-and natural mortality.  Sex-specific length-weight parameters were input as fixed 
-values.  The assessment only tracks female spawning biomass for use in calculating stock status.
 
-The selectivity for the generation station impingement surveys was set to 1.0 for 
-all sizes (SS pattern 0).  As an example, the cooling intake pipes at SONGS are 
-18-foot in diameter and draw in seawater at a rate of hundreds of thousands of 
-gallons per minute.  The water flow once in the generating station is one directional 
-and organisms cannot escape, unless removed via a fish return system. Flow rates for 
-the cooling water intake range from 0.27-1.2 m/s [@EPRI2008; @MBC2007; @MBC2005] and 
-would not allow a fish of any size evade intake cooling pipes.
-
-The length composition data for some years and fleets was small, and may not have 
-been representative of the total catch.  Length composition data were removed from the 
-model if less than one trip sampled and fewer than 20 fish were measured in a given 
-year and fleet.  From 1985-1989, two surveys measured fish from the recreational 
-party/charter fleet, the Ally et al. [@Ally1991] onboard observer survey and the 
-dockside intercept survey.  The number of trips and fish sampled by the onboard 
-observer survey was far greater than the RecFIN survey and were used in the model.
-
-The time-series of landings begins in 1916 for the commercial fleet and in 1929 for 
-the recreational fleet.  This captures the inception of the fishery, so the stock is 
-assumed to be in equilibrium at the beginning of the modeled period.
- 
-The internal population dynamics model tracks ages 0-21, where age 21 is the ‘plus-group.’ 
-There are relatively few observations in the age compositions that are greater than age 21.
-
-The following likelihood components are included in this model: catch, indices, discards, 
-length compositions, age compositions, recruitments, parameter priors, and parameter soft 
-bounds. See the SS technical documentation for details [@Methot2015].
-
-Electronic SS model files including the data, control, starter, and forecast files can be 
-found on the [PFMC ftp site](ftp://ftp.pcouncil.org/pub/GF_STAR3_2017_Blue_Deacon_CAScorp/).
 
 ###Modeling Software
 The STAT team used Stock Synthesis 3 version 3.30.05.03 by Dr. Richard Methot at 
@@ -294,402 +56,103 @@ improvements and corrections to older versions.  The r4SS package
 Synthesis. 
 
 ###Data Weighting
-Length composition and conditional-age-at-length (CAAL) compositions sample sizes for 
-the base model were tuned by the "Francis method," based on equation TA1.8 in Francis 
-[-@Francis2011], and implemented in the r4ss package. This approach involves comparing 
-the residuals in the model’s expected mean length with respect to the observed mean 
-length and associated uncertainty derived from the composition vectors and their 
-associated input sample sizes. The sample sizes are then tuned so that the observed 
-and expected variability are consistent. After adjustment to the sample sizes, models 
-were not re-tuned if the bootstrap uncertainty value around the tuning factor overlapped 1.0.
-
-As outlined in the Best Practices, a sensitivity run was conducted with length and 
-conditional-age-at-length (CAAL) compositions were re-weighted using the 
-Ianelli-McAllister harmonic mean method [@McAllister1997]. 
-
-Extra variability parameters were estimated and added to the input variance for all surveys 
-and CPUE indices.
-
 
 
 ###Priors
 The log-normal prior for female natural mortality were based on a meta-analysis 
 completed by Hamel [-@Hamel2015], as described under “Natural Mortality.” Female 
-natural mortality was fixed at the median of the prior, 0.257 for an assumed
-maximum age of 21.  An uninformative prior was used for the male offset natural 
+natural mortality was fixed at the median of the prior, 0.xxx for an assumed
+maximum age of xx.  An uninformative prior was used for the male offset natural 
 mortality, which was estimated.
 
 The prior for steepness (*h*) assumes a beta distribution with parameters based on an update for the 
 Thorson-Dorn rockfish prior (Dorn, M. and Thorson, J., pers. comm.), which was endorsed by the Science 
-and Statistical Committee in 2017.  The prior is a beta distribution with $mu$=0.718 and $sigma$=0.158.
+and Statistical Committee in 2018.  The prior is a beta distribution with $mu$=0.xxx and $sigma$=0.xxx.
 Steepness is fixed in the base model at the mean of the prior. The priors were applied in sensitivity analyses where these parameters were estimated.
 
 
 
 ###Estimated and Fixed Parameters
 A full list of all estimated and fixed parameters is provided in Tables 
-\ref{tab:model_params}. Time-invariant, sex-specific growth is estimated in 
-this assessment, with all SS growth parameters being estimated. The log of the 
-unexploited recruitment level for the Beverton-Holt stock-recruit function is 
-treated as an estimated parameter. Annual recruitment deviations are estimated 
-beginning in 1985, just after the first sets of length composition data enter the 
-model.  The survey catchability parameters are calculated analytically (set as 
-scaling factors) such that the estimate is median unbiased, which is comparable to 
-the way q is treated in most groundfish assessments.  
+\ref{tab:model_params}. 
 
-The base model has a total of 113 estimated parameters in the following categories:
+The base model has a total of xxx estimated parameters in the following categories:
 
 \begin{itemize}
-  \item Equilibrium recruitment ($R_0$) and 54 recruitment deviations,
-  \item Nine growth parameters
-  \item Eight index extra standard deviation parameter, and
-  \item 31 selectivity parameters
+  \item xxx,
+  \item xxx
+  \item xxx, and
+  \item xxx selectivity parameters
 \end{itemize}
 
 The estimated parameters are described in greater detail below and a full list of 
 all estimated and parameters is provided in Table \ref{tab:model_params}.
 
-_Growth._ Five growth parameters were estimated for females: 3 von Bertalanffy parameters 
-and 2 parameters for CV as a function of length at age related to variability in length 
-at age for small and large fish.
+_Growth._ 
 
-Four parameters are estimated for male growth as offset from female growth.  The length 
-at Amin was set equal to the female estimate.
+_Natural Mortality._ 
 
-_Natural Mortality._ Natural mortality is fixed for females at the value provided by the 
-Hamel [@Hamel2015] analysis described above.  Natural mortality for males is estimated 
-as an offset from the fixed female natural mortality in the pre-STAR base model.  Natural 
-mortality parameters for females and males are the same and fixed in the post-STAR base 
-model.
+_Selectivity._  
 
-_Selectivity._ Selectivity for all fleets (except the impingement survey) was estimated as 
-double-normal.  The recreational dead discard fleet has a dome-shaped selectivity and all 
-6 parameters were estimable.  
 
-For all fleets where the estimated parameters were asymptotic, parameters related to the 
-dome were fixed, leaving only the position of the peak, the ascending slope, and 
-selectivity at the first length bin as estimated parameters. Ten selectivity parameters 
-related to the time blocks were also estimated.
+_Other Estimated Parameters._ 
 
-_Other Estimated Parameters._ Recruitment deviations for the base model are estimated 
-from 1984 to 2015.  The base model also included estimated recruitment deviations for 
-the forecast years, although these 
-have no impact on the model estimates for the current year.
-
-Many variations of the base case model were explored during this analysis. Sensitivities 
-to asymptotic vs. domed selectivity were explored for the appropriate fisheries, e.g. 
-trawl and gillnet fisheries, as well as estimating selectivity and mirroring fleet 
-selectivities. Time blocked selectivity without the time block from 2005-2015 for the 
-recreational fisheries was investigated.  We also considered a model with an additional 
-time block for the commercial fishery, but the length composition data were sparse.
-
-This assessment includes discards for the recreational fleet, so time was spent 
-investigating changes in selectivity and the most prudent way to incorporate discards. 
-Length composition of discards from two recreational party/charter onboard observer programs and 
-sensitivities to estimates of female natural mortality were explored by fixing other 
-key parameters, i.e., steepness. Male natural mortality is still reasonably well 
-estimated, but the estimates of $lnR0$ and female $M$ are not well estimated.  The 
-previous assessment fixed female and male $M$, where male $M$ was an offset.  The 
-previous model had two breakpoints for natural mortality, but the natural mortality 
-for older fish was set to the same as for younger fish.  This model uses one parameter 
-for natural mortality for each sex.
-
-Much time was also spent tuning the advanced recruitment bias adjustment options, 
-which were new as of SS 3.24.  Sensitivities were performed to each of the thirteen 
-advanced options for recruitment, e.g., early recruitment deviation start year, 
-early recruitment deviation phase, years with bias adjustments, and maximum bias 
-adjustment.  The final base model sets the first year of recruitment deviations just 
-prior to when length composition are available.
-
-Several models were also investigated where steepness was either estimated, fixed at 
-the prior, or at an alternate value.    
-
-Sensitivities of the model to the spawning and settlement months were also explored.
-The base model originally set spawning month to June and settlement month to July.
-California scorpionfish are summer spawners and settle at a small size.  However, a 
-potential bug in how  recruits move into the numbers-at-age matrix was discovered 
-(Richard Methot, personal communication, NWFSC).  The final base model sets both the 
-spawning month and settlement month to January, which is the equivalent to the settings 
-available in SS3.24z. Parameters for extra standard deviation were added to all survey 
-indices in the model because they were not well fit by the models considered.
-
-_Other Fixed Parameters._ The stock-recruitment steepness is fixed at the SSC approved 
-steepness prior for rockfish of 0.718.  The initial recommendation for steepness was 
-to explore the available estimates of steepness from Myers et al. [-@Myers1999]. 
-Myers [@Myers1999] provides estimates of steepness for three species in the family 
-Scorpaenidae, of which California scorpionfish is a member: chilipepper 
-(*Sebastes goodei*), 0.35; Pacific ocean perch (*Sebastes alutus*) 0.43; 
-and deepwater redfish (*Sebastes mentella*), 0.47. The estimate of steepness 
-for the family was 0.48.  Information for steepness is not available for 
-California scorpionfish and there is little information from related species 
-that could be considered as a good proxy. A value of 0.718 (the updated 2017 prior) 
-was assumed for the assessment.
+_Other Fixed Parameters._ 
 
 
 
 ##Model Selection and Evaluation
 ###Key Assumptions and Structural Choices
-Key assumptions in the model were that the population is a single-stock in the 
-Southern California Bight.  No information is available on the portion of the population 
-in Mexican waters.  The San Diego recreational party/charter fleet is known to fish for 
-California scorpionfish at the Coronado Island in Mexican waters.  All catches from Mexican 
-waters and landed in the U.S. were removed from the base model data streams.
-
-Female natural mortality and steepness are both fixed in the base model, and sensitivities 
-were conducted estimating these parameters.  Structurally, the model assumed that the 
-landings from each fleet were representative of the population in southern California 
-and fishing mortality prior to 1916 was negligible.  It is also assumed that 
-commercial discards have been negligible and are not included in the base model.
 
 
 ###Alternate Models Considered
-Due to the error in the 2005 model, the population from the base case of this assessment 
-is larger in scale.  The majority of the alternate models considered were to estimate 
-parameters, such as natural mortality and steepness.
 
-The base model is age structured, but 60% of those ages are from males, and a number of 
-ages were from younger fish.  Models that attempted to estimate female natural mortality 
-were considered.  However, female natural mortality was estimated at 0.38, much too high to 
-be considered a reasonable value.  The age data needed to estimate natural mortality (especially 
-for older fish) is not yet available.  Male natural mortality was estimable as an offset from 
-female natural mortality. 
-
-Runs of the base case model estimating steepness were also considered, when female natural mortality 
-was fixed. Steepness was estimated at approximately 0.8.  No data exist to inform this parameter 
-for California scorpionfish, and the decision was made to fix steepness at the mean of the prior 
-developed from a meta-analysis of West Coast groundfish.
-
-Additional models considered and run for sensitivity analyses can be found in the Sensitivity Analysis 
-Section of this document.
 
 ###Convergence
-Model convergence was determined by starting the minimization process from dispersed 
-values of the maximum likelihood estimates to determine if the model found a better 
-minimum. Jitter is a SS option that generates random starting values from a normal 
-distribution logistically transformed into each parameter’s range [@Methot2015]. This 
-was repeated 100 times and the minimum was reached in 56% of the runs  (Table \ref{tab:jitter}).
-The model did not experience convergence issues, e.g., final gradient was below 0.0001,
-when reasonable starting values were used and there were no difficulties in inverting 
-the Hessian to obtain estimates of variability.  We did sensitivity runs for 
-convergence by changing the phases for key estimated parameters; neither the total 
-log-likelihood nor the parameter estimates changed.
 
 
 ##Response to the Current STAR Panel Requests
 
 \begin{description}[style=sameline]
 
-\item[Request No. 1: Add time blocks (1916-1999, 2000-2005, 2006-2017) for the 
-  Recreational Dead Discard fleet same as for the Recreational Retained fleets.] \hfill \\
+\item[Request No. 1: ] \hfill \\
   
-\textbf{Rationale:} Changes in selectivity of retained fish likely reflect changes 
-in the retention of discarded fish.   
+\textbf{Rationale:} xxx   
     
-\textbf{STAT Response:} The model was run with the 3 requested blocks, or with only 
-two (-1999 and 2000-2017) and the second block encompassing 6 years has only 3 years of 
-data (2003-2005) on which to estimate selectivity (Figure \ref{fig:Request1}). The three 
-blocks reflected the changes in management better (the closed years 2000-2006 show a 
-selectivity reflective of the retained catch in other years) than two blocks and fit the data better (1 to 2 blocks 
-change of 8.7 log likelihood units, 2 to 3 blocks change of 5.7 units). Overall, the 
-total biomass in 2017 changed by less than 0.1\% and depletion changed from 0.574 to 
-0.582 with the addition of the two extra time blocks.   
+\textbf{STAT Response:} xxx
 
 
-\item[Request No. 2: Combine retained and discarded catches in the Recreational index 
-(use the number of CA scorpionfish encountered per angler hour as the CPUE metric).  
-Include retained and discarded catches and length compositions in this new fleet with 
-appropriate weights.  Make the CPFV logbook index a survey.] \hfill \\
+\item[Request No. 2: ] \hfill \\
 
 
-\textbf{Rationale:} Concern with modeling discards as a separate fleet.  
+\textbf{Rationale:} xxx 
 
 
-\textbf{STAT Response:} This turned out to be more difficult than the 
-STAR panel anticipated – the "discard fleet includes discard amounts from 
-two fisheries, but only one has composition data associated with it. So while 
-one fleet could combine the retained and discarded in the compositions with 
-appropriate weighting, the other would still only be based on the retained 
-compositions (or "borrow" information from the other fleet). Given the small 
-amounts of dead discard overall and the finding of virtually no impact of Request 
-1 on the model (while fitting the discard compositions better), this request was 
-dropped by the STAR panel.
+\textbf{STAT Response:} xxx
     
 
-\item[Request No. 3: Explore the sensitivity of the Recreational Dockside PR mode index 
-to the thresholds in the Stephens-MacCall filtering by halving the false positives 
-and alternatively halving the false negatives.  Retain the true and false positives 
-in each of these runs.] \hfill \\
+\item[Request No. 3: ] \hfill \\
 
-\textbf{Rationale:} The current thresholds are ad hoc.  
+\textbf{Rationale:} x.  
     
   
-\textbf{STAT Response:} The original cutoff used for Stephens-MacCall filtering 
-was a rounded value of an 0.17 probability of catching California scorpionfish 
-in a trip. This resulted in something close to 2,300 each of false negatives 
-and false positives. Halving these values was achieved by using probabilities 
-of 0.1407 and 0.2308 respectively. The changes had relatively minor effects 
-on the index, but  moderate effect on the overall stock size, especially for 
-the lower probability which included many more false positives, adding approximately 1600
-points to the CPUE standardization set, which resulted in a model with nearly 
-10\% more spawning biomass (both unfished and current) than the base. However, 
-the overall pattern was unchanged (Figures \ref{fig:Request3a}-\ref{fig:Request3b}). 
-Since it is not clear which set is most 
-appropriate, there was no recommendation arising from this analysis for the 
-current assessment. Rather this highlights the need for more research into 
-this topic.
+\textbf{STAT Response:} xxx
 
-\item[Request No. 4: Do a sensitivity to the relationship between weight and
-fecundity.  Use a generic rockfish relationship from Dick et al. (2017)] \hfill \\
+\item[Request No. 4: ] \hfill \\
 
-\textbf{Rationale:} There is a lack of information on this relationship in 
-the assessment and the sensitivity of the model to this relationship needs 
-to be understood.   
+\textbf{Rationale:} xxx 
     
     
-\textbf{STAT Response:} The base model models fecundity as proportional to weight. 
-The model was run with the alternative where fecundity is proportional to 
-length to the power 4.043 (Dick et al. 2017). This model had a slightly lower depletion level 
-(0.531 vs. 0.579, measured in spawning output rather than spawning biomass) 
-and a slightly higher unfished equilibrium biomass estimate (by about 1\%). 
-While more research into this topic is warranted, its effect on the model 
-outcome will likely be moderate.
+\textbf{STAT Response:} xxx
 
 
-\item[Request No. 5: Evaluate the selectivity for the impingement length compositions 
-by allowing for a normal descending selex pattern.] \hfill \\
+\item[Request No. 5: ] \hfill \\
 
-\textbf{Rationale:} There is a strong residual pattern with fits to length 
-compositions suggesting an alternative selex pattern for this index. 
+\textbf{Rationale:} xxx
   
-\textbf{STAT Response:} Allowing for a descending selectivity pattern resulted in a 
-reduction in the residual pattern. The run conducted, however, did not estimate the 
-size a t the peak" selectivity (representing here where the start of the downturn 
-would be) and the downward slope was quite steep. Estimating this value resulted in 
-a change from about 20 to 17 cm for this value and better overall fit of the model 
-the length and age composition data (by about 5 log likelihood points apiece vs. 
-the constant selectivity assumption).  The scale of the population increased by 
-approximately 15\% and the 2017 depletion increased to 0.598 (vs. 0.579). The 
-resulting selectivity pattern is close to an inverse logistic with a non-zero 
-lower asymptote.  The STAR panel and STAT agreed that this pattern is more 
-realistic and fits the data better than the model with full selectivity at 
-all ages and sizes, and should be included in the final base model.   
+\textbf{STAT Response:} xxx  
     
-    
-\item[Request No. 6: Investigate the commercial net length data sources to see if 
-they are representative of the different mesh sizes used.  For a sensitivity analysis, 
-turn off the selex mirroring to the hook-and-line fleet and estimate a fleet-specific selex.  
-An additional sensitivity analysis, remove the length comps. from this fleet and 
-continue to mirror the selex to the hook-and-line fleet.] \hfill \\
 
-\textbf{Rationale:} These lengths do not fit well in the current model.  It is 
-not clear if the length comps. match the temporal changes in allowable mesh sizes. 
-  
-  
-\textbf{STAT Response:} When estimated independently for the commercial net fleet, 
-the selectivity pattern moved far to the right of that for the hook and line fleet. 
-Depletion (0.575 vs 0.579) and stock size decreased slightly with this change, and 
-the fit to length composition data improved by 20 log likelihood points. Since 
-there is relatively little length data from the commercial net fishery, dropping 
-that length data and continuing to mirror selectivity made little change from the 
-base model, but the resulting model does not accurately reflect the apparent 
-selectivity of the net fleet. The STAR panel and STAT agreed that the independently 
-estimated selectivity for the net fleet is more realistic and fits the data better, 
-and should be included in the final base model. Since the peak value parameter 
-hit the upper bound, it should be fixed in the final model.
-    
-    
-\item[Request No. 7: Turn off the mirroring of the gillnet survey to the POTW survey 
-selex and allow the model to estimate a survey-specific selex.] \hfill \\
-
-\textbf{Rationale:} The length comps. do not fit well in the current model. 
-
-\textbf{STAT Response:} The model run following this change did result in a 
-very different selectivity pattern (nearly a straight diagonal line up from 
-zero to the 40 cm), however, the hessian did not converge. Dropping the gillnet 
-data altogether had very little impact on the model. It was agreed to drop this 
-fleet from the final base model, and recommend further investigation of this data 
-for future use.
-    
-    
-\item[Request No. 8: Plot the CalCOFI  sea surface temperature index for Pacific sardine 
-with the estimated CA scorpionfish recruitment deviations.] \hfill \\
-
-\textbf{Rationale:} To investigate the hypothesis of warmer water influencing positive recruitment.  
-    
-  
-\textbf{STAT Response:} The annual CalCOFI sea surface temperature index was correlated 
-with the model estimated recruitment deviations (Figure \ref{fig:Request8}). This helps 
-explain the pattern of 
-alternating periods of positive and negative recruitment deviations in the model. 
-The panel recommends further investigation of possible predictors with the goal of 
-finding a better indicator of California scorpionfish recruitment to be considered 
-for use within a model and for forecasting. 
-    
-    
-\item[Request No. 9: Provide a model run where recruitment deviations are not estimated.  
-Also, provide a model run with a lower sigma-r (0.3).] \hfill \\
-
-\textbf{Rationale:} There is concern that the higher recruitment deviations are not 
-realistic and they sustain the trends we see in stock size regardless of removals.   
-  
-\textbf{STAT Response:} A run with no recruitment deviations resulted in a higher unfished 
-equilibrium biomass, but did not fit the data nearly as well (by over 110 log likelihood units). 
-With half the sigma-r value, the overall scale of the stock did not change from the base, 
-but the variation over time was suppressed somewhat (Figure \ref{fig:Request9}). Since the results of Request 8 
-indicated potential underlying environmental drivers for the recruitment patterns in 
-the base model, it was agreed that the original sigma-r (0.6) was reasonable.  
-    
-    
-\item[Request No. 10: Prepare a new base model that changes July 26 base model as follows:] \hfill \\
-       
-\begin{itemize}
-\item Model the commercial net fishery with its own selex curve with two selex blocks matching 
-the other commercial fisheries.  Peak selex parameter needs to be fixed (not estimated)
-\item Model the impingement data with a descending selex pattern, including estimation of 
-the peak parameter
-\item Drop the Gillnet survey from the model
-\item Fix M for both sexes combined based on a max. age of 23 years (M = 0.235) (determined 
-by averaging the third oldest estimated ages of each sex)
-\item Retune and jitter
-\item Evaluate diagnostics to ensure this is a sound model.
-\end{itemize}
-
-\textbf{Rationale:} These changes were agreed to by the STAT and STAR Panel.
-  
-\textbf{STAT Response:} These changes consitute a new base model. 
-    
-    
-\item[Request No. 11: Building on the new base model, prepare bracketing runs on M 
-that use the 12.5\% (M = 0.164) and 87.5\% (M = 0.335) quantiles of the Hamel prior 
-distribution.] \hfill \\
-
-\textbf{Rationale:} To consider for a decision table. 
-  
-\textbf{STAT Response:} While the low value for M produced a reasonable result, 
-    the high value resulted in an incredibly large biomass. This request was modified below.
- 
-    
-\item[Request No. 12: For the high state of nature, explore an M such that the ratio of ending 
-SSB in the high state of nature to the base case is equal to that ratio from the base case 
-(M = 0.235) to the low state of nature (M = 0.164).] \hfill \\
-
-
-\textbf{Rationale:} The first exploration of a high state of nature in a potential decision 
-table provided unrealistic results and a narrower range of Ms did not provide adequate contrast between states of nature.
-  
-  
-\textbf{STAT Response:} The high value of M which meets the above criteria was found to be 
-    0.2745. This, along with the low value (M = 0.164) results in a reasonable bracketing of 
-    the uncertainty (Figure \ref{fig:Request12}). 
-
-\item[Request No. 13: Provide a draft decision table with the 3 states of nature assuming the 
-following harvest control rule for a catch stream:  ACL = ABC, $P*$=0.45, sigma = 0.36; 
-ABC buffer = 4.4\% (i.e., ABC is $0.956*OFL$).] \hfill \\
-
-\textbf{Rationale:} This is a reasonable catch stream to demonstrate the outcomes of a 
-    potential decision table.
-  
-\textbf{STAT Response:} See the final decision table for appropriate values.
 
 \end{description}
 
@@ -703,150 +166,27 @@ Table \ref{tab:like_components}.  Estimates of derived reference points and
 approximate 95% asymptotic confidence intervals are shown in Table \ref{tab:Ref_pts_mod1}.
 Time-series of estimated stock size over time are shown in Table \ref{tab:Timeseries_mod1}.
 
-The base model is sex-specific for the growth parameters. Key productivity parameters 
-are fixed at measures of central tendency from prior distributions endorsed by the 
-PFMC’s SSC due to the models’ inabilities to estimate reasonable parameter values. 
-Specifically, steepness of the assumed Beverton-Holt stock-recruitment relationship 
-was fixed at 0.718. In the final base models the instantaneous rate of annual natural 
-mortality was fixed at 0.235 for females and males. 
+
 
 ###Parameter Estimates
-The base model produces reasonable estimates of growth parameters, for both males and 
-females (Figure \ref{fig:vonB_compare}).  The von Bertalanffy growth coefficient $k$ 
-for females was estimated close to the external estimate, 0.2496 externally and 0.2503 
-within SS.  For males, the von Bertalanffy $k$ parameter was estimated at 0.2325 externally 
-and 0.1864 within SS.  The female estimated $L_{inf}$ was 33.312 and 28.4207 for males.
-Females grow faster than males and reach a maximum size greater than the males.  
-
-Selectivity curves were estimated for the fishery and survey fleets.  The estimated 
-selectivities for all fleets within the model are shown in Figure 
-\ref{fig:sel01_multiple_fleets_length1}.  The commercial fishery selectivities are 
-all asymptotic with the trawl and gillnet fisheries mirroring the hook-and-line 
-fishery.  Maximum selectivity for the commercial fleet is reached at about  26 cm 
-from 1916-1998 and 28 cm from 1999-2016 (Figure \ref{fig:sel03_len_timevary_surf_flt1sex1}). 
-The shift in selectivity is due to the implementation of the 10-inch size limit for the 
-commercial fishery in 1999.   The recreational private mode sector selects the largest 
-fish, with full selectivity at 41 cm.  The time blocked selectivity does not show a 
-major shift in selectivity when the fishery was closed for portions of 2001-2005 (Figure 
-\ref{fig:sel03_len_timevary_surf_flt4sex1}.  This can be explained by the fact the length 
-composition data from the dockside intercept survey contains a large number of observed 
-fish when the fishery was closed.  The recreational private mode also selects the 
-largest fish, and there is no available information on discards from this fleet. 
-There is a distinct shift in the selectivity for the retained-catch recreational 
-party/charter fleet, with the onboard observer retained-catch fleet mirrored to 
-the other recreational party/charter fleet.  Prior to the implementation of a 
-10-in minimum size limit the size at maximum selectivity was 36 cm, from 2001-2005 
-it was 31 cm and since 2006 the size at maximum selectivity is at 26 cm (Figure \ref{fig:sel03_len_timevary_surf_flt5sex1}).   The recreational party/charter mode 
-discard-catch dome-shaped selectivity reflects the discarding of small fish due to 
-the size limit and also the discarding of smaller fish prior to the 10-in minimum 
-size limit due to angler preference for larger fish.  The selectivity of the discard 
-fleet does not go to 0, because some larger fish are still discarded, either due to 
-angler preference, bag limits, and/or fishery closure.  The onboard observer data also 
-indicates that there are higher discards when an aggregation of California scorpionfish 
-was found, i.e., hundreds of fish may be caught at a single fishing stop and some are 
-discarded.
-
-All of the survey selectivity curves were asymptotic and none had time blocks. 
-The Southern California Bight regional monitoring trawl survey uses the same gear 
-as the POTW trawl surveys. All of the three trawl surveys reach full 
-selectivity around 24 cm. The selectivity for the gillnet survey is mirrored to the 
-trawl survey because small 1”-2” mesh sizes were used.  
 
 The additional survey variability (process error added directly to each year's input 
 variability) for all surveys was estimated within the model.  The model estimated a 
 small added variances for the recreational private mode of 
-`r round(mod1$parameters[mod1$parameters$Label == "Q_extraSD_RecPR(4)", 3], 3)` and 
-the recreational party/charter discard fleet of 
-`r round(mod1$parameters[mod1$parameters$Label == "Q_extraSD_RecDD(6)", 3], 3)`. The 
-estimated added variance was highest for the recreational party/charter retained-catch 
-fleet (`r round(mod1$parameters[mod1$parameters$Label == "Q_extraSD_RecPC(5)", 3], 3)`), 
-the POTW trawl survey 
-(`r round(mod1$parameters[mod1$parameters$Label == "Q_extraSD_Sanitation(7)", 3], 3)`), 
-and the NWFSC trawl survey 
-(`r round(mod1$parameters[mod1$parameters$Label == "Q_extraSD_NWFSCTrawl(8)", 3], 3)`).  
+`r #round(mod1$parameters[mod1$parameters$Label == "Q_extraSD_RecPR(4)", 3], 3)`
 
-Recruitment deviations were estimated from 1965 to 2015 (Figure \ref{fig:recdevs2_withbars}). 
-Estimates of recruitment suggest that the California scorpionfish population is characterized
-by variable recruitment with occasional strong recruitments and periods of low recruitment
+Recruitment deviations were estimated from yyyy to yyyy (Figure \ref{fig:recdevs2_withbars}). 
+
+
 (Figures \ref{fig:ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals} and 
-\ref{fig:recdevs2_withbars}). The four lowest recruitments
-(in ascending order) occurred in 2012, 2011, 1981, and 1973. There are large estimates 
-of recruitment in 1985, 1993, and 2015. The 2015 recruitment
-event can be observed in the length and conditional length at age compositions from the 
-survey data. 
+\ref{fig:recdevs2_withbars}). 
 
-The stock-recruit curve resulting from a fixed value of steepness is shown in Figure 
-\ref{fig:SR_curve2} with estimated recruitments also shown. The stock is predicted to 
-have never fallen to low enough levels that the steepness is obvious. Steepness was 
-not estimated in this model, but sensitivities to an alternative value of steepness 
-is discussed below.
+The stock-recruit curve ... Figure \ref{fig:SR_curve2} with estimated recruitments also 
+shown. 
 
 ###Fits to the Data
 Model fits to the indices of abundance, fishery length composition, survey length 
-composition, and conditional age-at-length observations from the NWFSC trawl survey 
-are all discussed below.  
-
-The fits to the four fishery CPUE and four survey indices are shown in Figures 
-\ref{fig:index5_logcpuefit_RecPR} - \ref{fig:index5_logcpuefit_SCBSurvey}. Extra 
-standard error was estimated for all eight of the indices.  The indices for the 
-recreational private mode and dead-discard fleets were fit relatively well by the 
-model.  The recreational party/charter retained-catch index was fit moderately well 
-in parts of the time series, but did not capture the increases observed in the late 
-1990s.  The extra variability added to this index was also large.   The onboard 
-observer retained-only catch index was fit well by the model except for the two 
-lowest years, 2003 and 2015.   
-
-The POTW trawl survey index was fit well by the model, except for the highest four 
-years from 1979-1982, where the fit is estimated lower than the added uncertainty.
-The NWFSC trawl survey index is flat and fit well by the model, except for in 2013, 
-the highest year in the index, with also high uncertainty.  The gillnet survey index was 
-not well fit by the model; the model fit did not capture the trend observed in the standardized 
-index.  The decision was made during the STAR panel to exclude the gillnet survey and 
-associated length data from the base model. The Southern California Bight trawl survey, 
-conducted every 5 years, was 
-also not well fit by the model.  The standardized index from the Bight trawl survey 
-showed peaks in 1994 and 2004, which were not fit by the model.
-
-Fits to the length data are shown based on the proportions of lengths observed by 
-year and the Pearson residuals-at-length for all fleets.  Detailed fits to the 
-length data by year and fleet are provided in Appendix 
-\ref{appendix-a.-detailed-fits-to-length-composition-data}.  Aggregate fits by fleet 
-are shown in Figure \ref{fig:comp_lenfit__aggregated_across_time}. Overall, the 
-length composition data for the commercial hook-and-line, commercial trawl, POTW trawl 
-survey, recreational private, and party/charter fleets all fit well.  The fits to the
-recreational discard fleet by year were variable, and were worse in years with small 
-sample sizes; however, the aggregate fit is reasonable.  The sample sizes by year for 
-each of the gillnet, impingement, and Bight trawl surveys were small compared to the
-fisheries.  The fit to the data varies by year and does not capture the high proportion 
-of small fish observed in the impingement survey, especially in 2013.
-
-Fits to the aggregated and yearly length composition data from the commercial gillnet fishery 
-are not well fit.  The selectivity for this fishery is mirrored to the commercial 
-hook-and-line fishery and the sample sizes of the number of measured fish and trips
-is small compared to other fleets.  California scorpionfish are also not a target
-species for the gillnet fishery, but are retained most commonly by the seabass 
-and halibut fisheries as bycatch.  The minimum mesh size for the gillnet fishery 
-ranges from 3.5 - 6 inches depending on the year and season.
-
-The NWFSC trawl survey lengths were well estimated for males and females in aggregate 
-by the model. California scorpionfish are not one of the more common species observed 
-in this survey, with sample size all under 10 hauls per year.
-
-The observed and expected conditional age-at-length fits are shown in Figure 
-\ref{fig:mod1_4_comp_condAALfit_Andre_plotsflt8mkt0_page1} for the  NWFSC trawl survey observations. 
-The fits generally match the observations for fish smaller than 30 cm. Some outliers 
-are apparent with large residuals. 
-
-The age data were also weighted according to Francis weighting which adjust the weight 
-given to a data set based on the fit to the mean age by year. 
-The mean ages from the fishery appear to have declined in recent years which could be 
-due to incoming cohorts (Figure \ref{fig:comp_condAALfit_data_weighting_TA1.8_condAgeNWFSCTrawl}).  
-Smaller fish were also observed in the POTW trawl and impingement surveys in the 
-(Figures \ref{fig:comp_lenfit_data_weighting_TA1.8_Sanitation} and \ref{fig:comp_lenfit_data_weighting_TA1.8_Impingement}).  The mean length in the 
-recreational private and party/charter fleets increased over time (Figures \ref{fig:comp_lenfit_data_weighting_TA1.8_RecPR} and 
-\ref{fig:comp_lenfit_data_weighting_TA1.8_RecPC}). The length composition of the recreational fleet discards was smaller in the 1980s 
-and hovers around the 10-in minimum size limit in the 2000s (Figure \ref{fig:comp_lenfit_data_weighting_TA1.8_RecDD}).
-
+composition, and conditional age-at-length observations are all discussed below.  
 
 
 ###Uncertainty and Sensitivity Analyses
@@ -854,114 +194,28 @@ A number of sensitivity analyses were conducted, including:
 
 \begin{enumerate}
 
-  \item Data weighting according to the harmonic mean.
+  \item Sensitivity 1
   
-  \item Removal of the POTW trawl survey index (axis of uncertainty from the 2005 assessment)
+  \item Sensitivity 2
   
-  \item Dome-shaped selectivity for the NWFSC trawl survey and gillnet survey
+  \item Sensitivity 3
   
-  \item Estimating female natural mortality
+  \item Sensitivity 4
   
-  \item Estimating steepness
-  
-  \item Assume the same fixed natural mortality for males and females
-  
-  \item Drop data sources, one at a time
+  \item Sensitivity 5, etc/
   
   
 \end{enumerate}
 
-A number of changes were made since the 2005 assessment, and sensitivities to the current 
-base model included changing or fixing a number of parameters to the same as the 2005 
-assessment, as well as a number of sensitivities to modelling choices made in developing the 
-current base model (Tables \ref{tab:Sensitivity_model1} and \ref{tab:Sensitivity_model1_1}). 
-A number of metrics ($SB_0$, $SB_{2017}$, $SB_{2017}/SB_0$, and $Yield_{SPR}$) relative to the 
-pre-STAR base model are presented in Figure \ref{fig:Sensitivity_all} and show that the 
-impingement length composition data are the data source to which the model is most sensitive.
-The model is also sensitive to the choice of data weighting.
 
-Data weighting is an area of uncertainty for stock assessment and research is ongoing to 
-determine the effects of data weighting and the most appropriate initial sample sizes for 
-length and age composition data.  The base model used the 
-Stewart sample sizes for the fishery data and number of trips for all survey sample sizes. 
-Weighting the data by the harmonic mean resulted in a model with a total likelihood between 
-the base model, which uses the Francis method for weighting, and the model with default weights. 
-The Francis weights in the base model were stable, and did not tend to serially decrease (downweight) 
-any of the datasets, which has been seen in other assessments.  
 
-The POTW trawl survey index was the axis of uncertainty in the 2005 assessment. 
-The stock was estimated to be at 80% depletion in 2005 with the POTW trawl survey 
-index and at 58% without the index. The current assessment 
-has a number of new data sources, including new indices, length data, and conditional age-at-length data 
-available.  Removing the POTW trawl survey index and length composition data from the current base model 
-did not have a large effect on the model.  Depletion dropped from 0.574 to 0.53, but this is a fairly 
-small change compared to the effect on the 2005 model.
-
-The 2005 assessment fixed natural mortality at 0.25 for males and females, and 
-steepness at 0.7.  A sensitivity of fixing male and female natural mortality to 0.257, 
-increased depletion from 0.574 to 0.594, but did not have a large overall effect on 
-the model.  A sensitivity was also run estimating a single natural mortality rate (0.252) 
-and steepness (0.88) Figure \ref{fig:sensitivity_spawnbio}.  
-
-Sensitivity of the base model to each of the data sources was also explored (Figures 
-\ref{fig:sensitivity2_spawnbio} and \ref{fig:sensitivity2_spawnbio}).  The time series 
-of spawning biomass was most sensitive to the impingement survey length composition. 
-Without the impingement length composition, the relative time series is the same, but the 
-total biomass is almost double the base model. However, dropping the impingement index 
-and estimating a single natural mortality rate for both sexes reduces the total biomass 
-towards the base model.  Natural mortality is also reasonably estimated at 0.19.  In the 
-sensitivity run where both natural mortality (0.19, same for males and females) and steepness (0.88)
-were estimated produces both a reasonable estimate for natural mortality and a value of steepness 
-that was high, but not estimated at the parameter bound.
 
 
 ###Retrospective Analysis
-A 4-year retrospective analysis was conducted by running the model using data 
-only through 2012, 2013, 2014, and 2015, progressively (Table \ref{tab:retro}). 
-The initial population size and estimation of trends in spawning biomass in the 
-retrospective runs were slightly lower than the base model (Figure \ref{fig:retro_spawnb}). 
-The initial scale of the spawning population was basically unchanged for all of these retrospectives.  
 
-The recruitment deviations in the more recent years shrink towards zero the more years 
-are removed from the model (Figure \ref{fig:retro_recdev}).
 
 
 ###Likelihood Profiles
-Likelihood profiles were conducted for $R_0$, steepness, and over natural mortality 
-values separately. These likelihood profiles were conducted by fixing the parameter 
-at specific values and estimated the remaining parameters based on the fixed parameter 
-value.
-
-In regards to values of $R_0$, the negative log-likelihood was minimized at approximately 
-log($R_0$) of 8.0 (Table \ref{tab:like_profiles}).  The recreational private mode fishery
-minimized at a smaller value of $R_0$ whereas the gillnet survey, recreational discard 
-and commercial gillnet fisheries indicated a higher value of $R_0$ (Figure 
-\ref{fig:profile_R0_piner}). The age and recruitment data indicated a higher value of 
-$R_0$ and were minimized at the highest value in the profile (Figure \ref{fig:profile_R0_like}). 
-Over the range of values of $R_0$, depletion ranged from 0.53-0.70 (Figure \ref{fig:profile_R0_depl}).
-
-For steepness, the negative log-likelihood was essentially flat between values of 
-0.57-0.87 (Figure \ref{fig:profile_h_piner} and Table \ref{tab:like_profiles}).  
-
-
-Likelihood components by data source show that the fishery age data support a low 
-steepness value, but the other data sources higher value for steepness (Figure 
-\ref{fig:profile_h_like}).  The 
-impingement, POTW trawl survey, and recreational private mode fleets support higher 
-values of steepness while the other surveys are relatively uninformative.  The 
-relative depletion for `r spp` changes very little (0.51-0.60) across different
-assumed values of steepness (Figure \ref{fig:profile_h_depl}).
-
-The negative log-likelihood was minimized at a natural mortality value of 0.38, 
-the profile is relatively flat for the priors, index data, and recruitment (Figure
-\ref{fig:profile_m_like}).  The age data likelihood contribution was minimized at
-natural mortality values ranging from 0.035-0.40, and the length data contribution
-was minimized as the largest value of $M$ run, 0.40 (Table \ref{tab:like_profiles}). 
-The virgin biomass was estimated at unreasonable levels (~$2e^{12}$) when $M$ was fixed 
-at 0.33 and greater. The impingement survey was the only fleet for which the likelihood profile over 
-$M$ was not relatively flat (Figure \ref{fig:profile_m_piner}). The relative depletion for
-`r spp`  ranged from 0.48-0.80 across alternative values of natural mortality 
-(Figure \ref{fig:profile_m_depl}).
 
 
 
@@ -973,21 +227,18 @@ reference harvest rate and with a 95% confidence interval of `r Ref_pts_mod1[15,
 based on estimates of uncertainty. The spawning biomass equivalent to 40% of the unfished 
 level ($SB_{40\%}$) was `r Ref_pts_mod1[7,2]` mt. 
 
-The predicted spawning biomass from the base model shows an initial decline starting in 
-1970, with two year of low spawning biomass in 1976 and 1977.  From the late 1970s 
-to the mid-2000s the population follows a cyclical pattern (driven by recruitment pulses) 
-and then declines until 2015.  The last two years of the model indicate an increase in spawning biomass. 
-(Figure \ref{fig:ts7_Spawning_biomass_(mt)_with_95_asymptotic_intervals_intervals}). Since 2015, 
-the spawning biomass has been increased due to 
-lower catches and a high recruitment pulse in 2015. The `r LastYR` spawning biomass 
-relative to unfished equilibrium spawning biomass is above the target of 40% of unfished 
+
+(Figure \ref{fig:ts7_Spawning_biomass_(mt)_with_95_asymptotic_intervals_intervals}
+
+The `r LastYR` spawning biomass relative to unfished equilibrium spawning biomass 
+is above/below the target of 40% of unfished 
 levels (Figure \ref{fig:ts9_Spawning_depletion_with_95_asymptotic_intervals_intervals}). 
-The relative fishing intensity, $(1-SPR)/(1-SPR_{50\%})$, has been well below the management target 
+The relative fishing intensity, $(1-SPR)/(1-SPR_{50\%})$, has been xxx the management target 
 for the entire time series of the model. 
 
 Table \ref{tab:Ref_pts_mod1} shows the full suite of estimated reference points for the base 
 model and Figure \ref{fig:yield1_yield_curve} shows the equilibrium curve based on a 
-steepness value fixed at 0.718.
+steepness value xxx.
 
 
 

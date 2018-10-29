@@ -1,0 +1,59 @@
+
+<!-- ====================================================================== -->
+<!-- *****************                             ************************ -->
+<!-- *****************START BIOLOGICAL DATA FIGURES************************ --> 
+<!-- *****************                            ************************ -->
+<!-- ====================================================================== -->
+
+![Length comp data, aggregated across time by fleet. Labels 'retained' and 'discard' indicate discarded or retained sampled for each fleet. Panels without this designation represent the whole catch. \label{fig:comp_lendat_aggregated_across_time}](r4ss/plots_mod1/comp_lendat__aggregated_across_time.png)
+
+
+
+![Cross-section of broken and burned California scorpionfish otolith showing.  The green dots indicate the number of increments (photo courtesy Lance Sullivan, NWFSC). \label{fig:otolith1}](Figures/otolith1.pdf)
+
+
+![California scorpionfish otolith (photo courtesy Lance Sullivan, NWFSC). \label{fig:otolith2}](Figures/otolith2.pdf)
+
+\FloatBarrier
+
+
+![Length at age by sex for California scorpionfish collected from the NWFSC trawl survey. \label{fig:Agelength}](Figures/Age_length_bySex.png)
+
+
+![Fitted (external to SS) von Bertalanffy growth by sex for California scorpionfish collected from the NWFSC trawl survey. \label{fig:vonB_compare}](Figures/vonB_compare.png)
+
+<!-- ********************************************************************** -->
+<!-- ****************Aging Precision and Bias FIGURES********************** --> 
+<!-- ********************************************************************** -->
+
+
+![Aging precision between two current age readers at the NWFSC.  Numbers in the bubbles are the sample sizes of otoliths cross-read. \label{fig:Fleet8_NWFSCTrawl_ageerror}](Figures/Fleet8_NWFSCTrawl_ageerror.png)
+
+
+![True versus predicted age for two current age readers at the NWFSC from the ageing error software with unbiased reads and curvilinear standard deviation for both readers. \label{fig:Fleet8_NWFSCTrawl_ageerror2}](Figures/Fleet8_NWFSCTrawl_ageerror2.pdf)
+
+
+
+
+<!-- ********************************************************************** -->
+<!-- **********************Weight-Length FIGURES*************************** --> 
+<!-- ********************************************************************** -->
+
+
+![Comparison of the California scorpionfish weight-length curves from Love et al. (1987) and those estimated from the NWFSC trawl survey.  The latter is used in this assessment. \label{fig:Length_weight}](Figures/Length_weight.png)
+
+
+
+
+<!-- ********************************************************************** -->
+<!-- **************Sex Ratio, Maturity, FecundityFIGURES******************* --> 
+<!-- ********************************************************************** -->
+
+<!--
+![Percent of males and females by age of the fish aged from the NWFSC trawl survey, yellow=females and blue = males. \label{fig:sex_ratio}](Figures/sex_ratio.png)
+-->
+<!-- ====================================================================== -->
+<!-- ******************                           ************************* -->
+<!-- ******************END BIOLOGICAL DATA FIGURES************************* --> 
+<!-- ******************                           ************************* -->
+<!-- ====================================================================== -->
