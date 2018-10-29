@@ -1,0 +1,263 @@
+<!-- ***********INTRODUCTION SECTION*************************************** -->
+
+#Introduction
+
+##Basic Information and Life History
+California scorpionfish (\emph{Scorpaena guttata}), also known as sculpin, originates from
+the Greek word for scorpionfishes and \emph{guttata} is Latin for speckled. 
+California scorpionfish is a medium-bodied fish and like other
+species in the genus \emph{Scorpaena}, it produces a toxin in its dorsal, anal, and 
+pectoral fin spines, which produces intense, painful wounds [@Love1987]. Scorpionfish 
+are very resistant to hooking mortality and have shown survival under extreme conditions. 
+ 
+Its range extends from central California (Santa Cruz) to the Gulf of California, 
+although within U.S. waters they are most common in the Southern California Bight 
+[@Eschmeyer1983; @Love1987]. The species generally inhabits rocky reefs, caves and 
+crevices, but in certain areas and seasons it aggregates over sandy or muddy substrate
+[@Frey1971; @Love1987].  California scorpionfish have been observed from the intertidal
+to 600 ft with a preferred depth range from 20-450 ft. Little is known about the aggregating 
+behaviors of California scorpionfish.  Marine Applied Research and Exploration (MARE)  has
+observed California scorpionfish aggregations during the spawning season (June 2014) and 
+also in the late fall (November 2012) from video transects in southern California.  The 
+November spawning aggregation was observed at a small rocky feature near La Jolla and the 
+June aggregation  was at a sandy area adjacent to the Farnsworth MPAs (Andy Lauermann, MARE, 
+personal communication).
+ 
+Males and females show different growth rates, with females growing to a larger size 
+than males, and the sexes exhibit different length-weight relationships [@Love1987]. 
+Few California scorpionfish are mature at one year old (14 cm total length). 
+Fifty-percent of fish mature at 17-18 cm (2 years old) and all by 22 cm (4 years old) [@Love1987].
+ 
+California scorpionfish feed on a wide variety of mobile prey, including crabs, fishes
+(e.g., include northern anchovy, spotted cusk-eel), octopi, isopods and shrimp,
+[@Love1987; @Turner1969; @Taylor1963; @Quast1968].  The species is nocturnal, but
+have been observed feeding during the day.  Predation on scorpionfish is believed
+to be low, but one individual was found in the gut of a leopard shark (Milton Love,
+personal communication, UC Santa Barbara).
+ 
+
+
+## Early Life History
+California scorpionfish utilize the “explosive breeding assemblage” reproductive 
+mode in which fish migrate to, and aggregate at traditional spawning sites for 
+brief periods [@Love1987].  California scorpionfish migrate to deeper waters 
+(120-360 ft)  to spawn during May-August, with peak spawning occurring July. 
+The species is oviparous, producing floating, gelatinous egg masses in which 
+the eggs are embedded in a single layer [@Orton1955] and it is believed that 
+spawning takes place just before, and perhaps after dawn, in the water column 
+[@Love1987].  Love et al. [-@Love1987] tagged California scorpionfish and 
+recaptures suggested individuals return to the same 
+spawning site, but information is not available on non-spawning season site fidelity. 
+ 
+California scorpionfish have been observed in the California Cooperative Oceanic Fisheries 
+Investigations (CalCOFI) survey, the zooplankton and ichthyoplankton survey 
+of the California Current System.  The CalCOFI survey observed 
+463 California scorpionfish larvae from 1977-2000, with the majority at station 
+close to Oxnard (east of the Channel Islands) [@Moser2002]. Higher densities of 
+larvae have been observed in the CalCOFI stations throughout Baja, peaking south 
+of Punta Eugenia from July to September.  The hatching length is reported as 
+1.9-2.0 mm [@Washington1984] and transformation length of greater than 1.3 cm 
+[@Washington1984] less than 2.1 cm [@Moser1996].  
+
+
+##Map
+A map showing the scope of the assessment and depicting boundaries for fisheries or 
+data collection strata is provided in Figure \ref{fig:boundary_map}.
+
+##Ecosystem Considerations
+In this assessment, ecosystem considerations were not explicitly included in the analysis. 
+This is primarily due to a lack of relevant data and results of analyses (conducted elsewhere) 
+that could contribute ecosystem-related quantitative information for the assessment.
+
+
+##Fishery Information
+The hook-and-line fishery off California developed in the late 19th century 
+[@Love2002]. The rockfish trawl fishery was established in the early 1940s, when the United 
+States became involved in World War II and wartime shortage of red meat created 
+an increased demand for other sources of protein [@Alverson1964; @Harry1961].
+
+California scorpionfish comprise a minor part of the Californian sport and commercial 
+fisheries [@Love1987].  Historically, California scorpionfish were taken commercially 
+by hook and line and, occasionally, by round haul nets [@Daugherty1949]. Scorpionfish 
+were commonly caught around Santa Catalina Island during the late 19th Century with 
+gill nets [@Jordan1887].  The 1937 Bureau of Commercial Fisheries report noted that 
+California scorpionfish had been a fairly important commercial species for a long time. 
+The species was targeted by a few fishermen during the summer months, and was also taken 
+as a bycatch in the rockfish fisheries. By 1949, the Bureau of Marine Fisheries reported 
+"[Scorpionfish] will even come to the surface to lights at night" and were also taken 
+in round haul nets. At that time, scorpionfish were rarely targeted by fishermen except by a few specialists.
+ 
+More recently, commercial bottom longlines have been used to target spawning aggregations 
+offshore of Long Beach [@Love1987]. Since the early 1990s, trawl catch has been a substantial 
+component of the commercial catch. Commercial landings have fluctuated substantially 
+over time, which could, in part, be due to changes in targeting and El $\text{Ni\~{n}o}$ events 
+[@Love1987]. A high proportion of the catch landed in California during the 1960s 
+and 1970s was taken from Mexican waters. In recent years, most of the catch has come 
+from around the Los Angeles region. In general, the majority of the commercial catch 
+has come from the Los Angeles region, except in the 1960s and 1970s when the majority
+of the catch came from the San Diego region and Mexican waters.
+ 
+California scorpionfish are most often taken by boat fishermen, but fairly large numbers 
+are caught from piers, jettys, and rocky shorelines in the recreational fishery.  The 
+Commercial Passenger Fishing Vessel (CPFV; also
+referred to as the recreational party/charter or PC mode) effort has remained relatively 
+constant over a long period (1959-1998) [@Dotson2003]. However, there appears to be a shift in 
+effort towards less utilized species, such as California scorpionfish, over the past
+decade [@Dotson2003].  Especially as catch limits for rockfish have become more
+restricted commercial passenger fishing vessels (CPFV) operators target California 
+scorpionfish spawning aggregations during spring and summer [@Love1987], and also 
+target California scorpionfish in the winter when other fisheries are closed. 
+California scorpionfish become a target species for day boats during the spawning
+months when spawning aggregations can be located.  There are a small number of 
+boats that specialize in targeting these aggregations.  The spawning aggregations
+occur in deeper waters, often times outside of the three nautical mile state 
+jurisdiction.  It is also unknown what fraction of the population aggregates 
+during the spawning season, e.g., all mature fish.
+ 
+Aggregate mortality has been far below the Annual Catch Limits (ACL) established 
+by the 2005 stock assessment.  The ACL projections from the 2005 assessment 
+assumed that the entire ACL was being taken each year and as a result, the 
+ACL for each subsequent year declined despite under-attainment in reality. 
+In addition, in 2014, recreational catch was higher than expected.  As a result, 
+in 2014, the combined recreational and commercial catch exceeded the OFL by 2mt 
+(1%) resulting from assumption that the ACL had been attained.  Subsequently,
+action was taken to decrease the recreational season by four months 
+(September 1 - December 31).  A catch only update of the stock was undertaken 
+in 2015  [@Wallace2015] that imputed the actual catch values since the last 
+assessment, resulting in significant increase in the OFL and ACL. Retrospectively, 
+the catch in 2014 was well below the OFL as well as the 
+ACL that would have been in place had the ACL values from the actual
+attainment been in place in 2014.  Thus the stock has not been subject
+to overfishing since the original assessment or 
+been in an overfished condition historically and is considered healthy. 
+The season restriction in the recreational fishery remained in place as 
+a precautionary measure until the full assessment was completed to better 
+inform the current status of the stock, catch limits and regulations given 
+the perspective provided.
+
+
+
+##Summary of Management History
+
+Prior to the adoption of the Pacific Coast Groundfish Fishery Management Plan (FMP) 
+in 1982, California scorpionfish (\emph{Scorpaena guttata}) was managed through a regulatory 
+process that included the California Department of Fish and Wildlife (CDFW) along 
+with either the California State Legislature or the Fish and Game Commission (FGC) 
+depending on the sector (recreation or commercial) and fishery. With implementation 
+of the Pacific Coast Groundfish FMP, California scorpionfish came under the management 
+authority of the Pacific Fishery Management Council (PFMC), being incorporated, along 
+with all genera and species of the family Scorpaenidae, into a federal rockfish 
+classification and managed as part of "Remaining Rockfish" under the larger 
+heading of "Other Rockfish" (PFMC [-@PFMC2004; -@PFMC2002], Tables 31-39). 
+
+The ABCs provided by the PFMC's Groundfish Management Team (GMT) in the 1980s 
+were based on an analysis of commercial landings from the 1960s and 1970s. 
+For this analysis, most of the rockfishes were lumped into one large group. 
+This analysis indicated that the landings for rockfish in the Monterey-Conception 
+area were at or near ABC levels [@PFMC1993]. To keep landings within these 
+adopted harvest targets, the Pacific Coast Groundfish FMP provided the Council 
+with a variety of management tools including area closures, season closures, 
+gear restrictions, and, for the commercial sector, cumulative limits (generally 
+for two-month periods). With the implementation of a federal groundfish restricted 
+access program in 1994, allocations of total catch and cumulative limits began 
+to be specifically set for open access (including most of California's commercial 
+fisheries that target California scorpionfish in Southern California) and limited 
+entry fisheries (Figure \ref{fig:Com_regs}) [@PFMC2002; @PFMC2004].  As a result, in 
+the later 1990s as commercial landings decreased and recreational harvest became a 
+greater proportion of the 
+available harvest. 
+
+Beginning in 1997, California scorpionfish was managed as part of the *Sebastes* 
+complex-south, Other Rockfish category. *Sebastes* complex-south included the 
+Eureka, Monterey, and Conception areas while *Sebastes* complex-north included 
+the Vancouver and Columbia areas.)  The PFMC's rockfish management structure 
+changed significantly in 2000 with the replacement of the *Sebastes* 
+complex -north and -south areas with Minor Rockfish North (now covering the 
+Vancouver, Columbia, and Eureka areas) and Minor Rockfish South (now Monterey 
+and Conception areas only). The OY for these two groups (which continued to 
+be calculated as 0.50 of the ABC) was further divided (between north and 
+south of $40^\circ 10^\prime$ N. latitude) into nearshore, shelf, and slope rockfish categories 
+with allocations set for Limited Entry and Open Access fisheries within 
+each of these three categories (January 4, 2000, 65 FR 221; PFMC [-@PFMC2002], 
+Tables 54-55). Because of its depth range and southern distribution, 
+California scorpionfish was included within the Minor Rockfish South, 
+Other Rockfish ABC and managed under the south of $40^\circ 10^\prime$ N. latitude
+nearshore rockfish OY and trip limits (PFMC [-@PFMC2002], Table 29).
+
+Along with the above changes, in 2000 the southern area divided into two separate 
+management areas at Point Lopez, $36^\circ 00^\prime$ N. latitude. This was followed in 2001 with 
+the implementation of the northern rockfish and lingcod management area between 
+($40^\circ 10^\prime$ N. latitude) and Point Conception ($34^\circ 27^\prime$ N. 
+latitude); and the southern rockfish 
+and lingcod management area between Point Conception and the U.S.- Mexico border. 
+These were later revised starting in 2004 with the northern rockfish and lingcod 
+management area redefined as ocean waters from the Oregon-California border 
+($42^\circ 00^\prime$ N. latitude) to $40^\circ 10^\prime$ N. latitude, the central 
+rockfish and lingcod management area defined as ocean waters from $40^\circ 10^\prime$ 
+N. latitude to Point Conception, and the southern rockfish and management area 
+continuing to be defined as ocean waters from Point Conception to the U.S.-Mexico border.
+
+Cowcod Conservation Areas (CCAs) also were established in 2001 to reduce fishing 
+effort in areas with high encounter rates of cowcod rockfish (PFMC [-@PFMC2002], 
+Table 29). These areas were closed to all recreational and commercial fishing for 
+groundfish except for minor nearshore rockfish (including California scorpionfish) 
+within waters less than 20 fathoms. The California Rockfish Conservation 
+Area (CRCA) was defined as those ocean waters south $40^\circ 10^\prime$ N. 
+latitude to the U.S.-Mexico border with different depth zones specified for 
+the areas north and south of Pt. Reyes ($37^\circ 59.73^\prime$ N. latitude). 
+
+During the late 1990s and early 2000s, major changes also occurred in the way 
+that California managed its nearshore fishery. The Marine Life Management Act 
+(MLMA), which was passed in 1998 by the California Legislature and enacted in 
+1999, required that the FGC adopt an FMP for nearshore finfish. It also gave 
+authority to the FGC to regulate commercial and recreational nearshore fisheries 
+through FMPs and provided broad authority to adopt regulations for the nearshore 
+fishery during the time prior to adoption of the nearshore finfish FMP. Within this 
+legislation, the Legislature also included commercial size limits for nine nearshore
+species including California scorpionfish (10-inch minimum size) and a requirement 
+that commercial fishermen landing these nine nearshore species possess a nearshore permit.
+
+Following adoption of the Nearshore FMP and accompanying regulations by the FGC in 
+fall of 2002, the FGC adopted regulations in November 2002 which established a set 
+of marine reserves around the Channel Islands in southern California (which became 
+effective April 2003).  The FGC also adopted a nearshore restricted access program in December 
+2002 (which included the establishment of a Deeper Nearshore Permit) to be effective 
+starting in the 2003 fishing year.
+
+Although the Nearshore FMP provided for the management of the nearshore rockfish 
+and California scorpionfish, management authority for these species continued to 
+reside with the Council. Even so, for the 2003 and subsequent fishery seasons, 
+the State provided recommendations to the Council specific to the nearshore 
+species that followed the directives set out in the Nearshore FMP. These 
+recommendations, which the Council incorporated into the 2003 management 
+specifications, included a recalculated OY for Minor Rockfish South - Nearshore, 
+division of the Minor Rockfish South - Nearshore into three groups (shallow 
+nearshore rockfish; deeper nearshore rockfish; and California scorpionfish), 
+and specific harvest targets and recreational and commercial allocations for 
+each of these groups. 
+
+Also, since the enactment of the MLMA, the Council and State in a coordinated 
+effort developed and adopted various management specifications to keep harvest 
+within the harvest targets, including seasonal and area closures (e.g. the CCAs; 
+a closure of Cordell Banks to specific fishing), depth restrictions, minimum 
+size limits, and bag limits to regulate the recreational fishery and license 
+and permit regulations, finfish trap permits, gear restrictions, seasonal 
+and area closures (e.g. the RCAs and CCAs; a closure of Cordell Banks to 
+specific fishing), depth restrictions, trip limits, and minimum size 
+limits to regulate the commercial fishery.
+
+
+##Management Performance
+ `r spp` has been managed as a single-species outside of a complex since 2003. 
+ The estimated catch  of `r spp` north below the ACL in all years (2007-2017) except 
+ for in 2014 when the catch exceeded the ACL (and ABC) by 6.8 mt. A summary of these values 
+ as well as other base case summary results can be
+found in Table \ref{tab:mnmgt_perform}.
+
+
+##Fisheries Off Mexico
+The California scorpionfish’s range extends into to Punta Abreojos, Baja California 
+Sur, Mexico.  The species is also found in the northern Gulf of California and Guadalupe 
+Island.  No formal stock assessments have been conducted for California 
+scorpionfish in Mexican waters.  
+

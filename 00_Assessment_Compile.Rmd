@@ -1,0 +1,118 @@
+---
+title: Status of California Scorpionfish (*Scorpaena guttata*) Off Southern California
+  in 2017
+author: ''
+date: ''
+output:
+  pdf_document:
+    fig_caption: yes
+    highlight: haddock
+    includes:
+      before_body: Titlepage.tex
+      in_header: header.tex
+    keep_tex: yes
+    number_sections: yes
+    template: Default_template_modified.tex
+    toc: yes
+    toc_depth: 4
+  word_document:
+    toc: yes
+    toc_depth: '4'
+documentclass: article
+fontsize: 12pt
+geometry: margin=1in
+link-citations: yes
+csl: CJFAS.csl
+bibliography: BibFile.bib
+---
+```{r global_options, include=FALSE}
+    # set global options for R code chunks: echo=FALSE (don't include source code); 
+    # warning=FALSE (suppress R warnings); message=FALSE (suppress R messages)
+    # eval = TRUE is default
+    knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r}
+    # Read in preamble R code - including required libraries and the SS file(s)
+    source('./Rcode/Preamble.R')
+ 
+    # Read in data/manipulations for executive summary tables and figures
+    # It may take time to edit this file and get it ready for your assessment
+    # Make small changes in this file and then try to compile the document
+    # Commit when you have a success!
+    source('./Rcode/Exec_summary_figs_tables.R')
+```
+\setlength{\parskip}{5mm plus1mm minus1mm}
+\pagebreak
+
+
+\setcounter{page}{1}
+\renewcommand{\thefigure}{\alph{figure}}
+\renewcommand{\thetable}{\alph{table}}
+
+
+```{r child = "0_Executive_Summary.Rmd"}
+```
+
+\pagenumbering{arabic}
+
+```{r child = "1_Introduction.Rmd"}
+```
+
+```{r child = "2_FisheryData.Rmd"}
+```
+
+```{r child = "3_BiologicalData.Rmd"}
+```
+
+```{r child = "4_Assessment.Rmd"}
+```
+
+```{r child = "5_HarvestProjections.Rmd"}
+```
+
+
+```{r child = "6_RegionalManagement.Rmd"}
+```
+
+
+```{r child = "7_ResearchNeeds_Acknowledgements.Rmd"}
+```
+
+#Tables
+
+```{r child = "8_Tables.Rmd"}
+```
+
+
+```{r child = "8a_Tables.Rmd"}
+```
+
+```{r child = "9_1_Figures_Intro_FishData.Rmd"}
+```
+
+
+```{r child = "9_2_Figures_BioData.Rmd"}
+```
+
+
+```{r child = "9_4_Figures_Assessment.Rmd"}
+```
+
+```{r child = "9_9_Appendices.Rmd"}
+```
+
+
+\newpage
+
+
+
+<!-- ====================================================================== -->
+<!-- **********REFERENCES - WILL APPEAR AFTER APPENDICES******************* -->
+<!-- ====================================================================== -->
+\color{black}
+
+#References{-}
+\renewcommand{\thepage}{}
+
+<!-- ********************END OF THE DOCUMENT******************************* -->
