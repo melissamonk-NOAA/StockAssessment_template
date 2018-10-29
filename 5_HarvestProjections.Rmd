@@ -1,0 +1,27 @@
+<!-- **************HARVEST PROJECTIONS AND DECISION TABLE****************** -->
+#Harvest Projections and Decision Tables
+The forecasts of stock abundance and yield were developed using the final base model, 
+with the forecasted projections of the OFL presented in Table \ref{tab:OFL_projection}. 
+The total catches in 2017 and 2018 are set to the average annual catch from 2015-2016 and not 
+the ABC or OFL due recent trends in total catch 
+being significantly lower than the OFL and ABC. CDFW also allocated 75% of the ACL to the recreational 
+fisheries and 25% to the commercial fisheries. The exploitation rate for 2019 and beyond is based 
+upon an SPR harvest rate of 50%. The average of 2015-2016 catch by fleet was used to distribute 
+catches in forecasted years. The forecasted projections of the OFL for each model are presented 
+in Table \ref{tab:Decision_table_mod1}. 
+
+ 
+
+Uncertainty in the forecasts is based upon the three states of nature agreed upon at the STAR panel 
+and are based on a low value of $M$, 0.164, the base model value of $M$, 0.235, and 
+a high value, 0.2745.  The total catches in 2017 and 2018 are set to 
+the average annual catch from 2015-2016 (79.03) and not the ABC or OFL due recent trends in total catch 
+being significantly lower than the OFL and ABC. The average of 2015-2016 catch by fleet was used to distribute 
+catches in forecasted years. Current medium-term forecasts based on the alternative states of nature 
+project that the stock, under the current control rule as applied to the base model, will decline 
+towards the target stock size Table \ref{tab:Decision_table_mod1}. The current control rule under the 
+low state of nature results in a stock decline into the precautionary zone, while the high state of 
+nature maintains the stock at nearer unfished levels. 
+
+
+

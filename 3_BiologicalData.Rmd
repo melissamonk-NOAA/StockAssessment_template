@@ -1,0 +1,207 @@
+
+
+<!--************BIOLOGICAL DATA*********************************************-->
+###Biological Parameters and Data
+
+California scorpionfish do not have a forked tail, therefore total 
+length and fork length are equal. Love et al.  [-@Love1987]  provide conversion factors
+between standard length (SL) and total length (TL): $TL = 1.21SL + 1.02$ and $SL = 0.82TL - 0.69$.
+ 
+Standard and total lengths of 163 California scorpionfish  were available from a 
+halibut trawl survey in southern California (Steve Wertz, CDFW).  The conversion 
+from SL to TL from these data was estimated at $TL = 1.2225SL + 0.7773$. 
+The conversion originating from the halibut trawl data was used in this assessment 
+due to the fact that the original data from Love et al.  [-@Love1987] are not available. 
+The majority of available length composition data were measured to total length, 
+except for the POTW trawl surveys, the Southern California
+Bight Regional Monitoring Program trawl survey, and the CSUN/VRG gillnet survey 
+(gillnet survey).  Maunder et al. [-@Maunder2005] converted all data to standard 
+length due to clumping of data when length data are only available to the nearest 
+centimeter. However, the same is true for the conversion from TL to SL when data 
+were available to the nearest centimeter. All length data for this assessment are in
+TL.  The Orange County Sanitation District and the VRG gillnet study measured SL 
+to the nearest mm.
+ 
+To avoid missing length bins (specifically 18, 23, 29 cm) in the conversion from SL 
+to TL,  0.5 was first subtracted from each SL and a random uniform number (U[0, 1]) 
+was added to the SL measurement.  All TL measurements were rounded to the nearest 
+length centimeter length bin.  A comparison of the length distributions
+
+
+**Length and Age Compositions**
+
+Length compositions were provided from the following sources:
+
+\begin{itemize}[noitemsep,nolistsep,topsep=0pt]
+  \item CDFW market category study (\emph{commercial dead fish}, 1996-2003)    
+  \item CALCOM (\emph{commercial dead fish}, 2013-2016)    
+  \item CDFW onboard observer (\emph{recreational charter discards}, 2003-2016)    
+  \item Ally onboard observer study (\emph{recreational charter discards}, 1984-1989)  
+  \item California recreational sources combined (\emph{recreational charter retained catch})     
+    \begin{itemize}[noitemsep,nolistsep]
+      \item CDFW and Ally onboard observer surveys (1984-1989)     
+      \item Collins and Crooke onboard observer surveys (1975-1978)     
+      \item MRFSS (1980-2003)     
+      \item CRFS (2004-2014)
+    \end{itemize}
+ \item California recreational sources combined (\emph{private mode retained catch})      
+    \begin{itemize}[noitemsep,nolistsep]   
+      \item MRFSS (1980-2003)      
+      \item CRFS (2004-2016)  
+    \end{itemize}
+ \item POTW trawl surveys (\emph{research}, 1970-2016)      
+ \item CSUN/VRG gillnet survey (\emph{research}, 1995-2008)        
+ \item Power plant impingement surveys (\emph{research}, 1974-2016)  
+ \item Southern California Bight trawl survey (\emph{research}, 1994, 1998, 2003, 2008, 2013) 
+\end{itemize}
+
+
+The length composition of all fisheries aggregated across time by fleet is in Figure
+\ref{fig:comp_lendat_aggregated_across_time}.  Descriptions and details of the length
+composition data are in the above section for each fleet or survey.
+
+
+*Recreational: California MRFSS and CRFS Length Composition Data*
+
+Individual fish lengths recorded by MRFSS (1980-2003) and CRFS (2004-2011) samplers were
+downloaded from the RecFIN website (www.recfin.org). CRFS data from 2012-2014 were
+obtained directly from CDFW.
+
+
+\vspace{.5cm}
+**Age Structures**
+
+Age data were provided from the NWFSC trawl survey from 2005-2016, and all of
+the otoliths collected from the survey were aged.  Figures \ref{fig:otolith1} and 
+\ref{fig:otolith2} provide examples of California scorpionfish
+ otoliths read (including double-reads) 
+ by the Cooperative Ageing Project (CAP) in Newport, Oregon. 
+A total of 879 otoliths were read, and ranged from 0-29 years of age. 
+Fewer than 1% (8 fish) were aged 22 years or older,
+ and only one age-0 fish was in the sample (Figure \ref{fig:Agelength}).
+
+Males and females exhibit different growth patterns, i.e., females 
+grow faster than males (Figure \ref{fig:Agelength}).
+Sex-specific length-at-age was initially estimated external to the population dynamics models 
+using the von Bertalanffy growth curve [@vonB1938], $L_i = L_{\infty}e^{(-k[t-t_0])}$, 
+where $L_i$ is the length (cm) at age $i$, $t$ is age in years, $k$ is rate of 
+increase in growth, $t_0$ is the intercept, and $L_{\infty}$ is the asymptotic length.
+The external parameter estimates for females were $L{\infty}=31.613, k = 0.250, t_0 = -2.280$,
+and for males $L{\infty}=27.374, k = 0.233, t_0 = -2.092$ (Figure \ref{fig:vonB_compare}). 
+
+
+
+\vspace{.5cm}
+**Aging Precision and Bias**
+
+Uncertainty in ageing error was estimated using a collection of 200 California 
+scorpionfish otoliths with two age reads (Figure \ref{fig:Fleet8_NWFSCTrawl_ageerror}). 
+Age-composition data used in the model were all from the NWFSC trawl survey and 
+were from otoliths reads aged by the Cooperative Ageing Project (CAP) in Newport, 
+Oregon. All of the otolith reads were from Age Reader A, and double reads were read
+by Age Reader B.  Ageing error was estimated using publicly available software [@Thorson2012].
+The software setting for bias and standard deviation were the same for both 
+readers, unbiased and curvilinear increase in standard deviation with age, 
+respectively (Figure \ref{fig:Fleet8_NWFSCTrawl_ageerror2}).  Two fish with 
+estimated age greater than 21 (plus group age) were excluded from the ageing error 
+estimation. The resulting estimate indicated a standard deviation in age readings 
+increasing from 0.001 years to a standard deviation of 1.79 years at age 22.
+
+
+
+
+\vspace{.5cm}
+**Weight-Length**
+
+The weight-length relationship is based on the standard power function: 
+$W = \alpha(L^\beta)$ where $W$ is individual weight (kg), $L$ is length (cm), 
+and $\alpha$ and $\beta$ are coefficients used as constants.
+
+Sex-specific weight-length relationships were estimated from the NWFSC trawl 
+survey data.  Length and weight data were available for 340 females and 530 
+males.  The estimated parameters for females are $\alpha = 1.553983e^{-05}$ and
+$\beta = 3.057654$, and for males $\alpha = 1.9104e^{-05}$ and
+$\beta = 2.980548$.  Love et al. [-@Love1987] found males to be heavier at a given 
+length than females, whereas the NWFSC data suggests the opposite (Figure \ref{fig:Length_weight}).
+
+The original data from Love et al. [-@Love1987] are no longer available (Milton Love, personal 
+communication, UC Santa Barbara) to re-examine the trends.  The weight-length relationships 
+estimated from the NWFSC survey are consistent with the sex-specific growth rates and are 
+used in the assessment model. 
+
+\vspace{.5cm}
+**Sex Ratio, Maturity, and Fecundity**
+
+The NWFSC trawl survey is the only study available with raw data on sex ratios by age. 
+Across all ages, the sex ratio from the aged California scorpionfish from the NWFSC trawl 
+survey was 60% males and 40% females (Table \ref{tab:sex_ratio}). At age-1, 39% of the aged 
+fish were female (29 of 85), 
+but the sex of 10 fish was unknown.  For ages two to five, the percent of female 
+fish ranged from 45-54%, with aged fish older than five dominated by males. The assessment 
+assumed a sex ratio at birth was 1:1.  The NWFSC trawl survey samples a minimum depth of 55 m 
+and no information on sex ratios was available from other surveys.
+
+Love et al. [-@Love1987] conducted the only published life history study of California 
+scorpionfish, but did not report information on sex ratios.  Differing numbers of sample 
+sizes (males and females) were used for each part of the study (ex. maturity and 
+length-at-age).  The raw data from this study are no longer available, and we were 
+not able to determine raw samples sizes by sex.
+
+No new data on maturity or fecundity for California scorpionfish are available 
+since the publication of the 2005 stock assessment. Love et al. [-@Love1987] found 
+few California scorpionfish to be mature at age-1, 50% of males were mature at 17 cm TL 
+and over 50% of females were mature by 18 cm TL, or two years of age. All fish were mature 
+by 22 cm TL.   This assessment used size at 50% maturity 
+for females of 18 cm TL, with maturity asymptoting to 1.0 for larger fish.  
+
+The 2005 assessment model combined information from estimated linear 
+gonadal somatic index and maturity based on standard length [@Maunder2005].  However, the 
+study used to estimate the GSI, was a halibut targeted trawl study using a mesh size of 10.2 cm 
+(Steven Wertz, personal communication, CDFW). This assessment assumed linear relationship for eggs 
+per kilogram.
+
+
+
+
+\vspace{.5cm}
+**Natural Mortality**
+Hamel [-@Hamel2015] developed a method for combining meta-analytic approaches to 
+relating the natural mortality rate $M$ to other life-history parameters such as 
+longevity, size, growth rate and reproductive effort, to provide a prior on M. In 
+that same issue of ICESJMS, Then et al. [-@Then2015], provided an updated data set 
+of estimates of $M$ and related life history parameters across a large number of fish 
+species, from which to develop an $M$ estimator for fish species in general. They 
+concluded by recommending $M$ estimates be based on maximum age alone, based on an 
+updated Hoenig non-linear least squares (nls) estimator $M= 4.899*{A_{max}}^{-.916}$. 
+The approach of basing $M$ priors on maximum age alone was one that was already 
+being used for west coast rockfish assessments. However, in fitting the alternative 
+model forms relating $-.916M$ to $A_{max}$, Then et al. [-@Then2015] did not 
+consistently apply their transformation. In particular, in real space, one would 
+expect substantial heteroscedasticity in both the observation and process error 
+associated with the observed relationship of $M$ to $A_{max}$. Therefore, it would 
+be reasonable to fit all models under a log transformation. This was not done.
+Revaluating the data used in Then et al. [-@Then2015] by fitting the one-parameter 
+$A_{max}$ model under a log-log transformation (such that the slope is forced to be 
+-1 in the transformed space (as in Hamel [-@Hamel2015]), the point estimate for $M$ is:
+\begin{equation}
+M = \frac{5.4}{A_{max}}
+\end{equation}
+ 
+The above is also the median of the prior. The prior is defined as a lognormal with 
+mean $ln\frac{5.4}{A_{max}}$  and SE = 0.4384343 (Owen Hamel, personal communication, NMFS). 
+Using a maximum age of 21 the 
+point estimate and median of the prior is 0.2545, which is used as a prior for 
+females in the assessment model.
+
+
+
+\vspace{.5cm}
+
+
+###Environmental or Ecosystem Data Included in the Assessment
+In this assessment, neither environmental nor ecosystem considerations were explicitly included in the analysis.  This is primarily due to a lack of relevant data and results of analyses (conducted elsewhere) 
+that could contribute ecosystem-related quantitative information for the assessment.
+
+
+
+

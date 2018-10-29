@@ -1,0 +1,940 @@
+
+<!-- ************ASSESSMENT SECTION**************************************** -->
+#Assessment
+
+##Data
+Data used in the `r spp` assessment are summarized in Figure \ref{fig:data_plot}. 
+Descriptions of the data sources are in the following sections.
+
+
+<!-- ************FISHERY-DEPENDENT DATA************************************ -->
+###Commercial Fishery Landings
+Commercial catches of California scorpionfish (often landed as “sculpin”) are available 
+back to 1916. Landings from 1916 to 1935 are presented in CDFG Fish Bulletin No. 49 
+and Bulletin No. 149 provides tabulated data from 1916 to 1968. Over 99% of the 
+commercial catches of California scorpionfish are from south of Pt. Conception. 
+Whenever possible, catches from north of Pt. Conception and also caught in Mexico 
+but landed in the U.S. were excluded from the commercial catch histories. 
+[California Explores the Ocean (CEO)](http://library.ucsd.edu/ceo/fishcatchtables/fish-catch-download.html)
+provides landings data taken from the CDFG Fish Bulletins in electronic form, as well 
+as electronic copies of all CDFG Fish Bulletins. 
+ 
+Statewide annual commercial landings are available for California scorpionfish from 1916 to 1925,
+and are assumed to be taken by hook-and-line.  Data by area and month are given in a 
+series of bulletins, each bulletin usually providing information for a single year. 
+Data by region and month is available for 1926 to 1986.  The Santa Barbara region 
+includes San Luis Obispo, Santa Barbara and Ventura counties.  Catches from this 
+region were included in the catch history and comprised less than 10 mt for the 
+period from 1926-1968 (the period when data at the regional scale are available). 
+Catches from Mexico can be separated from the total catch starting in 1931, 
+although the CDFG Bulletins do not report catches originating from Mexican 
+waters available for all years, e.g., 1932-1934.  It is assumed that before 
+1931 there was no catch taken from Mexican waters landed in California. 
+ 
+The [CALCOM](http://128.114.3.187/) database was queried (March 7, 2017) for 
+commercial landing estimates of California scorpionfish in California, 1969-2016.
+Landings were stratified by year, quarter, live/dead, market category, gear group, 
+port complex, and source of species composition data (actual port samples, borrowed 
+samples, or assumed nominal market category).  All CALCOM California scorpionfish 
+landing data are either actual port samples or the nominal California scorpionfish
+market category.  However, catches in CALCOM do not separate out catches originating
+from Mexican waters and landed at U.S. ports.
+ 
+The Commercial Fisheries Information System (CFIS; maintained by CDFW) contains 
+California catch in pounds by gear and port for 1969 to 2016. The CFIS 
+data come from landing receipts or “fish tickets” filled out by the markets or 
+fish buyers as required by the state for all commercial landings.  The fish tickets 
+include the CDFW block in which the majority of the landings were caught. 
+Landings reported from a block solely in Mexican waters (blocks >900) were removed from 
+the catch history.  Landings with reported blocks 877-882 with area in both U.S.
+and Mexican waters were retained in the catch histories.
+
+The commercial catch is dominated by the hook-and-line fishery (89% of total catches). 
+The catch by reported gear types: hook-and-line, fish pot, trawl, gill net, and 
+other can be found in Table \ref{tab:CommCatches}.  Catch taken by fish pot and 
+other gears is added to the hook-and-line catch in the stock assessment (30.6 mt 
+total from fish pot and 93.9 mt total from other gears). 
+ 
+In the assessment, catch for 1916 to 1968 is taken from the CDFG
+Fish Bulletins. Catch by gear for 1969 to 2004 is taken from CFIS.
+
+###Commercial Discards
+Information on commercial discards from the West Coast Groundfish Observer 
+Program (WCGOP) are available starting in 2004.  The commercial fishery for 
+California scorpionfish has been minimal since the early 2003 (averaging 3.5 
+mt per year).  The available length composition data from the observed discards is minimal, 
+with 151 fish measured from 2004-2015, and less than half a metric ton.  Given the 
+discard mortality of only 7%, and the small total catches in the recent years, 
+discards from the commercial fleet are not considered in the assessment.
+
+###Commercial Fishery Length and Age Data
+Biological data from commercial fisheries that caught `r spp` were extracted from CALCOM 
+on March 7, 2017. Samples from the hook and line fishery were available from 1999 (1 trip) 
+and 2013-2015 (1 trip per year), and for 1999 (1 trip) and 2006 (2 trips) from the trawl fishery.
+A total of 87 fish were measured and length compositions were based on expanded catch-weighted
+landings.  The samples from 1999 for both fisheries were replaced by samples from the market
+category study described below.
+
+The CDFW conducted a market study from 1990-2004 in southern California [@Laughlin1998] to
+monitor and summarize local commercial catches.  The ports sampled included San Diego, 
+Santa Barbara/Ventura and Long Beach/San Pedro.  Very few of the samples from Santa 
+Barbara and San Diego (four samples each from the hook-and-line and trawl fisheries 
+Santa Barbara, and one sample from the hook-and-line fishery in San Diego) reported 
+California scorpionfish, and are excluded from the length composition data. 
+Length composition for California scorpionfish are available from the Long Beach 
+samples for the hook-and-line (Table \ref{tab:ComHL_lengthsample}), gillnet 
+(Table \ref{tab:ComNet_lengthsample}), and trawl fisheries (Table \ref{tab:ComTrawl_lengthsample}). 
+Length samples from both groundfish (otter) trawls and single-rigged 
+shrimp trawls were available from the market study.  The average size of fish from the 
+otter trawls (26.5 cm) was smaller than from the shrimp trawl samples (28.1 cm).  Over 
+70% of California scorpionfish catch from the trawl sector was landed from single-rigged 
+shrimp trawls, which best represent the length composition of the trawl 
+fleet (CALCOM).
+
+
+The input sample sizes were calculated via the Stewart Method (Ian Stewart, personal 
+communication, IPHC):
+
+\begin{centering}
+
+Input effN = $N_{\text{trips}} + 0.138 * N_{\text{fish}}$ if $N_{\text{fish}}/N_{\text{trips}}$ is $<$ 44
+
+Input effN = $7.06 * N_{\text{trips}}$ if $N_{\text{fish}}/N_{\text{trips}}$ is $\geq$ 44
+
+\end{centering}
+
+
+###Sport Fishery Removals and Discards
+
+Data used in reconstructing the retained catch and discarded mortality for California 
+scorpionfish in the California recreational fishery are from the Commercial Passenger 
+Fishing Vessel (CPFV), i.e., charter or for-hire boats, logbooks (1932-2017), the Marine 
+Recreational Fishery Statistical Survey (MRFSS, 1980-2003) and the California Recreational 
+Fishery Survey (CRFS, 2004-2017). 
+Total catch was accounted for including retained catch as well as the estimate of fish 
+discarded dead assuming a 7% discard mortality rate approved for use in management in 
+the regulatory specifications for 2009-2010 [@PFMC2008].  The MRFSS and CRFS data provide 
+estimates of mortality for four recreational fishing modes: party/charter boats, 
+private/rental boats, fishing from man-made structures,e.g., piers and jetties, and fishing 
+from the beach or banks. 
+ 
+The Coastal County Household Telephone Survey was used to estimate 
+fishing effort for the MRFSS survey from 1980-2003 and was subject to potential 
+positive avidity bias in participation by those contacted by the survey. The party/charter 
+phone survey was used to estimate effort for CRFS between 2004 and 2010.  The phone survey 
+participation rates were low in the area south of Pt. Conception, introducing a negative 
+bias in the effort estimates. 
+ 
+Estimates of mortality from the party/charter sector were derived from the CPFV 
+logbook data from 1932-2010 and CRFS from 2011-2017.  Estimated mortality from the 
+logbook data is consistent with the catch-based update conducted in 2015 as well as the 
+2005 stock assessment.
+
+An under-reporting adjustment (assuming an 80% reporting rate) was applied to the logbook data, 
+which is the same as in the 2005 stock assessment was confirmed as the approximate 
+level of reporting in conversation with the CRFS program director
+(Connie Ryan, personal communication, CDFW).  The logbook catch was inflated by 20% 
+from 1936 to 2010. Annual average weights for the party/charter boat retained catch were derived 
+from the MRFSS or CRFS estimates for 1980-2010 and the 
+average weight from 1980-1984 was applied to preceding years.  
+
+To estimate discard mortality for the party/charter mode, the annual average weight was applied from lengths 
+collected sampling onboard CPFVs; CRFS survey from 2004-2010.  The annual average weight 
+from was applied to discards reported in CPFV logbooks from 2004-2010 and the overall 
+and the average weight was applied to discards from 1995-2003.  For the period between 
+1980 and 1994, the MRFSS estimates for discards were used to reflect discarding due 
+to the paucity of data on the number of discards from party/charter logbooks prior to 1995. 
+ 
+For all other modes, the MRFSS (1980-2003) and CRFS (2004-2017) based estimates of 
+retained catch and discard mortality were used.  There was a lapse in MRFSS sampling 
+from 1990 through 1992, for which retained catch and discard mortality were 
+estimated using the average of values three years before and three years after the 
+lapse for all modes other than the party/charter mode.  For the party/charter mode, estimates of numbers 
+of fish were available from logbook data and average weight from the three years 
+before and after this period were applied to provide estimates for the party/charter mode. 
+
+
+Estimates of retained catch and discards were not available from the non-party/charter modes 
+prior to 1980, thus the ratio of catch in the party/charter mode to the other modes for 1980 
+through 1985 was used to provide an estimate of catch in the other modes in the 
+years 1932-1979.  In the case of the private/rental mode, a linear ramp in the ratio adjustment 
+between party/charter and private/rental modes was applied between 1966 and 1979 from 0.55 in 1980 to 0.10 
+in 1965, reflecting the increase in the relative proportion of catch contributed by 
+the private/rental mode with time as more individuals anglers purchased vessels, as recommended 
+in the California Catch Reconstruction [@Ralston2010], and the ratio of 0.10 was assumed
+for all years prior.  The ratio of party/charter estimates to the man-made structure (MM) 
+and beach/bank (BB) modes was assumed constant and the average between 1980 and 1989 was applied 
+from 1932 to 1979.  Catch 
+estimates from CPFV logbooks were not available during the World War II era from 1941
+until 1946 and catch was assumed to be zero for all modes during this period.  Estimates
+for retained catch and discarded mortality for 1928 to 3528 were estimated using a
+linear ramp from the value for 1936 to zero in 1928 for the party/charter mode and ratios party/charter 
+compared to other modes were used to proxy estimates for other modes based on the 
+resulting ramped values for the party/charter mode.  The final time series of landings and discard 
+mortality are in Table \ref{tab:Rec_removal}.
+
+Biological samples from the recreational fleets are described in the sections below.
+
+###Fishery-Dependent Indices of Abundance
+
+**CRFS Private Boat Dockside Intercept Survey**
+
+The CDFW provided the CRFS private boat dockside sampling fisheries data from 2004 
+to 2016.  The data went through several data quality checks to identify the best 
+subset of available data that are consistent over the time series and provide a 
+representative relative index of abundance once standardized.  The dockside sampling 
+of the private/rental mode consists of samples from a primary series 
+of ports (PR1) where the majority of fishing effort for this mode originates and a 
+secondary series of ports with historically low effort (PR2).  Only PR1 samples were 
+used for this index as the sampling forms for the PR2 index have changed over time 
+and the data could not reliably be collapsed to the trip level.  The dockside data 
+consist of two types of data; Type 2 data contain records of angler-reported catch, 
+i.e., catch that was not observed by the sampler and Type 3 data includes sampler-examined 
+retained catch.  Of the Type 2 reported catch for scorpionfish, less than one percent 
+were reported “thrown back dead” and  five percent reported as retained to eat.  Given 
+that the reported retained catch is a small fraction of the catch overall and discard
+mortality of California scorpionfish is low, only the Type 3 examined catch are used in the index.
+
+
+The survey records the number of contributing anglers (number of anglers on the vessel 
+for the private mode), but does not contain data on hours fished.  For this index, 
+angler-day was the assumed effort.  The data were filtered to trips fishing with 
+hook-and-line gear in southern California.  Trips with a primary fishing area of 
+Mexico were also removed.  The CRFS dockside private boat records with these broad 
+filters include  44,128 trips of which 3,802 caught California scorpionfish (8.6%).  
+
+
+The Stephens-MacCall approach was used to identify trips with a high probability of 
+catching California scorpionfish [@Stephens2004].  Prior to using the Stephens-MacCall 
+approach to 
+select relevant trips a number of other filters were applied to the data. 
+Over the course of the time series only 45 trips 
+from Santa Barbara county encountered California scorpionfish, ranging from 0-10 
+trips a year.  The Stephens-MacCall approach was applied with and without trips 
+from Santa Barbara and the same species were identified as indicators and 
+counter-indicators.  For the final model prior to Stephens-MacCall, trips 
+from Santa Barbara were excluded, leaving 41,235 trips, and 3,747 of those 
+caught California scorpionfish (Table \ref{tab:Fleet4_RecPR_dockside_filter}).
+ 
+ 
+Coefficients from the Stephens-MacCall analysis (a binomial GLM) are positive for 
+species which co-occur with California scorpionfish, and negative for species that
+are not caught with California scorpionfish (Figure \ref{fig:Fleet4_RecPR_dockside_SM}). 
+Potentially informative species for the Stephens-MacCall analysis were limited 
+to species caught in at least one percent of all trips and caught in at least 
+five years.  Some of these never occurred with California scorpionfish (strong 
+‘counter-indicators’) and records with these species were removed from the data 
+prior to estimation of the index. Strong counter-indicators for the CRFS private 
+boat index included yellowfin tuna and dolphinfish.  
+
+ 
+A total of 8,590 trips were retained following the Stephens-MacCall filter, with 3,056
+all positive California scorpionfish trips retained.  The California scorpionfish
+recreational fishery in the southern management area was closed for eight months 
+in 2004 and nine months in 2005. The majority of records from 2004 and 2005 are 
+from the period when the fishery was closed and were removed from the analysis 
+(Figure \ref{fig:recregs}).  Records from months when the fishery was closed 
+from 2006-2016 were also excluded from the index since this index relies on 
+sampler-examined retained catch.  
+
+
+Catch per unit effort was modeled using a delta-GLM approach, where the catch occurrence 
+(binomial) component was modeled using a logit link function and the positive
+catch component was modeled after log-transformation of the response variable, 
+according to a normal distribution with an identity link function. The units 
+for CPUE are fish landed/anglers. A gamma distribution for the positive catch
+component was also explored, but model selection favored the lognormal model.
+The raw CPUE of factors considered in the model by year are shown in Figure 
+\ref{fig:Fleet4_RecPR_dockside_lograwCPUE}.
+
+ 
+Model selection procedures selected the covariates *2-month wave* 
+and *county* as important for both the catch occurrence and positive
+catch component models for all data sets, along with the categorical year
+factor used for the index of abundance (Table \ref{tab:Fleet4_RecPR_dockside_aic}). 
+The Q-Q goodness of fit plot for the lognormal portion of the model shows
+a moderate fit to the data (Figure \ref{fig:Fleet4_RecPR_dockside_QQ}).
+The final index indicates a decrease in relative abundance from 2006 to 2010, 
+at which point the index is relatively flat (Figure \ref{fig:index4_logcpuedata_RecPR} 
+and Table \ref{tab:Fleet4_RecPR_dockside_index}). 
+
+Biological samples from trips retaining California scorpionfish were collected during
+the dockside surveys.  Lengths of California scorpionfish from 1980-2016 for the private
+mode were provided from the Recreational Fisheries Information Network (RecFIN) 
+by Edward Hibsch (PSMFC) on November 29, 2016. Length measurements 
+from the private mode were provided directly from CDFW for the years 2004-2016 Table
+\ref{tab:Fleet4_lengthsample}.  The number of trips is the number of unique ID_CODEs 
+from RecFIN for 1980-2003.  Starting in 2004 with the CRFS program,
+the number of unique trips sampled in the private boat mode was recorded.  The recreational
+private fleet tends to select larger fish than the recreational party/charter fleet, which
+is one reason the private and party/charter fleets were maintained as two separate fleets in
+the base model.  No length data for discarded fish from the recreational private mode 
+fleet are available.
+
+
+
+**CRFS CPFV Logbook Index**
+
+CPFV operators have been required to submit written catch logs with daily trips records
+of catches to CDFW since 1935.  The logbook data from 1936-1979 are available as monthly 
+summaries, which do not contain the level of detail needed for an index of abundance. 
+CDFW provided the CPFV logbook data from 1980-2016 (Charlene Calac, CDFW).  Logbook 
+data from 1980-2016 contain records for each trip, including the fishing date, port 
+of landing, vessel name and number, CDFG block area fished (Figure \ref{fig:boundary_map}), 
+angler effort, number of fish kept and discarded by species.  As of 1994, operators 
+were required to report the number of fish discarded and lost to seals.  Prior to
+1994, it is assumed that all reported fish were retained.  Details and additional 
+information on the historical logbook database can be found in Hill and Schneider [-@Hill1999].
+ 
+The number of anglers on board the vessel and the hours fished are included in 
+the database for all years. Only retained fish are included in the index of abundance 
+and the unit of effort is angler hours. A number of data filters were applied to 
+the data to account for possible mis-reporting, e.g., trips reporting retained 
+California scorpionfish in top 1% of the data (>325 fish).  Trips fishing outside 
+of California scorpionfish habitat (reported as targeting pelagic species) or trips 
+reporting a block with a minimum depth deeper than 140 m were also filtered out.  
+
+Because California scorpionfish is not a primary target species, boats with fewer 
+than 10 trips retaining California scorpionfish were removed from the analysis. 
+Data were also filtered to only include catches reported from blocks South of Pt. 
+Conception and north of the U.S.-Mexico border (Figure \ref{fig:boundary_map}). 
+For a block to be retained for the analysis, at least 100 trips retaining California scorpionfish and a total 
+of 500 trips must have occured in the block.  A full description of the data filters is in 
+Table \ref{tab:Fleet5_RecPC_CPFVlogbook_filter}. A total of 432,868 trips were
+retained for the index of abundance, 202,937 of which caught California scorpionfish. 
+ 
+Two different area factors were considered for the standardization, block and region. 
+The 60 retained blocks were split into nearshore regions north and south of San Pedro 
+and the northern and southern islands, for four regions.  Both a delta model and a 
+negative binomial model were considered for index standardization.  However, due to 
+the large number of records, the traditional jackknife routine to estimate uncertainty 
+for the delta model was not possible.  
+ 
+California scorpionfish were present in 47% of all trips, and standardized
+with a negative binomial model.  Factors considered were  *year*, *month*, and *area* 
+(either block or region). A model with blocks and  was selected over a model 
+with region by 39,180 AIC.  The final model includes *year*, *month*, and *block* 
+with a log link and effort as an offset (Table \ref{tab:Fleet5_RecPC_CPFVlogbook_aic}). 
+The standardized index shows a cyclic pattern, with period of higher CPUE 
+(late 1980’s to early 1990’s and late 1990s) and has shown a general downward 
+trend since 2008 (Figure \ref{fig:index4_logcpuedata_RecPC} and 
+Table \ref{tab:Fleet5_RecPC_CPFVlogbook_index}).  An interesting note 
+is the similarity in standardized CPUE between the CPFV logbook index and the CPFV 
+dockside index (not used in the stock assessment model) from 1992-1997 (for a 
+Stephens-MacCall threshold of 0.1) (Figure \ref{fig:Fleet5_RecPC_dockside_index_compare}).
+
+
+**MRFSS Party/Charter Boat Dockside Index**
+
+From 1980 to 2003 the MRFSS program conducted dockside intercept surveys of recreational 
+fishing fleet. The program was temporarily suspended 
+from 1990-1992 due to lack of funding. For purposes of this assessment, the MRFSS time
+series was truncated at 1998 due to sampling overlap with the onboard observer program (i.e., 
+the same observer samples the catch while onboard the vessel and also conducts the dockside 
+intercept survey for the same vessel). Each entry in the RecFIN 
+Type 3 database corresponds to a single fish examined by a sampler at a particular 
+survey site. Since only a subset of the catch may be sampled, each record also 
+identifies the total number of that species possessed by the group of anglers 
+being interviewed.  The number of anglers and the hours fished are also recorded. 
+The data, as they exist in RecFIN, do not indicate which records 
+belong to the same boat trip. A description of the algorithms and process used to 
+aggregate the RecFIN records to the trip level is outlined Supplemental Materials 
+(“Identifying Trips in RecFIN”)
+
+Initial trip filters included eliminating trips targeting species caught near the 
+surface waters for all or part of the 
+trip, including trips with catch of bluefin tuna, 
+yellowfin tuna, dorado, Pacific bonito, skipjack, albacore,
+chinook salmon, coho salmon and bigeye tuna. Trips with catch of yellowtail 
+amberjack were also removed since effort on such trips can often be focused in the surface
+and mid-water where California scorpionfish do not occur. In addition, trips with aggregate
+effort below and above 95% percentile (less than 2 and over 109.5 hours) were removed 
+to exclude trips for which either too little effort was exerted to be informative or longer
+trips that may make an excessive contribution to the effort likely distributed over a 
+number of target species, only some of which may co-occur with California scorpionfish. 
+Trips in Santa Barbara County were removed due the low number of positive trips retaining   
+California scorpionfish.
+
+Since recreational fishing trips target a wide variety of species, standardization
+of the catch rates requires selecting trips that are likely to have fished in habitats 
+containing California scorpionfish. The Stephens-MacCall [-@Stephens2004] filtering approach was used
+to identify trips with a high probability of catching California scorpionfish, based 
+on the species composition of the catch in a given trip. Prior to applying the 
+Stephens-MacCall filter, we identified potentially informative predictor species, 
+i.e., species with sufficient sample sizes and temporal coverage (at least 30 positive
+trips total, distributed across at least 10 years of the index) to inform the binomial
+model. Coefficients from the Stephens-MacCall analysis (a binomial GLM) are positive 
+for species which co-occur with California scorpionfish, and negative for species that 
+are not caught with California scorpionfish. Each of these filtering steps and the resulting 
+number of trips remaining in the sampling 
+frame are provided in Table \ref{tab:Fleet5_RecPC_dockside_filter}.
+
+
+Prior to the Stephens-MacCall filter, a total of 3,968 trips were retained for the analysis. 
+Species that composed less than 5% 
+of the catch were excluded from analysis, which included Chub mackerel, Pacific 
+mackerel and barracuda.  As expected, positive
+indicators of California scorpionfish trips include several species of nearshore rockfish,
+California sheephead, California halibut, Pacific sanddabs and seabasses and counter-indicators
+include several species of deep-water rockfish (Figure \ref{fig:Fleet5_RecPC_docksideSM}). 
+While the filter is useful 
+in identifying co-occurring or non-occurring species assuming all effort was exerted 
+in pursuit of a single target, the targeting of more than one target species can result
+in co-occurrence of species in the catch that do not truly co-occur in terms of habitat
+associations informative for an index of abundance. 
+ 
+Two levels of filtering were applied using the Stephens-MacCall filter.  The Stephens-MacCall
+filtering method identified the probability of occurrence (in this case 0.27) at which 
+the rate of "false positives" equals "false negatives."
+The trips selected using this criteria were compared to an 
+alternative method including all the "false positive" trips, regardless of the probability 
+of encountering a California scorpionfish.  This assumes that if California scorpionfish
+were caught, the vessel must have fished in appropriate habitat during the trip. 
+In addition, the false positives from a lower probability of occurrence 
+(0.10) was considered to reflect a less stringent threshold inclusive of more 
+trips including a higher proportion of the false positive trips combined with the 
+positive trips from the entire data set was evaluated for comparison.   
+ 
+Catch per angler hour (CPUE; number of fish per angler hour) was modelled using a delta model 
+[@Lo1992; @Stefansson1996]. Model selection using Akaike Information Criterion 
+(AIC) and Bayesian Information Criteria (BIC) supported inclusion of year and
+region effects in both the binomial and lognormal components of the index for both 
+the model with false positives using the 0.27 threshold and the 0.10 threshold.  The addition 
+of month effects (to allow for seasonal changes in CPUE) did not improve model fit in the 
+lognormal model, but the full model including month, year and county was supported for the 
+binomial model (Table \ref{tab:Fleet5_RecPC_dockside_aic}).  The difference in AIC values 
+for the full model compared to the 
+model with only year and county was greater for the binomial model (201.5) favoring the 
+full modal compared to the small difference for the lognormal model favoring the model 
+with only year and county (8.3). As a result, the full model including year, county and 
+month effects was selected for further analysis.  
+ 
+The resulting index values for 1989 were anomalously high compared to other years. 
+In addition, the less stringent filter of 0.1 resulted in a higher index value than 
+0.27, which was contrary to the expectation that including trips with fewer 
+positive trips would decrease the CPUE.  Further examination of the number of 
+California scorpionfish per trip by year showed a lower number of trips for this
+year than others and a lower proportion of low catch trips explaining why exclusion 
+of low catch trips through application of the 0.27 index reduced the relative 
+magnitude of the 1989 index value relative to other years.  As a result of this
+anomalous result and the low sample size, trips from 1989 were excluded from analysis.  
+
+
+The percentage of trips that retained California scorpionfish was 20.8% (828/3,968) prior
+to filtering with the Stephens-MacCall method, and 71.0% (828/,1167) with the filter set 
+to 0.27 and 26.7% (828/3,099) with the filter set to 0.10, filtered data set. 
+Residual-based model diagnostics for the positive component of the index suggest
+the data generally met the assumptions of the GLM (Figure \ref{fig:Fleet5_RecPC_docksideQQ}). 
+The resulting index is highly variable for both thresholds,
+with consistent peaks in 1984 and 1998 (Figure \ref{fig:Fleet5_RecPC_dockside_index_compare}). 
+Application of the 0.27 threshold holds the potential of biasing the resulting index values 
+high by excluding false positive trips while including positive trips with equivalent probability 
+of encountering California scorpionfish.  The 0.1 threshold removes a high proportion of trips 
+with shelf rockfish species indicative of effort exerted in deeper depths than are commonly 
+occupied by California scorpionfish, while retaining false positive trips with equivalent 
+probabilities of capture to true positives and thus was retained for further analysis. 
+The resulting jackknifed mean index values, standard error, coefficient of variation 
+and confidence intervals for the 0.1 threshold model, excluding 1989, with year, 
+month and county effects are provided in Table \ref{tab:Fleet5_RecPC_dockside_aic}.
+ 
+The results of the models with each of the thresholds provided similar trends 
+seen in Figure \ref{fig:Fleet5_RecPC_dockside_index_compare} along 
+with the results from the CPFV logbook index.  The trends
+differ from those resulting from the CPFV logbook index early in the time series,
+but both show an increase in the mid to late 1990s.  The PC dockside index was
+excluded from further analysis in the model given that the CPFV logbook index 
+represents the same sector of the fishery and presumably contains data from the
+some of the same trips, utilizes data for many thousands more trips, and 
+provides data from 1989 to 1992 omitted from the MRFSS data as a result of 
+filtering out 1989 and a lapse of sampling from 1990-1992.
+
+_Party/Charter Dockside Length Measurements_
+
+The retained catch for the recreational party/charter mode has been measured
+during the dockside interviews since 1980, and also by two different onboard 
+observer programs in southern California by Collins and Crooke [-@Collins1978] 
+a combination of unpublished data and a study by Ally et al. [-@Ally1991] from
+1984-1989 (Table \ref{tab:Fleet5_lengthsample}). The length measurements from
+Collins and Crooke [-@Collins1978] are assumed to all be from retained fish. 
+ 
+ 
+Length measurements for California scorpionfish from 1980-2016 were provided
+from RecFIN by Edward Hibsch (PSMFC) on November 29, 2016. The number of trips 
+from 1980-2003 is the number of trips with observer catch of 
+California scorpionfish as outlined in the Supplemental Material ("Identifying Trips
+in RecFIN").  However, the algorithm used to determine the number of trips has
+not been applied to RecFIN data past 2003.  The number of trips for 2004 and 2005,
+was taken as the ratio of the number of interviews (ID_CODE) in RecFIN to the number 
+of known trips for years with complete data.  The number of individual ID_CODEs 
+was reduced by 38% for 2004 and 2005, and gives reasonable sample sizes. 
+From 2004-2016 the number of trips from which the samples were taken is known.  
+
+From 1985-1987 Ally et al. [-@Ally1991] conducted an onboard observer program 
+in southern California, and measured both retained and discarded fish.  Additional 
+unpublished years (1984, 1988-1999) from this onboard observer sampling program 
+were provided by CDFW (Paulo Serpa).  From 1984-1989, the onboard observer program 
+measured 11,892 retained California scorpionfish compared to the 1,981 measurements 
+in RecFIN.  It is almost certain, but cannot be verified, that some of the lengths 
+from the onboard observer program were input in RecFIN.  Therefore, the onboard 
+observer measurements from 1984-1989 are used instead of those from RecFIN for these
+years.
+
+**Onboard Observer Party/Charter Boat**
+
+California implemented a statewide Onboard Observer Sampling Program in 1999, and 
+began measuring discarded fish in 2003 [@Monk2014].  The goal of the Onboard Observer 
+Sampling Program is to collect data including charter boat fishing locations, catch 
+and discard of observed fish by species, and lengths of discarded fish.  The program 
+samples the CPFV fleet, i.e., charter boats or for-hire 
+boats, and collects drift-specific information at each fishing stop on an observed trip. 
+At each fishing stop recorded information includes start and end times, start and end 
+location (latitude/longitude), start and end depth, number of observed anglers (a subset 
+of the total anglers), and the catch (retained and discarded) by species of the observed anglers.
+ 
+CDFW implemented a regulation of three hooks in 2000, which was reduced to (and remains 
+at) two hooks in 2001. CDFW also implemented a 10 inch size limit for California 
+scorpionfish in 2000.  Prior to 2001, 
+there were no depth restrictions for the southern California recreational fishery. 
+Given these regulation changes, the data from 1999 and 2000 are excluded from the index. 
+ 
+From 2002 to 2005, the California scorpionfish fishery was closed from four to nine 
+months of the year.  During these years, California scorpionfish were still encountered, 
+but all discarded.  The onboard observer program provides the only available information 
+on discards because the sampler records both the retained and discarded catch at each 
+fishing stop.  The onboard observer data are used to create two indices of abundance, 
+one using only the discarded catch and one using only the retained catch.  The index of 
+discarded catch is used as an index of abundance for the recreational discard fleet, 
+and the index derived from the retained catch is treated a survey in the assessment model.  
+
+The entire dataset was filtered as one, regardless of retained or discarded, due to the 
+fact that discarding can occur for a number of reasons, e.g., angler preference, size
+limit, bag limit, etc., and California scorpionfish are often retained and discarded on
+the same fishing drift. 
+
+Prior to any analyses, drifts with erroneous or missing data were removed from the data 
+considered for the California scorpionfish index.  The locations of positive encounters 
+(retained + discarded) were mapped, using the drift starting locations.  Regions of 
+suitable habitat were defined by creating detailed hulls (similar to an alpha hull) 
+with a 0.01 decimal degree buffer around a location or cluster of locations. 
+Any portion of a region that intersected with land was removed.  Drifts that did not 
+intersect with one of these areas were considered structural zeroes, i.e., outside of 
+the species habitat, and not used in analyses.  
+
+Five areas were retained based on sample sizes, 1) nearshore area from the U.S./Mexico 
+border to Oceanside, 2) nearshore Oceanside to Newport Beach, 3) Newport Beach to 
+Palos Verdes, 4) Palos Verdes to Point Magu, and 4) drifts from Santa Cruz Island, Santa 
+Barbara and Anacapa Islands, Santa Catalina Island, and San Clemente Islands were 
+combined.  Drifts encountering California scorpionfish north of Point Magu were rare 
+(<5% positive encounters).
+
+Drift locations within the Cowcod Conservation Area (CCA) or in Mexican waters were 
+also filtered out of the dataset.  The years 1999 and 2000 were removed from the 
+index due to changes in hook and gear regulations during those years.  California 
+adopted a 3-hook and 1-line regulation in 2000, which changed to 2-hooks and 
+1-line in 2001. California scorpionfish is not a common target species for the 
+CPFV fleet, but if often a fallback species, for trips targeting seabass 
+or rockfish.  California scorpionfish are targeted more often in January and February 
+when the rockfish/cabezon/greenling complex is closed.  Boat identifiers were available 
+for all trips in the onboard observer database.  Approximately 1,000 drifts were filtered 
+out after accounting for boats that were identified as not encountering scorpionfish 
+(Table \ref{tab:Fleet6_RecDD_onboard_filter}).  A total of 26,733 drifts for the analysis 
+were retained.  Of these, 5,507 encountered scorpionfish, with 3,249 
+discarding California scorpionfish and 3,867 retaining California scorpionfish.
+
+The drift-level effort cannot be parsed out between the retained and discarded catch. 
+The effort represents the total angler hours fished by the subset of observed anglers 
+for a particular drift, and is the same for both the discard-only and retained-only 
+indices. Both of the indices derived from this dataset were standardized using a 
+delta modeling approach [@Lo1992]. 
+
+_Onboard Observer Discarded Catch Index_
+
+Covariates considered in the full model included *year*, *area* (5 levels), *month* 
+(12 levels), and *20 m depth bins* (5 levels). All covariates were specified as categorical 
+variables. A lognormal model for the positives was selected by AIC over a gamma model 
+(delta-AIC of 482.28). Model selection for both the lognormal and binomial models retained 
+all covariates (Table \ref{tab:Fleet6_RecDD_onboard_aic}).  The Q-Q plot for the positive 
+catch lognormal model looks reasonable (Figure \ref{fig:Fleet6_RecDD_QQ}).  The final 
+index shows a lower CPUE of the discards in 2001 and an increase from 2002-2005 when 
+the California scorpionfish recreational fishery was
+restricted by depth or closed (Table \ref{tab:Fleet6_RecDD_onboard_index} and Figure 
+\ref{fig:Fleet6_index4_logcpuedata_RecDD}).  The relative CPUE of the discards decreases from 
+2006 to 2015.
+
+_Discarded Catch Length Composition_
+
+As of 2003, Onboard Observer program has taken length measurements for discarded fish. 
+The retained catch is measured during the dockside (angler intercept) surveys, 
+and cannot necessarily be matched to a trip with the discard lengths prior to 2012. 
+Additional discarded length measurements were available from both CDFW unpublished 
+data (1984, 1988-1989) and the Ally et al. [-@Ally1991] onboard observer program from 
+1985-1987.  The sample sizes of measured discarded fish in the 1980s is small.  The mean 
+length of discarded fish is smaller than for years when the length restriction was in 
+place (Table \ref{tab:Fleet6_lengthsample} and Figure \ref{fig:Fleet6_comp_lendat_bubflt6mkt2}).
+
+The discard length composition reflects the California scorpionfish seasonal closures 
+from 2002-2005. Anglers encountered and discarded fish greater than the size limit of
+10 inches during these years.  When the fishery is open, anglers are most often only
+discarded California scorpionfish that are smaller than the legal size.  This also 
+holds true for the length composition of discarded California scorpionfish in the 
+1980s before there was a size limit.
+
+
+_Onboard Observer Retained Catch Index_
+
+The index of relative abundance using the retained-only catch from the onboard observer 
+program is a separate survey fleet in the base model and has no lengths associated with 
+it. Covariates considered in the full model included *year*, *area* (5 levels), *month* 
+(12 levels), and *20 m depth bins* (5 levels). All covariates were specified as 
+categorical variables. A lognormal model was selected by AIC 
+over a gamma model for the positives (delta-AIC of 534.9).Model selection for both the 
+lognormal and binomial models retained all covariates (Table \ref{tab:Fleet12_RecPC_onboard_aic}). 
+The Q-Q plot for the positive catch lognormal model looks reasonable 
+(Figure \ref{fig:Fleet12_RecPCOBR_QQ}).  The final index shows a lower CPUE 
+of the retained catch from 2002 and 2003 (Table \ref{tab:Fleet12_RecPC_onboard_index} 
+and Figure \ref{fig:Fleet12_index4_logcpuedata_RecPCOBR}).  The relative CPUE 
+of the retained catch shows a decline from 2007-2015, and an increase in 2016.
+
+
+<!-- ************FISHERY-INDPENDENT DATA*********************************** -->
+
+###Fishery-Independent Data Sources
+
+**Publicly Owned Treatment Works (POTWs) Monitoring Trawl Survey**
+
+Publicly Owned Treatment Works (POTWs; referred to the sanitation index in the stock assessment 
+model and associated plots) that discharge into coastal waters are required to conduct 
+trawl surveys to monitor the demersal fish community in the vicinity of the discharge sites 
+as a condition of the 
+National Pollutant Discharge Elimination System (NPDES) permits, issued 
+by the Environmental Protection Agency if the discharge is to federal waters, and the State Water 
+Resources Control Board if discharge is into state waters. All POTWs holding NPDES permits 
+in southern California were contacted for trawl data. 
+The two northernmost districts, Goleta and the City of Oxnard, provided data (via Aquatic 
+Bioassay & Consulting Laboratories, Inc.), but California scorpionfish have not been 
+encountered in either district's trawl surveys.  The four other 
+POTWs, Orange County, The City of Los Angeles Environmental Monitoring 
+Division (CLAEMD), Los Angeles County, 
+and the City of San Diego Public Utilities Department all encounter California scorpionfish 
+and provided trawl 
+data (Figures \ref{fig:Fleet7_sanitation_map2} and \ref{fig:Fleet7_sanitation_map1}).
+
+
+All of the POTWs sample using the same protocols and gear as the Southern California Bight 
+Regional Monitoring Program. The trawl net is a 7.6 m wide Marinovich, semi-balloon 
+otter trawl (2.54 cm mesh) with a 0.64 cm mesh cod-end liner.
+
+A description of the data provided by each POTW is provided. In 
+contrast to the inverse variance weighted index from the 2005 assessment, trawls from all
+POTWs were combined to develop a single index of abundance. 
+
+_Orange County_.
+
+The Orange County Sanitation District provided trawl data from 1970-2015 (Jeff Armstrong,
+Orange County Sanitation District).  Fixed stations are sampled either annually (summer) or 
+semi-annually in the winter 
+and summer, Quarters 1 and 3 (Jan-March and July-September).  From 1970-1985 Quarter 
+2, trawl effort was based on a 10 minute tow time.  As of 1985 
+Quarter 3, trawls were towed a distance of 450 m. Tow time was not available
+for approximately half of the tows from 1985 Quarter 3 to 2016, and was imputed
+based on the mean tow time of the sampling station. 
+
+Eleven stations (T0-T6,T10-T13) sampled in at least 11 years and with California scorpionfish 
+present in at least 5% of trawls were retained for the analysis (1,490 trawls). 
+For hauls with fewer than 30 California scorpionfish, each fish was measured to the nearest 
+mm (standard length).  In hauls with more than 30 California scorpionfish, they were tallied 
+by size class (nearest cm).  Six hauls, all from station T3, caught more than 30 California 
+scorpionfish.  From these six hauls, 30 California scorpionfish were measured to the nearest mm, 
+and the remainder were binned to cm size classes.
+ 
+ 
+_The City of Los Angeles Environmental Monitoring Division (CLAEMD)_.
+
+The CLAEMD provided trawl data from 1986-2016 (Craig Campbell,
+Lost Angeles City).  The CLAEMD follows the same sampling protocols as the 
+Southern California Bight Regional Monitoring Program trawl survey.  Stations within Los 
+Angeles Harbor were excluded from the dataset. Years with fewer than ten total hauls
+were removed from the analysis (1986, 1987, and 1992), as were station sampled in fewer than 
+ 10 years. Ten stations (A1, A3, C1, C3, C6, C9A, D1T, Z2, Z3, Z4), total 921 hauls, were retained
+ for the index of abundance.
+ 
+Tow times were recorded starting in 1999, and assumed to be 10 minutes prior to 1999. Haul depth
+was missing for approximately half of the hauls, and was imputed as the mean depth
+of other hauls at that station. All California scorpionfish encountered were measured to 
+the nearest cm (standard length).
+ 
+_Sanitation Districts of Los Angeles County_.
+
+The Sanitation Districts of Los Angeles County provided quarterly trawl data from 1972-2016 
+(Shelly Walther, Sanitation Districts of Los Angeles County) and follow the same sampling 
+protocols as the 
+Southern California Bight Regional Monitoring Program. Trawl survey 
+stations sampled in fewer than 10 years or at 305 m where California
+scorpionfish were never observed were removed from the analysis.  Non-standard and 
+special study trawls were also removed, e.g., night trawl study in 1987. 
+Hauls were based on a 10 minute tow time and that is assumed as the effort for all hauls. 
+Twelve stations (stations at 23 m, 61 m, and 137 m for T0, T1, T4, and T5), totaling 
+1,848 hauls were retained after initial filtering.  All California scorpionfish encountered
+ were measured to the nearest cm (standard length).
+ 
+_City of San Diego Ocean Monitoring Program_.
+
+The City of San Diego's Ocean Monitoring Program is conducted by Environmental Monitoring 
+& Technical Services Division of the Public Utilities Department (City of San Diego 
+Public Utilities Department). The City of San Diego holds three NPDES that 
+require monitoring of the areas potentially impacted by the discharge of wastewater into the Pacific Ocean 
+via the Point Loma Ocean Outfall and South Bay Ocean Outfall (Timothy Stebbins, personal communication, 
+City of San Diego Public Utilities Department). One permit is for the City’s Point Loma 
+Wastewater Treatment Plant discharge via the Point Loma Ocean Outfall. A second permit is for discharge 
+via the South Bay Ocean Outfall from the City’s South Bay Water Reclamation Plant. The third permit is 
+also for discharge via the South Bay Ocean Outfall, but from the South Bay International Wastewater 
+Treatment Plant operated by the U.S. Section of the International Boundary & Water Commission (USIBWC). 
+Effluent from the two South Bay treatment facilities commingle before discharge to the ocean, so a single 
+monitoring program is conducted by the City and USIBWC to meet those requirements (i.e., the City conducts 
+the joint program under contract to the USIBWC).  For purposes of this assessment, any trawls conducted in 
+Mexican water, were excluded from analyses.
+ 
+The City of San Diego Public Utilities Department provided trawl data from 1985-2015 
+(Ami Latker and Robin Gartman, City of San Diego Public Utilities Department) 
+and follow the same sampling protocols as the Southern California Bight Regional Monitoring Program.
+Stations sampled in fewer than 15 years were filtered from the dataset. Fourteen stations from the Point 
+Loma Ocean Outfall (SD1-SD14) and five stations from the South Bay Ocean Outfall were retained (SD17-21), 
+totaling 1,180 hauls. A tow time of 10 minutes is assumed for all trawls.  All California scorpionfish 
+encountered were measured to the nearest cm (standard length).
+
+_POTWs Index Standardization_
+
+Trawls from all POTWs were combined to standardize the index of 
+relative abundance.  This is in contrast to the 2005 assessment that standardized 
+each of the POTWs indices independently and combined them using an 
+inverse variance weighting approach [@Maunder2005].  One reason for this was that the 2005 
+base model going into the STAR panel was five sub-models for the southern California Bight. 
+Taking into consideration that the 2017 base model is a one-area model, all of the POTWs 
+follow the same sampling protocols and the sampling 
+design is a fixed station approach, the decision was made to develop a single index.  The 
+index was standardized using a delta-GLM approach.
+
+The data were filtered for each POTW independently.  The filters applied are 
+described in the sections above and summarized in Table \ref{tab:Fleet7_Sanitation_filter}. 
+The covariates considered for the lognormal and binomial models were *year* (47 levels), 
+*quarter* (4 levels), and *station* (52 levels).  A lognormal model for the positives was 
+select over a gamma model by a delta AIC of 619.  AIC model select was used for both the 
+lognormal and binomial models and all three covariates were selected for both (Table 
+\ref{tab:Fleet7_Sanitation_aic}).   The standardized index shows a large spike in relative 
+CPUE in 1981, varies within a range of 0.1 to 0.25 from 1989 to 2009, and then declines 
+until 2013 (Figure \ref{fig:index4_logcpuedata_Sanitation}).  The last three years of the index 
+show an increase in relative abundance.  The final standardized index and log-standard error can be 
+found in Table \ref{tab:Fleet7_Sanitation_index}.  We did explore standardizing the indices 
+independently.  However, this results in a loss of data, as some POTWs had 
+low sample sizes in some years.  The general trend in relative CPUE is similar across POTWs (Figures \ref{fig:Fleet7_Sanitation_indexcompare}). 
+
+_POTWs Length Composition_
+
+Each district measures every fish encountered in their survey.  Orange County Sanitation 
+District was the only program sampling in 1970 and 1971 and encountered a small number 
+of California scorpionfish in those years (Figure \ref{fig:Fleet7_Sanitation_lengthbydistrict}).
+Los Angeles County has encountered pulses of large numbers of California scorpionfish in 2002, 
+2004 and 2005.  Figure \ref{fig:Fleet7_Sanitation_lengthboxplots} shows the distribution of 
+lengths for California scorpionfish by 25 m depth bins and POTW. The median length 
+of fish from the CLAEMD trawls is smaller than the other two POTWs. However, there are 
+only 120 fish encountered in that depth range, compared to 1,372 fish encountered in 
+the 50-74 m depth range (Table \ref{tab:Fleet7_lengthdepth}).
+  
+The length composition indicates a fairly consistent size range of fish encountered 
+in the trawl surveys, with a handful of smaller fish in 2016 
+(Figure \ref{fig:Fleet7_comp_lendat_bubflt10mkt2}).  Length measurements from all 5,525 hauls 
+of the POTWs were combined across POTWs.  The number of California 
+scorpionfish was lowest during the first few years of the time series, and also declines starting
+ in 2012 (Table \ref{tab:Fleet7_lengthsample}).
+
+**NWFSC Trawl Survey Index**
+
+The Northwest Fishery Science Center has conducted combined shelf and slope trawl 
+surveys (hereafter referred as NWFSC trawl survey) since 2003, based on a random-grid 
+design from depths of 55 to 1280 meters.  Additional details on this survey and design
+are available in the abundance and distribution reports by Keller et al. [-@Keller2008]. 
+The haul locations and raw catch rates (in log scale) are shown in 
+Figure \ref{fig:Fleet8_NWFSCtrawl_posdepth}.
+
+The proportions of positive catch haul and the raw catch rates of positive hauls by 
+depth and latitude are shown in Figure \ref{fig:Fleet8_NWFSCtrawl_posdepth} and 
+Figure \ref{fig:Fleet8_NWFSCtrawl_poslat}, respectively.  These figures show that more 
+scorpionfish were caught at shallow depth zones and in the southern latitude zones. 
+Box plots of length summary data by depth and sex (Figure \ref{fig:Fleet8_NWFSCtrawl_lengthlat}) 
+and by latitude and sex (Figure \ref{fig:Fleet8_NWFSCtrawl_lengthlat}) show no evidences of 
+different spatial distributions (by depth and latitude) by length or by sex.  
+The numbers of total hauls and percentages of positive catch hauls by depth and 
+latitude zones are presented in Tables \ref{tab:Fleet8_NWFSCTrawl_catchdepth} and
+\ref{tab:Fleet8_NWFSCTrawl_catchlat}, respectively.  Summaries of raw catch data by 
+year are listed in Table \ref{tab:Fleet8_NWFSCTrawl_summary}.  Overall, catches of scorpionfish
+by the survey were very low with less than 1mt fish caught during the entire 14 
+years of the survey.  Bubble plots of length frequency distribution by year and 
+sex are presented in Figure \ref{fig:Fleet8_comp_lendat_bubflt8mkt0}.
+
+Summaries of age data by year and sex are presented in Table \ref{tab:Fleet8_NWFSCTrawl_agesummary}. 
+There were more males (n = 529) aged than females (n = 340), presumably 
+indicating that there are more males than females in the area surveyed.  The table 
+also shows that mean ages and mean lengths for both sexes decreased in recent years. 
+Table \ref{tab:Fleet8_NWFSCTrawl_agepercents} show five percentiles of fish aged by sex, 
+indicating more older males in the population.  All aged data from the survey were 
+used as conditional age-at-length matrix in the assessment model.  The mean age-at-length
+indicates males and females to have similar growth patterns until around age three, at which
+time, females are larger than males (Table \ref{tab:Fleet8_NWFSCTrawl_meanAatL}).
+
+Total biomass estimates from the survey were analyzed using the VAST program 
+[@Thorson2017].  The Q-Q goodness of fit plot, maps of the Pearson residuals for encounter 
+probability and positive catch rates, and time series of 
+total biomass estimates are shown in Figures \ref{fig:Fleet8_NWFSCtrawl_QQ}, 
+\ref{fig:Fleet8_encounter_pearson}, \ref{fig:Fleet8_catchrate_pearson}, and
+\ref{fig:index4_logcpuedata_NWFSCtrawl}, respectively.  The Q-Q plots shows generally good 
+fits and the time series of biomass estimates indicates no significant trend with 
+relatively large uncertainties from the survey.  The final survey index and log 
+standard error used in the assessment model are in Table \ref{tab:Fleet8_NWFSCTrawl_index}.
+
+
+**CSUN/VRG Gillnet Survey Index**
+
+California State University Northridge with Vantuna Research Group (CSUN/VRG) conducted 
+a gillnet survey from 1995-2008 (Daniel Pondella, VRG).  Sites along the coast from Santa Barbara to Newport 
+were consistently sampled for the time series, as well as Catalina Island. 
+Gillnet sets from within Marina Del Rey and Catalina Harbor were
+removed from the analysis.
+  
+All gillnets were the same length with six-25' panels (150' in length). 
+The standard sampling gillnet had 1", 1.5", 2 square mesh, with each mesh on two panels. 
+Samples were excluded if they were collected using a net other than the standard sampling gear.
+Other data filters included remove months that were not consistently sampled (Table 
+\ref{tab:Fleet9_GillnetSurvey_filter}).
+
+Five covariates were considered in the model standardization, *year* (14 levels), 
+*month* (8 levels), *site* (8 levels indicating the sampling site location), *float* 
+(2 levels indicate if floats were used on the gillnet), 
+and *perp/para* (2 levels indicate if the net was set perpendicular or parallel to 
+shore). A lognormal was select over a gamma model for the positive encounters by a 
+delta AIC of 108.29.  Covariates selected via AIC for both the lognormal and binomial 
+models included *year*, *site*, and *perp/para* (Table \ref{tab:Fleet9_GillnetSurvey_aic},
+Figure \ref{fig:Fleet9_GillnetSurvey_QQ}).  The standardized index decreases from 
+1995-1998 and remains flat until through the early 2000's with three high years at the 
+end of the time series (Figure \ref{fig:index4_logcpuedata_GillnetSurvey}).  
+
+The survey measured (standard length) every California scorpionfish encountered, totaling 
+1,130 fish. The majority of fish encountered were between 14 and 33 cm total length, with no 
+strong trends or patterns in age classes during the time period 
+(Figure \ref{fig:Fleet9_GillnetSurvey_lendat_bubflt10mkt2})
+
+
+
+
+**Southern California Bight Regional Monitoring Project Trawl Survey**
+
+The southern California Coast Water Research Project [SCCWRP](http://www.sccwrp.org/Homepage.aspx) 
+works to bring together over 60 agencies in southern California, including all of the aforementioned 
+POTWs, that conduct monitoring of aquatic 
+environments. One of the monitoring programs in the Southern California Bight (SCB)
+is a trawl survey conducted every five years.  The pilot year of the survey was 1994.
+Data from each of the survey years (1994, 1998, 2003, 2008, and 2013) were provided by 
+the SCCWRP (Shelly Moore, SCCWRP).
+
+In each of the five years of the study, sampling stations were chosen via a stratified 
+random sampling design [@Bight1998] (Figure \ref{Fleet11_SCBSurvey_map}).  All participating agencies follow the same protocols 
+(net is towed 10 minutes at a speed of 1.0 m/sec) and use the same net (semiballoon 
+otter trawl).  All fish and invertebrates are identified, counted, batch-weighed, and 
+measured (standard length to the nearest cm).
+
+A series of data filters were applied to the dataset (Table \ref{tab:Fleet11_SCBSurvey_filter}). 
+Only two scorpionfish were encountered 
+in hauls deeper than 450 m.  Ninety-five percent of the data were retained for 
+hauls in shallower than 97 m, which was set as a filter.  Stations in harbors 
+(2/114 positive hauls), north of Ventura (6/190 positive hauls) and the islands 
+(16/117 positive hauls) were excluded due to low encounters of California scorpionfish. 
+The final dataset included 398 hauls, 129 of which encountered California scorpionfish. 
+The unit of effort for this survey is in kg per tow time (minutes).
+
+Covariates considered for the delta-GLM model were *year* (5 levels), 
+*area* (4 regions), and *month* (3 levels; July-September).  Sampling stations were 
+assigned to one of four regions, 1) Ventura to Long Beach, 2) Long Beach to Dana Point, 
+3) Dana Point to San Diego, and 4) San Diego to the U.S./Mexico Border.  A lognormal 
+model was selected over a gamma model for the positives by a delta AIC of 30. Depth 
+(20-m depth bins) were considered, but none of the levels were significant in a full 
+lognormal or binomial model and was not considered further.   AIC selection 
+for both the lognormal and binomial models selected all covariates for the final model 
+(Table \ref{tab:Fleet11_SCBSurvey_aic}).  The Q-Q plot used to evaluate the goodness-of-fit 
+of the lognormal portion of the model is in Figures \ref{fig:Fleet11_SCBsurvey_QQ}.
+
+The standardized index of abundance indicates higher relative CPUE in 1994 and 2003, 
+with the other three years lower (Figure \ref{fig:index4_logcpuedata_SCBSurvey}).  The 
+fact that the survey is conducted every five years (4 years between the pilot and 
+the 1998 survey), may preclude drawing any firm conclusions on trends in abundance 
+from this data.  
+
+The survey measured a total of 427 fish, with the last two years of the survey 
+(2008 and 2013) only encountering 25 and 53 California scorpionfish, respectively. 
+However, the smallest fish observed in this survey were in 2013 (Figure \ref{fig:Fleet11_SCBsurvey_lendat_bubflt11mkt2}).
+
+
+*Generating Station Impingement Surveys*
+
+Data from the southern California generating station surveys were provided by 
+Eric Miller (MBC Applied Environmental Sciences). The generating stations
+all draw in seawater through an intake system 
+for once-through cooling water.  There are five generating stations that conduct normal operation
+and heat treatment surveys with observations of California scorpionfish: 
+Scattergood Generating Station (SGS), El Segundo Generating
+Station (ESGS), Redondo Beach Generating Station (RBGS), Huntington Beach Generating Station
+(HBGS), and San Onofre Generation Station (SONGS). Each generating station draws in water from 
+different depths and distances
+from shore: SGS draws from 500 m offshore at 6 m depth, ESBS draws from 700 m offshore at 
+9.8 m depth, RBGS draws from 289 m offshore at 13.7 m depth, HBGS draws from 500 m offshore
+at 5 m depth, and SONGS has two intake systems 960 m and 900 m offshore and at 9 m and 8 m 
+depth, respectively [@Miller2009].  
+
+The two surveys conducted are normal operations surveys and heat treatment surveys.  For 
+normal operations surveys, the intake screens are rotated and cleaned to start the survey.
+All of the impinged fish are washed off the screen at this time and discarded. When the
+intake screens stop running, the survey begins. The generating station then operates as 
+normal for 24 hours, which includes operating and washing the screens as usual 
+(typically every eight hours). The screens are then operated and washed again after
+a second 24 hours has elapsed.  Any specimens washed off the screens during the
+48 hour study period are retained. The total sample is processed to identify, 
+count, weigh, and measure the fish and macroinvertebrates. 
+There is often no information on the water flow collected during the 48 hour period of 
+the normal operations survey.  Most fish enter the generating station and swim 
+in the sedimentation basin until either getting exhausted or impinged.  The SONGS
+generating station also has a fish elevator that releases a fraction of the fish
+back to the ocean.
+
+At each generating station, cooling water, i.e., seawater, is pumped into the 
+generating station where it reaches a sedimentation basin.  Water flow is one-directional,
+and fish can reside in this area, but not escape.  During a heat treatment, water in the 
+sedimentation basin is heated to over 38 degrees Celsius, killing all fish and invertebrates,
+and impinging them on the travelling screens.  
+
+The screens are operated and washed off per normal operating procedures right up until 
+the heat treatment takes place.  Therefore, only the fish remaining in the sedimentation
+basin and those impinged since the last screen rotation are counted in the heat treatment 
+survey. The total flow between heat treatments has previously been used to standardize indices
+in previous reports. However, this is not representative of the flow relating to fish impinged
+during the heat treatment.  The water flows vary widely among heat treatments, time of year (higher in 
+summer when energy demands increase), and generating stations.  Therefore, the generating station impingement
+surveys were not used to develop indices of abundance.  However, length composition data from the impingement
+surveys were used.
+
+The length composition data from the impingement show a higher proportion of smaller (<10 cm) fish
+since 2012 (Figure \ref{fig:Fleet10_comp_lendat_bubflt10mkt2})
+
+
+*California Cooperative Oceanic Fisheries Investigations (CalCOFI) Survey*
+UCSD Scripps Institution of Oceanography, CDFG, and the National Marine Fisheries Service 
+have carried out a plankton survey on a regular basis since 1951 [@Moser1993]. 
+Prior to 1965, \emph{Scorpaena} samples were not speciated.
+
+California scorpionfish larvae encounters from CalCOFI surveys were provided by 
+Noelle Bowlin (NMFS SWFSC). Only 16 positive bongo tows in the core area (lines 77-93) 
+encountered California scorpionfish.
+The majority of the 335 positive bongo tows occurred in Mexico, south of Punta Eugenia 
+Baja California and are likely a combination of California scorpionfish and other
+\emph{Scorpaena} species. The California scorpionfish egg masses are encountered
+in the CalCOFI surveys, but because California scorpionfish is not a target species
+they are entered in the database as "unidentified eggs" (William Watson, NMFS SWFSC). 
+An index of abundance was not developed for the CalCOFI data due to the small
+sample sizes.
