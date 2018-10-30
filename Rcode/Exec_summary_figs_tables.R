@@ -144,6 +144,8 @@ for (model in 1:n_models) {
                                            sep=''), '~ 95% confidence interval')
   
   
+  
+  
   # Extract Depletion values  
   Depletion = mod$derived_quants[grep('Bratio', mod$derived_quants$Label), ]
   Depletion = Depletion[c(-1, -2), ]
@@ -635,7 +637,7 @@ align(mngmnt.table) = c('l',
 
 # =============================================================================
 # OFL projection --------------------------------------------------------------
-
+## In scorp I raed this from a file - check on this
 
 #For 1 model:
 if (n_models == 1) {
@@ -1128,3 +1130,35 @@ align(base_summary.table) = c('l',
                               '>{\\centering}p{1.1in}')  
 
 }
+  
+  
+  
+  ################################################################################################################################################################
+  # Executive summary values
+  ################################################################################################################################################################
+  
+  # Lowest four recruitment years 
+  RecDevs.all = mod1$recruitpars[grep('Main_RecrDev', rownames(mod1$recruitpars)), c("Value", "Parm_StDev")]
+  ind = sort(RecDevs.all[, "Value"], index.return = TRUE)$ix[1:4]
+  find.yr = rownames(mod1$recruitpars[grep('Main_RecrDev', rownames(mod1$recruitpars)), ])
+  temp = substring(find.yr,14)
+  recdev.lowest = temp[ind]
+  
+  # Lowest SB
+  find.sb = mod$derived_quants[grep('SPB', mod$derived_quants$Label), ]
+  temp = find.sb[find.sb$Label >= paste('SPB_', Dat_start_mod1, sep='') & find.sb$Label <= paste('SPB_', Dat_end_mod1,  sep=''), ]  
+  ind = sort(temp$Value, index.return = TRUE)$ix[1]
+  ssb.yr = substring(temp$Label, 5)
+  low.ssb = ssb.yr[ind]
+  
+  low.dep.value = paste0( round(100*mod$derived_quants[mod$derived_quants$Label == paste0("SPB_", low.ssb), 'Value'] / 
+                                  mod$derived_quants[mod$derived_quants$Label == "SPB_Virgin", 'Value'],1), "%")
+  
+  Tot.catch = aggregate(ret_bio ~ Yr, FUN = sum, mod1$catch)$ret_bio
+  Tot.catch.df = cbind((Dat_start_mod1-1):Dat_end_mod1, Tot.catch)
+  temp = sort(Tot.catch.df[,2], index.return = TRUE)$ix
+  max.catch.5 = Tot.catch.df[(temp[length(temp)]-5):temp[length(temp)],]
+  
+  Tot.catch.df = as.data.frame(Tot.catch.df)
+  colnames(Tot.catch.df)<-c("Year", "Catch")
+  

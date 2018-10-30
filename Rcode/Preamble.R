@@ -37,8 +37,8 @@ n_models = 1
 
 # model names; if you only have one model the label will just be "model"
 mod1_label = "Northern model" 
-mod2_label = "Central model"  # (north of $40^\\circ 10^\\prime$ N. latitude to the OR-WA border)"
-mod3_label = "Southern model" # (south of $40^\\circ 10^\\prime$ N. latitude)"
+#mod2_label = "Central model"  # (north of $40^\\circ 10^\\prime$ N. latitude to the OR-WA border)"
+#mod3_label = "Southern model" # (south of $40^\\circ 10^\\prime$ N. latitude)"
   
 
 # Management targets

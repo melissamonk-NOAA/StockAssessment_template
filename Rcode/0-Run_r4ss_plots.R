@@ -54,14 +54,14 @@ library(r4ss)
 
 # Give the names of the data and control files, for each model
 # Used in the SS_files_linebreaks.R
-mod1_dat =  'china_WAonly_data.ss'  
-mod2_dat =  'china_central_data.ss'
-mod3_dat =  'china_south_data.ss'
+mod1_dat =  'simple_disc.dat'  
+mod2_dat =  ''
+mod3_dat =  ''
 
 # Control file names 
-mod1_ctrl = 'china_WAonly_control.ss' 
-mod2_ctrl = 'china_central_control.ss'
-mod3_ctrl = 'china_south_control.ss'
+mod1_ctrl = 'simple_lendisc.ctl' 
+mod2_ctrl = ''
+mod3_ctrl = ''
 
 # =============================================================================
 
@@ -73,17 +73,17 @@ output.dir = file.path(getwd(), 'r4ss')
 # Once you have your own SS files and want to save these plots
 # Uncomment the /r4SS/ in the .gitignore file
 dir.create(file.path(output.dir,'plots_mod1'))
-dir.create(file.path(output.dir,'plots_mod2'))
-dir.create(file.path(output.dir,'plots_mod3'))
+#dir.create(file.path(output.dir,'plots_mod2'))
+#dir.create(file.path(output.dir,'plots_mod3'))
 
 
 # BEGIN r4ss===================================================================
 # REMOVE OLD r4SS OUTPUT!!!!! -------------------------------------------------
 # Run this deliberately - it deletes the r4SS output plots files
 do.call(file.remove, list(list.files(file.path(output.dir, 'plots_mod1'),    full.names=TRUE)))
-do.call(file.remove, list(list.files(file.path(output.dir, 'plots_mod2'),    full.names=TRUE)))
-do.call(file.remove, list(list.files(file.path(output.dir, 'plots_mod3'),    full.names=TRUE)))
-do.call(file.remove, list(list.files(file.path(output.dir, 'plots_compare'), full.names=TRUE)))
+#do.call(file.remove, list(list.files(file.path(output.dir, 'plots_mod2'),    full.names=TRUE)))
+#do.call(file.remove, list(list.files(file.path(output.dir, 'plots_mod3'),    full.names=TRUE)))
+#do.call(file.remove, list(list.files(file.path(output.dir, 'plots_compare'), full.names=TRUE)))
 
 # Run r4ss for each model - **CHANGE DIRECTORY if necessary**
                mod1 = SS_output(dir = file.path(input.dir,'Base_model1'), forecast=T, covar=T, ncol=1000)
@@ -100,8 +100,8 @@ save.image('./r4ss/SS_output.RData')
 
 # output directories
 out.dir.mod1 = file.path(output.dir,'plots_mod1')
-out.dir.mod2 = file.path(output.dir,'plots_mod2')
-out.dir.mod3 = file.path(output.dir,'plots_mod3')
+#out.dir.mod2 = file.path(output.dir,'plots_mod2')
+#out.dir.mod3 = file.path(output.dir,'plots_mod3')
 
 
 # Model 1
