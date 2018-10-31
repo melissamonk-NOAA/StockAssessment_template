@@ -112,13 +112,13 @@ for (model in 1:n_models) {
     }}
           
   # Extract biomass/output  
-  SpawningB = mod$derived_quants[grep('SPB', mod$derived_quants$Label), ]
+  SpawningB = mod$derived_quants[grep('SSB', mod$derived_quants$Label), ]
   SpawningB = SpawningB[c(-1, -2), ]
      
       
   # Spawning biomass and std.dev data, calculate lower and upper 95% CI                 
-  SpawningByrs = SpawningB[SpawningB$Label >= paste('SPB_', FirstYR+1,sep='') 
-                         & SpawningB$Label <= paste('SPB_', LastYR+1,sep=''), ]     
+  SpawningByrs = SpawningB[SpawningB$Label >= paste('SSB_', FirstYR+1,sep='') 
+                         & SpawningB$Label <= paste('SSB_', LastYR+1,sep=''), ]     
   
   SpawningByrs$YEAR = seq(FirstYR+1, LastYR+1)
   
@@ -493,26 +493,26 @@ for (model in 1:n_models) {
 
   # Rbind all of the data for the big summary reference table  
   Ref_pts = rbind (
-  SSB_Unfished    = mod$derived_quants[grep('SSB_U', mod$derived_quants$Label), ],
-  TotBio_Unfished = mod$derived_quants[grep('TotBio', mod$derived_quants$Label), ],
-  Recr_Unfished   = mod$derived_quants[grep('Recr_Un', mod$derived_quants$Label), ],
-  SPB_lastyr      = mod$derived_quants[grep(paste0('SPB_', LastYR), mod$derived_quants$Label), ],
+  SSB_Unfished    = mod$derived_quants[grep('SSB_I', mod$derived_quants$Label), ],
+  TotBio_Unfished = mod$derived_quants[grep('Totbio', mod$derived_quants$Label), ],
+  Recr_Unfished   = mod$derived_quants[grep('Recr_I', mod$derived_quants$Label), ],
+  SSB_lastyr      = mod$derived_quants[grep(paste0('SSB_', LastYR), mod$derived_quants$Label), ],
   Depletion_lastyr= mod$derived_quants[grep(paste0('Bratio_', LastYR), mod$derived_quants$Label), ],
   Refpt_sB        = c(NA, NA, NA),
   SSB_Btgt        = mod$derived_quants[grep('SSB_Btgt', mod$derived_quants$Label), ],
   SPR_Btgt        = mod$derived_quants[grep('SPR_Btgt', mod$derived_quants$Label), ],
   Fstd_Btgt       = mod$derived_quants[grep('Fstd_Btgt', mod$derived_quants$Label), ],
-  TotYield_Btgt   = mod$derived_quants[grep('TotYield_Btgt', mod$derived_quants$Label), ],
+  TotYield_Btgt   = mod$derived_quants[grep('Dead_Catch_Btgt', mod$derived_quants$Label), ],
   Refpt_SPR       = c(NA, NA, NA),
-  SSB_SPRtgt      = mod$derived_quants[grep('SSB_SPRtgt', mod$derived_quants$Label), ],
+  SSB_SPRtgt      = mod$derived_quants[grep('SSB_SPR', mod$derived_quants$Label), ],
   SPR_proxy       = c('SPR_proxy', .5, NA),
-  Fstd_SPRtgt     = mod$derived_quants[grep('Fstd_SPRtgt', mod$derived_quants$Label), ],
-  TotYield_SPRtgt = mod$derived_quants[grep('TotYield_SPRtgt', mod$derived_quants$Label), ],
+  Fstd_SPRtgt     = mod$derived_quants[grep('Fstd_SPR', mod$derived_quants$Label), ],
+  TotYield_SPRtgt = mod$derived_quants[grep('Dead_Catch_SPR', mod$derived_quants$Label), ],
   Refpts_MSY      = c(NA, NA, NA),
   SSB_MSY         = mod$derived_quants[grep('SSB_MSY', mod$derived_quants$Label), ],
   SPR_MSY         = mod$derived_quants[grep('SPR_MSY', mod$derived_quants$Label), ],
   Fstd_MSY        = mod$derived_quants[grep('Fstd_MSY', mod$derived_quants$Label), ],
-  TotYield_MSY    = mod$derived_quants[grep('TotYield_MSY', mod$derived_quants$Label), ] )
+  TotYield_MSY    = mod$derived_quants[grep('Dead_Catch_MSY', mod$derived_quants$Label), ] )
   Ref_pts         = Ref_pts[, 1:3]
   Ref_pts$Value   = as.numeric(Ref_pts$Value)
   Ref_pts$StdDev  = as.numeric(Ref_pts$StdDev)
@@ -642,7 +642,7 @@ align(mngmnt.table) = c('l',
 #For 1 model:
 if (n_models == 1) {
 # Extract OFLs for next 10 years for each model
-      OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$Label),]
+      OFL_mod1 = mod1$derived_quants[grep('OFLCatch',mod1$derived_quants$Label),]
       OFL_mod1 = OFL_mod1[, 2]    
       
       #Turn into a dataframe and get the total
@@ -661,10 +661,10 @@ if (n_models == 1) {
 # For 2 models:
       if (n_models == 2) {
         # Extract predicted OFLs for each model
-        OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$Label),]
+        OFL_mod1 = mod1$derived_quants[grep('OFLCatch',mod1$derived_quants$Label),]
         OFL_mod1 = OFL_mod1[, 2]
         
-        OFL_mod2 = mod2$derived_quants[grep('OFL',mod2$derived_quants$Label),]
+        OFL_mod2 = mod2$derived_quants[grep('OFLCatch',mod2$derived_quants$Label),]
         OFL_mod2 = OFL_mod2[, 2]
         
         # Turn into a dataframe and get the total
@@ -684,13 +684,13 @@ if (n_models == 1) {
 #For 3 models:
 if (n_models == 3) {
       # Extract OFLs for next 10 years for each model
-      OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$Label),]
+      OFL_mod1 = mod1$derived_quants[grep('OFLCatch',mod1$derived_quants$Label),]
       OFL_mod1 = OFL_mod1[, 2]
       
-      OFL_mod2 = mod2$derived_quants[grep('OFL',mod2$derived_quants$Label),]
+      OFL_mod2 = mod2$derived_quants[grep('OFLCatch',mod2$derived_quants$Label),]
       OFL_mod2 = OFL_mod2[, 2]
       
-      OFL_mod3 = mod3$derived_quants[grep('OFL',mod3$derived_quants$Label),]
+      OFL_mod3 = mod3$derived_quants[grep('OFLCatch',mod3$derived_quants$Label),]
       OFL_mod3 = OFL_mod3[, 2]
       
       #Turn into a dataframe and get the total
@@ -1145,14 +1145,14 @@ align(base_summary.table) = c('l',
   recdev.lowest = temp[ind]
   
   # Lowest SB
-  find.sb = mod$derived_quants[grep('SPB', mod$derived_quants$Label), ]
-  temp = find.sb[find.sb$Label >= paste('SPB_', Dat_start_mod1, sep='') & find.sb$Label <= paste('SPB_', Dat_end_mod1,  sep=''), ]  
+  find.sb = mod$derived_quants[grep('SSB', mod$derived_quants$Label), ]
+  temp = find.sb[find.sb$Label >= paste('SSB_', Dat_start_mod1, sep='') & find.sb$Label <= paste('SSB_', Dat_end_mod1,  sep=''), ]  
   ind = sort(temp$Value, index.return = TRUE)$ix[1]
   ssb.yr = substring(temp$Label, 5)
   low.ssb = ssb.yr[ind]
   
-  low.dep.value = paste0( round(100*mod$derived_quants[mod$derived_quants$Label == paste0("SPB_", low.ssb), 'Value'] / 
-                                  mod$derived_quants[mod$derived_quants$Label == "SPB_Virgin", 'Value'],1), "%")
+  low.dep.value = paste0( round(100*mod$derived_quants[mod$derived_quants$Label == paste0("SSB_", low.ssb), 'Value'] / 
+                                  mod$derived_quants[mod$derived_quants$Label == "SSB_Virgin", 'Value'],1), "%")
   
   Tot.catch = aggregate(ret_bio ~ Yr, FUN = sum, mod1$catch)$ret_bio
   Tot.catch.df = cbind((Dat_start_mod1-1):Dat_end_mod1, Tot.catch)
