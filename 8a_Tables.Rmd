@@ -143,10 +143,10 @@
   
   
     # Spawning biomass, extract and subset, and turn into scientific notation
-    SpawningB = mod1$derived_quants[grep('SPB', mod1$derived_quants$Label), ]
+    SpawningB = mod1$derived_quants[grep('SSB', mod1$derived_quants$Label), ]
     SpawningB = SpawningB[c(-1, -2), ]
-    SpawningByrs = SpawningB[SpawningB$Label >= paste('SPB_', Dat_start_mod1, sep='') &  
-                             SpawningB$Label <= paste('SPB_', LastYR + 1, sep=''), ] 
+    SpawningByrs = SpawningB[SpawningB$Label >= paste('SSB_', Dat_start_mod1, sep='') &  
+                             SpawningB$Label <= paste('SSB_', LastYR + 1, sep=''), ] 
         
         SpawningB_units = ''
         if(mean(SpawningByrs$Value) > 1000000){
@@ -516,10 +516,10 @@
 
 
     # Pull spawning biomass and subset years
-    SpawningB = mod1$derived_quants[grep('SPB', mod1$derived_quants$Label), ]
+    SpawningB = mod1$derived_quants[grep('SSB', mod1$derived_quants$Label), ]
     SpawningB = SpawningB[c(-1, -2), ]
-    SpawningByrs = SpawningB[SpawningB$Label >= paste('SPB_', Project_firstyr, sep = '') &
-                             SpawningB$Label <= paste('SPB_', Project_lastyr, sep = ''), ]
+    SpawningByrs = SpawningB[SpawningB$Label >= paste('SSB_', Project_firstyr, sep = '') &
+                             SpawningB$Label <= paste('SSB_', Project_lastyr, sep = ''), ]
 
     # Pull depletion and subset years
     Depletion = mod1$derived_quants[grep('Bratio', mod1$derived_quants$Label), ]
