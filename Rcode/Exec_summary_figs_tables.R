@@ -494,7 +494,7 @@ for (model in 1:n_models) {
   # Rbind all of the data for the big summary reference table  
   Ref_pts = rbind (
   SSB_Unfished    = mod$derived_quants[grep('SSB_I', mod$derived_quants$Label), ],
-  TotBio_Unfished = mod$derived_quants[grep('Totbio', mod$derived_quants$Label), ],
+  TotBio_Unfished = mod$derived_quants[grep('TotBio', mod$derived_quants$Label), ],
   Recr_Unfished   = mod$derived_quants[grep('Recr_I', mod$derived_quants$Label), ],
   SSB_lastyr      = mod$derived_quants[grep(paste0('SSB_', LastYR), mod$derived_quants$Label), ],
   Depletion_lastyr= mod$derived_quants[grep(paste0('Bratio_', LastYR), mod$derived_quants$Label), ],
@@ -502,17 +502,17 @@ for (model in 1:n_models) {
   SSB_Btgt        = mod$derived_quants[grep('SSB_Btgt', mod$derived_quants$Label), ],
   SPR_Btgt        = mod$derived_quants[grep('SPR_Btgt', mod$derived_quants$Label), ],
   Fstd_Btgt       = mod$derived_quants[grep('Fstd_Btgt', mod$derived_quants$Label), ],
-  TotYield_Btgt   = mod$derived_quants[grep('Dead_Catch_Btgt', mod$derived_quants$Label), ],
+  TotYield_Btgt   = mod$derived_quants[grep('TotYield_B', mod$derived_quants$Label), ],
   Refpt_SPR       = c(NA, NA, NA),
   SSB_SPRtgt      = mod$derived_quants[grep('SSB_SPR', mod$derived_quants$Label), ],
   SPR_proxy       = c('SPR_proxy', .5, NA),
   Fstd_SPRtgt     = mod$derived_quants[grep('Fstd_SPR', mod$derived_quants$Label), ],
-  TotYield_SPRtgt = mod$derived_quants[grep('Dead_Catch_SPR', mod$derived_quants$Label), ],
+  TotYield_SPRtgt = mod$derived_quants[grep('TotYield_SPR', mod$derived_quants$Label), ],
   Refpts_MSY      = c(NA, NA, NA),
   SSB_MSY         = mod$derived_quants[grep('SSB_MSY', mod$derived_quants$Label), ],
   SPR_MSY         = mod$derived_quants[grep('SPR_MSY', mod$derived_quants$Label), ],
   Fstd_MSY        = mod$derived_quants[grep('Fstd_MSY', mod$derived_quants$Label), ],
-  TotYield_MSY    = mod$derived_quants[grep('Dead_Catch_MSY', mod$derived_quants$Label), ] )
+  TotYield_MSY    = mod$derived_quants[grep('TotYield_MSY', mod$derived_quants$Label), ] )
   Ref_pts         = Ref_pts[, 1:3]
   Ref_pts$Value   = as.numeric(Ref_pts$Value)
   Ref_pts$StdDev  = as.numeric(Ref_pts$StdDev)
@@ -1138,9 +1138,9 @@ align(base_summary.table) = c('l',
   ################################################################################################################################################################
   
   # Lowest four recruitment years 
-  RecDevs.all = mod1$recruitpars[grep('Main_RecrDev', rownames(mod1$recruitpars)), c("Value", "Parm_StDev")]
+  RecDevs.all = mod1$recruitpars[grep('Late_RecrDev_', rownames(mod1$recruitpars)), c("Value", "Parm_StDev")]
   ind = sort(RecDevs.all[, "Value"], index.return = TRUE)$ix[1:4]
-  find.yr = rownames(mod1$recruitpars[grep('Main_RecrDev', rownames(mod1$recruitpars)), ])
+  find.yr = rownames(mod1$recruitpars[grep('Late_RecrDev', rownames(mod1$recruitpars)), ])
   temp = substring(find.yr,14)
   recdev.lowest = temp[ind]
   
@@ -1155,7 +1155,7 @@ align(base_summary.table) = c('l',
                                   mod$derived_quants[mod$derived_quants$Label == "SSB_Virgin", 'Value'],1), "%")
   
   Tot.catch = aggregate(ret_bio ~ Yr, FUN = sum, mod1$catch)$ret_bio
-  Tot.catch.df = cbind((Dat_start_mod1-1):Dat_end_mod1, Tot.catch)
+  Tot.catch.df = cbind(Dat_start_mod1:Dat_end_mod1, Tot.catch)
   temp = sort(Tot.catch.df[,2], index.return = TRUE)$ix
   max.catch.5 = Tot.catch.df[(temp[length(temp)]-5):temp[length(temp)],]
   

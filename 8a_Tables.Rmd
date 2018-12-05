@@ -310,49 +310,8 @@
           scalebox = .9)
 
 ```
+
 \FloatBarrier
-
-```{r, results = 'asis'}
-    
-    # Read in/organize sensitivity file, change column names, caption
-    Sens_model2 = read.csv('./txt_files/Sensitivities_model1_1.csv')
-    colnames(Sens_model2) = c('Label', 
-                              'Base (Francis weights)',
-                              'Drop Sanitation data', 
-                              'Drop NWFSC Trawl index and lengths',
-                              'Drop Gillnet data', 
-                              'Drop SCB survey data',
-                              'Drop Onboard retained catch index',
-                              'Drop Impingement data',
-                              'Drop Impingement data and est. one M',
-                              'Drop Impingement data and est. one M and h',
-                              'Drop Impingement data and est. M')
-
-    # Create sensitivities table
-    Sens_model2.table = xtable(Sens_model2, 
-                               caption = c('Sensitivity of the base model 
-                                          to dropping data 
-                                          sources and alternative assumptions 
-                                          about growth.'),
-                               label = 'tab:Sensitivity_model1_1', digits = 2)    
-  
-    # Add alignment - this uses centered aligment of .6 inches for all columns 2+,
-    # You can change this easily to have variable columns width after you know how many
-    # colunns your final table has
-    align(Sens_model2.table) = c('l','l', rep('>{\\centering}p{.8in}', dim(Sens_model2)[2]-1))
-
-
-    # Print model 1 sensitivity table
-    print(Sens_model2.table, 
-          include.rownames = FALSE,             
-          caption.placement = 'top',
-          floating.environment = 'sidewaystable',
-          scalebox = .8)
-
-```
-<!-- ---------------------------------------------------------------------- -->
-
- \FloatBarrier
 
 \newpage
 
