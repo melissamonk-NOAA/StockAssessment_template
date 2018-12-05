@@ -1,5 +1,9 @@
-Region,ID,Fleet,Years,Name,Fishery independent,Filtering,Method,Endorsed
-WA,1,4,1981-2014,Dockside CPUE,No,"trip, area, month, Stephens-MacCall",delta-GLM (bin-gamma),SSC
--,-,-,-,-,-,-,-,-
--,-,-,-,-,-,-,-,-
--,-,-,-,-,-,-,-,-
+Fleet,Years,Name,Fishery independent,Filtering,Method,Endorsed
+4,2004-2016,Recreational PR dockside CPUE,No,"trip, area, regulations, Stephens-MacCall",delta-GLM (bin-lognormal),SSC
+5,1980-2016,CPFV logbook CPUE,No,"trip, gear, effort, species, depth, sample size",negative binomial,SSC
+6,2002-2016,Onboard observer discard catch CPUE,No,"habitat ,regulations, effort, boats",delta-GLM (bin-lognormal),SSC
+7,1970-2016,Sanitation district CPUE,Yes,"sample size, depth, tow times",delta-GLM (bin-lognormal),SSC
+8,2003-2016,NWFSC trawl survey CPUE,Yes,"depth, area",VAST,SSC
+9,1995-2008,CSUN/VRG Gillnet survey CPUE,Yes,"gear, site, month",delta-GLM (bin-lognormal),SSC
+11,1994; 1998; 2003; 2008; 2013,Southern California Bight trawl survey CPUE,Yes,"depth, area",delta-GLM (bin-lognormal),SSC
+12,2002-2016,Onboard observer retained catch CPUE,No,"habitat, regulations, effort, boats",delta-GLM (bin-lognormal),SSC

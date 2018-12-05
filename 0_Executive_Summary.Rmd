@@ -127,8 +127,6 @@ asymptotic variance estimates show that the uncertainty in the estimated spawnin
 Recruitment deviations were estimated from xxxx-xxxx (Figure \ref{fig:Recruits_all} and 
 Table \ref{tab:Recruit_mod1}).
 
-The four lowest recruitment estimated within the model (in ascending order) occurred in 
-`r recdev.lowest[1]`, `r recdev.lowest[2]`, `r recdev.lowest[3]`, and `r recdev.lowest[4]`. 
 
 
 <!-- ***********BEGIN EXECUTIVE SUMMARY RECRUITMENT TABLES AND FIGURES***** -->

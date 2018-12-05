@@ -171,15 +171,11 @@ Time-series of estimated stock size over time are shown in Table \ref{tab:Timese
 ###Parameter Estimates
 
 The additional survey variability (process error added directly to each year's input 
-variability) for all surveys was estimated within the model.  The model estimated a 
-small added variances for the recreational private mode of 
-`r #round(mod1$parameters[mod1$parameters$Label == "Q_extraSD_RecPR(4)", 3], 3)`
-
-Recruitment deviations were estimated from yyyy to yyyy (Figure \ref{fig:recdevs2_withbars}). 
+variability) for all surveys was estimated within the model.  
 
 
-(Figures \ref{fig:ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals} and 
-\ref{fig:recdevs2_withbars}). 
+
+(Figure \ref{fig:ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals} ). 
 
 The stock-recruit curve ... Figure \ref{fig:SR_curve2} with estimated recruitments also 
 shown. 

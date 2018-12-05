@@ -10,7 +10,6 @@ Descriptions of the data sources are in the following sections.
 <!-- ************FISHERY-DEPENDENT DATA************************************ -->
 ###Commercial Fishery Landings
 
-Table \ref{tab:CommCatches}
 
 ###Commercial Discards
 
@@ -32,7 +31,7 @@ Input effN = $7.06 * N_{\text{trips}}$ if $N_{\text{fish}}/N_{\text{trips}}$ is 
 
 ###Sport Fishery Removals and Discards
 
-Table \ref{tab:Rec_removal}
+
 
 Biological samples from the recreational fleets are described in the sections below.
 

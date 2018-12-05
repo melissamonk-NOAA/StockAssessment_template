@@ -37,7 +37,7 @@ for(p in requiredPackages){
 }
 
 # Install the latest version of r4ss using devtools
-devtools::install_github("r4ss/r4ss")
+#devtools::install_github("r4ss/r4ss")
 library(r4ss)
 
 # CHANGE values in this section ===============================================
