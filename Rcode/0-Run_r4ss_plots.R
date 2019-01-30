@@ -54,12 +54,12 @@ library(r4ss)
 
 # Give the names of the data and control files, for each model
 # Used in the SS_files_linebreaks.R
-mod1_dat =  'simple_disc.dat'  
+mod1_dat =  'boc1.dat'  
 mod2_dat =  ''
 mod3_dat =  ''
 
 # Control file names 
-mod1_ctrl = 'simple_lendisc.ctl' 
+mod1_ctrl = 'boc1.ctl' 
 mod2_ctrl = ''
 mod3_ctrl = ''
 

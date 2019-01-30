@@ -1,5 +1,7 @@
-SS-V3.24U-safe;_08/29/2014;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.2_Win64
-Tue Jul 28 16:15:19 2015
+SS-V3.24U-fast;_08/29/2014;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.2_Win64
+Sat Apr 29 08:16:33 2017
 
- N warnings: 0
+ adjusted selparm out of bounds (Parm#, yr, min, max, base, value) 1 2003 16 64 43.7042 64.2167
+Final gradient: 0.000208568 is larger than final_conv: 0.0001
+ N warnings: 2
 Number_of_active_parameters_on_or_near_bounds: 0

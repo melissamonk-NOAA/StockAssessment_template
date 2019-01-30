@@ -516,24 +516,45 @@ for (model in 1:n_models) {
   Ref_pts         = Ref_pts[, 1:3]
   Ref_pts$Value   = as.numeric(Ref_pts$Value)
   Ref_pts$StdDev  = as.numeric(Ref_pts$StdDev)
-  Ref_pts$Value1  = ifelse(Ref_pts$Value >= 1, as.character(round(Ref_pts$Value, 1)), 
-                           as.character(round(Ref_pts$Value, 4)))   
+  
+  
+  Ref_pts$places  = ifelse(Ref_pts$Value >= 1, 
+                           nchar(round(Ref_pts$Value)), NA) 
+  
+  Ref_pts$Value1  = ifelse((Ref_pts$Value >= 1 & Ref_pts$Label !='TotBio_Unfished'), 
+                            comma(ifelse(nchar(round(Ref_pts$Value))>4, 
+                                       Ref_pts$Value/10^(nchar(round(Ref_pts$Value))-4), Ref_pts$Value), big.mark=','), 
+                                         ifelse(Ref_pts$Label == 'TotBio_Unfished', comma(Ref_pts$Value, big.mark=','), 
+                                                round(Ref_pts$Value, 3)))  
         
-  Ref_pts$lowerCI  = round(Ref_pts$Value + qnorm(0.025) * Ref_pts$StdDev, digits = 4)
+
+  Ref_pts$lowerCI  = round(Ref_pts$Value + qnorm(0.025) * Ref_pts$StdDev, digits = 3)
   
-  Ref_pts$upperCI  = round(Ref_pts$Value - qnorm(0.025) * Ref_pts$StdDev, digits = 4)
+  Ref_pts$upperCI  = round(Ref_pts$Value - qnorm(0.025) * Ref_pts$StdDev, digits = 3)
   
-  Ref_pts$lowerCI1 = ifelse(Ref_pts$lowerCI >= 1, as.character(round(Ref_pts$lowerCI, 1)), 
-                            as.character(round(Ref_pts$lowerCI, 4))) 
   
-  Ref_pts$upperCI1 = ifelse(Ref_pts$upperCI>=1, as.character(round(Ref_pts$upperCI,1)), 
-                            as.character(round(Ref_pts$upperCI, 4))) 
+  Ref_pts$lowerCI1 = ifelse((Ref_pts$lowerCI >= 1 & Ref_pts$Label !='TotBio_Unfished'), 
+                             comma(ifelse(nchar(round(Ref_pts$lowerCI))>4, 
+                                      Ref_pts$lowerCI/10^(nchar(round(Ref_pts$lowerCI))-4), Ref_pts$lowerCI), big.mark=','), 
+                                        ifelse(Ref_pts$Label == 'TotBio_Unfished', comma(Ref_pts$lowerCI, big.mark=','), 
+                                              round(Ref_pts$lowerCI, 3)))  
+                                                                
+  Ref_pts$upperCI1 = ifelse((Ref_pts$upperCI >= 1 & Ref_pts$Label !='TotBio_Unfished'), 
+                             comma(ifelse(nchar(round(Ref_pts$upperCI))>4, 
+                                      Ref_pts$upperCI/10^(nchar(round(Ref_pts$upperCI))-4), Ref_pts$upperCI), big.mark=','), 
+                                        ifelse(Ref_pts$Label == 'TotBio_Unfished', comma(Ref_pts$upperCI, big.mark=','), 
+                                              round(Ref_pts$upperCI, 3)))  
   
-  Ref_pts$CI1      = paste('(', Ref_pts$lowerCI1, '-', Ref_pts$upperCI1, ')', sep='')
+  
+
+  
+   
+   
+  #Ref_pts$CI1      = paste('(', Ref_pts$lowerCI1, '-', Ref_pts$upperCI1, ')', sep='')
         
   Quantity = c(paste('Unfished spawning output (', fecund_unit, ')', sep = ''),
                      paste('Unfished age ', min_age, ' biomass (mt)', sep = ''),
-                    'Unfished recruitment (R0, thousands)',
+                    'Unfished recruitment ($R_{0}$)',
                      paste('Spawning output', '(', LastYR, ' ', fecund_unit, ')', sep = ''),
                      paste('Depletion (', LastYR,')',sep=''),
                     '\\textbf{$\\text{Reference points based on } \\mathbf{SB_{40\\%}}$}',
@@ -552,11 +573,12 @@ for (model in 1:n_models) {
                     'Exploitation rate at $MSY$',
                     '$MSY$ (mt) ')
         
-  Ref_pts = cbind(Quantity, Ref_pts[, c(4, 9)])
+  Ref_pts = cbind(Quantity, Ref_pts[, c(5, 8, 9)])
   Ref_pts[c(6, 11, 13, 16), 3] = ''
   Ref_pts[c(6, 11, 16), 2] = ''
   colnames(Ref_pts) = c('\\textbf{Quantity}', '\\textbf{Estimate}', 
-                        '\\textbf{\\~95\\%  Confidence Interval}')
+                        '\\textbf{Low 2.5\\%  limit}',
+                        '\\textbf{High 2.5\\%  limit}')
   assign(paste('Ref_pts_', mod_area, sep = ''), Ref_pts)
 
 } # end for loop for n models for reference points table
@@ -573,8 +595,9 @@ Ref_pts_mod1.table = xtable(Ref_pts_mod1,
 # Add alignment      
 align(Ref_pts_mod1.table) = c('l',
                               '>{\\raggedright}p{4.1in}',
-                              '>{\\centering}p{.65in}',
-                              '>{\\centering}p{1.4in}')  
+                              '>{\\raggedleft}p{.62in}',
+                              '>{\\raggedleft}p{.62in}',
+                              '>{\\raggedleft}p{.62in}')  
 
 
 # Model 2
