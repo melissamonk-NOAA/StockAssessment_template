@@ -51,7 +51,7 @@ MSST = 0.25  # minimum stock size threshold; 0.25 for rockfish
 # mt (no fecundity relationship)
 fecund = mod1$SpawnOutputUnits  
 # Fecundity text depending on the input value above (can change this line if you like)
-if(fecund == 'numbers'){fecund_unit='billion eggs'} else {fecund_unit = 'mt'}
+if(fecund == 'numbers'){fecund_unit='million eggs'} else {fecund_unit = 'mt'}
 
 # Change these years either here or in the table code if you need to
 

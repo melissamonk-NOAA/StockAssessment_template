@@ -85,20 +85,25 @@
 \usepackage{upquote}                                              % produce grave accent in latex
 \usepackage{verbatim}                                             % produces verbatim results
 \usepackage{fancyvrb}                                             % verbatim in a box
-\usepackage[inline]{showlabels}                                   % show table and figure labels; comment out for final
 %\usepackage{draftwatermark}                                      % places Draft watermark in background; comment out for final
 \usepackage{textcomp}                                             % fixes error with packages interfering
 \usepackage{lscape}                                               % rotate pages - to allow for landscape longtables
-%\pdfinterwordspaceon                                              % fix loss of inter word spacing
+%\pdfinterwordspaceon                                             % fix loss of inter word spacing
 \usepackage{cmap}                                                 % fix mapping characters to unicode
-\RequirePackage[linewidth = 1]{pdfcomment}                        %pdf comments
-\RequirePackage[l2tabu, orthodox]{nag}                            %checks packages related to the accessibility?
+\RequirePackage[linewidth = 1]{pdfcomment}                        % pdf comments
+\RequirePackage[l2tabu, orthodox]{nag}                            % checks packages related to the accessibility?
+\usepackage[inline]{showlabels}                                   % show table and figure labels; comment out for final
 %\RequirePackage[tagged]{accessibilityMeta}
+
 
 \linenumbers                                                      % specify use of line numbers
 
-\definecolor{light-gray}{gray}{.85}
+
+\definecolor{light-gray}{gray}{.85}                               % define light-gray as a color
 %\usepackage[tagged]{accessibility-meta}
+
+ 
+%\showlabels[\color{mred}]{label}
 
 % Redefines (sub)paragraphs to behave more like sections
 \ifx\paragraph\undefined\else
@@ -119,64 +124,38 @@
 USE THIS .Rmd TO TEST R CODE CHUNKS, FIGURES AND PLOTS BEFORE INSERTING
 INTO THE MAIN TEXT OR TO DEBUG
 
-\begin{verbatim}
-OFL_mod1 = mod1$derived_quants[grep('OFL',mod1$derived_quants$LABEL),]
-      OFL_mod1 = OFL_mod1[c(-1,-2),2]
-      
-      #Turn into a dataframe and get the total
-      OFL = as.data.frame(OFL_mod1)
-      OFL$Year=seq(Project_firstyr+2,Project_lastyr,1)
-      OFL$Year = as.factor(OFL$Year)
-      OFL = OFL[,c(2,1)]
-      colnames(OFL) = c('Year','OFL') 
-
-# Create the table
-      OFL.table = xtable(OFL, caption=c('Projections of potential OFL (mt) for each model, using the base model forecast.'),
-                  label = 'tab:OFL_projection')}
-\end{verbatim}
-
 \begin{table}[ht]
 \centering
-\caption{Projections of potential OFL (mt) for each model, using the base model forecast.} 
-\label{tab:OFL_projection}
-\begin{tabular}{lr}
+\caption{Summary of reference 
+                                      points and management quantities for the 
+                                      base case Northern model.} 
+\label{tab:Ref_pts_mod1}
+\begin{tabular}{>{\raggedright}p{4.1in}>{\centering}p{.6in}>{\centering}p{.6in}>{\centering}p{.6in}}
   \hline
-Year & OFL \\ 
+\textbf{Quantity} & \textbf{Estimate} & \textbf{\Low 2.5\%  limit} & \textbf{\High 2.5\%  limit} \\ 
   \hline
-2015 & 9.51 \\ 
-  2016 & 9.57 \\ 
-  2017 & 9.63 \\ 
-  2018 & 9.29 \\ 
-  2019 & 8.98 \\ 
-  2020 & 8.69 \\ 
-  2021 & 8.43 \\ 
-  2022 & 8.20 \\ 
-  2023 & 7.99 \\ 
-  2024 & 7.80 \\ 
-  2025 & 7.64 \\ 
-  2026 & 7.49 \\ 
+Unfished spawning output (billion eggs) & 24 & 15 & 34 \\ 
+  Unfished age 1+ biomass (mt) & 241 & 153 & 329 \\ 
+  Unfished recruitment (R0, thousands) & 34 & 22 & 46 \\ 
+  Spawning output(2014 billion eggs) & 18 & 9 & 27 \\ 
+  Depletion (2014) & 0.734 & 0.637 & 0.832 \\ 
+  \textbf{$\text{Reference points based on } \mathbf{SB_{40\%}}$} &  &  &  \\ 
+  Proxy spawning output ($B_{40\%}$) & 10 & 6 & 13 \\ 
+  SPR resulting in $B_{40\%}$ ($SPR_{B40\%}$) & 0.444 & 0.444 & 0.444 \\ 
+  Exploitation rate resulting in $B_{40\%}$ & 0.055 & 0.052 & 0.058 \\ 
+  Yield with $SPR_{B40\%}$ at $B_{40\%}$ (mt) & 6 & 4 & 8 \\ 
+  \textbf{\textit{Reference points based on SPR proxy for MSY}} &  &  &  \\ 
+  Spawning output & 11 & 7 & 15 \\ 
+  $SPR_{proxy}$ & 0.5 &  &  \\ 
+  Exploitation rate corresponding to $SPR_{proxy}$ & 0.046 & 0.043 & 0.048 \\ 
+  Yield with $SPR_{proxy}$ at $SB_{SPR}$ (mt) & 6 & 4 & 8 \\ 
+  \textbf{\textit{Reference points based on estimated MSY values}} &  &  &  \\ 
+  Spawning output at $MSY$ ($SB_{MSY}$) & 6 & 3 & 8 \\ 
+  $SPR_{MSY}$ & 0.288 & 0.282 & 0.293 \\ 
+  Exploitation rate at $MSY$ & 0.092 & 0.086 & 0.099 \\ 
+  $MSY$ (mt)  & 7 & 5 & 9 \\ 
    \hline
 \end{tabular}
 \end{table}
-
-\begin{table}[ht]
-\centering
-\caption{Summary of the biomass/abundance
-                                              time series used in the stock
-                                              assessment.} 
-\label{tab:Index_summary}
-\begin{tabular}{>{\centering}p{.4in}>{\centering}p{.3in}>{\centering}p{.3in}>{\centering}p{.3in}>{\centering}p{.6in}>{\centering}p{.5in}>{\centering}p{.2in}>{\centering}p{.8in}>{\centering}p{.3in}>{\centering}p{.5in}}
-  \hline
-Region & ID & Fleet & Years & Name & Fishery ind. & Filtering & Method & Rank & Endorsed \\ 
-  \hline
-WA & 1 & 4 & 1981-2014 & Dockside CPUE & No & trip, area, month, Stephens-MacCall & delta-GLM (bin-gamma) & 1 & SSC \\ 
-  - & - & - & - & - & - & - & - & - & - \\ 
-  - & - & - & - & - & - & - & - & - & - \\ 
-  - & - & - & - & - & - & - & - & - & - \\ 
-   \hline
-\end{tabular}
-\end{table}
-
-\hypertarget{refs}{}
 
 \end{document}
