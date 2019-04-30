@@ -494,7 +494,7 @@ for (model in 1:n_models) {
   # Rbind all of the data for the big summary reference table  
   Ref_pts = rbind (
   SSB_Unfished    = mod$derived_quants[grep('SSB_I', mod$derived_quants$Label), ],
-  TotBio_Unfished = mod$derived_quants[grep('TotBio', mod$derived_quants$Label), ],
+  TotBio_Unfished = mod$derived_quants[grep('TotBio', mod$derived_quants$Label, ignore.case=TRUE), ],
   Recr_Unfished   = mod$derived_quants[grep('Recr_I', mod$derived_quants$Label), ],
   SSB_lastyr      = mod$derived_quants[grep(paste0('SSB_', LastYR), mod$derived_quants$Label), ],
   Depletion_lastyr= mod$derived_quants[grep(paste0('Bratio_', LastYR), mod$derived_quants$Label), ],
@@ -502,17 +502,18 @@ for (model in 1:n_models) {
   SSB_Btgt        = mod$derived_quants[grep('SSB_Btgt', mod$derived_quants$Label), ],
   SPR_Btgt        = mod$derived_quants[grep('SPR_Btgt', mod$derived_quants$Label), ],
   Fstd_Btgt       = mod$derived_quants[grep('Fstd_Btgt', mod$derived_quants$Label), ],
-  TotYield_Btgt   = mod$derived_quants[grep('TotYield_B', mod$derived_quants$Label), ],
+  TotYield_Btgt   = mod$derived_quants[grep('Dead_Catch_B', mod$derived_quants$Label), ],  #changed 4/29/2019 from TotYield_Btgt
   Refpt_SPR       = c(NA, NA, NA),
   SSB_SPRtgt      = mod$derived_quants[grep('SSB_SPR', mod$derived_quants$Label), ],
   SPR_proxy       = c('SPR_proxy', .5, NA),
   Fstd_SPRtgt     = mod$derived_quants[grep('Fstd_SPR', mod$derived_quants$Label), ],
-  TotYield_SPRtgt = mod$derived_quants[grep('TotYield_SPR', mod$derived_quants$Label), ],
+  TotYield_SPRtgt = mod$derived_quants[grep('Dead_Catch_SPR', mod$derived_quants$Label), ], #changed 4/29/2019 from TotYield_SPRtgt
   Refpts_MSY      = c(NA, NA, NA),
   SSB_MSY         = mod$derived_quants[grep('SSB_MSY', mod$derived_quants$Label), ],
   SPR_MSY         = mod$derived_quants[grep('SPR_MSY', mod$derived_quants$Label), ],
   Fstd_MSY        = mod$derived_quants[grep('Fstd_MSY', mod$derived_quants$Label), ],
-  TotYield_MSY    = mod$derived_quants[grep('TotYield_MSY', mod$derived_quants$Label), ] )
+  DeadYield_MSY    = mod$derived_quants[grep('Dead_Catch_MSY', mod$derived_quants$Label), ], #changed 4/29/2019 from TotYield_MSY
+  RetYield_MSY    = mod$derived_quants[grep('Ret_Catch_MSY', mod$derived_quants$Label), ]) #changed 4/29/2019 and added as TotYield is now separated 
   Ref_pts         = Ref_pts[, 1:3]
   Ref_pts$Value   = as.numeric(Ref_pts$Value)
   Ref_pts$StdDev  = as.numeric(Ref_pts$StdDev)
@@ -533,7 +534,7 @@ for (model in 1:n_models) {
   Ref_pts$upperCI  = round(Ref_pts$Value - qnorm(0.025) * Ref_pts$StdDev, digits = 3)
   
   
-  Ref_pts$lowerCI1 = ifelse((Ref_pts$lowerCI >= 1 & Ref_pts$Label !='TotBio_Unfished'), 
+  Ref_pts$lowerCI1 = ifelse((abs(Ref_pts$lowerCI) >= 1 & Ref_pts$Label !='TotBio_Unfished'), 
                              comma(ifelse(nchar(round(Ref_pts$lowerCI))>4, 
                                       Ref_pts$lowerCI/10^(nchar(round(Ref_pts$lowerCI))-4), Ref_pts$lowerCI), big.mark=','), 
                                         ifelse(Ref_pts$Label == 'TotBio_Unfished', comma(Ref_pts$lowerCI, big.mark=','), 
@@ -549,8 +550,7 @@ for (model in 1:n_models) {
 
   
    
-   
-  #Ref_pts$CI1      = paste('(', Ref_pts$lowerCI1, '-', Ref_pts$upperCI1, ')', sep='')
+
         
   Quantity = c(paste('Unfished spawning output (', fecund_unit, ')', sep = ''),
                      paste('Unfished age ', min_age, ' biomass (mt)', sep = ''),
@@ -571,7 +571,8 @@ for (model in 1:n_models) {
                     'Spawning output at $MSY$ ($SB_{MSY}$)',
                     '$SPR_{MSY}$',
                     'Exploitation rate at $MSY$',
-                    '$MSY$ (mt) ')
+                    'Dead Catch $MSY$ (mt)',
+                    'Retained Catch $MSY$ (mt)'  )
         
   Ref_pts = cbind(Quantity, Ref_pts[, c(5, 8, 9)])
   Ref_pts[c(6, 11, 13, 16), 3] = ''

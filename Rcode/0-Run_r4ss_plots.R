@@ -37,7 +37,8 @@ for(p in requiredPackages){
 }
 
 # Install the latest version of r4ss using devtools
-#devtools::install_github("r4ss/r4ss")
+devtools::install_github("r4ss/r4ss")
+
 library(r4ss)
 
 # CHANGE values in this section ===============================================
@@ -54,12 +55,12 @@ library(r4ss)
 
 # Give the names of the data and control files, for each model
 # Used in the SS_files_linebreaks.R
-mod1_dat =  'boc1.dat'  
+mod1_dat =  'BSKT2019_data.ss'  
 mod2_dat =  ''
 mod3_dat =  ''
 
 # Control file names 
-mod1_ctrl = 'boc1.ctl' 
+mod1_ctrl = 'BSKT2019_control.ss' 
 mod2_ctrl = ''
 mod3_ctrl = ''
 
