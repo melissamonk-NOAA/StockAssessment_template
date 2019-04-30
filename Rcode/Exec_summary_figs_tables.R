@@ -1179,6 +1179,7 @@ align(base_summary.table) = c('l',
                                   mod$derived_quants[mod$derived_quants$Label == "SSB_Virgin", 'Value'],1), "%")
   
   Tot.catch = aggregate(ret_bio ~ Yr, FUN = sum, mod1$catch)$ret_bio
+  Tot.catch = Tot.catch[-1]
   Tot.catch.df = cbind(Dat_start_mod1:Dat_end_mod1, Tot.catch)
   temp = sort(Tot.catch.df[,2], index.return = TRUE)$ix
   max.catch.5 = Tot.catch.df[(temp[length(temp)]-5):temp[length(temp)],]
